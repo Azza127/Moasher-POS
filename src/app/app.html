@@ -1,2 +1,11 @@
 <h1>Moasher POS</h1>
 
+<h2>Products</h2>
+
+<ul>
+  @for (product of products; track product.id) {
+    <li>
+      {{ product.name }} - {{ product.price }} EGP
+    </li>
+  }
+</ul>

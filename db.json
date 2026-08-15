@@ -1,0 +1,160 @@
+{
+    "users": [
+    {
+        "id": 1,
+        "username": "owner",
+        "password": "123456",
+        "name": "Store Owner",
+        "role": "Owner",
+        "status": "Active"
+    },
+    {
+        "id": 2,
+        "username": "manager",
+        "password": "123456",
+        "name": "Store Manager",
+        "role": "Manager",
+        "status": "Active"
+    },
+    {
+        "id": 3,
+        "username": "employee",
+        "password": "123456",
+        "name": "Store Employee",
+        "role": "Employee",
+        "status": "Active"
+    }
+    ],
+    "categories": [
+    {
+        "id": 1,
+        "name": "Electronics"
+    },
+    {
+        "id": 2,
+        "name": "Accessories"
+    },
+    {
+        "id": 3,
+        "name": "Stationery"
+    },
+    {
+        "id": 4,
+        "name": "Beauty"
+    }
+    ],
+    "products": [
+    {
+        "id": 1,
+        "name": "Wireless Mouse",
+        "sku": "MOU-001",
+        "categoryId": 1,
+        "price": 450,
+        "stock": 15,
+        "minStock": 5,
+        "image": ""
+    },
+    {
+        "id": 2,
+        "name": "USB-C Cable",
+        "sku": "USB-001",
+        "categoryId": 2,
+        "price": 180,
+        "stock": 30,
+        "minStock": 10,
+        "image": ""
+    },
+    {
+        "id": 3,
+        "name": "Notebook",
+        "sku": "NOT-001",
+        "categoryId": 3,
+        "price": 75,
+        "stock": 4,
+        "minStock": 5,
+        "image": ""
+    },
+    {
+        "id": 4,
+        "name": "Lip Gloss",
+        "sku": "BEA-001",
+        "categoryId": 4,
+        "price": 220,
+        "stock": 12,
+        "minStock": 5,
+        "image": ""
+    },
+    {
+        "id": 5,
+        "name": "Wireless Keyboard",
+        "sku": "KEY-001",
+        "categoryId": 1,
+        "price": 650,
+        "stock": 8,
+        "minStock": 5,
+        "image": ""
+    }
+    ],
+    "orders": [
+    {
+        "id": 1001,
+        "items": [
+        {
+        "productId": 1,
+        "productName": "Wireless Mouse",
+        "price": 450,
+        "quantity": 2,
+        "total": 900
+        },
+        {
+        "productId": 2,
+        "productName": "USB-C Cable",
+        "price": 180,
+        "quantity": 1,
+        "total": 180
+        }
+        ],
+            "subtotal": 1080,
+            "tax": 151.2,
+            "total": 1231.2,
+            "paymentMethod": "Cash",
+            "status": "Completed",
+            "createdAt": "2026-08-14T10:30:00Z"
+    },
+    {
+        "id": 1002,
+        "items": [
+        {
+            "productId": 4,
+            "productName": "Lip Gloss",
+            "price": 220,
+            "quantity": 1,
+            "total": 220
+        },
+        {
+            "productId": 3,
+            "productName": "Notebook",
+            "price": 75,
+            "quantity": 2,
+            "total": 150
+        }
+        ],
+            "subtotal": 370,
+            "tax": 51.8,
+            "total": 421.8,
+            "paymentMethod": "Card",
+            "status": "Completed",
+            "createdAt": "2026-08-15T09:15:00Z"
+    }
+    ],
+    "storeSettings": [
+    {
+        "id": 1,
+        "storeName": "Moasher Store",
+        "phone": "01000000000",
+        "address": "Cairo, Egypt",
+        "currency": "EGP",
+        "taxRate": 14
+    }
+    ]
+}
