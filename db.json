@@ -70,7 +70,7 @@
       "sku": "MOU-001",
       "categoryId": 1,
       "price": 500,
-      "stock": 8,
+      "stock": 0,
       "minStock": 10,
       "image": "https://i.pinimg.com/1200x/cd/73/5c/cd735c5fdb152ac2fb7ddb558a85a214.jpg",
       "maxStock": 50,
@@ -80,9 +80,9 @@
       "id": "2",
       "name": "USB-C",
       "sku": "USB-001",
-      "categoryId": 1,
+      "categoryId": "1",
       "price": 360,
-      "stock": 15,
+      "stock": 10,
       "minStock": 10,
       "image": "https://images.unsplash.com/photo-1551818014-7c8ace9c1b5c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "maxStock": 40,
@@ -94,7 +94,7 @@
       "sku": "NOT-001",
       "categoryId": 3,
       "price": 75,
-      "stock": 4,
+      "stock": 3,
       "minStock": 10,
       "image": "https://images.unsplash.com/photo-1743760521201-ddb298df18cd?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "maxStock": 40,
@@ -118,7 +118,7 @@
       "sku": "NON-001",
       "categoryId": 3,
       "price": 220,
-      "stock": 9,
+      "stock": 8,
       "minStock": 3,
       "image": "https://plus.unsplash.com/premium_photo-1725075087236-e32a71552098?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "maxStock": 10,
@@ -191,7 +191,7 @@
       "sku": "DOD-220",
       "categoryId": "w-UYvx6E5OA",
       "price": 15,
-      "stock": 12,
+      "stock": 9,
       "maxStock": 60,
       "minStock": 15,
       "image": "https://images.unsplash.com/photo-1651000877908-18e19a5d4ceb?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -251,29 +251,34 @@
       "sku": "FDD-220",
       "categoryId": "5",
       "price": 75,
-      "stock": 9,
+      "stock": 0,
       "maxStock": 50,
       "minStock": 15,
       "image": "https://i.pinimg.com/736x/8e/f1/f5/8ef1f52fbbf3c7ea9ad5a8518e542f1d.jpg"
+    },
+    {
+      "id": "UExSrVT0Ex8",
+      "name": "RedBull",
+      "description": "Non",
+      "sku": "Red-212",
+      "categoryId": "w-UYvx6E5OA",
+      "price": 200,
+      "stock": 15,
+      "maxStock": 50,
+      "minStock": 5,
+      "image": ""
     }
   ],
   "orders": [
     {
-      "id": "1001",
+      "ticketNumber": "#7884-A",
       "items": [
         {
-          "productId": 1,
-          "productName": "Wireless Mouse",
-          "price": 450,
-          "quantity": 2,
-          "total": 900
-        },
-        {
-          "productId": 2,
-          "productName": "USB-C Cable",
-          "price": 180,
-          "quantity": 1,
-          "total": 180
+          "productId": "2",
+          "productName": "USB-C",
+          "price": 360,
+          "quantity": 3,
+          "total": 1080
         }
       ],
       "subtotal": 1080,
@@ -281,42 +286,8 @@
       "total": 1231.2,
       "paymentMethod": "Cash",
       "status": "Completed",
-      "createdAt": "2026-08-14T10:30:00Z"
-    },
-    {
-      "id": "1002",
-      "items": [
-        {
-          "productId": 4,
-          "productName": "Lip Gloss",
-          "price": 220,
-          "quantity": 1,
-          "total": 220
-        },
-        {
-          "productId": 3,
-          "productName": "Notebook",
-          "price": 75,
-          "quantity": 2,
-          "total": 150
-        }
-      ],
-      "subtotal": 370,
-      "tax": 51.8,
-      "total": 421.8,
-      "paymentMethod": "Card",
-      "status": "Completed",
-      "createdAt": "2026-08-15T09:15:00Z"
-    }
-  ],
-  "storeSettings": [
-    {
-      "id": "1",
-      "storeName": "Moasher Store",
-      "phone": "01000000000",
-      "address": "Cairo, Egypt",
-      "currency": "EGP",
-      "taxRate": 14
+      "createdAt": "2026-08-20T09:54:25.435Z",
+      "id": "-MrdpEDNXkQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
