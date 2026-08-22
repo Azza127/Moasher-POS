@@ -1,26 +1,25 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ProductService } from './core/services/product.service';
-import { Product } from './core/models/product.model';
+import { Component } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { SidebarComponent } from './shared/components/sidebar/sidebar';
+import { HeaderComponent } from './shared/components/header/header';
+
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [
+    RouterOutlet,
+  
+    SidebarComponent,
+    HeaderComponent
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit {
-  private readonly productService = inject(ProductService);
+export class App {
 
-  products: Product[] = [];
+  constructor(public router: Router) {}
 
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-  this.products = products;
-  },
-      error: (error) => {
-        console.error('Failed to load products:', error);
-      }
-    });
+  get isLoginPage(): boolean {
+    return this.router.url === '/login';
   }
 }

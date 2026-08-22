@@ -1,0 +1,38 @@
+<header class="header">
+
+  <div class="user-info">
+
+    <div class="avatar">
+
+      {{ userName.charAt(0).toUpperCase() }}
+
+    </div>
+
+
+    <div class="user-details">
+
+      <strong>
+        {{ userName }}
+      </strong>
+
+      <span>
+        {{ userRole }}
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <button
+    type="button"
+    class="logout-btn"
+    (click)="logout()">
+
+    <i class="bi bi-box-arrow-right"></i>
+
+    Logout
+
+  </button>
+
+</header>

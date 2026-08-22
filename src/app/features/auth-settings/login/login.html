@@ -1,0 +1,290 @@
+<div class="login-page">
+
+  <div class="login-container">
+
+    <!-- ================= LEFT BRAND SECTION ================= -->
+
+    <section class="brand-section">
+
+      <div class="brand-content">
+
+        <!-- Logo -->
+
+        <div class="brand-logo">
+
+          <div class="logo-icon">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+
+          <div class="brand-name">
+            <h2>Moasher</h2>
+            <span>مُؤَشِّر</span>
+          </div>
+
+        </div>
+
+        <p class="brand-description">
+          Smart POS. Better Business.
+        </p>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <div class="features">
+
+          <!-- Sales -->
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              <i class="bi bi-cart3"></i>
+            </div>
+
+            <div class="feature-text">
+              <span>Sales</span>
+              <small>POS</small>
+            </div>
+
+          </div>
+
+
+          <!-- Inventory -->
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              <i class="bi bi-box-seam"></i>
+            </div>
+
+            <div class="feature-text">
+              <span>Inventory</span>
+              <small>Products</small>
+            </div>
+
+          </div>
+
+
+          <!-- Reports -->
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              <i class="bi bi-bar-chart-fill"></i>
+            </div>
+
+            <div class="feature-text">
+              <span>Reports</span>
+              <small>Analytics</small>
+            </div>
+
+          </div>
+
+
+          <!-- Team -->
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              <i class="bi bi-people-fill"></i>
+            </div>
+
+            <div class="feature-text">
+              <span>Team</span>
+              <small>Members</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= RIGHT LOGIN SECTION ================= -->
+
+    <section class="login-section">
+
+      <div class="login-card">
+
+        <!-- Small Logo -->
+
+        <div class="small-logo">
+          <i class="bi bi-shop"></i>
+        </div>
+
+
+        <!-- Title -->
+
+        <h1>Welcome 👋</h1>
+
+        <p class="subtitle">
+          Sign in to access your Moasher dashboard
+        </p>
+
+
+        <!-- ================= FORM ================= -->
+
+        <form (ngSubmit)="login()">
+
+
+          <!-- USERNAME -->
+
+          <div class="form-group">
+
+            <label for="username">
+              Username
+            </label>
+
+            <div class="input-wrapper">
+
+              <i class="bi bi-person"></i>
+
+              <input
+                type="text"
+                id="username"
+                name="username"
+                [(ngModel)]="username"
+                placeholder="Enter your username"
+                autocomplete="username"
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="form-group">
+
+            <label for="password">
+              Password
+            </label>
+
+            <div class="input-wrapper">
+
+              <i class="bi bi-lock"></i>
+
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="togglePassword()"
+                aria-label="Show or hide password"
+              >
+
+                <i
+                  class="bi"
+                  [class.bi-eye]="!showPassword"
+                  [class.bi-eye-slash]="showPassword"
+                ></i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- OPTIONS -->
+
+          <div class="options">
+
+            <label class="remember">
+
+              <input
+                type="checkbox"
+                name="remember"
+              >
+
+              <span>Remember me</span>
+
+            </label>
+
+            <a routerLink="/forgot-password">
+              Forgot password?
+            </a>
+
+          </div>
+
+
+          <!-- ERROR -->
+
+          @if (errorMessage) {
+
+            <div class="error-message">
+
+              <i class="bi bi-exclamation-circle"></i>
+
+              <span>
+                {{ errorMessage }}
+              </span>
+
+            </div>
+
+          }
+
+
+          <!-- LOGIN BUTTON -->
+
+          <button
+            type="submit"
+            class="login-btn"
+            [disabled]="isLoading"
+          >
+
+            @if (!isLoading) {
+
+              <span>Login</span>
+
+              <i class="bi bi-arrow-right"></i>
+
+            } @else {
+
+              <span>Signing in...</span>
+
+              <i class="bi bi-arrow-repeat loading-icon"></i>
+
+            }
+
+          </button>
+
+        </form>
+
+
+        <!-- SUPPORT -->
+
+        <div class="support">
+
+          <span>Need help?</span>
+
+          <a routerLink="/support">
+            Contact Support
+          </a>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+          © 2026 Moasher | مُؤَشِّر. All rights reserved.
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

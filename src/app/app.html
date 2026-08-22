@@ -1,11 +1,23 @@
-<h1>Moasher POS</h1>
+@if (isLoginPage) {
 
-<h2>Products</h2>
+  <router-outlet></router-outlet>
 
-<ul>
-  @for (product of products; track product.id) {
-    <li>
-      {{ product.name }} - {{ product.price }} EGP
-    </li>
-  }
-</ul>
+} @else {
+
+  <div class="app-container">
+
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+
+      <app-header></app-header>
+
+      <main class="page-content">
+        <router-outlet></router-outlet>
+      </main>
+
+    </div>
+
+  </div>
+
+}
