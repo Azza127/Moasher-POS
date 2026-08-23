@@ -1,16 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { Category } from './category';
+import { Category } from '../models/category.model';
 
-describe('Category', () => {
-  let service: Category;
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoryService {
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = 'http://localhost:3000/categories';
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Category);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.apiUrl);
+  }
+}
