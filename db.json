@@ -1,139 +1,323 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "username": "owner",
+      "password": "123456",
+      "name": "Store Owner",
+      "role": "Owner",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "username": "manager",
+      "password": "123456",
+      "name": "Store Manager",
+      "role": "Manager",
+      "status": "Active"
+    },
+    {
+      "id": "3",
+      "username": "employee",
+      "password": "123456",
+      "name": "Store Employee",
+      "role": "Employee",
+      "status": "Active"
+    }
+  ],
   "categories": [
-    { "id": 1, "name": "Electronics" },
-    { "id": 2, "name": "Accessories" },
-    { "id": 3, "name": "Cables" },
-    { "id": 4, "name": "Peripherals" }
+    {
+      "id": "1",
+      "name": "Electronics"
+    },
+    {
+      "id": "2",
+      "name": "Accessories"
+    },
+    {
+      "id": "3",
+      "name": "Stationery"
+    },
+    {
+      "name": "Cosmetics",
+      "id": "4"
+    },
+    {
+      "id": "5",
+      "name": "Foods"
+    },
+    {
+      "id": "6",
+      "name": "Clothes"
+    },
+    {
+      "id": "w-UYvx6E5OA",
+      "name": "Drinks"
+    },
+    {
+      "name": "Perfums",
+      "id": "cT8bmadytzM"
+    },
+    {
+      "name": "Cleaning Supplies",
+      "id": "ddA-8yD6-ss"
+    }
   ],
   "products": [
     {
-      "id": 1,
-      "name": "Smartphone X Pro",
-      "sku": "SP-001",
+      "id": "1",
+      "name": "Wireless Mouse",
+      "sku": "MOU-001",
       "categoryId": 1,
-      "price": 100,
-      "stock": 15,
-      "minStock": 10
-    },
-    {
-      "id": 2,
-      "name": "UltraBook 15\"",
-      "sku": "UB-015",
-      "categoryId": 1,
-      "price": 200,
+      "price": 500,
       "stock": 8,
-      "minStock": 5
+      "minStock": 10,
+      "image": "https://i.pinimg.com/1200x/cd/73/5c/cd735c5fdb152ac2fb7ddb558a85a214.jpg",
+      "maxStock": 50,
+      "description": "Black / Wireless"
     },
     {
-      "id": 3,
-      "name": "Noise Cancelling Pods",
-      "sku": "NC-042",
-      "categoryId": 4,
-      "price": 15,
-      "stock": 3,
-      "minStock": 10
+      "id": "2",
+      "name": "USB-C",
+      "sku": "USB-001",
+      "categoryId": 1,
+      "price": 360,
+      "stock": 15,
+      "minStock": 10,
+      "image": "https://images.unsplash.com/photo-1551818014-7c8ace9c1b5c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "maxStock": 40,
+      "description": "Black / 256G"
     },
     {
-      "id": 4,
-      "name": "Smart Watch Series 4",
-      "sku": "SW-004",
-      "categoryId": 2,
-      "price": 35,
-      "stock": 20,
-      "minStock": 8
-    },
-    {
-      "id": 5,
-      "name": "USB-C Fast Charger",
-      "sku": "USBC-001",
+      "id": "3",
+      "name": "Notebook",
+      "sku": "NOT-001",
       "categoryId": 3,
-      "price": 5,
-      "stock": 2,
-      "minStock": 15
-    },
-    {
-      "id": 6,
-      "name": "Premium Coffee Beans",
-      "sku": "CB-001",
-      "categoryId": 4,
-      "price": 12,
+      "price": 75,
       "stock": 4,
-      "minStock": 10
+      "minStock": 10,
+      "image": "https://images.unsplash.com/photo-1743760521201-ddb298df18cd?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "maxStock": 40,
+      "description": "A5 / Ruled Pages"
     },
     {
-      "id": 7,
-      "name": "Espresso Cups (Set of 6)",
-      "sku": "EC-042",
+      "id": "4",
+      "name": "Lip Gloss",
+      "sku": "BEA-001",
       "categoryId": 4,
-      "price": 20,
-      "stock": 12,
-      "minStock": 15
+      "price": 220,
+      "stock": 0,
+      "minStock": 5,
+      "image": "https://images.unsplash.com/photo-1640317372997-b76e600ee5ef?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "maxStock": 20,
+      "description": "Pink / Glossy Finish"
     },
     {
-      "id": 8,
-      "name": "Organic Green Tea",
-      "sku": "GT-105",
-      "categoryId": 4,
-      "price": 8,
+      "id": "9d0eSH2RgoQ",
+      "name": "Novel",
+      "sku": "NON-001",
+      "categoryId": 3,
+      "price": 220,
+      "stock": 9,
+      "minStock": 3,
+      "image": "https://plus.unsplash.com/premium_photo-1725075087236-e32a71552098?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "maxStock": 10,
+      "description": "Paperback / Arabic"
+    },
+    {
+      "id": "TEQYUx5ka1I",
+      "name": "Pencil",
+      "sku": "TOT-001",
+      "categoryId": 3,
+      "price": 10,
       "stock": 2,
-      "minStock": 10
+      "minStock": 6,
+      "image": "https://plus.unsplash.com/premium_photo-1757682619700-475cd4c62668?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "maxStock": 35,
+      "description": "HB / Graphite"
+    },
+    {
+      "id": "JL_OrD8YdJo",
+      "name": "Eraser",
+      "sku": "REA-001",
+      "categoryId": 3,
+      "price": 12,
+      "stock": 0,
+      "minStock": 5,
+      "image": "https://images.unsplash.com/photo-1667532447990-51c6704ef358?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "maxStock": 20,
+      "description": "White / Soft Rubber"
+    },
+    {
+      "id": "L68yt065cXs",
+      "name": "Ruler",
+      "sku": "ROR-001",
+      "categoryId": 3,
+      "price": 20,
+      "stock": 5,
+      "minStock": 7,
+      "image": "https://i.pinimg.com/1200x/d3/33/12/d33312dc0b60f2af8feef186e021e1f5.jpg",
+      "maxStock": 35,
+      "description": "30cm / Clear"
+    },
+    {
+      "id": "UTjQXLaZTHE",
+      "name": "Blouse",
+      "sku": "BOB-001",
+      "categoryId": "6",
+      "price": 550,
+      "stock": 5,
+      "minStock": 2,
+      "image": "https://i.pinimg.com/736x/b1/bd/a8/b1bda84cbe8143fd629e7c6f22571478.jpg",
+      "maxStock": 10,
+      "description": "White / Cotton"
+    },
+    {
+      "id": "MxLTWca2omI",
+      "name": "Bracelet",
+      "sku": "MOM-001",
+      "categoryId": 2,
+      "price": 250,
+      "stock": 4,
+      "maxStock": 6,
+      "minStock": 2,
+      "image": "https://magchic.com/cdn/shop/products/product-image-1117626692.jpg?v=1680068991",
+      "description": "Gold / Stainless Steel"
+    },
+    {
+      "id": "pzQDVud1YWA",
+      "name": "Pepsi",
+      "description": "Can 280ml",
+      "sku": "DOD-220",
+      "categoryId": "w-UYvx6E5OA",
+      "price": 15,
+      "stock": 12,
+      "maxStock": 60,
+      "minStock": 15,
+      "image": "https://images.unsplash.com/photo-1651000877908-18e19a5d4ceb?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": "g-Zfpr16690",
+      "name": "Pasta",
+      "description": "400g",
+      "sku": "FOF-220",
+      "categoryId": "5",
+      "price": 15,
+      "stock": 0,
+      "maxStock": 60,
+      "minStock": 15,
+      "image": "https://i.pinimg.com/736x/9e/c1/15/9ec115cad9800016f853c080ccfe6578.jpg"
+    },
+    {
+      "id": "ILEoSyI_Fn8",
+      "name": "Olympia",
+      "description": "Black / perfume",
+      "sku": "TOT-002",
+      "categoryId": "cT8bmadytzM",
+      "price": 550,
+      "stock": 3,
+      "maxStock": 20,
+      "minStock": 5,
+      "image": "https://i.pinimg.com/736x/ae/bb/dd/aebbddd4f940d485bc2e8a5c8be8a51e.jpg"
+    },
+    {
+      "id": "Xh9JRv8y1Sg",
+      "name": "Oxi",
+      "description": "Outomatic / 8KG",
+      "sku": "OUO-300",
+      "categoryId": "ddA-8yD6-ss",
+      "price": 160,
+      "stock": 7,
+      "maxStock": 20,
+      "minStock": 4,
+      "image": "https://i.pinimg.com/736x/95/15/72/951572e3f7f64e4a1016078a043bf3fb.jpg"
+    },
+    {
+      "id": "kfqlTVnPeZ0",
+      "name": "Dettol",
+      "description": "liquid , 750ml",
+      "sku": "ZOZ-004",
+      "categoryId": "ddA-8yD6-ss",
+      "price": 250,
+      "stock": 0,
+      "maxStock": 20,
+      "minStock": 6,
+      "image": "https://i.pinimg.com/736x/22/66/21/226621fc4cada955ee8f19ddb3f4ba88.jpg"
+    },
+    {
+      "id": "HOy_74MXcMk",
+      "name": "Carolina Rice",
+      "description": "2 Kg",
+      "sku": "FDD-220",
+      "categoryId": "5",
+      "price": 75,
+      "stock": 9,
+      "maxStock": 50,
+      "minStock": 15,
+      "image": "https://i.pinimg.com/736x/8e/f1/f5/8ef1f52fbbf3c7ea9ad5a8518e542f1d.jpg"
     }
   ],
   "orders": [
     {
-      "id": 921,
-      "date": "2026-08-21T10:45:00.000Z",
+      "id": "1001",
       "items": [
-        { "productId": 1, "quantity": 1, "price": 100 },
-        { "productId": 5, "quantity": 2, "price": 5 }
+        {
+          "productId": 1,
+          "productName": "Wireless Mouse",
+          "price": 450,
+          "quantity": 2,
+          "total": 900
+        },
+        {
+          "productId": 2,
+          "productName": "USB-C Cable",
+          "price": 180,
+          "quantity": 1,
+          "total": 180
+        }
       ],
-      "total": 110,
-      "paymentMethod": "cash",
-      "status": "Completed"
+      "subtotal": 1080,
+      "tax": 151.2,
+      "total": 1231.2,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-14T10:30:00Z"
     },
     {
-      "id": 920,
-      "date": "2026-08-21T09:30:00.000Z",
+      "id": "1002",
       "items": [
-        { "productId": 4, "quantity": 2, "price": 35 },
-        { "productId": 3, "quantity": 1, "price": 15 }
+        {
+          "productId": 4,
+          "productName": "Lip Gloss",
+          "price": 220,
+          "quantity": 1,
+          "total": 220
+        },
+        {
+          "productId": 3,
+          "productName": "Notebook",
+          "price": 75,
+          "quantity": 2,
+          "total": 150
+        }
       ],
-      "total": 85,
-      "paymentMethod": "card",
-      "status": "Completed"
-    },
-    {
-      "id": 919,
-      "date": "2026-08-20T16:15:00.000Z",
-      "items": [
-        { "productId": 2, "quantity": 7, "price": 200 },
-        { "productId": 1, "quantity": 0.5, "price": 100 }
-      ],
-      "total": 1450,
-      "paymentMethod": "card",
-      "status": "Pending"
-    },
-    {
-      "id": 918,
-      "date": "2026-08-20T14:20:00.000Z",
-      "items": [
-        { "productId": 6, "quantity": 2, "price": 12 },
-        { "productId": 8, "quantity": 3, "price": 8 }
-      ],
-      "total": 45.75,
-      "paymentMethod": "cash",
-      "status": "Completed"
-    },
-    {
-      "id": 917,
-      "date": "2026-08-20T11:10:00.000Z",
-      "items": [
-        { "productId": 7, "quantity": 5, "price": 20 },
-        { "productId": 6, "quantity": 1, "price": 12 }
-      ],
-      "total": 210,
-      "paymentMethod": "cash",
-      "status": "Cancelled"
+      "subtotal": 370,
+      "tax": 51.8,
+      "total": 421.8,
+      "paymentMethod": "Card",
+      "status": "Completed",
+      "createdAt": "2026-08-15T09:15:00Z"
     }
-  ]
+  ],
+  "storeSettings": [
+    {
+      "id": "1",
+      "storeName": "Moasher Store",
+      "phone": "01000000000",
+      "address": "Cairo, Egypt",
+      "currency": "EGP",
+      "taxRate": 14
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

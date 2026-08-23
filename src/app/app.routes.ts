@@ -1,27 +1,21 @@
 import { Routes } from '@angular/router';
-import { Layout } from './shared/layout/layout';
+import { Products } from './features/products/products';
+import { Categories } from './features/categories/categories';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Layout,
-    children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      {
-        path: 'dashboard',
-        loadComponent: () =>
-          import('./features/dashboard-reports/dashboard/dashboard').then(m => m.Dashboard)
-      },
-      {
-        path: 'orders',
-        loadComponent: () =>
-          import('./features/dashboard-reports/orders/orders').then(m => m.Orders)
-      },
-      {
-        path: 'reports',
-        loadComponent: () =>
-          import('./features/dashboard-reports/reports/reports').then(m => m.Reports)
-      }
-    ]
+    redirectTo: 'products',
+    pathMatch: 'full'
+  },
+  {
+    path: 'products',
+    component: Products
+  },
+  {
+    path: 'categories',
+    component: Categories
   }
 ];
+
+

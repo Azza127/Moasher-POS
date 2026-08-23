@@ -7,8 +7,6 @@ export interface Order {
     tax: number;
     total: number;
     paymentMethod: 'Cash' | 'Card';
-    status?: 'Completed' | 'Cancelled' | 'Pending' | string;
-    date?: string | Date;
+    status: 'Completed' | 'Cancelled';
     createdAt: string;
 }
- 
