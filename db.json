@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "owner",
-      "password": "123456",
+      "password": "12345678",
       "name": "Store Owner",
       "role": "Owner",
       "status": "Active"

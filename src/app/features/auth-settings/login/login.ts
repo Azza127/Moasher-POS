@@ -19,27 +19,16 @@ import { User } from '../../../core/models/user.model';
 })
 export class Login {
 
-  // =========================================
-  // Services
-  // =========================================
 
   private userService = inject(UserService);
 
   private router = inject(Router);
 
 
-  // =========================================
-  // Form Data
-  // =========================================
-
   username = '';
 
   password = '';
 
-
-  // =========================================
-  // UI State
-  // =========================================
 
   showPassword = false;
 
@@ -48,39 +37,22 @@ export class Login {
   isLoading = false;
 
 
-  // =========================================
-  // Toggle Password
-  // =========================================
-
+ 
   togglePassword(): void {
 
     this.showPassword = !this.showPassword;
 
   }
 
-
-  // =========================================
-  // Login
-  // =========================================
-
   login(): void {
 
-    // Clear previous error
     this.errorMessage = '';
 
-
-    // =======================================
-    // Get Form Values
-    // =======================================
 
     const username = this.username.trim();
 
     const password = this.password.trim();
 
-
-    // =======================================
-    // Username Required
-    // =======================================
 
     if (!username) {
 
@@ -89,14 +61,6 @@ export class Login {
 
       return;
     }
-
-
-    // =======================================
-    // Username Validation
-    // First character = letter
-    // Rest = letters and numbers
-    // =======================================
-
     const usernamePattern = /^[A-Za-z][A-Za-z0-9]*$/;
 
     if (!usernamePattern.test(username)) {
@@ -108,10 +72,6 @@ export class Login {
     }
 
 
-    // =======================================
-    // Password Required
-    // =======================================
-
     if (!password) {
 
       this.errorMessage =
@@ -121,23 +81,13 @@ export class Login {
     }
 
 
-    // =======================================
-    // Loading
-    // =======================================
-
+   
     this.isLoading = true;
 
 
-    // =======================================
-    // Get Users
-    // =======================================
-
     this.userService.getUsers().subscribe({
 
-      // =====================================
-      // Success
-      // =====================================
-
+   
       next: (users: User[]) => {
 
         console.log(
@@ -145,21 +95,11 @@ export class Login {
           users
         );
 
-
-        // ===================================
-        // Find Matching User
-        // ===================================
-
         const user = users.find(
           (u: User) =>
             u.username === username &&
             u.password === password
         );
-
-
-        // ===================================
-        // Invalid Login
-        // ===================================
 
         if (!user) {
 
@@ -172,9 +112,7 @@ export class Login {
         }
 
 
-        // ===================================
-        // Check User Status
-        // ===================================
+
 
         if (user.status !== 'Active') {
 
@@ -187,19 +125,12 @@ export class Login {
         }
 
 
-        // ===================================
-        // Login Success
-        // ===================================
-
         console.log(
           'LOGIN SUCCESS:',
           user
         );
 
 
-        // ===================================
-        // Save Login Status
-        // ===================================
 
         localStorage.setItem(
           'isLoggedIn',
@@ -207,38 +138,20 @@ export class Login {
         );
 
 
-        // ===================================
-        // Save Current User
-        // Includes Role
-        // ===================================
+ 
 
         localStorage.setItem(
           'currentUser',
           JSON.stringify(user)
         );
 
-
-        // ===================================
-        // Stop Loading
-        // ===================================
-
         this.isLoading = false;
-
-
-        // ===================================
-        // Go To Dashboard
-        // ===================================
 
         this.router.navigate([
           '/dashboard'
         ]);
 
       },
-
-
-      // =====================================
-      // Server Error
-      // =====================================
 
       error: (error) => {
 

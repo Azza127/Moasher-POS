@@ -2,14 +2,11 @@
 
   <div class="login-container">
 
-    <!-- ================= LEFT BRAND SECTION ================= -->
-
     <section class="brand-section">
 
       <div class="brand-content">
 
-        <!-- Logo -->
-
+       
         <div class="brand-logo">
 
           <div class="logo-icon">
@@ -28,12 +25,10 @@
         </p>
 
 
-        <!-- ================= FEATURES ================= -->
-
+        
         <div class="features">
 
-          <!-- Sales -->
-
+          
           <div class="feature">
 
             <div class="feature-icon">
@@ -48,8 +43,7 @@
           </div>
 
 
-          <!-- Inventory -->
-
+         
           <div class="feature">
 
             <div class="feature-icon">
@@ -64,8 +58,7 @@
           </div>
 
 
-          <!-- Reports -->
-
+          
           <div class="feature">
 
             <div class="feature-icon">
@@ -80,8 +73,7 @@
           </div>
 
 
-          <!-- Team -->
-
+        
           <div class="feature">
 
             <div class="feature-icon">
@@ -102,35 +94,30 @@
     </section>
 
 
-    <!-- ================= RIGHT LOGIN SECTION ================= -->
-
+   
     <section class="login-section">
 
       <div class="login-card">
 
-        <!-- Small Logo -->
-
+      
         <div class="small-logo">
-          <i class="bi bi-shop"></i>
+          <i class="bi bi-graph-up-arrow"></i>
         </div>
 
 
-        <!-- Title -->
-
-        <h1>Welcome 👋</h1>
+       
+        <h1>Welcome</h1>
 
         <p class="subtitle">
           Sign in to access your Moasher dashboard
         </p>
 
 
-        <!-- ================= FORM ================= -->
-
+       
         <form (ngSubmit)="login()">
 
 
-          <!-- USERNAME -->
-
+         
           <div class="form-group">
 
             <label for="username">
@@ -155,8 +142,7 @@
           </div>
 
 
-          <!-- PASSWORD -->
-
+         
           <div class="form-group">
 
             <label for="password">
@@ -196,29 +182,15 @@
           </div>
 
 
-          <!-- OPTIONS -->
-
+          
           <div class="options">
 
-            <label class="remember">
-
-              <input
-                type="checkbox"
-                name="remember"
-              >
-
-              <span>Remember me</span>
-
-            </label>
-
-            <a routerLink="/forgot-password">
-              Forgot password?
-            </a>
+            <a routerLink="/forgot-password" class="forgot-link">
+  Forgot Password?
+</a>
 
           </div>
 
-
-          <!-- ERROR -->
 
           @if (errorMessage) {
 
@@ -234,8 +206,6 @@
 
           }
 
-
-          <!-- LOGIN BUTTON -->
 
           <button
             type="submit"
@@ -261,22 +231,7 @@
 
         </form>
 
-
-        <!-- SUPPORT -->
-
-        <div class="support">
-
-          <span>Need help?</span>
-
-          <a routerLink="/support">
-            Contact Support
-          </a>
-
-        </div>
-
-
-        <!-- FOOTER -->
-
+      
         <div class="footer">
           © 2026 Moasher | مُؤَشِّر. All rights reserved.
         </div>

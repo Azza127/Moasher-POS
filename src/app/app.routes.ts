@@ -29,23 +29,23 @@ import { authGuard }
 
 import { roleGuard }
   from './core/guards/role.guard';
+import { ForgotPassword } from './features/auth-settings/forgot-password/forgot-password';
 
 
 export const routes: Routes = [
 
-  // =========================================
-  // LOGIN
-  // =========================================
+
   {
     path: 'login',
     component: Login
   },
 
+  {
+  path: 'forgot-password',
+  component: ForgotPassword
+},
 
-  // =========================================
-  // DASHBOARD
-  // EMPLOYEE + MANAGER + OWNER
-  // =========================================
+  
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -63,10 +63,6 @@ export const routes: Routes = [
   },
 
 
-  // =========================================
-  // INVENTORY
-  // MANAGER + OWNER
-  // =========================================
   {
     path: 'inventory',
     component: ProductsComponent,
@@ -83,10 +79,6 @@ export const routes: Routes = [
   },
 
 
-  // =========================================
-  // POS
-  // EMPLOYEE + MANAGER + OWNER
-  // =========================================
   {
     path: 'pos',
     component: PosComponent,
@@ -104,10 +96,6 @@ export const routes: Routes = [
   },
 
 
-  // =========================================
-  // REPORTS
-  // MANAGER + OWNER
-  // =========================================
   {
     path: 'reports',
     component: Reports,
@@ -123,11 +111,6 @@ export const routes: Routes = [
     }
   },
 
-
-  // =========================================
-  // ORDERS
-  // MANAGER + OWNER
-  // =========================================
   {
     path: 'orders',
     component: Orders,
@@ -143,11 +126,6 @@ export const routes: Routes = [
     }
   },
 
-
-  // =========================================
-  // TEAM MEMBERS
-  // MANAGER + OWNER
-  // =========================================
   {
     path: 'team-members',
     component: TeamMembers,
@@ -164,10 +142,6 @@ export const routes: Routes = [
   },
 
 
-  // =========================================
-  // STORE SETTINGS
-  // OWNER ONLY
-  // =========================================
   {
     path: 'store-settings',
     component: SettingsComponent,
@@ -182,20 +156,12 @@ export const routes: Routes = [
     }
   },
 
-
-  // =========================================
-  // DEFAULT
-  // =========================================
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
   },
 
-
-  // =========================================
-  // NOT FOUND
-  // =========================================
   {
     path: '**',
     redirectTo: 'login'

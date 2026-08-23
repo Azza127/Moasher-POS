@@ -14,34 +14,17 @@ import { UserService } from '../../../core/services/user.service';
 })
 export class TeamMembers implements OnInit {
 
-  // =========================
-  // SERVICE
-  // =========================
 
   private readonly userService = inject(UserService);
 
 
-  // =========================
-  // USERS
-  // =========================
-
   users: User[] = [];
-
-
-  // =========================
-  // MODAL
-  // =========================
 
   showModal = false;
 
   isEditMode = false;
 
   selectedUserId: string | null = null;
-
-
-  // =========================
-  // USER FORM
-  // =========================
 
   userForm = {
 
@@ -58,9 +41,6 @@ export class TeamMembers implements OnInit {
   };
 
 
-  // =========================
-  // INIT
-  // =========================
 
   ngOnInit(): void {
 
@@ -68,10 +48,6 @@ export class TeamMembers implements OnInit {
 
   }
 
-
-  // =========================
-  // LOAD USERS
-  // =========================
 
   loadUsers(): void {
 
@@ -98,10 +74,6 @@ export class TeamMembers implements OnInit {
 
   }
 
-
-  // =========================
-  // CURRENT USER
-  // =========================
 
   getCurrentUser(): User | null {
 
@@ -134,10 +106,6 @@ export class TeamMembers implements OnInit {
   }
 
 
-  // =========================
-  // CURRENT ROLE
-  // =========================
-
   getCurrentRole(): User['role'] | null {
 
     const currentUser =
@@ -152,13 +120,6 @@ export class TeamMembers implements OnInit {
     return currentUser.role;
 
   }
-
-
-  // =========================
-  // PERMISSIONS
-  // =========================
-
-  // Manager + Owner
   canAddUser(): boolean {
 
     const role =
@@ -170,9 +131,6 @@ export class TeamMembers implements OnInit {
     );
 
   }
-
-
-  // Manager + Owner
   canEditUser(): boolean {
 
     const role =
@@ -184,9 +142,6 @@ export class TeamMembers implements OnInit {
     );
 
   }
-
-
-  // Manager + Owner
   canDeleteUser(): boolean {
 
     const role =
@@ -198,12 +153,6 @@ export class TeamMembers implements OnInit {
     );
 
   }
-
-
-  // =========================
-  // LIVE NAME VALIDATION
-  // =========================
-
   getNameError(): string {
 
     const name =
@@ -228,11 +177,6 @@ export class TeamMembers implements OnInit {
 
   }
 
-
-  // =========================
-  // LIVE USERNAME VALIDATION
-  // =========================
-
   getUsernameError(): string {
 
     const username =
@@ -243,27 +187,16 @@ export class TeamMembers implements OnInit {
       return '';
 
     }
-
-
-    // First character must be a letter
-
     if (!/^[A-Za-z]/.test(username)) {
 
       return 'Username must start with a letter.';
 
     }
-
-
-    // Letters and numbers only
-
     if (!/^[A-Za-z][A-Za-z0-9]*$/.test(username)) {
 
       return 'Username can contain only letters and numbers.';
 
     }
-
-
-    // Duplicate username
 
     const usernameExists =
       this.users.some(user =>
@@ -286,12 +219,6 @@ export class TeamMembers implements OnInit {
     return '';
 
   }
-
-
-  // =========================
-  // LIVE PASSWORD VALIDATION
-  // =========================
-
   getPasswordError(): string {
 
     const password =
@@ -314,12 +241,6 @@ export class TeamMembers implements OnInit {
     return '';
 
   }
-
-
-  // =========================
-  // OPEN ADD MODAL
-  // =========================
-
   openAddModal(): void {
 
     if (!this.canAddUser()) {
@@ -356,11 +277,6 @@ export class TeamMembers implements OnInit {
     this.showModal = true;
 
   }
-
-
-  // =========================
-  // OPEN EDIT MODAL
-  // =========================
 
   openEditModal(user: User): void {
 
@@ -399,11 +315,6 @@ export class TeamMembers implements OnInit {
 
   }
 
-
-  // =========================
-  // CLOSE MODAL
-  // =========================
-
   closeModal(): void {
 
     this.showModal = false;
@@ -411,17 +322,7 @@ export class TeamMembers implements OnInit {
     this.selectedUserId = null;
 
   }
-
-
-  // =========================
-  // SAVE USER
-  // =========================
-
   saveUser(): void {
-
-    // =========================
-    // PERMISSION
-    // =========================
 
     if (this.isEditMode) {
 
@@ -449,11 +350,6 @@ export class TeamMembers implements OnInit {
 
     }
 
-
-    // =========================
-    // CLEAN VALUES
-    // =========================
-
     const name =
       this.userForm.name.trim();
 
@@ -462,11 +358,6 @@ export class TeamMembers implements OnInit {
 
     const password =
       this.userForm.password.trim();
-
-
-    // =========================
-    // REQUIRED
-    // =========================
 
     if (
       !name ||
@@ -481,12 +372,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // NAME VALIDATION
-    // =========================
-
     const namePattern =
       /^[A-Za-z]+(?: [A-Za-z]+)*$/;
 
@@ -499,12 +384,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // USERNAME VALIDATION
-    // =========================
-
     const usernamePattern =
       /^[A-Za-z][A-Za-z0-9]*$/;
 
@@ -517,12 +396,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // PASSWORD VALIDATION
-    // =========================
-
     if (password.length < 6) {
 
       alert(
@@ -532,11 +405,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // DUPLICATE USERNAME
-    // =========================
 
     const usernameExists =
       this.users.some(user =>
@@ -558,12 +426,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // EDIT
-    // =========================
-
     if (
       this.isEditMode &&
       this.selectedUserId !== null
@@ -623,11 +485,6 @@ export class TeamMembers implements OnInit {
 
     }
 
-
-    // =========================
-    // ADD
-    // =========================
-
     const newUser: Omit<User, 'id'> = {
 
       username: username,
@@ -677,11 +534,6 @@ export class TeamMembers implements OnInit {
 
   }
 
-
-  // =========================
-  // DELETE USER
-  // =========================
-
   deleteUser(user: User): void {
 
     if (!this.canDeleteUser()) {
@@ -693,11 +545,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // PREVENT SELF DELETE
-    // =========================
 
     const currentUser =
       this.getCurrentUser();
@@ -715,12 +562,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // CONFIRM
-    // =========================
-
     const confirmed =
       confirm(
         `Are you sure you want to delete ${user.name}?`
@@ -732,12 +573,6 @@ export class TeamMembers implements OnInit {
       return;
 
     }
-
-
-    // =========================
-    // DELETE
-    // =========================
-
     this.userService
       .deleteUser(user.id)
       .subscribe({

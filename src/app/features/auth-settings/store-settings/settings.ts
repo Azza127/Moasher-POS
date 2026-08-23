@@ -18,9 +18,6 @@ import { StoreSettings } from '../../../core/models/store-settings.model';
 })
 export class SettingsComponent implements OnInit {
 
-  // =========================================
-  // SETTINGS
-  // =========================================
 
   settings: StoreSettings = {
     id: 1,
@@ -32,37 +29,26 @@ export class SettingsComponent implements OnInit {
   };
 
 
-  // Keep original settings for discard
   originalSettings: StoreSettings = {
     ...this.settings
   };
 
 
-  // =========================================
-  // VALIDATION
-  // =========================================
-
+ 
   fieldErrors: { [key: string]: string } = {};
 
 
-  // =========================================
-  // MESSAGES
-  // =========================================
 
   successMessage = '';
   errorMessage = '';
 
 
-  // =========================================
-  // LOADING
-  // =========================================
+
 
   isSaving = false;
 
 
-  // =========================================
-  // CONSTRUCTOR
-  // =========================================
+
 
   constructor(
     private storeSettingsService: StoreSettingsService,
@@ -70,18 +56,11 @@ export class SettingsComponent implements OnInit {
   ) {}
 
 
-  // =========================================
-  // INIT
-  // =========================================
 
   ngOnInit(): void {
     this.getSettings();
   }
 
-
-  // =========================================
-  // GET SETTINGS
-  // =========================================
 
   getSettings(): void {
 
@@ -129,9 +108,7 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  // =========================================
-  // ALLOW LETTERS ONLY
-  // =========================================
+
 
   allowLettersOnly(event: KeyboardEvent): void {
 
@@ -164,9 +141,6 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  // =========================================
-  // ALLOW NUMBERS ONLY
-  // =========================================
 
   allowNumbersOnly(event: KeyboardEvent): void {
 
@@ -198,11 +172,6 @@ export class SettingsComponent implements OnInit {
 
   }
 
-
-  // =========================================
-  // VALIDATE FIELD
-  // =========================================
-
   validateField(field: string): void {
 
     const value =
@@ -211,9 +180,6 @@ export class SettingsComponent implements OnInit {
       ];
 
 
-    // =========================================
-    // STORE NAME
-    // =========================================
 
     if (field === 'storeName') {
 
@@ -243,9 +209,7 @@ export class SettingsComponent implements OnInit {
     }
 
 
-    // =========================================
-    // PHONE
-    // =========================================
+   
 
     if (field === 'phone') {
 
@@ -273,9 +237,6 @@ export class SettingsComponent implements OnInit {
     }
 
 
-    // =========================================
-    // ADDRESS
-    // =========================================
 
     if (field === 'address') {
 
@@ -295,11 +256,6 @@ export class SettingsComponent implements OnInit {
 
     }
 
-
-    // =========================================
-    // CURRENCY
-    // =========================================
-
     if (field === 'currency') {
 
       if (!value) {
@@ -315,10 +271,6 @@ export class SettingsComponent implements OnInit {
 
     }
 
-
-    // =========================================
-    // TAX RATE
-    // =========================================
 
     if (field === 'taxRate') {
 
@@ -357,10 +309,6 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  // =========================================
-  // VALIDATE ALL
-  // =========================================
-
   validateAll(): boolean {
 
     this.validateField('storeName');
@@ -379,21 +327,12 @@ export class SettingsComponent implements OnInit {
 
   }
 
-
-  // =========================================
-  // CHECK INVALID
-  // =========================================
-
   isFieldInvalid(field: string): boolean {
 
     return !!this.fieldErrors[field];
 
   }
 
-
-  // =========================================
-  // GET ERROR
-  // =========================================
 
   getError(field: string): string {
 
@@ -402,24 +341,19 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  // =========================================
-  // SAVE SETTINGS
-  // =========================================
-
   updateSettings(): void {
 
-    // Prevent double click
     if (this.isSaving) {
       return;
     }
 
 
-    // Clear messages
+
     this.successMessage = '';
     this.errorMessage = '';
 
 
-    // Validate
+  
     if (!this.validateAll()) {
 
       this.showError(
@@ -430,7 +364,7 @@ export class SettingsComponent implements OnInit {
     }
 
 
-    // Start loading
+    
     this.isSaving = true;
 
     this.cdr.detectChanges();
@@ -442,17 +376,11 @@ export class SettingsComponent implements OnInit {
     );
 
 
-    // =========================================
-    // UPDATE
-    // =========================================
-
     this.storeSettingsService
       .updateSettings(this.settings)
       .subscribe({
 
-        // =====================================
-        // SUCCESS
-        // =====================================
+
 
         next: (data: StoreSettings) => {
 
@@ -462,27 +390,25 @@ export class SettingsComponent implements OnInit {
           );
 
 
-          // Update form with saved data
+
           this.settings = {
             ...data
           };
 
 
-          // Update original copy
           this.originalSettings = {
             ...data
           };
 
 
-          // Clear validation
+      
           this.fieldErrors = {};
 
 
-          // Stop loading
           this.isSaving = false;
 
 
-          // SUCCESS MESSAGE
+      
           this.successMessage =
             'Settings saved successfully!';
 
@@ -492,7 +418,6 @@ export class SettingsComponent implements OnInit {
           this.cdr.detectChanges();
 
 
-          // Hide success message
           setTimeout(() => {
 
             this.successMessage = '';
@@ -504,10 +429,7 @@ export class SettingsComponent implements OnInit {
         },
 
 
-        // =====================================
-        // ERROR
-        // =====================================
-
+      
         error: (error) => {
 
           console.error(
@@ -542,10 +464,7 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  // =========================================
-  // SUCCESS MESSAGE
-  // =========================================
-
+ 
   private showSuccess(message: string): void {
 
     this.errorMessage = '';
@@ -566,9 +485,6 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  // =========================================
-  // ERROR MESSAGE
-  // =========================================
 
   private showError(message: string): void {
 
@@ -589,10 +505,6 @@ export class SettingsComponent implements OnInit {
 
   }
 
-
-  // =========================================
-  // DISCARD CHANGES
-  // =========================================
 
   discardChanges(): void {
 

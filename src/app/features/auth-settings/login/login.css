@@ -1,6 +1,3 @@
-/* =========================
-   RESET
-========================= */
 
 * {
   margin: 0;
@@ -9,9 +6,6 @@
 }
 
 
-/* =========================
-   PAGE
-========================= */
 
 .login-page {
   min-height: 100vh;
@@ -28,9 +22,6 @@
 }
 
 
-/* =========================
-   MAIN CONTAINER
-========================= */
 
 .login-container {
   width: 1200px;
@@ -51,10 +42,6 @@
 }
 
 
-/* =========================
-   LEFT BRAND
-========================= */
-
 .brand-section {
   background: linear-gradient(
     145deg,
@@ -74,9 +61,6 @@
 }
 
 
-/* =========================
-   BACKGROUND EFFECTS
-========================= */
 
 .brand-section::before {
   content: "";
@@ -112,9 +96,6 @@
 }
 
 
-/* =========================
-   BRAND CONTENT
-========================= */
 
 .brand-content {
   width: 100%;
@@ -128,10 +109,6 @@
   padding: 40px;
 }
 
-
-/* =========================
-   BRAND LOGO
-========================= */
 
 .brand-logo {
   display: flex;
@@ -180,9 +157,7 @@
 }
 
 
-/* =========================
-   BRAND NAME
-========================= */
+
 
 .brand-name {
   text-align: left;
@@ -211,10 +186,6 @@
 }
 
 
-/* =========================
-   DESCRIPTION
-========================= */
-
 .brand-description {
   font-size: 17px;
 
@@ -226,9 +197,6 @@
 }
 
 
-/* =========================
-   FEATURES
-========================= */
 
 .features {
   width: 100%;
@@ -245,9 +213,7 @@
 }
 
 
-/* =========================
-   FEATURE
-========================= */
+
 
 .feature {
   min-height: 88px;
@@ -286,9 +252,6 @@
 }
 
 
-/* =========================
-   FEATURE ICON
-========================= */
 
 .feature-icon {
   width: 48px;
@@ -314,9 +277,7 @@
 }
 
 
-/* =========================
-   FEATURE TEXT
-========================= */
+
 
 .feature-text {
   display: flex;
@@ -345,9 +306,6 @@
 }
 
 
-/* =========================
-   LOGIN SECTION
-========================= */
 
 .login-section {
   background: #ffffff;
@@ -361,9 +319,6 @@
 }
 
 
-/* =========================
-   LOGIN CARD
-========================= */
 
 .login-card {
   width: 100%;
@@ -374,9 +329,6 @@
 }
 
 
-/* =========================
-   SMALL LOGO
-========================= */
 
 .small-logo {
   width: 70px;
@@ -411,10 +363,6 @@
 }
 
 
-/* =========================
-   TITLE
-========================= */
-
 .login-card h1 {
   margin: 0;
 
@@ -435,9 +383,6 @@
 }
 
 
-/* =========================
-   FORM
-========================= */
 
 .form-group {
   text-align: left;
@@ -459,9 +404,7 @@
 }
 
 
-/* =========================
-   INPUT WRAPPER
-========================= */
+
 
 .input-wrapper {
   height: 58px;
@@ -490,10 +433,6 @@
 }
 
 
-/* =========================
-   INPUT ICON
-========================= */
-
 .input-wrapper > i {
   font-size: 21px;
 
@@ -505,9 +444,6 @@
 }
 
 
-/* =========================
-   INPUT
-========================= */
 
 .input-wrapper input {
   flex: 1;
@@ -533,9 +469,6 @@
 }
 
 
-/* =========================
-   PASSWORD TOGGLE
-========================= */
 
 .password-toggle {
   border: none;
@@ -564,9 +497,6 @@
 }
 
 
-/* =========================
-   OPTIONS
-========================= */
 
 .options {
   display: flex;
@@ -579,30 +509,6 @@
 
   font-size: 14px;
 }
-
-
-.remember {
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  color: #65748d;
-
-  cursor: pointer;
-}
-
-
-.remember input {
-  width: 17px;
-  height: 17px;
-
-  accent-color: #0868dc;
-
-  cursor: pointer;
-}
-
 
 .options a {
   color: #0865d9;
@@ -619,10 +525,6 @@
   text-decoration: underline;
 }
 
-
-/* =========================
-   ERROR
-========================= */
 
 .error-message {
   background: #fff0f0;
@@ -653,10 +555,6 @@
   font-size: 17px;
 }
 
-
-/* =========================
-   LOGIN BUTTON
-========================= */
 
 .login-btn {
   width: 100%;
@@ -720,10 +618,6 @@
 }
 
 
-/* =========================
-   LOADING
-========================= */
-
 .loading-icon {
   animation: spin 1s linear infinite;
 }
@@ -740,9 +634,6 @@
 }
 
 
-/* =========================
-   SUPPORT
-========================= */
 
 .support {
   margin-top: 45px;
@@ -779,10 +670,6 @@
 }
 
 
-/* =========================
-   FOOTER
-========================= */
-
 .footer {
   margin-top: 35px;
 
@@ -792,9 +679,6 @@
 }
 
 
-/* =========================
-   TABLET
-========================= */
 
 @media (max-width: 1000px) {
 
@@ -828,10 +712,6 @@
 }
 
 
-/* =========================
-   MOBILE / SMALL TABLET
-========================= */
-
 @media (max-width: 800px) {
 
   .login-page {
@@ -855,9 +735,7 @@
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+
 
 @media (max-width: 600px) {
 
@@ -960,10 +838,6 @@
 }
 
 
-/* =========================
-   VERY SMALL SCREENS
-========================= */
-
 @media (max-width: 380px) {
 
   .features {
@@ -982,4 +856,14 @@
     text-align: center;
   }
 
+}
+.forgot-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
 }
