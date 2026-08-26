@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
@@ -14,6 +13,7 @@ import { Category } from '../../core/models/category.model';
 
 @Component({
   selector: 'app-products',
+  standalone: true,
   imports: [FormsModule, DecimalPipe, RouterLink],
   templateUrl: './products.html',
   styleUrl: './products.css',
@@ -57,7 +57,6 @@ export class Products implements OnInit {
     image: ''
   };
 
-
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategories();
@@ -73,7 +72,6 @@ export class Products implements OnInit {
       });
   }
 
-
   loadProducts(): void {
     this.productService.getProducts().subscribe({
       next: (products) => {
@@ -81,13 +79,11 @@ export class Products implements OnInit {
         this.applyFilters();
         this.cdr.markForCheck();
       },
-
       error: (error) => {
         console.error('Failed to load products:', error);
       }
     });
   }
-
 
   loadCategories(): void {
     this.categoryService.getCategories().subscribe({
@@ -96,19 +92,16 @@ export class Products implements OnInit {
         this.applyFilters();
         this.cdr.markForCheck();
       },
-
       error: (error) => {
         console.error('Failed to load categories:', error);
       }
     });
   }
 
-
   showAddProductForm(): void {
     this.resetProductForm();
     this.showAddForm = true;
   }
-
 
   cancelAddProduct(): void {
     this.resetProductForm();
@@ -116,74 +109,66 @@ export class Products implements OnInit {
     this.closeAddCategoryModal();
   }
 
-
   cancelEdit(): void {
     this.resetProductForm();
     this.showAddForm = false;
     this.closeAddCategoryModal();
   }
 
-
   searchProducts(searchTerm: string): void {
     this.searchSubject.next(searchTerm);
   }
-
 
   filterByCategory(categoryId: string): void {
     this.selectedCategoryId = categoryId || null;
     this.applyFilters();
   }
 
+  private applyFilters(): void {
+    const term = this.searchTerm
+      .trim()
+      .toLowerCase();
 
-private applyFilters(): void {
-  const term = this.searchTerm
-    .trim()
-    .toLowerCase();
-
-  let filtered = this.products.filter((product) => {
-
-    const searchValue =
-      this.searchMode === 'name'
-        ? product.name.toLowerCase()
-        : product.sku.toLowerCase();
-
-    const matchesSearch =
-      term === '' ||
-      searchValue.includes(term);
-
-    const matchesCategory =
-      this.selectedCategoryId === null ||
-      product.categoryId === this.selectedCategoryId;
-
-    return matchesSearch && matchesCategory;
-  });
-
-  if (term !== '') {
-    filtered.sort((a, b) => {
-
-      const aValue =
+    let filtered = this.products.filter((product) => {
+      const searchValue =
         this.searchMode === 'name'
-          ? a.name.toLowerCase()
-          : a.sku.toLowerCase();
+          ? product.name.toLowerCase()
+          : product.sku.toLowerCase();
 
-      const bValue =
-        this.searchMode === 'name'
-          ? b.name.toLowerCase()
-          : b.sku.toLowerCase();
+      const matchesSearch =
+        term === '' ||
+        searchValue.includes(term);
 
-      const aIndex = aValue.indexOf(term);
-      const bIndex = bValue.indexOf(term);
+      const matchesCategory =
+        this.selectedCategoryId === null ||
+        product.categoryId === this.selectedCategoryId;
 
-      return aIndex - bIndex;
+      return matchesSearch && matchesCategory;
     });
+
+    if (term !== '') {
+      filtered.sort((a, b) => {
+        const aValue =
+          this.searchMode === 'name'
+            ? a.name.toLowerCase()
+            : a.sku.toLowerCase();
+
+        const bValue =
+          this.searchMode === 'name'
+            ? b.name.toLowerCase()
+            : b.sku.toLowerCase();
+
+        const aIndex = aValue.indexOf(term);
+        const bIndex = bValue.indexOf(term);
+
+        return aIndex - bIndex;
+      });
+    }
+
+    this.filteredProducts = filtered;
   }
 
-  this.filteredProducts = filtered;
-}
-
-
   getCategoryName(categoryId: string): string {
-
     const category = this.categories.find(
       (category) => category.id === categoryId
     );
@@ -193,11 +178,9 @@ private applyFilters(): void {
       : 'Unknown';
   }
 
-
   getStockStatus(
     product: Product
   ): 'optimal' | 'low' | 'out' {
-
     if (product.stock <= 0) {
       return 'out';
     }
@@ -209,9 +192,7 @@ private applyFilters(): void {
     return 'optimal';
   }
 
-
   getStockPercentage(product: Product): number {
-
     if (product.maxStock <= 0) {
       return 0;
     }
@@ -225,9 +206,7 @@ private applyFilters(): void {
     );
   }
 
-
   startEdit(product: Product): void {
-
     this.editingProductId = product.id;
 
     this.newProduct = {
@@ -235,27 +214,20 @@ private applyFilters(): void {
     };
 
     this.showAddForm = true;
-
     this.cdr.markForCheck();
   }
 
-
   deleteProduct(product: Product): void {
-
     this.productToDelete = product;
     this.showDeleteModal = true;
   }
 
-
   cancelDelete(): void {
-
     this.productToDelete = null;
     this.showDeleteModal = false;
   }
 
-
   confirmDelete(): void {
-
     if (!this.productToDelete) {
       return;
     }
@@ -265,9 +237,7 @@ private applyFilters(): void {
     this.productService
       .deleteProduct(productId)
       .subscribe({
-
         next: () => {
-
           this.products = this.products.filter(
             (product) => product.id !== productId
           );
@@ -279,7 +249,6 @@ private applyFilters(): void {
 
           this.cdr.markForCheck();
         },
-
         error: (error) => {
           console.error(
             'Failed to delete product:',
@@ -289,9 +258,7 @@ private applyFilters(): void {
       });
   }
 
-
   addProduct(): void {
-
     const name = this.newProduct.name.trim();
     const sku = this.newProduct.sku.trim();
 
@@ -315,18 +282,14 @@ private applyFilters(): void {
       sku
     };
 
-
     if (this.editingProductId !== null) {
-
       this.productService
         .updateProduct(
           this.editingProductId,
           productToSave
         )
         .subscribe({
-
           next: (updatedProduct) => {
-
             const normalizedProduct: Product = {
               ...updatedProduct,
               id: String(updatedProduct.id),
@@ -347,7 +310,6 @@ private applyFilters(): void {
 
             this.cdr.markForCheck();
           },
-
           error: (error) => {
             console.error(
               'Failed to update product:',
@@ -359,13 +321,10 @@ private applyFilters(): void {
       return;
     }
 
-
     this.productService
       .createProduct(productToSave)
       .subscribe({
-
         next: (createdProduct) => {
-
           const normalizedProduct: Product = {
             ...createdProduct,
             id: String(createdProduct.id),
@@ -384,7 +343,6 @@ private applyFilters(): void {
 
           this.cdr.markForCheck();
         },
-
         error: (error) => {
           console.error(
             'Failed to create product:',
@@ -394,21 +352,17 @@ private applyFilters(): void {
       });
   }
 
-
   openAddCategoryModal(): void {
     this.newCategoryName = '';
     this.showAddCategoryModal = true;
   }
-
 
   closeAddCategoryModal(): void {
     this.newCategoryName = '';
     this.showAddCategoryModal = false;
   }
 
-
   saveNewCategory(): void {
-
     const name = this.newCategoryName.trim();
 
     if (name === '') {
@@ -418,9 +372,7 @@ private applyFilters(): void {
     this.categoryService
       .addCategory({ name })
       .subscribe({
-
         next: (createdCategory) => {
-
           const normalizedCategory: Category = {
             id: String(createdCategory.id),
             name: createdCategory.name
@@ -438,7 +390,6 @@ private applyFilters(): void {
 
           this.cdr.markForCheck();
         },
-
         error: (error) => {
           console.error(
             'Failed to add category:',
@@ -448,9 +399,7 @@ private applyFilters(): void {
       });
   }
 
-
   resetProductForm(): void {
-
     this.newProduct = {
       id: '',
       name: '',
@@ -467,14 +416,3 @@ private applyFilters(): void {
     this.editingProductId = null;
   }
 }
-=======
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-products',
-  standalone: true,
-  templateUrl: './products.html'
-})
-export class ProductsComponent {
-}
->>>>>>> origin/feature/auth-settings
