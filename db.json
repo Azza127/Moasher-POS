@@ -259,21 +259,14 @@
   ],
   "orders": [
     {
-      "id": "1001",
+      "ticketNumber": "#7884-A",
       "items": [
         {
-          "productId": 1,
-          "productName": "Wireless Mouse",
-          "price": 450,
-          "quantity": 2,
-          "total": 900
-        },
-        {
-          "productId": 2,
-          "productName": "USB-C Cable",
-          "price": 180,
-          "quantity": 1,
-          "total": 180
+          "productId": "2",
+          "productName": "USB-C",
+          "price": 360,
+          "quantity": 3,
+          "total": 1080
         }
       ],
       "subtotal": 1080,
@@ -281,43 +274,8 @@
       "total": 1231.2,
       "paymentMethod": "Cash",
       "status": "Completed",
-      "createdAt": "2026-08-14T10:30:00Z"
-    },
-    {
-      "id": "1002",
-      "items": [
-        {
-          "productId": 4,
-          "productName": "Lip Gloss",
-          "price": 220,
-          "quantity": 1,
-          "total": 220
-        },
-        {
-          "productId": 3,
-          "productName": "Notebook",
-          "price": 75,
-          "quantity": 2,
-          "total": 150
-        }
-      ],
-      "subtotal": 370,
-      "tax": 51.8,
-      "total": 421.8,
-      "paymentMethod": "Card",
-      "status": "Completed",
-      "createdAt": "2026-08-15T09:15:00Z"
+      "createdAt": "2026-08-20T09:54:25.435Z",
+      "id": "-MrdpEDNXkQ"
     }
-  ],
-  "storeSettings": [
-    {
-      "id": "1",
-      "storeName": "Moasher Store",
-      "phone": "01000000000",
-      "address": "Cairo, Egypt",
-      "currency": "EGP",
-      "taxRate": 14
-    }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
-}
+  ]
+  }
