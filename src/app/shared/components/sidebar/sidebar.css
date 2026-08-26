@@ -18,27 +18,42 @@
   z-index: 1000;
 }
 
-/* Logo */
-
+/* logo & title */
 .brand {
-  padding: 0 14px 24px;
-  border-bottom: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* تسييط كل المحتوى في المنتصف أفقياً */
+  gap: 6px;
+  padding: 20px;
 }
 
-.brand h2 {
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* تسييط اللوجو والاسم مع بعض */
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.brand-title {
   margin: 0;
-  font-size: 21px;
+  font-size: 1.8rem;
   font-weight: 700;
+  line-height: 1;
 }
 
-.brand span {
-  display: block;
-  margin-top: 5px;
-
-  font-size: 9px;
+.brand-subtitle {
+  font-size: 0.55rem;
+  font-weight: 300;
   letter-spacing: 1px;
-
-  color: #94a3b8;
+  opacity: 0.5;
+  text-transform: uppercase;
+  text-align: center; /* محاذاة النص نفسه في النص */
 }
 
 /* Navigation */
