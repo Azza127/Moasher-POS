@@ -5,6 +5,7 @@ export interface Product {
     sku: string;
     categoryId: string;
     price: number;
+    costPrice?: number;
     stock: number;
     maxStock: number;
     minStock: number;

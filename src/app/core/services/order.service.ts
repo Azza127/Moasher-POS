@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Order } from '../models/order.model';
 
 @Injectable({
+<<<<<<< HEAD
   providedIn: 'root',
 })
 export class OrderService {
@@ -18,3 +19,19 @@ export class OrderService {
     return this.http.post<Order>(this.apiUrl, order);
   }
 }
+=======
+    providedIn: 'root',
+})
+export class OrderService {
+    private readonly http = inject(HttpClient);
+    private readonly apiUrl = 'http://localhost:3000/orders';
+
+    getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.apiUrl);
+    }
+
+    createOrder(order: Omit<Order, 'id'>): Observable<Order> {
+    return this.http.post<Order>(this.apiUrl, order);
+    }
+}
+>>>>>>> origin/feature/reports
