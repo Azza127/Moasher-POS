@@ -2,6 +2,7 @@
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "extends": "./tsconfig.json",
+<<<<<<< HEAD
 "compilerOptions": {
   "outDir": "./out-tsc/spec",
   "rootDir": ".",
@@ -9,6 +10,13 @@
     "vitest/globals"
   ]
 },
+=======
+  "compilerOptions": {
+    "types": [
+      "vitest/globals"
+    ]
+  },
+>>>>>>> origin/feature/auth-settings
   "include": [
     "src/**/*.d.ts",
     "src/**/*.spec.ts"

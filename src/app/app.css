@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================
+   Main Application Layout
+========================= */
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =========================
+   Sidebar
+========================= */
+
+app-sidebar {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+/* =========================
+   Main Content
+========================= */
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  width: calc(100% - 220px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   Page Content
+========================= */
+
+.page-content {
+  flex: 1;
+  width: 100%;
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+/* =========================
+   Router Pages
+========================= */
+
+router-outlet {
+  display: contents;
+}

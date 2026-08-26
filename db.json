@@ -3,7 +3,11 @@
     {
       "id": "1",
       "username": "owner",
+<<<<<<< HEAD
       "password": "123456",
+=======
+      "password": "12345678",
+>>>>>>> origin/feature/auth-settings
       "name": "Store Owner",
       "role": "Owner",
       "status": "Active"
@@ -23,6 +27,25 @@
       "name": "Store Employee",
       "role": "Employee",
       "status": "Active"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "username": "noor123",
+      "password": "123456",
+      "name": "nora samir",
+      "role": "Manager",
+      "status": "Active",
+      "id": "04mZc07-J7M"
+    },
+    {
+      "username": "samir123",
+      "password": "123456",
+      "name": "samir",
+      "role": "Employee",
+      "status": "Active",
+      "id": "MXuHU1OJu0k"
+>>>>>>> origin/feature/auth-settings
     }
   ],
   "categories": [
@@ -39,6 +62,7 @@
       "name": "Stationery"
     },
     {
+<<<<<<< HEAD
       "name": "Cosmetics",
       "id": "4"
     },
@@ -61,6 +85,10 @@
     {
       "name": "Cleaning Supplies",
       "id": "ddA-8yD6-ss"
+=======
+      "id": "4",
+      "name": "Beauty"
+>>>>>>> origin/feature/auth-settings
     }
   ],
   "products": [
@@ -69,6 +97,7 @@
       "name": "Wireless Mouse",
       "sku": "MOU-001",
       "categoryId": 1,
+<<<<<<< HEAD
       "price": 500,
       "stock": 8,
       "minStock": 10,
@@ -87,6 +116,22 @@
       "image": "https://images.unsplash.com/photo-1551818014-7c8ace9c1b5c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "maxStock": 40,
       "description": "Black / 256G"
+=======
+      "price": 450,
+      "stock": 15,
+      "minStock": 5,
+      "image": ""
+    },
+    {
+      "id": "2",
+      "name": "USB-C Cable",
+      "sku": "USB-001",
+      "categoryId": 2,
+      "price": 180,
+      "stock": 30,
+      "minStock": 10,
+      "image": ""
+>>>>>>> origin/feature/auth-settings
     },
     {
       "id": "3",
@@ -95,10 +140,15 @@
       "categoryId": 3,
       "price": 75,
       "stock": 4,
+<<<<<<< HEAD
       "minStock": 10,
       "image": "https://images.unsplash.com/photo-1743760521201-ddb298df18cd?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "maxStock": 40,
       "description": "A5 / Ruled Pages"
+=======
+      "minStock": 5,
+      "image": ""
+>>>>>>> origin/feature/auth-settings
     },
     {
       "id": "4",
@@ -106,6 +156,7 @@
       "sku": "BEA-001",
       "categoryId": 4,
       "price": 220,
+<<<<<<< HEAD
       "stock": 0,
       "minStock": 5,
       "image": "https://images.unsplash.com/photo-1640317372997-b76e600ee5ef?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -255,6 +306,21 @@
       "maxStock": 50,
       "minStock": 15,
       "image": "https://i.pinimg.com/736x/8e/f1/f5/8ef1f52fbbf3c7ea9ad5a8518e542f1d.jpg"
+=======
+      "stock": 12,
+      "minStock": 5,
+      "image": ""
+    },
+    {
+      "id": "5",
+      "name": "Wireless Keyboard",
+      "sku": "KEY-001",
+      "categoryId": 1,
+      "price": 650,
+      "stock": 8,
+      "minStock": 5,
+      "image": ""
+>>>>>>> origin/feature/auth-settings
     }
   ],
   "orders": [
@@ -312,11 +378,19 @@
   "storeSettings": [
     {
       "id": "1",
+<<<<<<< HEAD
       "storeName": "Moasher Store",
       "phone": "01000000000",
       "address": "Cairo, Egypt",
       "currency": "EGP",
       "taxRate": 14
+=======
+      "storeName": "store norrrr",
+      "phone": "01287893082",
+      "address": "El Gomhoria St, Zagazig90",
+      "currency": "EGP",
+      "taxRate": 15
+>>>>>>> origin/feature/auth-settings
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

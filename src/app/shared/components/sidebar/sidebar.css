@@ -1,0 +1,139 @@
+.sidebar {
+  width: 228px;
+  height: 100vh;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  background: #1e293b;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 14px;
+  box-sizing: border-box;
+
+  z-index: 1000;
+}
+
+/* Logo */
+
+.brand {
+  padding: 0 14px 24px;
+  border-bottom: 1px solid #334155;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.brand span {
+  display: block;
+  margin-top: 5px;
+
+  font-size: 9px;
+  letter-spacing: 1px;
+
+  color: #94a3b8;
+}
+
+/* Navigation */
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+  margin-top: 25px;
+}
+
+.navigation a,
+.bottom-navigation a {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 12px 13px;
+
+  border-radius: 6px;
+
+  color: #94a3b8;
+  text-decoration: none;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease,
+              color 0.2s ease;
+}
+
+.navigation a i,
+.bottom-navigation a i {
+  font-size: 16px;
+  width: 18px;
+}
+
+/* Hover */
+
+.navigation a:hover,
+.bottom-navigation a:hover {
+  background: #26364d;
+  color: white;
+}
+
+/* Active */
+
+.navigation a.active,
+.bottom-navigation a.active {
+  background: #1473e6;
+  color: white;
+}
+
+/* New Sale */
+
+.new-sale {
+  margin-top: auto;
+
+  padding: 20px 0;
+
+  border-bottom: 1px solid #334155;
+}
+
+.new-sale a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px;
+
+  background: #1473e6;
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  font-size: 13px;
+}
+
+.new-sale a:hover {
+  background: #0f62c7;
+}
+
+/* Bottom */
+
+.bottom-navigation {
+  padding-top: 12px;
+}
+
+.bottom-navigation a {
+  margin-bottom: 4px;
+}

@@ -1,1 +1,27 @@
+<<<<<<< HEAD
 <router-outlet></router-outlet>
+=======
+@if (isAuthPage) {
+
+  <router-outlet></router-outlet>
+
+} @else {
+
+  <div class="app-container">
+
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+
+      <app-header></app-header>
+
+      <main class="page-content">
+        <router-outlet></router-outlet>
+      </main>
+
+    </div>
+
+  </div>
+
+}
+>>>>>>> origin/feature/auth-settings

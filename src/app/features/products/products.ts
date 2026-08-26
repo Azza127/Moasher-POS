@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
@@ -466,3 +467,14 @@ private applyFilters(): void {
     this.editingProductId = null;
   }
 }
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-products',
+  standalone: true,
+  templateUrl: './products.html'
+})
+export class ProductsComponent {
+}
+>>>>>>> origin/feature/auth-settings
