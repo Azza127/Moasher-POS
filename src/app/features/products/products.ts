@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
-import { ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -31,11 +31,8 @@ export class Products implements OnInit {
   categories: Category[] = [];
 
   searchTerm = '';
-
   selectedCategoryId: string | null = null;
-
   showAddForm = false;
-
   editingProductId: string | null = null;
 
   showDeleteModal = false;
@@ -62,9 +59,7 @@ export class Products implements OnInit {
     this.loadCategories();
 
     this.searchSubject
-      .pipe(
-        debounceTime(400)
-      )
+      .pipe(debounceTime(400))
       .subscribe((term) => {
         this.searchTerm = term;
         this.applyFilters();
@@ -74,12 +69,12 @@ export class Products implements OnInit {
 
   loadProducts(): void {
     this.productService.getProducts().subscribe({
-      next: (products) => {
+      next: (products: Product[]) => {
         this.products = products;
         this.applyFilters();
         this.cdr.markForCheck();
       },
-      error: (error) => {
+      error: (error: unknown) => {
         console.error('Failed to load products:', error);
       }
     });
@@ -87,12 +82,12 @@ export class Products implements OnInit {
 
   loadCategories(): void {
     this.categoryService.getCategories().subscribe({
-      next: (categories) => {
+      next: (categories: Category[]) => {
         this.categories = categories;
         this.applyFilters();
         this.cdr.markForCheck();
       },
-      error: (error) => {
+      error: (error: unknown) => {
         console.error('Failed to load categories:', error);
       }
     });
@@ -125,9 +120,7 @@ export class Products implements OnInit {
   }
 
   private applyFilters(): void {
-    const term = this.searchTerm
-      .trim()
-      .toLowerCase();
+    const term = this.searchTerm.trim().toLowerCase();
 
     let filtered = this.products.filter((product) => {
       const searchValue =
@@ -135,9 +128,7 @@ export class Products implements OnInit {
           ? product.name.toLowerCase()
           : product.sku.toLowerCase();
 
-      const matchesSearch =
-        term === '' ||
-        searchValue.includes(term);
+      const matchesSearch = term === '' || searchValue.includes(term);
 
       const matchesCategory =
         this.selectedCategoryId === null ||
@@ -158,10 +149,7 @@ export class Products implements OnInit {
             ? b.name.toLowerCase()
             : b.sku.toLowerCase();
 
-        const aIndex = aValue.indexOf(term);
-        const bIndex = bValue.indexOf(term);
-
-        return aIndex - bIndex;
+        return aValue.indexOf(term) - bValue.indexOf(term);
       });
     }
 
@@ -169,50 +157,24 @@ export class Products implements OnInit {
   }
 
   getCategoryName(categoryId: string): string {
-    const category = this.categories.find(
-      (category) => category.id === categoryId
-    );
-
-    return category
-      ? category.name
-      : 'Unknown';
+    const category = this.categories.find((c) => c.id === categoryId);
+    return category ? category.name : 'Unknown';
   }
 
-  getStockStatus(
-    product: Product
-  ): 'optimal' | 'low' | 'out' {
-    if (product.stock <= 0) {
-      return 'out';
-    }
-
-    if (product.stock <= product.minStock) {
-      return 'low';
-    }
-
+  getStockStatus(product: Product): 'optimal' | 'low' | 'out' {
+    if (product.stock <= 0) return 'out';
+    if (product.stock <= product.minStock) return 'low';
     return 'optimal';
   }
 
   getStockPercentage(product: Product): number {
-    if (product.maxStock <= 0) {
-      return 0;
-    }
-
-    return Math.min(
-      100,
-      Math.max(
-        0,
-        (product.stock / product.maxStock) * 100
-      )
-    );
+    if (product.maxStock <= 0) return 0;
+    return Math.min(100, Math.max(0, (product.stock / product.maxStock) * 100));
   }
 
   startEdit(product: Product): void {
     this.editingProductId = product.id;
-
-    this.newProduct = {
-      ...product
-    };
-
+    this.newProduct = { ...product };
     this.showAddForm = true;
     this.cdr.markForCheck();
   }
@@ -228,34 +190,22 @@ export class Products implements OnInit {
   }
 
   confirmDelete(): void {
-    if (!this.productToDelete) {
-      return;
-    }
+    if (!this.productToDelete) return;
 
     const productId = this.productToDelete.id;
 
-    this.productService
-      .deleteProduct(productId)
-      .subscribe({
-        next: () => {
-          this.products = this.products.filter(
-            (product) => product.id !== productId
-          );
-
-          this.applyFilters();
-
-          this.productToDelete = null;
-          this.showDeleteModal = false;
-
-          this.cdr.markForCheck();
-        },
-        error: (error) => {
-          console.error(
-            'Failed to delete product:',
-            error
-          );
-        }
-      });
+    this.productService.deleteProduct(productId).subscribe({
+      next: () => {
+        this.products = this.products.filter((p) => p.id !== productId);
+        this.applyFilters();
+        this.productToDelete = null;
+        this.showDeleteModal = false;
+        this.cdr.markForCheck();
+      },
+      error: (error: unknown) => {
+        console.error('Failed to delete product:', error);
+      }
+    });
   }
 
   addProduct(): void {
@@ -282,74 +232,51 @@ export class Products implements OnInit {
       sku
     };
 
-    if (this.editingProductId !== null) {
+    if (this.editingProductId) {
       this.productService
-        .updateProduct(
-          this.editingProductId,
-          productToSave
-        )
+        .updateProduct(this.editingProductId, productToSave)
         .subscribe({
-          next: (updatedProduct) => {
+          next: (updatedProduct: Product) => {
             const normalizedProduct: Product = {
               ...updatedProduct,
               id: String(updatedProduct.id),
               categoryId: String(updatedProduct.categoryId)
             };
 
-            this.products = this.products.map(
-              (product) =>
-                product.id === normalizedProduct.id
-                  ? normalizedProduct
-                  : product
+            this.products = this.products.map((p) =>
+              p.id === normalizedProduct.id ? normalizedProduct : p
             );
 
             this.applyFilters();
-
             this.resetProductForm();
             this.showAddForm = false;
-
             this.cdr.markForCheck();
           },
-          error: (error) => {
-            console.error(
-              'Failed to update product:',
-              error
-            );
+          error: (error: unknown) => {
+            console.error('Failed to update product:', error);
           }
         });
-
       return;
     }
 
-    this.productService
-      .createProduct(productToSave)
-      .subscribe({
-        next: (createdProduct) => {
-          const normalizedProduct: Product = {
-            ...createdProduct,
-            id: String(createdProduct.id),
-            categoryId: String(createdProduct.categoryId)
-          };
+    this.productService.createProduct(productToSave).subscribe({
+      next: (createdProduct: Product) => {
+        const normalizedProduct: Product = {
+          ...createdProduct,
+          id: String(createdProduct.id),
+          categoryId: String(createdProduct.categoryId)
+        };
 
-          this.products = [
-            ...this.products,
-            normalizedProduct
-          ];
-
-          this.applyFilters();
-
-          this.resetProductForm();
-          this.showAddForm = false;
-
-          this.cdr.markForCheck();
-        },
-        error: (error) => {
-          console.error(
-            'Failed to create product:',
-            error
-          );
-        }
-      });
+        this.products = [...this.products, normalizedProduct];
+        this.applyFilters();
+        this.resetProductForm();
+        this.showAddForm = false;
+        this.cdr.markForCheck();
+      },
+      error: (error: unknown) => {
+        console.error('Failed to create product:', error);
+      }
+    });
   }
 
   openAddCategoryModal(): void {
@@ -364,39 +291,24 @@ export class Products implements OnInit {
 
   saveNewCategory(): void {
     const name = this.newCategoryName.trim();
+    if (name === '') return;
 
-    if (name === '') {
-      return;
-    }
+    this.categoryService.addCategory({ name }).subscribe({
+      next: (createdCategory: Category) => {
+        const normalizedCategory: Category = {
+          ...createdCategory,
+          id: String(createdCategory.id)
+        };
 
-    this.categoryService
-      .addCategory({ name })
-      .subscribe({
-        next: (createdCategory) => {
-          const normalizedCategory: Category = {
-            id: String(createdCategory.id),
-            name: createdCategory.name
-          };
-
-          this.categories = [
-            ...this.categories,
-            normalizedCategory
-          ];
-
-          this.newProduct.categoryId =
-            normalizedCategory.id;
-
-          this.closeAddCategoryModal();
-
-          this.cdr.markForCheck();
-        },
-        error: (error) => {
-          console.error(
-            'Failed to add category:',
-            error
-          );
-        }
-      });
+        this.categories = [...this.categories, normalizedCategory];
+        this.newProduct.categoryId = normalizedCategory.id;
+        this.closeAddCategoryModal();
+        this.cdr.markForCheck();
+      },
+      error: (error: unknown) => {
+        console.error('Failed to add category:', error);
+      }
+    });
   }
 
   resetProductForm(): void {
@@ -412,7 +324,6 @@ export class Products implements OnInit {
       minStock: 0,
       image: ''
     };
-
     this.editingProductId = null;
   }
 }

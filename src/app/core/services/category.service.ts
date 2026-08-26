@@ -22,11 +22,8 @@ export class CategoryService {
     );
   }
 
-  addCategory(category: Omit<Category, 'id'>): Observable<Category> {
-    return this.http.post<Category>(
-      this.apiUrl,
-      category
-    ).pipe(
+  addCategory(category: Omit<Category, 'id'> | Partial<Category>): Observable<Category> {
+    return this.http.post<Category>(this.apiUrl, category).pipe(
       map((createdCategory) => ({
         id: String(createdCategory.id),
         name: createdCategory.name
@@ -34,14 +31,8 @@ export class CategoryService {
     );
   }
 
-  updateCategory(
-    id: string,
-    category: Omit<Category, 'id'>
-  ): Observable<Category> {
-    return this.http.put<Category>(
-      `${this.apiUrl}/${id}`,
-      category
-    ).pipe(
+  updateCategory(id: string, category: Omit<Category, 'id'>): Observable<Category> {
+    return this.http.put<Category>(`${this.apiUrl}/${id}`, category).pipe(
       map((updatedCategory) => ({
         id: String(updatedCategory.id),
         name: updatedCategory.name
@@ -50,9 +41,6 @@ export class CategoryService {
   }
 
   deleteCategory(id: string): Observable<void> {
-    return this.http.delete<void>(
-      `${this.apiUrl}/${id}`
-    );
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
-

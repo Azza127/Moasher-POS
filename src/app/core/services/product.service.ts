@@ -23,14 +23,18 @@ export class ProductService {
     );
   }
 
-  updateProduct(
-    id: string,
-    product: Product
-  ): Observable<Product> {
-    return this.http.put<Product>(
-      `${this.apiUrl}/${id}`,
-      product
-    ).pipe(
+  createProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product).pipe(
+      map((createdProduct) => ({
+        ...createdProduct,
+        id: String(createdProduct.id),
+        categoryId: String(createdProduct.categoryId)
+      }))
+    );
+  }
+
+  updateProduct(id: string, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, product).pipe(
       map((updatedProduct) => ({
         ...updatedProduct,
         id: String(updatedProduct.id),
@@ -40,21 +44,6 @@ export class ProductService {
   }
 
   deleteProduct(id: string): Observable<void> {
-    return this.http.delete<void>(
-      `${this.apiUrl}/${id}`
-    );
-  }
-
-  createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(
-      this.apiUrl,
-      product
-    ).pipe(
-      map((createdProduct) => ({
-        ...createdProduct,
-        id: String(createdProduct.id),
-        categoryId: String(createdProduct.categoryId)
-      }))
-    );
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
