@@ -86,7 +86,7 @@
       "sku": "MOU-001",
       "categoryId": "1",
       "price": 500,
-      "stock": 8,
+      "stock": 0,
       "minStock": 10,
       "maxStock": 50,
       "description": "Black / Wireless",
@@ -98,7 +98,7 @@
       "sku": "USB-001",
       "categoryId": "1",
       "price": 360,
-      "stock": 15,
+      "stock": 10,
       "minStock": 10,
       "maxStock": 40,
       "description": "Black / 256G",
@@ -110,7 +110,7 @@
       "sku": "NOT-001",
       "categoryId": "3",
       "price": 75,
-      "stock": 4,
+      "stock": 3,
       "minStock": 10,
       "maxStock": 40,
       "description": "A5 / Ruled Pages",
@@ -146,7 +146,7 @@
       "sku": "NON-001",
       "categoryId": "3",
       "price": 220,
-      "stock": 9,
+      "stock": 8,
       "minStock": 3,
       "maxStock": 10,
       "description": "Paperback / Arabic",
@@ -283,25 +283,30 @@
       "maxStock": 50,
       "description": "2 Kg",
       "image": "https://i.pinimg.com/736x/8e/f1/f5/8ef1f52fbbf3c7ea9ad5a8518e542f1d.jpg"
+    },
+    {
+      "id": "UExSrVT0Ex8",
+      "name": "RedBull",
+      "description": "Non",
+      "sku": "Red-212",
+      "categoryId": "w-UYvx6E5OA",
+      "price": 200,
+      "stock": 15,
+      "maxStock": 50,
+      "minStock": 5,
+      "image": ""
     }
   ],
   "orders": [
     {
-      "id": "1001",
+      "ticketNumber": "#7884-A",
       "items": [
         {
-          "productId": 1,
-          "productName": "Wireless Mouse",
-          "price": 450,
-          "quantity": 2,
-          "total": 900
-        },
-        {
-          "productId": 2,
-          "productName": "USB-C Cable",
-          "price": 180,
-          "quantity": 1,
-          "total": 180
+          "productId": "2",
+          "productName": "USB-C",
+          "price": 360,
+          "quantity": 3,
+          "total": 1080
         }
       ],
       "subtotal": 1080,

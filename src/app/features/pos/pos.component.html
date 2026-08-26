@@ -1,0 +1,243 @@
+<div class="pos-container no-print">
+  <!-- اليسار: قائمة المنتجات -->
+  <div class="products-section">
+    <div class="top-bar">
+      <div class="search-box">
+        <svg
+          class="search-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          placeholder="Search products, barcodes..."
+          [(ngModel)]="searchQuery"
+          (input)="filterProducts()"
+        />
+      </div>
+    </div>
+
+    <div class="categories-bar">
+      <button
+        class="category-pill"
+        [class.active]="selectedCategoryId === 'ALL'"
+        (click)="selectCategory('ALL')"
+      >
+        All Products
+      </button>
+      <button
+        *ngFor="let category of categories"
+        class="category-pill"
+        [class.active]="selectedCategoryId === category.id"
+        (click)="selectCategory(category.id)"
+      >
+        {{ category.name }}
+      </button>
+    </div>
+
+    <div class="products-grid">
+      <div
+        *ngFor="let product of filteredProducts"
+        class="product-card"
+        [class.disabled]="product.stock <= 0"
+        (click)="addToCart(product)"
+      >
+        <div class="product-img-wrapper">
+          <img [src]="product.image || 'https://via.placeholder.com/120'" [alt]="product.name" />
+          <span *ngIf="product.stock <= 0" class="badge-out">OUT OF STOCK</span>
+        </div>
+
+        <div class="product-details">
+          <h4 class="product-title">{{ product.name }}</h4>
+          <span
+            class="stock-text"
+            [class.low-stock]="product.stock > 0 && product.stock <= product.minStock"
+          >
+            Stock: {{ product.stock }}
+          </span>
+          <div class="price-row">
+            <span class="product-price">${{ product.price | number: '1.2-2' }}</span>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- اليمين: سلة المشتريات -->
+  <div class="cart-section">
+    <div class="cart-header">
+      <div>
+        <h2>Current Order</h2>
+        <span class="ticket-id">Ticket {{ currentTicketNumber }}</span>
+      </div>
+      <button
+        class="clear-icon-btn"
+        (click)="clearCart()"
+        [disabled]="cart.length === 0"
+        title="Clear All"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path
+            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-items">
+      <div *ngIf="cart.length === 0" class="empty-cart">No items added to current order</div>
+
+      <div *ngFor="let item of cart" class="cart-item">
+        <div class="cart-item-header">
+          <span class="item-title">{{ item.productName }}</span>
+          <button class="remove-btn" (click)="removeFromCart(item)" title="Remove">✕</button>
+        </div>
+
+        <div class="cart-item-body">
+          <div class="qty-controls">
+            <button (click)="updateQuantity(item, -1)">−</button>
+            <span class="qty-value">{{ item.quantity }}</span>
+            <button (click)="updateQuantity(item, 1)">+</button>
+          </div>
+
+          <div class="item-pricing">
+            <span class="item-total-price">${{ item.total | number: '1.2-2' }}</span>
+            <span class="item-unit-price">@ ${{ item.price | number: '1.2-2' }}/ea</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary" *ngIf="cart.length > 0">
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <span>${{ subtotal | number: '1.2-2' }}</span>
+      </div>
+      <div class="summary-line">
+        <span>Tax (14%)</span>
+        <span>${{ tax | number: '1.2-2' }}</span>
+      </div>
+
+      <div class="summary-line total-line">
+        <span>Total</span>
+        <span class="total-amount">${{ total | number: '1.2-2' }}</span>
+      </div>
+
+      <div class="payment-selector">
+        <button
+          class="pay-select-btn"
+          [class.active]="paymentMethod === 'Cash'"
+          (click)="paymentMethod = 'Cash'"
+        >
+          💵 Cash
+        </button>
+        <button
+          class="pay-select-btn"
+          [class.active]="paymentMethod === 'Card'"
+          (click)="paymentMethod = 'Card'"
+        >
+          💳 Card
+        </button>
+      </div>
+
+      <button class="checkout-submit-btn" (click)="checkout()">
+        Pay Now (${{ total | number: '1.2-2' }})
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay no-print" *ngIf="showSuccessModal">
+  <div class="success-card">
+    <div class="check-icon">✓</div>
+    <h2>Payment Successful!</h2>
+    <p class="modal-sub">Transaction completed successfully.</p>
+
+    <div class="modal-details">
+      <div>
+        <span>Ticket:</span> <strong>{{ lastTicketNumber }}</strong>
+      </div>
+      <div>
+        <span>Amount Paid:</span> <strong>${{ lastOrderTotal | number: '1.2-2' }}</strong>
+      </div>
+      <div>
+        <span>Method:</span> <strong>{{ lastPaymentMethod }}</strong>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-secondary" (click)="printReceipt()">🖨️ Print Receipt</button>
+      <button class="btn-primary" (click)="closeModal()">New Order</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="printable-receipt">
+  <div class="receipt-header">
+    <h2>POS STORE</h2>
+    <p>ITI</p>
+    <p>Tel: 123-456-789</p>
+    <div class="receipt-divider">================================</div>
+    <p class="receipt-meta">Ticket {{ lastTicketNumber }}</p>
+    <p class="receipt-meta">Date: {{ currentDate | date: 'yyyy-MM-dd HH:mm' }}</p>
+    <p class="receipt-meta">Payment: {{ lastPaymentMethod }}</p>
+  </div>
+
+  <div class="receipt-divider">================================</div>
+
+  <table class="receipt-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="text-center">Qty</th>
+        <th class="text-right">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of receiptCart">
+        <td>{{ item.productName }}</td>
+        <td class="text-center">{{ item.quantity }}</td>
+        <td class="text-right">${{ item.total | number: '1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="receipt-divider">================================</div>
+
+  <div class="receipt-totals">
+    <div class="receipt-row total-row">
+      <span>TOTAL:</span>
+      <span>${{ lastOrderTotal | number: '1.2-2' }}</span>
+    </div>
+  </div>
+
+  <div class="receipt-divider">================================</div>
+
+  <div class="receipt-footer">
+    <p>Thank you for shopping with us!</p>
+  </div>
+</div>
