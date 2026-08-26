@@ -1,21 +1,11 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-import { RouterOutlet } from '@angular/router';
-
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
-})
-export class App {}
-=======
 import { Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './shared/components/sidebar/sidebar';
 import { HeaderComponent } from './shared/components/header/header';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [
     RouterOutlet,
     SidebarComponent,
@@ -35,4 +25,3 @@ export class App {
     );
   }
 }
->>>>>>> origin/feature/auth-settings
