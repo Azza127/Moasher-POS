@@ -4,7 +4,7 @@ import { ForgotPassword } from './features/auth-settings/forgot-password/forgot-
 import { Dashboard } from './features/dashboard/dashboard';
 import { Products } from './features/products/products';
 import { Categories } from './features/categories/categories';
-import { PosComponent } from './features/pos/pos';
+import { PosComponent } from './features/pos/pos.component';
 import { Reports } from './features/reports/reports';
 import { SettingsComponent } from './features/auth-settings/store-settings/settings';
 import { TeamMembers } from './features/auth-settings/team-members/team-members';
@@ -21,6 +21,7 @@ export const routes: Routes = [
   { path: 'categories', component: Categories, canActivate: [authGuard, roleGuard], data: { roles: ['Manager', 'Owner'] } },
   { path: 'inventory', component: Products, canActivate: [authGuard, roleGuard], data: { roles: ['Manager', 'Owner'] } },
   { path: 'pos', component: PosComponent, canActivate: [authGuard, roleGuard], data: { roles: ['Employee', 'Manager', 'Owner'] } },
+  { path: 'sales', component: PosComponent },
   { path: 'reports', component: Reports, canActivate: [authGuard, roleGuard], data: { roles: ['Manager', 'Owner'] } },
   { path: 'team-members', component: TeamMembers, canActivate: [authGuard, roleGuard], data: { roles: ['Manager', 'Owner'] } },
   { path: 'store-settings', component: SettingsComponent, canActivate: [authGuard, roleGuard], data: { roles: ['Owner'] } },
