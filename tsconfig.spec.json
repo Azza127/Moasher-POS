@@ -1,22 +1,12 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "extends": "./tsconfig.json",
-<<<<<<< HEAD
-"compilerOptions": {
-  "outDir": "./out-tsc/spec",
-  "rootDir": ".",
-  "types": [
-    "vitest/globals"
-  ]
-},
-=======
   "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "rootDir": ".",
     "types": [
       "vitest/globals"
     ]
   },
->>>>>>> origin/feature/auth-settings
   "include": [
     "src/**/*.d.ts",
     "src/**/*.spec.ts"
