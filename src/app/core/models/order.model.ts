@@ -1,26 +1,17 @@
-import { OrderItem } from './order-item.model';
+export interface OrderItem {
+  id?: number;
+  productId: number;
+  productName: string;
+  quantity: number;
+  price: number;
+}
 
 export interface Order {
-<<<<<<< HEAD
-  id?: string;
-  ticketNumber?: string;
+  id?: number;
+  customerName?: string;
   items: OrderItem[];
-  subtotal: number;
-  tax: number;
   total: number;
-  paymentMethod: 'Cash' | 'Card';
+  totalAmount?: number;
   status: 'Completed' | 'Pending' | 'Cancelled';
   createdAt: string;
 }
-=======
-    id: number;
-    ticketNumber?: string;
-    items: OrderItem[];
-    subtotal: number;
-    tax: number;
-    total: number;
-    paymentMethod: 'Cash' | 'Card';
-    status: 'Completed' | 'Pending' | 'Cancelled';
-    createdAt: string;
-}
->>>>>>> origin/feature/reports

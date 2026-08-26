@@ -4,34 +4,25 @@ import { Observable } from 'rxjs';
 import { Order } from '../models/order.model';
 
 @Injectable({
-<<<<<<< HEAD
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OrderService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:3000/orders';
+  private http = inject(HttpClient);
+  private apiUrl = 'http://localhost:3000/orders';
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.apiUrl);
   }
 
-  createOrder(order: Omit<Order, 'id'>): Observable<Order> {
+  getOrderById(id: number): Observable<Order> {
+    return this.http.get<Order>(`${this.apiUrl}/${id}`);
+  }
+
+  createOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(this.apiUrl, order);
   }
-}
-=======
-    providedIn: 'root',
-})
-export class OrderService {
-    private readonly http = inject(HttpClient);
-    private readonly apiUrl = 'http://localhost:3000/orders';
 
-    getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.apiUrl);
-    }
-
-    createOrder(order: Omit<Order, 'id'>): Observable<Order> {
-    return this.http.post<Order>(this.apiUrl, order);
-    }
+  updateOrderStatus(id: number, status: string): Observable<Order> {
+    return this.http.patch<Order>(`${this.apiUrl}/${id}`, { status });
+  }
 }
->>>>>>> origin/feature/reports
