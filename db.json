@@ -39,6 +39,14 @@
       "role": "Employee",
       "status": "Active",
       "id": "MXuHU1OJu0k"
+    },
+    {
+      "id": "w938Vtv7MdE",
+      "username": "batol",
+      "password": "123456",
+      "name": "batol",
+      "role": "Employee",
+      "status": "Active"
     }
   ],
   "categories": [
@@ -98,7 +106,7 @@
       "sku": "USB-001",
       "categoryId": "1",
       "price": 360,
-      "stock": 10,
+      "stock": 9,
       "minStock": 10,
       "maxStock": 40,
       "description": "Black / 256G",
@@ -110,7 +118,7 @@
       "sku": "NOT-001",
       "categoryId": "3",
       "price": 75,
-      "stock": 3,
+      "stock": 2,
       "minStock": 10,
       "maxStock": 40,
       "description": "A5 / Ruled Pages",
@@ -146,7 +154,7 @@
       "sku": "NON-001",
       "categoryId": "3",
       "price": 220,
-      "stock": 8,
+      "stock": 7,
       "minStock": 3,
       "maxStock": 10,
       "description": "Paperback / Arabic",
@@ -158,7 +166,7 @@
       "sku": "TOT-001",
       "categoryId": "3",
       "price": 10,
-      "stock": 2,
+      "stock": 1,
       "minStock": 6,
       "maxStock": 35,
       "description": "HB / Graphite",
@@ -194,7 +202,7 @@
       "sku": "BOB-001",
       "categoryId": "6",
       "price": 550,
-      "stock": 5,
+      "stock": 4,
       "minStock": 2,
       "maxStock": 10,
       "description": "White / Cotton",
@@ -206,7 +214,7 @@
       "sku": "MOM-001",
       "categoryId": "2",
       "price": 250,
-      "stock": 4,
+      "stock": 3,
       "minStock": 2,
       "maxStock": 6,
       "description": "Gold / Stainless Steel",
@@ -218,7 +226,7 @@
       "sku": "DOD-220",
       "categoryId": "w-UYvx6E5OA",
       "price": 15,
-      "stock": 12,
+      "stock": 11,
       "minStock": 15,
       "maxStock": 60,
       "description": "Can 280ml",
@@ -254,7 +262,7 @@
       "sku": "OUO-300",
       "categoryId": "ddA-8yD6-ss",
       "price": 160,
-      "stock": 7,
+      "stock": 6,
       "minStock": 4,
       "maxStock": 20,
       "description": "Outomatic / 8KG",
@@ -278,7 +286,7 @@
       "sku": "FDD-220",
       "categoryId": "5",
       "price": 75,
-      "stock": 9,
+      "stock": 6,
       "minStock": 15,
       "maxStock": 50,
       "description": "2 Kg",
@@ -291,7 +299,7 @@
       "sku": "Red-212",
       "categoryId": "w-UYvx6E5OA",
       "price": 200,
-      "stock": 15,
+      "stock": 14,
       "maxStock": 50,
       "minStock": 5,
       "image": ""
@@ -316,6 +324,112 @@
       "status": "Completed",
       "createdAt": "2026-08-20T09:54:25.435Z",
       "id": "-MrdpEDNXkQ"
+    },
+    {
+      "ticketNumber": "#3098-M",
+      "items": [
+        {
+          "productId": "3",
+          "productName": "Notebook",
+          "price": 75,
+          "quantity": 1,
+          "total": 75
+        },
+        {
+          "productId": "9d0eSH2RgoQ",
+          "productName": "Novel",
+          "price": 220,
+          "quantity": 1,
+          "total": 220
+        },
+        {
+          "productId": "MxLTWca2omI",
+          "productName": "Bracelet",
+          "price": 250,
+          "quantity": 1,
+          "total": 250
+        },
+        {
+          "productId": "TEQYUx5ka1I",
+          "productName": "Pencil",
+          "price": 10,
+          "quantity": 1,
+          "total": 10
+        },
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        }
+      ],
+      "subtotal": 915,
+      "tax": 128.1,
+      "total": 1043.1,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-27T01:03:57.957Z",
+      "id": "2ekNAzk8iPk"
+    },
+    {
+      "ticketNumber": "#5122-M",
+      "items": [
+        {
+          "productId": "UTjQXLaZTHE",
+          "productName": "Blouse",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "pzQDVud1YWA",
+          "productName": "Pepsi",
+          "price": 15,
+          "quantity": 1,
+          "total": 15
+        },
+        {
+          "productId": "Xh9JRv8y1Sg",
+          "productName": "Oxi",
+          "price": 160,
+          "quantity": 1,
+          "total": 160
+        }
+      ],
+      "subtotal": 725,
+      "tax": 101.5,
+      "total": 826.5,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-27T01:04:58.134Z",
+      "id": "LH9iI10gYvQ"
+    },
+    {
+      "ticketNumber": "#6293-A",
+      "items": [
+        {
+          "productId": "HOy_74MXcMk",
+          "productName": "Carolina Rice",
+          "price": 75,
+          "quantity": 3,
+          "total": 225
+        },
+        {
+          "productId": "UExSrVT0Ex8",
+          "productName": "RedBull",
+          "price": 200,
+          "quantity": 1,
+          "total": 200
+        }
+      ],
+      "subtotal": 425,
+      "tax": 59.5,
+      "total": 484.5,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-27T01:08:13.589Z",
+      "id": "yvxpsSJ2hJM"
     }
   ],
   "storeSettings": [
@@ -327,5 +441,6 @@
       "currency": "EGP",
       "taxRate": 15
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

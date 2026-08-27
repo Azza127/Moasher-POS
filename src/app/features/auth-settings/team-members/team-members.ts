@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { User } from '../../../core/models/user.model';
 import { UserService } from '../../../core/services/user.service';
+import { PopupService } from '../../../core/services/popup.service';
 
 @Component({
   selector: 'app-team-members',
@@ -16,6 +17,8 @@ export class TeamMembers implements OnInit {
 
 
   private readonly userService = inject(UserService);
+
+  private readonly popupService = inject(PopupService);
 
 
   users: User[] = [];
@@ -46,6 +49,10 @@ export class TeamMembers implements OnInit {
 
     this.loadUsers();
 
+  }
+
+  showAlert(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'warning', title?: string): void {
+    this.popupService.showAlert(message, type, title);
   }
 
 
@@ -245,7 +252,7 @@ export class TeamMembers implements OnInit {
 
     if (!this.canAddUser()) {
 
-      alert(
+      this.showAlert(
         'You do not have permission to add users.'
       );
 
@@ -282,7 +289,7 @@ export class TeamMembers implements OnInit {
 
     if (!this.canEditUser()) {
 
-      alert(
+      this.showAlert(
         'Only the Owner or Manager can edit users.'
       );
 
@@ -328,7 +335,7 @@ export class TeamMembers implements OnInit {
 
       if (!this.canEditUser()) {
 
-        alert(
+        this.showAlert(
           'Only the Owner or Manager can edit users.'
         );
 
@@ -340,7 +347,7 @@ export class TeamMembers implements OnInit {
 
       if (!this.canAddUser()) {
 
-        alert(
+        this.showAlert(
           'You do not have permission to add users.'
         );
 
@@ -365,7 +372,7 @@ export class TeamMembers implements OnInit {
       !password
     ) {
 
-      alert(
+      this.showAlert(
         'Please fill all required fields.'
       );
 
@@ -377,7 +384,7 @@ export class TeamMembers implements OnInit {
 
     if (!namePattern.test(name)) {
 
-      alert(
+      this.showAlert(
         'Name must contain letters and spaces only.'
       );
 
@@ -389,7 +396,7 @@ export class TeamMembers implements OnInit {
 
     if (!usernamePattern.test(username)) {
 
-      alert(
+      this.showAlert(
         'Username must start with a letter and contain only letters and numbers.'
       );
 
@@ -398,7 +405,7 @@ export class TeamMembers implements OnInit {
     }
     if (password.length < 6) {
 
-      alert(
+      this.showAlert(
         'Password must be at least 6 characters.'
       );
 
@@ -419,7 +426,7 @@ export class TeamMembers implements OnInit {
 
     if (usernameExists) {
 
-      alert(
+      this.showAlert(
         'Username already exists. Please choose another username.'
       );
 
@@ -472,7 +479,7 @@ export class TeamMembers implements OnInit {
               error
             );
 
-            alert(
+            this.showAlert(
               'Failed to update user.'
             );
 
@@ -524,7 +531,7 @@ export class TeamMembers implements OnInit {
             error
           );
 
-          alert(
+          this.showAlert(
             'Failed to add user.'
           );
 
@@ -538,7 +545,7 @@ export class TeamMembers implements OnInit {
 
     if (!this.canDeleteUser()) {
 
-      alert(
+      this.showAlert(
         'Only the Owner or Manager can delete users.'
       );
 
@@ -555,56 +562,53 @@ export class TeamMembers implements OnInit {
       currentUser.id === user.id
     ) {
 
-      alert(
+      this.showAlert(
         'You cannot delete your own account.'
       );
 
       return;
 
     }
-    const confirmed =
-      confirm(
-        `Are you sure you want to delete ${user.name}?`
-      );
-
-
-    if (!confirmed) {
-
-      return;
-
-    }
-    this.userService
-      .deleteUser(user.id)
-      .subscribe({
-
-        next: () => {
-
-          console.log(
-            'USER DELETED:',
-            user
-          );
-
-          this.users =
-            this.users.filter(
-              u => u.id !== user.id
-            );
-
-        },
-
-        error: (error) => {
-
-          console.error(
-            'DELETE USER ERROR:',
-            error
-          );
-
-          alert(
-            'Failed to delete user.'
-          );
-
+    this.popupService.showConfirm(`Are you sure you want to delete ${user.name}?`, 'Delete User').subscribe({
+      next: (confirmed) => {
+        if (!confirmed) {
+          return;
         }
 
-      });
+        this.userService
+          .deleteUser(user.id)
+          .subscribe({
+
+            next: () => {
+
+              console.log(
+                'USER DELETED:',
+                user
+              );
+
+              this.users =
+                this.users.filter(
+                  u => u.id !== user.id
+                );
+
+            },
+
+            error: (error) => {
+
+              console.error(
+                'DELETE USER ERROR:',
+                error
+              );
+
+              this.showAlert(
+                'Failed to delete user.'
+              );
+
+            }
+
+          });
+      }
+    });
 
   }
 

@@ -4,6 +4,7 @@ import {
   CanActivateFn,
   Router
 } from '@angular/router';
+import { PopupService } from '../services/popup.service';
 
 import { User } from '../models/user.model';
 
@@ -11,6 +12,7 @@ import { User } from '../models/user.model';
 export const roleGuard: CanActivateFn = (route) => {
 
   const router = inject(Router);
+  const popupService = inject(PopupService);
 
 
   const currentUserData =
@@ -70,8 +72,10 @@ export const roleGuard: CanActivateFn = (route) => {
 
   }
 
-  alert(
-    'You do not have permission to access this page.'
+  popupService.showAlert(
+    'You do not have permission to access this page.',
+    'error',
+    'Access Denied'
   );
 
   return router.createUrlTree(['/dashboard']);

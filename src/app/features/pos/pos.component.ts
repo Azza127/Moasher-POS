@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../core/services/product.service';
 import { OrderService } from '../../core/services/order.service';
 import { CategoryService } from '../../core/services/category.service';
+import { PopupService } from '../../core/services/popup.service';
 import { Product } from '../../core/models/product.model';
 import { Category } from '../../core/models/category.model';
 import { OrderItem } from '../../core/models/order-item.model';
@@ -21,6 +22,7 @@ export class PosComponent implements OnInit {
   private readonly orderService = inject(OrderService);
   private readonly categoryService = inject(CategoryService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly popupService = inject(PopupService);
 
   products: Product[] = [];
   filteredProducts: Product[] = [];
@@ -97,7 +99,7 @@ export class PosComponent implements OnInit {
 
   addToCart(product: Product): void {
     if (product.stock <= 0) {
-      alert('Product is out of stock!');
+      this.popupService.showAlert('Product is out of stock!', 'warning', 'Out of Stock');
       return;
     }
 
@@ -127,7 +129,7 @@ export class PosComponent implements OnInit {
         item.quantity += 1;
         item.total = item.quantity * item.price;
       } else {
-        alert('No more stock available!');
+        this.popupService.showAlert('No more stock available!', 'warning', 'Out of Stock');
       }
     } else if (change < 0) {
       if (product) {
@@ -217,7 +219,7 @@ export class PosComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error creating order:', err);
-        alert('Failed to process checkout!');
+        this.popupService.showAlert('Failed to process checkout!', 'error', 'Checkout Failed');
       },
     });
   }

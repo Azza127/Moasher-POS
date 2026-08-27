@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './shared/components/sidebar/sidebar';
 import { HeaderComponent } from './shared/components/header/header';
+import { PopupComponent } from './shared/components/popup/popup.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { HeaderComponent } from './shared/components/header/header';
   imports: [
     RouterOutlet,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    PopupComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
