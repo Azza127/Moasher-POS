@@ -1,14 +1,14 @@
 <aside class="sidebar">
 
-<!-- Logo & Brand -->
-<div class="brand">
-  <div class="brand-header">
-    <img src="chart-line-solid-full.svg" alt="Moasher Logo" class="brand-logo" />
-    <h2 class="brand-title">Moasher</h2>
+  <!-- Logo & Brand -->
+  <div class="brand">
+    <div class="brand-header">
+      <img src="chart-line-solid-full.svg" alt="Moasher Logo" class="brand-logo" />
+      <h2 class="brand-title">Moasher</h2>
+    </div>
+    <!-- <span class="brand-subtitle">INVENTORY & POS</span> -->
+    <span class="brand-subtitle">___________________________________</span>
   </div>
-  <!-- <span class="brand-subtitle">INVENTORY & POS</span> -->
-  <span class="brand-subtitle">___________________________________</span>
-</div>
 
   <!-- Main Navigation -->
   <nav class="navigation">
@@ -28,11 +28,13 @@
       <span>Sales (POS)</span>
     </a>
 
+    <!-- <a routerLink="/reports" routerLinkActive="active" *ngIf="userRole === 'Owner' || userRole === 'Manager'"> -->
     <a routerLink="/reports" routerLinkActive="active">
       <i class="bi bi-bar-chart"></i>
       <span>Reports</span>
     </a>
 
+    <!-- <a routerLink="/team-members" routerLinkActive="active" *ngIf="userRole === 'Owner' || userRole === 'Manager'"> -->
     <a routerLink="/team-members" routerLinkActive="active">
       <i class="bi bi-person-gear"></i>
       <span>Users</span>
@@ -56,6 +58,7 @@
       <span>Help Center</span>
     </a>
 
+    <!-- <a routerLink="/store-settings" routerLinkActive="active" *ngIf="userRole === 'Owner' || userRole === 'Manager'"> -->
     <a routerLink="/store-settings" routerLinkActive="active">
       <i class="bi bi-gear"></i>
       <span>Settings</span>

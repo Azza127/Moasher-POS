@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
+import { PopupService } from '../../core/services/popup.service';
+
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
 
@@ -20,10 +22,16 @@ import { Category } from '../../core/models/category.model';
 })
 export class Products implements OnInit {
   searchMode: 'name' | 'sku' = 'name';
+  userRole = 'Employee';
+
+  get isEmployee(): boolean {
+    return this.userRole.trim().toLowerCase() === 'employee';
+  }
 
   private readonly searchSubject = new Subject<string>();
   private readonly productService = inject(ProductService);
   private readonly categoryService = inject(CategoryService);
+  private readonly popupService = inject(PopupService);
   private readonly cdr = inject(ChangeDetectorRef);
 
   products: Product[] = [];
@@ -55,6 +63,15 @@ export class Products implements OnInit {
   };
 
   ngOnInit(): void {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      try {
+        const currentUser = JSON.parse(user);
+        this.userRole = currentUser.role || 'Employee';
+      } catch (e) {
+        this.popupService.showAlert('Error parsing current user', 'error');
+      }
+    }
     this.loadProducts();
     this.loadCategories();
 
@@ -94,6 +111,7 @@ export class Products implements OnInit {
   }
 
   showAddProductForm(): void {
+    if (this.isEmployee) return;
     this.resetProductForm();
     this.showAddForm = true;
   }
@@ -173,6 +191,7 @@ export class Products implements OnInit {
   }
 
   startEdit(product: Product): void {
+    if (this.isEmployee) return;
     this.editingProductId = product.id;
     this.newProduct = { ...product };
     this.showAddForm = true;
@@ -180,6 +199,7 @@ export class Products implements OnInit {
   }
 
   deleteProduct(product: Product): void {
+    if (this.isEmployee) return;
     this.productToDelete = product;
     this.showDeleteModal = true;
   }
@@ -280,6 +300,7 @@ export class Products implements OnInit {
   }
 
   openAddCategoryModal(): void {
+    if (this.isEmployee) return;
     this.newCategoryName = '';
     this.showAddCategoryModal = true;
   }

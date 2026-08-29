@@ -3,7 +3,7 @@
 
   width: 100%;
 
-  background: white;
+  background: rgb(255, 255, 255);
 
   border-bottom: 1px solid #e5e7eb;
 
@@ -11,13 +11,24 @@
 
   align-items: center;
 
-  justify-content: flex-end;
+  justify-content: space-between;
 
   padding: 0 30px;
 
   box-sizing: border-box;
 }
 
+.store-name {
+  width: 65%;
+  margin-right: 150px;
+}
+
+.store-name strong {
+  color: #1E293B;
+  font-size: 24px;
+  text-transform: uppercase;
+  padding-left: 25px;
+}
 
 .user-info {
   display: flex;

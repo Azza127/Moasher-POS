@@ -4,13 +4,15 @@
         <p>Manage your product categories.</p>
     </div>
 
-    <button
-        type="button"
-        class="add-category-btn"
-        (click)="openAddCategory()"
-    >
-        + Add Category
-    </button>
+    @if (!isEmployee) {
+        <button
+            type="button"
+            class="add-category-btn"
+            (click)="openAddCategory()"
+        >
+            + Add Category
+        </button>
+    }
 </div>
 
 
@@ -28,7 +30,9 @@
                 <tr>
                     <th>Category</th>
                     <th>ID</th>
-                    <th>Actions</th>
+                    @if (!isEmployee) {
+                        <th>Actions</th>
+                    }
                 </tr>
             </thead>
 
@@ -48,44 +52,46 @@
                         </td>
 
                         <td class="actions-cell">
-                            <button
-                                type="button"
-                                class="icon-btn edit-btn"
-                                (click)="openEditCategory(category)"
-                                title="Edit category"
-                                aria-label="Edit category"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    aria-hidden="true"
+                            @if (!isEmployee) {
+                                <button
+                                    type="button"
+                                    class="icon-btn edit-btn"
+                                    (click)="openEditCategory(category)"
+                                    title="Edit category"
+                                    aria-label="Edit category"
                                 >
-                                    <path
-                                        d="M4 17.25V20h2.75L17.81 9.94l-2.75-2.75L4 17.25z"
-                                    />
-                                    <path
-                                        d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 2.75 2.75 2.83-.83z"
-                                    />
-                                </svg>
-                            </button>
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M4 17.25V20h2.75L17.81 9.94l-2.75-2.75L4 17.25z"
+                                        />
+                                        <path
+                                            d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 2.75 2.75 2.83-.83z"
+                                        />
+                                    </svg>
+                                </button>
 
-                            <button
-                                type="button"
-                                class="icon-btn delete-btn"
-                                (click)="openDeleteCategory(category)"
-                                title="Delete category"
-                                aria-label="Delete category"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    aria-hidden="true"
+                                <button
+                                    type="button"
+                                    class="icon-btn delete-btn"
+                                    (click)="openDeleteCategory(category)"
+                                    title="Delete category"
+                                    aria-label="Delete category"
                                 >
-                                    <path d="M6 7h12" />
-                                    <path d="M9 7V5h6v2" />
-                                    <path d="M8 7l1 13h6l1-13" />
-                                    <path d="M10 11v5" />
-                                    <path d="M14 11v5" />
-                                </svg>
-                            </button>
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M6 7h12" />
+                                        <path d="M9 7V5h6v2" />
+                                        <path d="M8 7l1 13h6l1-13" />
+                                        <path d="M10 11v5" />
+                                        <path d="M14 11v5" />
+                                    </svg>
+                                </button>
+                            }
                         </td>
                     </tr>
                 }

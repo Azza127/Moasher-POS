@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { PopupService } from '../../../core/services/popup.service';
+import { StoreSettingsService } from '../../../core/services/store-settings.service';
+import { StoreSettings } from '../../../core/models/store-settings.model';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -9,12 +11,22 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
+  settings!: StoreSettings;
+
   userName = 'Store Owner';
   userRole = 'Owner';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private readonly popupService: PopupService,
+    private readonly settingService: StoreSettingsService
   ) {
+
+    this.settingService.getSettings().subscribe({
+      next: (settings) => {
+        this.settings = settings[0];
+      }
+    });
 
     const user = localStorage.getItem('currentUser');
 
@@ -29,20 +41,25 @@ export class HeaderComponent {
   }
 
 
- logout(): void {
+  logout(): void {
 
-  const confirmed = confirm(
-    'Are you sure you want to logout?'
-  );
+    this.popupService.showConfirm(
+      'Are you sure you want to logout?',
+      'logout'
+    ).subscribe({
+      next: (confirmed) => {
+        if (!confirmed) {
+          return;
+        }
 
-  if (!confirmed) {
-    return;
+
+
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('isLoggedIn');
+
+        window.location.href = '/login';
+      }
+    });
   }
-
-  localStorage.removeItem('currentUser');
-  localStorage.removeItem('isLoggedIn');
-
-  window.location.href = '/login';
-}
 
 }

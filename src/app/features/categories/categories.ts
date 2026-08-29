@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CategoryService } from '../../core/services/category.service';
 import { Category } from '../../core/models/category.model';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-categories',
@@ -13,6 +14,13 @@ import { Category } from '../../core/models/category.model';
 export class Categories implements OnInit {
   private readonly categoryService = inject(CategoryService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly popupService = inject(PopupService);
+
+  userRole = 'Employee';
+
+  get isEmployee(): boolean {
+    return this.userRole.trim().toLowerCase() === 'employee';
+  }
 
   categories: Category[] = [];
 
@@ -26,6 +34,15 @@ export class Categories implements OnInit {
   categoryToDelete: Category | null = null;
 
   ngOnInit(): void {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      try {
+        const currentUser = JSON.parse(user);
+        this.userRole = currentUser.role || 'Employee';
+      } catch (e) {
+        this.popupService.showAlert('Error parsing current user', 'error');
+      }
+    }
     this.loadCategories();
   }
 
@@ -42,12 +59,14 @@ export class Categories implements OnInit {
   }
 
   openAddCategory(): void {
+    if (this.isEmployee) return;
     this.newCategoryName = '';
     this.editingCategoryId = null;
     this.showCategoryModal = true;
   }
 
   openEditCategory(category: Category): void {
+    if (this.isEmployee) return;
     this.newCategoryName = category.name;
     this.editingCategoryId = category.id;
     this.showCategoryModal = true;
@@ -107,6 +126,7 @@ export class Categories implements OnInit {
   }
 
   openDeleteCategory(category: Category): void {
+    if (this.isEmployee) return;
     this.categoryToDelete = category;
     this.showDeleteModal = true;
   }

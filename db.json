@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "owner",
-      "password": "12345678",
+      "password": "123456",
       "name": "Store Owner",
       "role": "Owner",
       "status": "Active"
@@ -47,6 +47,22 @@
       "name": "batol",
       "role": "Employee",
       "status": "Active"
+    },
+    {
+      "username": "someone0",
+      "password": "654321",
+      "name": "someone",
+      "role": "Employee",
+      "status": "Active",
+      "id": "pIaDcgb51-4"
+    },
+    {
+      "username": "hello",
+      "password": "12345678",
+      "name": "hello from testing",
+      "role": "Employee",
+      "status": "Active",
+      "id": "QAX8Z84P0E8"
     }
   ],
   "categories": [
@@ -94,7 +110,7 @@
       "sku": "MOU-001",
       "categoryId": "1",
       "price": 500,
-      "stock": 0,
+      "stock": 5,
       "minStock": 10,
       "maxStock": 50,
       "description": "Black / Wireless",
@@ -106,7 +122,7 @@
       "sku": "USB-001",
       "categoryId": "1",
       "price": 360,
-      "stock": 9,
+      "stock": 8,
       "minStock": 10,
       "maxStock": 40,
       "description": "Black / 256G",
@@ -166,7 +182,7 @@
       "sku": "TOT-001",
       "categoryId": "3",
       "price": 10,
-      "stock": 1,
+      "stock": 0,
       "minStock": 6,
       "maxStock": 35,
       "description": "HB / Graphite",
@@ -190,7 +206,7 @@
       "sku": "ROR-001",
       "categoryId": "3",
       "price": 20,
-      "stock": 5,
+      "stock": 4,
       "minStock": 7,
       "maxStock": 35,
       "description": "30cm / Clear",
@@ -226,7 +242,7 @@
       "sku": "DOD-220",
       "categoryId": "w-UYvx6E5OA",
       "price": 15,
-      "stock": 11,
+      "stock": 9,
       "minStock": 15,
       "maxStock": 60,
       "description": "Can 280ml",
@@ -262,7 +278,7 @@
       "sku": "OUO-300",
       "categoryId": "ddA-8yD6-ss",
       "price": 160,
-      "stock": 6,
+      "stock": 5,
       "minStock": 4,
       "maxStock": 20,
       "description": "Outomatic / 8KG",
@@ -286,7 +302,7 @@
       "sku": "FDD-220",
       "categoryId": "5",
       "price": 75,
-      "stock": 6,
+      "stock": 5,
       "minStock": 15,
       "maxStock": 50,
       "description": "2 Kg",
@@ -299,10 +315,22 @@
       "sku": "Red-212",
       "categoryId": "w-UYvx6E5OA",
       "price": 200,
-      "stock": 14,
+      "stock": 11,
       "maxStock": 50,
       "minStock": 5,
       "image": ""
+    },
+    {
+      "id": "8mgaOCZTySg",
+      "name": "V Cola",
+      "description": "diet",
+      "sku": "sku005",
+      "categoryId": "w-UYvx6E5OA",
+      "price": 20,
+      "stock": 5,
+      "maxStock": 10,
+      "minStock": 3,
+      "image": "data:image/jpeg;base64,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"
     }
   ],
   "orders": [
@@ -430,6 +458,98 @@
       "status": "Completed",
       "createdAt": "2026-08-27T01:08:13.589Z",
       "id": "yvxpsSJ2hJM"
+    },
+    {
+      "ticketNumber": "#1184-X",
+      "items": [
+        {
+          "productId": "8mgaOCZTySg",
+          "productName": "V Cola",
+          "price": 20,
+          "quantity": 1,
+          "total": 20
+        },
+        {
+          "productId": "UExSrVT0Ex8",
+          "productName": "RedBull",
+          "price": 200,
+          "quantity": 3,
+          "total": 600
+        },
+        {
+          "productId": "pzQDVud1YWA",
+          "productName": "Pepsi",
+          "price": 15,
+          "quantity": 2,
+          "total": 30
+        }
+      ],
+      "subtotal": 650,
+      "tax": 91,
+      "total": 741,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-29T01:00:49.684Z",
+      "id": "grFnqWriB0g"
+    },
+    {
+      "ticketNumber": "#2239-K",
+      "items": [
+        {
+          "productId": "Xh9JRv8y1Sg",
+          "productName": "Oxi",
+          "price": 160,
+          "quantity": 1,
+          "total": 160
+        },
+        {
+          "productId": "HOy_74MXcMk",
+          "productName": "Carolina Rice",
+          "price": 75,
+          "quantity": 1,
+          "total": 75
+        }
+      ],
+      "subtotal": 235,
+      "tax": 32.9,
+      "total": 267.9,
+      "paymentMethod": "Card",
+      "status": "Completed",
+      "createdAt": "2026-08-29T01:01:18.536Z",
+      "id": "FLvTlAJzR0c"
+    },
+    {
+      "ticketNumber": "#9116-J",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        },
+        {
+          "productId": "TEQYUx5ka1I",
+          "productName": "Pencil",
+          "price": 10,
+          "quantity": 1,
+          "total": 10
+        },
+        {
+          "productId": "L68yt065cXs",
+          "productName": "Ruler",
+          "price": 20,
+          "quantity": 1,
+          "total": 20
+        }
+      ],
+      "subtotal": 390,
+      "tax": 54.6,
+      "total": 444.6,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-29T01:25:07.974Z",
+      "id": "zDiBm8yybh4"
     }
   ],
   "storeSettings": [

@@ -1,4 +1,9 @@
 <header class="header">
+  <h4 class="store-name">
+    <strong>
+      {{ settings.storeName }}
+    </strong>
+  </h4>
 
   <div class="user-info">
 
@@ -24,10 +29,7 @@
   </div>
 
 
-  <button
-    type="button"
-    class="logout-btn"
-    (click)="logout()">
+  <button type="button" class="logout-btn" (click)="logout()">
 
     <i class="bi bi-box-arrow-right"></i>
 

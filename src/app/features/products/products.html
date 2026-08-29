@@ -4,7 +4,7 @@
         <p>Manage your products, track stock levels, and update pricing.</p>
     </div>
 
-@if (!showAddForm) {
+@if (!showAddForm && !isEmployee) {
     <div class="header-actions">
         <button
             type="button"
@@ -389,7 +389,9 @@
             <th>Category</th>
             <th>Stock Level</th>
             <th>Price</th>
-            <th>Actions</th>
+            @if (!isEmployee) {
+                <th>Actions</th>
+            }
         </tr>
     </thead>
 
@@ -490,45 +492,47 @@
 
                 <td class="actions-cell">
 
-                    <button
-                        type="button"
-                        class="icon-btn edit-btn"
-                        (click)="startEdit(product)"
-                        title="Edit product"
-                        aria-label="Edit product"
-                    >
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
+                    @if (!isEmployee) {
+                        <button
+                            type="button"
+                            class="icon-btn edit-btn"
+                            (click)="startEdit(product)"
+                            title="Edit product"
+                            aria-label="Edit product"
                         >
-                            <path
-                                d="M4 17.25V20h2.75L17.81 9.94l-2.75-2.75L4 17.25z"
-                            />
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M4 17.25V20h2.75L17.81 9.94l-2.75-2.75L4 17.25z"
+                                />
 
-                            <path
-                                d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 2.75 2.75 2.83-.83z"
-                            />
-                        </svg>
-                    </button>
+                                <path
+                                    d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 2.75 2.75 2.83-.83z"
+                                />
+                            </svg>
+                        </button>
 
-                    <button
-                        type="button"
-                        class="icon-btn delete-btn"
-                        (click)="deleteProduct(product)"
-                        title="Delete product"
-                        aria-label="Delete product"
-                    >
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
+                        <button
+                            type="button"
+                            class="icon-btn delete-btn"
+                            (click)="deleteProduct(product)"
+                            title="Delete product"
+                            aria-label="Delete product"
                         >
-                            <path d="M6 7h12" />
-                            <path d="M9 7V5h6v2" />
-                            <path d="M8 7l1 13h6l1-13" />
-                            <path d="M10 11v5" />
-                            <path d="M14 11v5" />
-                        </svg>
-                    </button>
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path d="M6 7h12" />
+                                <path d="M9 7V5h6v2" />
+                                <path d="M8 7l1 13h6l1-13" />
+                                <path d="M10 11v5" />
+                                <path d="M14 11v5" />
+                            </svg>
+                        </button>
+                    }
 
                 </td>
 

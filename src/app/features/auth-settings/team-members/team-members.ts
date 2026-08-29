@@ -127,38 +127,26 @@ export class TeamMembers implements OnInit {
     return currentUser.role;
 
   }
+  // Owner: can add any role. Manager: can add Employee only.
   canAddUser(): boolean {
-
-    const role =
-      this.getCurrentRole();
-
-    return (
-      role === 'Owner' ||
-      role === 'Manager'
-    );
-
+    const role = this.getCurrentRole();
+    return role === 'Owner' || role === 'Manager';
   }
-  canEditUser(): boolean {
 
-    const role =
-      this.getCurrentRole();
-
-    return (
-      role === 'Owner' ||
-      role === 'Manager'
-    );
-
+  // Owner: can edit anyone. Manager: can edit Employees only.
+  canEditUser(targetUser: User): boolean {
+    const role = this.getCurrentRole();
+    if (role === 'Owner') return true;
+    if (role === 'Manager') return targetUser.role === 'Employee';
+    return false;
   }
-  canDeleteUser(): boolean {
 
-    const role =
-      this.getCurrentRole();
-
-    return (
-      role === 'Owner' ||
-      role === 'Manager'
-    );
-
+  // Owner: can delete anyone (not self). Manager: can delete Employees only.
+  canDeleteUser(targetUser: User): boolean {
+    const role = this.getCurrentRole();
+    if (role === 'Owner') return true;
+    if (role === 'Manager') return targetUser.role === 'Employee';
+    return false;
   }
   getNameError(): string {
 
@@ -287,10 +275,12 @@ export class TeamMembers implements OnInit {
 
   openEditModal(user: User): void {
 
-    if (!this.canEditUser()) {
+    if (!this.canEditUser(user)) {
 
       this.showAlert(
-        'Only the Owner or Manager can edit users.'
+        'You do not have permission to edit this account.',
+        'error',
+        'Access Denied'
       );
 
       return;
@@ -333,10 +323,15 @@ export class TeamMembers implements OnInit {
 
     if (this.isEditMode) {
 
-      if (!this.canEditUser()) {
+      // Find the user being edited to check permission against their role
+      const targetUser = this.users.find(u => u.id === this.selectedUserId);
+
+      if (!targetUser || !this.canEditUser(targetUser)) {
 
         this.showAlert(
-          'Only the Owner or Manager can edit users.'
+          'You do not have permission to edit this account.',
+          'error',
+          'Access Denied'
         );
 
         return;
@@ -543,10 +538,12 @@ export class TeamMembers implements OnInit {
 
   deleteUser(user: User): void {
 
-    if (!this.canDeleteUser()) {
+    if (!this.canDeleteUser(user)) {
 
       this.showAlert(
-        'Only the Owner or Manager can delete users.'
+        'You do not have permission to delete this account.',
+        'error',
+        'Access Denied'
       );
 
       return;
