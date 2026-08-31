@@ -45,10 +45,41 @@ export class TeamMembers implements OnInit {
 
 
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
+
+  //   this.loadUsers();
+
+  // }
+
+  // showAlert(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'warning', title?: string): void {
+  //   this.popupService.showAlert(message, type, title);
+  // }
+
+
+  // loadUsers(): void {
+
+  //   this.userService.getUsers().subscribe({
+
+  //     next: (users) => {
+
+  //       this.users = users;
+
+  //       console.log('USERS:', users);
+
+  //     },
+
+    ngOnInit(): void {
+    const cachedUsers = localStorage.getItem('teamMembers');
+
+    if (cachedUsers) {
+      try {
+        this.users = JSON.parse(cachedUsers) as User[];
+      } catch {
+        localStorage.removeItem('teamMembers');
+      }
+    }
 
     this.loadUsers();
-
   }
 
   showAlert(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'warning', title?: string): void {
@@ -63,6 +94,7 @@ export class TeamMembers implements OnInit {
       next: (users) => {
 
         this.users = users;
+        localStorage.setItem('teamMembers', JSON.stringify(users));
 
         console.log('USERS:', users);
 
@@ -318,7 +350,30 @@ export class TeamMembers implements OnInit {
 
     this.selectedUserId = null;
 
+    this.isEditMode = false;
+
+    this.userForm = {
+
+      username: '',
+
+      password: '',
+
+      name: '',
+
+      role: 'Employee',
+
+      status: 'Active'
+
+    };
+
   }
+
+  private handleSaveSuccess(message: string): void {
+    this.loadUsers();
+    this.showAlert(message, 'success', 'Success');
+    this.closeModal();
+  }
+
   saveUser(): void {
 
     if (this.isEditMode) {
@@ -461,9 +516,7 @@ export class TeamMembers implements OnInit {
               updatedUser
             );
 
-            this.loadUsers();
-
-            this.closeModal();
+            this.handleSaveSuccess('Member updated successfully.');
 
           },
 
@@ -513,9 +566,7 @@ export class TeamMembers implements OnInit {
             createdUser
           );
 
-          this.loadUsers();
-
-          this.closeModal();
+          this.handleSaveSuccess('Member added successfully.');
 
         },
 
@@ -583,10 +634,13 @@ export class TeamMembers implements OnInit {
                 user
               );
 
-              this.users =
-                this.users.filter(
-                  u => u.id !== user.id
-                );
+              this.loadUsers();
+
+              this.showAlert(
+                'Member deleted successfully.',
+                'success',
+                'Success'
+              );
 
             },
 

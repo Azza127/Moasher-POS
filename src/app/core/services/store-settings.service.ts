@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http';
 
 import {
+  BehaviorSubject,
   Observable,
   timeout
 } from 'rxjs';
@@ -22,11 +23,30 @@ export class StoreSettingsService {
   private apiUrl =
     'http://localhost:3000/storeSettings';
 
+  private readonly settingsSubject = new BehaviorSubject<StoreSettings | null>(null);
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) {
+    const cachedSettings = localStorage.getItem('storeSettings');
 
+    if (cachedSettings) {
+      try {
+        this.settingsSubject.next(JSON.parse(cachedSettings) as StoreSettings);
+      } catch {
+        localStorage.removeItem('storeSettings');
+      }
+    }
+  }
+
+  getCurrentSettings(): Observable<StoreSettings | null> {
+    return this.settingsSubject.asObservable();
+  }
+
+  setCurrentSettings(settings: StoreSettings): void {
+    this.settingsSubject.next(settings);
+    localStorage.setItem('storeSettings', JSON.stringify(settings));
+  }
 
   // =========================================
   // GET SETTINGS

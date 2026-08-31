@@ -395,6 +395,7 @@ export class SettingsComponent implements OnInit {
             ...data
           };
 
+          this.storeSettingsService.setCurrentSettings(this.settings);
 
           this.originalSettings = {
             ...data

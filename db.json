@@ -63,6 +63,22 @@
       "role": "Employee",
       "status": "Active",
       "id": "QAX8Z84P0E8"
+    },
+    {
+      "username": "batoal",
+      "password": "654321",
+      "name": "batoal",
+      "role": "Owner",
+      "status": "Active",
+      "id": "vjVPmVk8l3E"
+    },
+    {
+      "id": "IKUIv5k1M-Y",
+      "username": "test",
+      "password": "123789",
+      "name": "test",
+      "role": "Employee",
+      "status": "Inactive"
     }
   ],
   "categories": [
@@ -110,7 +126,7 @@
       "sku": "MOU-001",
       "categoryId": "1",
       "price": 500,
-      "stock": 5,
+      "stock": 8,
       "minStock": 10,
       "maxStock": 50,
       "description": "Black / Wireless",
@@ -555,7 +571,7 @@
   "storeSettings": [
     {
       "id": "1",
-      "storeName": "store norrrr",
+      "storeName": "store nory",
       "phone": "01287893082",
       "address": "El Gomhoria St, Zagazig90",
       "currency": "EGP",
