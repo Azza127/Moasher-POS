@@ -1,170 +1,1183 @@
-.page-header h2 {
-  font-weight: 700;
-  color: #111827;
-}
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
 
-/* Stat cards */
-.stat-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 1.5rem 1.5rem 1.35rem;
-  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
-  border: 1px solid #eef0f3;
-  height: 100%;
-}
+   :host {
+    display: block;
+    color: #252A27;
+  }
+  
+  .dashboard {
+    width: 100%;
+  }
+  
+  
+  /* =========================================================
+     Header
+     ========================================================= */
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
+  }
+  
+  .eyebrow,
+  .section-kicker {
+    display: block;
+  
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  
+    color: #71856F;
+  
+    margin-bottom: 0.4rem;
+  }
+  
+  .dashboard-header h2 {
+    margin: 0;
+  
+    font-size: 2rem;
+    font-weight: 700;
+  
+    color: #252A27;
+  
+    letter-spacing: -0.025em;
+  }
+  
+  .dashboard-header p {
+    margin: 0.4rem 0 0;
+  
+    color: #8A8178;
+  
+    font-size: 0.9rem;
+  }
+  
+  
+  /* =========================================================
+     New Sale Button
+     ========================================================= */
+  
+  .new-sale-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  
+    padding: 0.7rem 1rem;
+  
+    background: #71856F;
+    color: #FCFCF8;
+  
+    border-radius: 8px;
+  
+    text-decoration: none;
+  
+    font-size: 0.85rem;
+    font-weight: 600;
+  
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  .new-sale-btn:hover {
+    background: #526653;
+    color: #FCFCF8;
+    transform: translateY(-1px);
+  }
+  
+  
+  /* =========================================================
+     KPI STRIP
+     ========================================================= */
+  
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  
+    background: #FCFCF8;
+  
+    border: 1px solid #E4DED4;
+    border-radius: 12px;
+  
+    margin-bottom: 1.5rem;
+  
+    overflow: hidden;
+  }
+  
+  .kpi-item {
+    position: relative;
+  
+    min-height: 132px;
+  
+    padding: 1.25rem 1.4rem;
+  
+    border-right: 1px solid #E4DED4;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .kpi-item:last-child {
+    border-right: none;
+  }
+  
+  .kpi-item::before {
+    content: "";
+  
+    position: absolute;
+  
+    left: 0;
+    top: 0;
+  
+    width: 3px;
+    height: 100%;
+  
+    background: transparent;
+  }
+  
+  .kpi-item:first-child::before {
+    background: #71856F;
+  }
+  
+  .kpi-item.attention::before {
+    background: #C85C55;
+  }
+  
+  .kpi-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+  
+    letter-spacing: 0.09em;
+  
+    color: #8A8178;
+  
+    margin-bottom: 0.4rem;
+  }
+  
+  .kpi-value {
+    font-size: 1.65rem;
+    line-height: 1.1;
+  
+    font-weight: 700;
+  
+    color: #252A27;
+  
+    letter-spacing: -0.025em;
+  }
+  
+  .kpi-value.danger {
+    color: #C85C55;
+  }
+  
+  .kpi-note {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  
+    margin-top: 0.45rem;
+  
+    font-size: 0.75rem;
+  
+    color: #8A8178;
+  }
+  
+  .kpi-note.positive {
+    color: #5E866B;
+  }
+  
+  .kpi-note.danger {
+    color: #C85C55;
+  }
+  
+  
+/* =========================================================
+   Main Dashboard Area
+   ========================================================= */
 
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
+   .dashboard-grid {
+    display: grid;
+  
+    grid-template-columns:
+      minmax(0, 1.65fr)
+      minmax(300px, 0.9fr);
+  
+    gap: 1.5rem;
+  
+    margin-bottom: 1.5rem;
+  
+    /* Important:
+       Prevent the grid from stretching panels
+       based on the tallest content. */
+    align-items: stretch;
+  }
+  
+  
+  /* =========================================================
+     Fixed-height Dashboard Panels
+     ========================================================= */
+  
+     .activity-panel {
+      background: #FCFCF8;
+    
+      border: 1px solid #E4DED4;
+      border-radius: 12px;
+    
+      display: flex;
+      flex-direction: column;
+    }
 
-.stat-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #98a2b3;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
+    .activity-panel,
+    .inventory-panel {
+      height: 500px;
+      min-height: 500px;
+      max-height: 500px;
+    
+      overflow: hidden;
+    }
+  
+  
+/* =========================================================
+   Shared Panel
+   ========================================================= */
 
-.stat-value {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: #101828;
-  line-height: 1.1;
-  white-space: nowrap;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-}
+   .activity-panel,
+   .inventory-panel,
+   .orders-section {
+     background: #FCFCF8;
+   
+     border: 1px solid #E4DED4;
+     border-radius: 12px;
+   }
+   
+   
+   /* Sales + Inventory panels use
+      a controlled vertical layout */
+   
+   .activity-panel,
+   .inventory-panel {
+     display: flex;
+     flex-direction: column;
+   
+     overflow: hidden;
+   }
+  
+  
+  /* =========================================================
+     Section Heading
+     ========================================================= */
+  
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+    padding: 1.25rem 1.4rem;
+  
+    border-bottom: 1px solid #E4DED4;
+  }
+  
+  .section-heading h3,
+  .orders-header h3 {
+    margin: 0;
+  
+    font-size: 1rem;
+    font-weight: 700;
+  
+    color: #252A27;
+  }
+  
+  .section-heading p,
+  .orders-header p {
+    margin: 0.3rem 0 0;
+  
+    color: #8A8178;
+  
+    font-size: 0.78rem;
+  }
+  
+  
+  /* =========================================================
+     Activity Total
+     ========================================================= */
+  
+  .activity-total {
+    text-align: right;
+  }
+  
+  .activity-total span {
+    display: block;
+  
+    font-size: 0.7rem;
+  
+    color: #8A8178;
+  
+    margin-bottom: 0.15rem;
+  }
+  
+  .activity-total strong {
+    font-size: 1rem;
+  
+    color: #252A27;
+  }
+  
+  
+/* =========================================================
+   SALES TREND + ORDER COUNT
+   ========================================================= */
 
-.stat-icon {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-}
+   .sales-trend-chart {
+    padding: 1rem 1.4rem 0.65rem;
+  }
+  
+  
+  /* =========================================================
+     Legend
+     ========================================================= */
+  
+  .chart-meta {
+    display: flex;
+    justify-content: flex-end;
+  
+    margin-bottom: 0.45rem;
+  }
+  
+  .chart-legend {
+    display: flex;
+    align-items: center;
+  
+    gap: 1rem;
+  }
+  
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 0.35rem;
+  
+    color: #8A8178;
+  
+    font-size: 0.68rem;
+  }
+  
+  .legend-line {
+    width: 18px;
+    height: 2px;
+  
+    display: inline-block;
+  
+    border-radius: 10px;
+  }
+  
+  .sales-legend {
+    background: #71856F;
+  }
+  
+  .orders-legend {
+    background: #C5913B;
+  }
+  
+  
+  /* =========================================================
+     Chart Area
+     ========================================================= */
+  
+  .chart-area {
+    display: flex;
+  
+    height: 230px;
+  
+    gap: 0.7rem;
+  }
+  
+  
+  .chart-y-axis {
+    width: 55px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    padding: 4px 0 25px;
+  
+    text-align: right;
+  
+    color: #A0988F;
+  
+    font-size: 0.6rem;
+  
+    flex-shrink: 0;
+  }
+  
+  
+  .chart-main {
+    position: relative;
+  
+    flex: 1;
+    min-width: 0;
+  
+    height: 100%;
+  }
+  
+  
+  /* =========================================================
+     Grid
+     ========================================================= */
+  
+  .chart-grid-lines {
+    position: absolute;
+  
+    inset: 0 0 25px 0;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    pointer-events: none;
+  }
+  
+  .chart-grid-lines span {
+    display: block;
+  
+    width: 100%;
+  
+    border-top: 1px solid #EEEAE2;
+  }
+  
+  
+  /* =========================================================
+     SVG
+     ========================================================= */
+  
+  .sales-svg {
+    position: absolute;
+  
+    left: 0;
+    right: 0;
+    top: 0;
+  
+    width: 100%;
+    height: 205px;
+  
+    overflow: visible;
+  }
+  
+  
+  /* =========================================================
+     Sales Area
+     ========================================================= */
+  
+  .sales-area {
+    fill: #71856F;
+  
+    opacity: 0.08;
+  
+    pointer-events: none;
+  }
+  
+  
+  /* =========================================================
+     Sales Line
+     ========================================================= */
+  
+  .sales-path {
+    fill: none;
+  
+    stroke: #71856F;
+  
+    stroke-width: 2.5;
+  
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  
+    vector-effect: non-scaling-stroke;
+  }
+  
+  
+  /* =========================================================
+     Orders Line
+     ========================================================= */
+  
+  .orders-path {
+    fill: none;
+  
+    stroke: #C5913B;
+  
+    stroke-width: 1.8;
+  
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  
+    stroke-dasharray: 4 5;
+  
+    opacity: 0.8;
+  
+    vector-effect: non-scaling-stroke;
+  }
+  
+  
+  /* =========================================================
+     Points
+     ========================================================= */
+  
+  .sales-point {
+    fill: #FCFCF8;
+  
+    stroke: #71856F;
+  
+    stroke-width: 2;
+  
+    vector-effect: non-scaling-stroke;
+  
+    transition:
+      r 0.15s ease;
+  }
+  
+  .sales-point:hover {
+    r: 6;
+  }
+  
+  
+  .orders-point {
+    fill: #FCFCF8;
+  
+    stroke: #C5913B;
+  
+    stroke-width: 1.8;
+  
+    opacity: 0.9;
+  
+    vector-effect: non-scaling-stroke;
+  }
+  
+  
+  /* =========================================================
+     X Axis
+     ========================================================= */
+  
+  .chart-x-axis {
+    position: absolute;
+  
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    height: 24px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  
+    color: #9A9289;
+  
+    font-size: 0.62rem;
+  }
+  
+  .chart-x-axis span {
+    white-space: nowrap;
+  }
+  /* =========================================================
+     Quick Actions
+     ========================================================= */
+  
+     .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    
+      padding: 1rem 1.4rem 1.25rem;
+    
+      gap: 0.7rem;
+    
+      margin-top: auto;
+    }
 
-.bg-green { background: #e3f6ec; color: #16a34a; }
-.bg-gray  { background: #eef0f3; color: #667085; }
-.bg-red   { background: #fde8e8; color: #dc2626; }
-.bg-amber { background: #fdedd3; color: #d97706; }
 
-.stat-trend {
-  font-size: 0.8rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.85rem;
-}
+  .quick-action {
+    min-width: 0;
+  
+    display: flex;
+    align-items: center;
+  
+    gap: 0.65rem;
+  
+    padding: 0.75rem;
+  
+    border: 1px solid #E4DED4;
+    border-radius: 8px;
+  
+    text-decoration: none;
+  
+    color: #252A27;
+  
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  .quick-action:hover {
+    color: #252A27;
+  
+    border-color: #71856F;
+  
+    background: #F3F4EF;
+  
+    transform: translateY(-1px);
+  }
+  
+  .quick-action > i:first-child {
+    flex-shrink: 0;
+  
+    width: 30px;
+    height: 30px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 7px;
+  
+    background: #F3F4EF;
+  
+    color: #71856F;
+  }
+  
+  .quick-action span {
+    min-width: 0;
+  }
+  
+  .quick-action strong {
+    display: block;
+  
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+  
+  .quick-action small {
+    display: block;
+  
+    margin-top: 0.1rem;
+  
+    color: #8A8178;
+  
+    font-size: 0.66rem;
+  
+    white-space: nowrap;
+  }
+  
+  .action-arrow {
+    margin-left: auto;
+  
+    font-size: 0.7rem;
+  
+    color: #8A8178;
+  }
+  
+  .primary-action {
+    border-color: #C8D4C7;
+    background: #F5F8F4;
+  }
+  
+  
+  /* =========================================================
+     Inventory Panel
+     ========================================================= */
+  
+  .inventory-heading {
+    align-items: center;
+  }
 
-.stat-trend.up { color: #16a34a; }
-.stat-trend.danger { color: #dc2626; }
-.stat-trend.neutral { color: #98a2b3; }
-/* Panels */
-.panel {
-  background: #fff;
-  border-radius: 0.85rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  height: 100%;
-}
+  .inventory-panel .section-heading {
+    flex-shrink: 0;
+  }
+  
+  .warning-kicker {
+    color: #C5913B;
+  }
+  
+  .attention-number {
+    font-size: 1.7rem;
+    font-weight: 700;
+  
+    color: #C85C55;
+  }
+  
+  .inventory-list {
+    padding: 0.65rem 1rem;
+  
+    /* Take the remaining panel height */
+    flex: 1;
+    min-height: 0;
+  
+    /* Scroll ONLY the products */
+    overflow-y: auto;
+  
+    overflow-x: hidden;
+  
+    /* Smooth native scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: #C8D4C7 transparent;
+  }
 
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1.1rem 1.25rem;
-  border-bottom: 1px solid #f1f2f4;
-}
+  /* Inventory scrollbar - WebKit browsers */
 
-.panel-title {
-  font-weight: 700;
-  color: #111827;
-}
-
-.panel-sub {
-  font-size: 0.82rem;
-  color: #9aa3b2;
-}
-
-.view-all {
-  font-size: 0.85rem;
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.view-all:hover { text-decoration: underline; }
-
-/* Table */
-.modern-table thead th {
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  color: #9aa3b2;
-  font-weight: 600;
-  border-bottom: 1px solid #f1f2f4;
-  padding: 0.85rem 1.25rem;
-}
-
-.modern-table tbody td {
-  padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid #f6f7f8;
-  font-size: 0.88rem;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 500;
-}
-
-.status-badge .dot {
+.inventory-list::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
-  border-radius: 50%;
 }
 
-.status-success { background: #dcfce7; color: #16a34a; }
-.status-success .dot { background: #16a34a; }
-
-.status-warning { background: #fef3c7; color: #d97706; }
-.status-warning .dot { background: #d97706; }
-
-.status-danger { background: #fee2e2; color: #dc2626; }
-.status-danger .dot { background: #dc2626; }
-
-/* Low stock list */
-.low-stock-list {
-  padding: 0.5rem 1rem 1rem;
+.inventory-list::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.low-stock-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 0.6rem;
-  margin-top: 0.5rem;
-  background: #f9fafb;
+.inventory-list::-webkit-scrollbar-thumb {
+  background: #C8D4C7;
+  border-radius: 10px;
 }
 
-.low-stock-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 0.5rem;
-  background: #fff;
-  border: 1px solid #e9ecef;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b7280;
+.inventory-list::-webkit-scrollbar-thumb:hover {
+  background: #71856F;
 }
+
+  .inventory-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 0.75rem;
+  
+    padding: 0.7rem 0.45rem;
+  
+    border-bottom: 1px solid #EDE9E1;
+  }
+  
+  .inventory-item:last-child {
+    border-bottom: none;
+  }
+  
+  .inventory-item-main {
+    display: flex;
+    align-items: center;
+  
+    gap: 0.65rem;
+  
+    min-width: 0;
+  }
+  
+  .inventory-icon {
+    width: 34px;
+    height: 34px;
+  
+    flex-shrink: 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border: 1px solid #E4DED4;
+    border-radius: 7px;
+  
+    color: #71856F;
+  
+    background: #FCFCF8;
+  }
+  
+  .inventory-item-main > div:last-child {
+    min-width: 0;
+  }
+  
+  .inventory-item-main strong {
+    display: block;
+  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  
+    font-size: 0.8rem;
+    font-weight: 600;
+  
+    color: #252A27;
+  }
+  
+  .inventory-item-main span {
+    display: block;
+  
+    margin-top: 0.15rem;
+  
+    color: #8A8178;
+  
+    font-size: 0.67rem;
+  }
+  
+  .inventory-stock {
+    flex-shrink: 0;
+  
+    text-align: right;
+  }
+  
+  .inventory-stock strong {
+    display: block;
+  
+    font-size: 0.9rem;
+  }
+  
+  .inventory-stock span {
+    display: block;
+  
+    font-size: 0.65rem;
+  
+    color: #8A8178;
+  }
+  
+  .stock-danger {
+    color: #C85C55;
+  }
+  
+  .stock-warning {
+    color: #C5913B;
+  }
+  
+  .inventory-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    margin: 0 1rem 1rem;
+    padding-top: 0.75rem;
+  
+    border-top: 1px solid #E4DED4;
+  
+    color: #71856F;
+  
+    font-size: 0.75rem;
+    font-weight: 600;
+  
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  
+  .inventory-link:hover {
+    color: #526653;
+  }
+  
+  .empty-inventory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 0.5rem;
+  
+    padding: 2rem 1rem;
+  
+    color: #5E866B;
+  
+    font-size: 0.8rem;
+  }
+  
+  
+  /* =========================================================
+     Orders
+     ========================================================= */
+  
+  .orders-section {
+    overflow: hidden;
+  }
+  
+  .orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+    padding: 1.25rem 1.4rem;
+  
+    border-bottom: 1px solid #E4DED4;
+  }
+  
+  .view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  
+    padding-top: 0.15rem;
+  
+    color: #71856F;
+  
+    font-size: 0.78rem;
+    font-weight: 600;
+  
+    text-decoration: none;
+  }
+  
+  .view-all:hover {
+    color: #526653;
+  }
+  
+  
+  /* =========================================================
+     Orders Table
+     ========================================================= */
+  
+  .orders-table-wrapper {
+    width: 100%;
+  
+    overflow-x: auto;
+  }
+  
+  .orders-table {
+    width: 100%;
+  
+    border-collapse: collapse;
+  
+    min-width: 650px;
+  }
+  
+  .orders-table th {
+    padding: 0.8rem 1.4rem;
+  
+    text-align: left;
+  
+    background: #F8F8F3;
+  
+    border-bottom: 1px solid #E4DED4;
+  
+    color: #8A8178;
+  
+    font-size: 0.65rem;
+    font-weight: 700;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  .orders-table td {
+    padding: 0.9rem 1.4rem;
+  
+    border-bottom: 1px solid #EDE9E1;
+  
+    font-size: 0.8rem;
+  }
+  
+  .orders-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .orders-table tbody tr {
+    transition: background 0.15s ease;
+  }
+  
+  .orders-table tbody tr:hover {
+    background: #F7F7F2;
+  }
+  
+  .order-id {
+    font-weight: 600;
+  
+    color: #252A27;
+  }
+  
+  .order-date {
+    color: #8A8178;
+  }
+  
+  .order-amount {
+    color: #252A27;
+  
+    font-weight: 600;
+  }
+  
+  
+  /* =========================================================
+     Status
+     ========================================================= */
+  
+  .order-status {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 0.4rem;
+  
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  
+    border-radius: 50%;
+  }
+  
+  .order-status.completed {
+    color: #5E866B;
+  }
+  
+  .order-status.completed .status-dot {
+    background: #5E866B;
+  }
+  
+  .order-status.pending {
+    color: #C5913B;
+  }
+  
+  .order-status.pending .status-dot {
+    background: #C5913B;
+  }
+  
+  .order-status.cancelled {
+    color: #C85C55;
+  }
+  
+  .order-status.cancelled .status-dot {
+    background: #C85C55;
+  }
+  
+  
+  /* =========================================================
+     Empty Orders
+     ========================================================= */
+  
+  .empty-orders {
+    padding: 2.5rem;
+  
+    text-align: center;
+  
+    color: #8A8178;
+  }
+  
+  
+  /* =========================================================
+     Loading
+     ========================================================= */
+  
+  .dashboard-loading {
+    min-height: 300px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .spinner-border.text-primary {
+    color: #71856F !important;
+  }
+  
+  
+  /* =========================================================
+     Responsive
+     ========================================================= */
+  
+     @media (max-width: 1100px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    
+      .activity-panel,
+      .inventory-panel {
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
+      }
+    }
+  
+  
+  @media (max-width: 850px) {
+  
+    .kpi-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .kpi-item:nth-child(2) {
+      border-right: none;
+    }
+  
+    .kpi-item:nth-child(-n + 2) {
+      border-bottom: 1px solid #E4DED4;
+    }
+  
+    .quick-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
+  @media (max-width: 600px) {
+
+    .dashboard-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .dashboard-header h2 {
+      font-size: 1.65rem;
+    }
+  
+    .new-sale-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .kpi-strip {
+      grid-template-columns: 1fr;
+    }
+  
+    .kpi-item {
+      min-height: 105px;
+  
+      border-right: none;
+      border-bottom: 1px solid #E4DED4;
+    }
+  
+    .kpi-item:last-child {
+      border-bottom: none;
+    }
+  
+    .kpi-item:nth-child(2) {
+      border-bottom: 1px solid #E4DED4;
+    }
+  
+    .sales-trend-chart {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+    }
+    
+    .chart-y-axis {
+      width: 45px;
+      font-size: 0.55rem;
+    }
+    
+    .chart-x-axis {
+      font-size: 0.55rem;
+    }
+
+    .section-heading,
+    .orders-header {
+      padding: 1rem;
+    }
+  
+    .quick-actions {
+      padding: 0.8rem 1rem 1rem;
+    }
+  
+    .inventory-list {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+    }
+  
+    .inventory-link {
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+    }
+  
+  
+    /* Fixed dashboard panel height on mobile */
+  
+    .activity-panel,
+    .inventory-panel {
+      height: 460px;
+      min-height: 460px;
+      max-height: 460px;
+    }
+  }

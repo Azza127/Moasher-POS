@@ -199,12 +199,7 @@
 
                 <div class="actions">
 
-                  @if (
-                    getCurrentRole() === 'Owner' ||
-                    getCurrentRole() === 'Manager'
-                  ) {
-
-                 
+                  @if (canEditUser(user)) {
 
                     <button
                       type="button"
@@ -217,27 +212,24 @@
 
                     </button>
 
+                  }
 
-                    @if (
-                      getCurrentUser()?.id !== user.id
-                    ) {
+                  @if (canDeleteUser(user) && getCurrentUser()?.id !== user.id) {
 
-                      <button
-                        type="button"
-                        class="action-btn delete-btn"
-                        title="Delete Member"
-                        (click)="deleteUser(user)"
-                      >
+                    <button
+                      type="button"
+                      class="action-btn delete-btn"
+                      title="Delete Member"
+                      (click)="deleteUser(user)"
+                    >
 
-                        <i class="bi bi-trash-fill"></i>
+                      <i class="bi bi-trash-fill"></i>
 
-                      </button>
-
-                    }
+                    </button>
 
                   }
 
-                  @else {
+                  @if (!canEditUser(user) && !canDeleteUser(user)) {
 
                     <span class="view-only">
 
@@ -540,10 +532,12 @@
                   Employee
                 </option>
 
-                <option value="Manager">
+                <option
+                  value="Manager"
+                  [disabled]="getCurrentRole() !== 'Owner'"
+                >
                   Manager
                 </option>
-
 
                 <option
                   value="Owner"

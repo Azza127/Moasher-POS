@@ -1,214 +1,557 @@
 <div class="reports-container">
-  
-    <!-- Top Bar -->
-    <div class="top-navbar">
-        <div class="search-box">
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <input type="text" placeholder="Search reports..." />
-        </div>
-        <div class="user-actions">
-          <div class="notification-badge">
-            <i class="fa-regular fa-bell"></i>
-            <span class="dot-alert"></span>
+
+  <!-- =====================================================
+       PAGE HEADER
+       ===================================================== -->
+  <header class="reports-header">
+
+    <div class="header-title">
+
+      <h1 class="page-title">
+        Reports &amp; Analytics
+      </h1>
+
+      <p class="subtitle">
+        Monitor key metrics, sales trends, and inventory health.
+      </p>
+
+    </div>
+
+    <div class="header-filters">
+
+      <!-- All Time -->
+      <div class="filter-dropdown-wrapper">
+
+        <div class="custom-period-dropdown">
+
+          <button
+            type="button"
+            class="btn-filter custom-period-button"
+            (click)="togglePeriodDropdown()"
+          >
+            {{ getSelectedPeriodLabel() }}
+        
+            <span class="dropdown-arrow"></span>
+          </button>
+        
+        
+          <div
+            class="period-options"
+            *ngIf="isPeriodDropdownOpen"
+          >
+        
+            <button
+              type="button"
+              class="period-option"
+              [class.selected]="selectedPeriod === 'all'"
+              (click)="selectPeriod('all')"
+            >
+              📅 All Time
+            </button>
+        
+            <button
+              type="button"
+              class="period-option"
+              [class.selected]="selectedPeriod === 'month'"
+              (click)="selectPeriod('month')"
+            >
+              📅 This Month
+            </button>
+        
+            <button
+              type="button"
+              class="period-option"
+              [class.selected]="selectedPeriod === 'year'"
+              (click)="selectPeriod('year')"
+            >
+              📅 This Year
+            </button>
+        
           </div>
-          <div class="user-avatar">JD</div>
-        </div>
-      </div>
-      
-      <!-- Header Section (العنوان والأزرار على نفس السطر) -->
-      <div class="reports-header">
-        <div class="header-title">
-          <h1 class="page-title">Reports & Analytics</h1>
-          <p class="subtitle">Monitor key metrics, sales trends, and inventory health.</p>
+        
         </div>
 
-        <div class="header-filters">
-            <!-- Dropdown الفلترة الزمنية -->
-            <div class="filter-dropdown-wrapper">
-              <select class="btn-filter" [(ngModel)]="selectedPeriod" (change)="onPeriodChange()">
-                <option value="all">📅 All Time</option>
-                <option value="month">📅 This Month</option>
-                <option value="year">📅 This Year</option>
-              </select>
-            </div>
-          
-            <!-- زر تصدير PDF -->
-            <button class="btn-export" (click)="exportPDF()">
-              <i class="fa-regular fa-file-pdf"></i> Export PDF
-            </button>
-          
-            <!-- زر تصدير CSV -->
-            <button class="btn-export" (click)="exportCSV()">
-              <i class="fa-regular fa-file-excel"></i> Export CSV
-            </button>
-          </div>
+      </div>
 
-      </div>
-  
-    <!-- Loading & Error States -->
-    <div *ngIf="isLoading" class="state-msg">Loading reports...</div>
-    <div *ngIf="errorMessage && !isLoading" class="state-msg error">{{ errorMessage }}</div>
-  
-    <!-- Main Grid -->
-    <div *ngIf="!isLoading && !errorMessage" class="dashboard-grid">
-      
-      <!-- Row 1: Sales Overview & Sales by Category -->
-      <div class="grid-row">
-        
-        <!-- 1. Sales Overview Card (Line Chart) -->
-        <div class="card">
-          <div class="card-header">
-            <h3>Sales Overview</h3>
-            <i class="fa-solid fa-ellipsis-vertical dot-icon"></i>
-          </div>
-          <div class="card-body">
-            <div class="total-sales-badge">
-              <h2>${{ totalSales | number:'1.2-2' }}</h2>
-              <p>Total Revenue from {{ totalOrdersCount }} Completed Orders</p>
-            </div>
-            
-            <!-- Canvas للـ Line Chart -->
-            <div class="chart-container" style="position: relative; height: 180px; width: 100%;">
-              <canvas id="salesLineChart"></canvas>
-            </div>
-  
-            <div class="overview-stats-grid">
-              <div class="stat-box">
-                <span class="label">Completed Orders</span>
-                <span class="value">{{ totalOrdersCount }}</span>
-              </div>
-              <div class="stat-box">
-                <span class="label">Avg Order Value</span>
-                <span class="value">${{ totalOrdersCount > 0 ? (totalSales / totalOrdersCount | number:'1.2-2') : '0.00' }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-    <!-- Sales by Category Card -->
-    <div class="card category-card">
-        <div class="card-header">
-        <h3 class="card-title">Sales by Category</h3>
-        <i class="fa-solid fa-ellipsis-vertical dot-icon"></i>
-        </div>
-        <div class="card-body category-body">
-        
-        <!-- Canvas Chart Container -->
-        <div class="chart-wrapper">
-            <canvas id="categoryDoughnutChart"></canvas>
-        </div>
-    
-        <!-- Custom Legend (Figma Grid Layout) -->
-        <div class="category-legend-grid">
-            <div *ngFor="let cat of categoryReports; let i = index" class="legend-item">
-            <div class="legend-left">
-                <span class="dot" [style.background-color]="getCategoryColor(i)"></span>
-                <span class="cat-name">{{ cat.categoryName }}</span>
-            </div>
-            <span class="cat-percent">{{ cat.percentage }}%</span>
-            </div>
-        </div>
-    
-        </div>
+      <!-- Export PDF -->
+      <button
+        type="button"
+        class="btn-export"
+        (click)="exportPDF()"
+      >
+        <i class="fa-regular fa-file-pdf"></i>
+        <span>Export PDF</span>
+      </button>
+
+      <!-- Export CSV -->
+      <button
+        type="button"
+        class="btn-export"
+        (click)="exportCSV()"
+      >
+        <i class="fa-regular fa-file-excel"></i>
+        <span>Export CSV</span>
+      </button>
+
     </div>
-  
-      </div>
-  
-      <!-- Row 2: Top Products & Inventory Valuation -->
-      <div class="grid-row">
-        
-        <!-- 3. Top Performing Products Card -->
-        <div class="card">
-          <div class="card-header">
-            <h3>Top Performing Products</h3>
-            <a href="#" class="view-all-link" (click)="$event.preventDefault()">View All</a>
-          </div>
-          <div class="card-body p-0">
-            <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>PRODUCT NAME</th>
-                    <th>UNITS SOLD</th>
-                    <th>REVENUE</th>
-                    <th>TREND</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let prod of topProducts">
-                    <td class="product-cell">
-                      <div class="product-icon"><i class="fa-solid fa-box"></i></div>
-                      <strong>{{ prod.productName }}</strong>
-                    </td>
-                    <td>{{ prod.unitsSold }} units</td>
-                    <td><strong>${{ prod.revenue | number:'1.2-2' }}</strong></td>
-                    <td>
-                      <span class="trend-badge" [ngClass]="prod.isPositive ? 'positive' : 'negative'">
-                        <i class="fa-solid" [ngClass]="prod.isPositive ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'"></i>
-                        {{ prod.isPositive ? '+' : '' }}{{ prod.trend }}%
-                      </span>
-                    </td>
-                  </tr>
-                  <tr *ngIf="topProducts.length === 0">
-                    <td colspan="4" class="empty-cell">No products sold yet.</td>
-                  </tr>
-                </tbody>
-              </table>
-          </div>
-        </div>
-  
-        <!-- 4. Inventory Valuation Card -->
-        <div class="card">
-            <div class="card-header">
-              <h3>Inventory Valuation</h3>
-              <span class="info-icon"><i class="fa-solid fa-circle-info"></i></span>
-            </div>
-            <div class="card-body">
-              
-              <!-- Total Asset Value (Cost) -->
-              <div class="valuation-box">
-                <div class="val-header">
-                  <span>Total Asset Value (Cost)</span>
-                  <span class="icon-badge"><i class="fa-solid fa-wallet"></i></span>
-                </div>
-                <h2>${{ inventoryValuation.totalCost | number:'1.2-2' }}</h2>
-              </div>
-          
-              <!-- Potential Revenue -->
-              <div class="revenue-metric mt-3">
-                <div class="metric-label">
-                  <span>Potential Revenue (Retail)</span>
-                  <strong>${{ inventoryValuation.potentialRevenue | number:'1.2-2' }}</strong>
-                </div>
-                <div class="progress-line-bg">
-                  <div class="progress-line-fill" style="width: 65%;"></div>
-                </div>
-              </div>
-          
-              <!-- Profit Margin Section -->
-        <div class="margin-metric mt-4">
-            <div class="metric-label">
-            <span class="label-title">Avg. Profit Margin</span>
-            <strong class="margin-value">{{ inventoryValuation.profitMargin }}%</strong>
-            </div>
-        
-            <!-- Multi-segment Colored Bar -->
-            <div class="margin-bar-container">
-            <div class="bar-segment low" title="Low (<15%)"></div>
-            <div class="bar-segment medium" title="Medium (15%-30%)"></div>
-            <div class="bar-segment high" title="High (>30%)"></div>
-            </div>
-        
-            <!-- Bar Labels -->
-            <div class="margin-labels">
-            <span>Low (&lt;15%)</span>
-            <span>High (&gt;30%)</span>
-            </div>
-        </div>
-          
-            </div>
-          </div>
-  
-      </div>
-  
-    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       LOADING / ERROR
+       ===================================================== -->
+
+  <div
+    *ngIf="isLoading"
+    class="state-msg"
+  >
+    Loading reports...
   </div>
+
+  <div
+    *ngIf="errorMessage && !isLoading"
+    class="state-msg error"
+  >
+    {{ errorMessage }}
+  </div>
+
+
+  <!-- =====================================================
+       MAIN REPORTS
+       ===================================================== -->
+
+  <main
+    *ngIf="!isLoading && !errorMessage"
+    class="dashboard-grid"
+  >
+
+    <!-- ===================================================
+         ROW 1
+         =================================================== -->
+
+    <div class="grid-row">
+
+      <!-- =================================================
+           SALES OVERVIEW
+           ================================================= -->
+
+      <section class="card sales-overview-card">
+
+        <div class="card-header">
+
+          <h3>
+            Sales Overview
+          </h3>
+
+          <button
+            type="button"
+            class="dot-icon"
+            aria-label="More options"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+
+        </div>
+
+
+        <div class="card-body">
+
+          <!-- Total Sales -->
+          <div class="total-sales-badge">
+
+            <h2>
+              ${{ totalSales | number:'1.2-2' }}
+            </h2>
+
+            <p>
+              Total Revenue from
+              {{ totalOrdersCount }}
+              Completed Orders
+            </p>
+
+          </div>
+
+
+          <!-- Line Chart -->
+          <div class="chart-container">
+
+            <canvas id="salesLineChart"></canvas>
+
+          </div>
+
+
+          <!-- Overview Stats -->
+          <div class="overview-stats-grid">
+
+            <div class="stat-box">
+
+              <span class="label">
+                Completed Orders
+              </span>
+
+              <span class="value">
+                {{ totalOrdersCount }}
+              </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+              <span class="label">
+                Avg Order Value
+              </span>
+
+              <span class="value">
+                ${{
+                  totalOrdersCount > 0
+                    ? (totalSales / totalOrdersCount | number:'1.2-2')
+                    : '0.00'
+                }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SALES BY CATEGORY
+           ================================================= -->
+
+      <section class="card category-card">
+
+        <div class="card-header">
+
+          <h3>
+            Sales by Category
+          </h3>
+
+          <button
+            type="button"
+            class="dot-icon"
+            aria-label="More options"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+
+        </div>
+
+
+        <div class="card-body category-body">
+
+          <!-- Doughnut -->
+          <div class="chart-wrapper">
+
+            <canvas id="categoryDoughnutChart"></canvas>
+
+          </div>
+
+
+          <!-- Legend -->
+          <div class="category-legend-grid">
+
+            <div
+              *ngFor="let cat of categoryReports; let i = index"
+              class="legend-item"
+            >
+
+              <div class="legend-left">
+
+                <span
+                  class="dot"
+                  [style.background-color]="getCategoryColor(i)"
+                ></span>
+
+                <span class="cat-name">
+                  {{ cat.categoryName }}
+                </span>
+
+              </div>
+
+              <span class="cat-percent">
+                {{ cat.percentage }}%
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- ===================================================
+         ROW 2
+         =================================================== -->
+
+    <div class="grid-row">
+
+      <!-- =================================================
+           TOP PRODUCTS
+           ================================================= -->
+
+      <section class="card products-card">
+
+        <div class="card-header">
+
+          <h3>
+            Top Performing Products
+          </h3>
+
+          <a
+            href="#"
+            class="view-all-link"
+            (click)="$event.preventDefault()"
+          >
+            View All
+          </a>
+
+        </div>
+
+
+        <div class="card-body table-body">
+
+          <div class="table-wrapper">
+
+            <table class="data-table">
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    PRODUCT NAME
+                  </th>
+
+                  <th>
+                    UNITS SOLD
+                  </th>
+
+                  <th>
+                    REVENUE
+                  </th>
+
+                  <th>
+                    TREND
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody>
+
+                <tr
+                  *ngFor="let prod of topProducts"
+                >
+
+                  <td class="product-cell">
+
+                    <div class="product-icon">
+                      <i class="fa-solid fa-box"></i>
+                    </div>
+
+                    <strong>
+                      {{ prod.productName }}
+                    </strong>
+
+                  </td>
+
+
+                  <td>
+                    {{ prod.unitsSold }} units
+                  </td>
+
+
+                  <td>
+                    <strong>
+                      ${{ prod.revenue | number:'1.2-2' }}
+                    </strong>
+                  </td>
+
+
+                  <td>
+
+                    <span
+                      class="trend-badge"
+                      [ngClass]="prod.isPositive ? 'positive' : 'negative'"
+                    >
+
+                      <i
+                        class="fa-solid"
+                        [ngClass]="
+                          prod.isPositive
+                            ? 'fa-arrow-trend-up'
+                            : 'fa-arrow-trend-down'
+                        "
+                      ></i>
+
+                      {{ prod.isPositive ? '+' : '' }}{{ prod.trend }}%
+
+                    </span>
+
+                  </td>
+
+                </tr>
+
+
+                <tr
+                  *ngIf="topProducts.length === 0"
+                >
+
+                  <td
+                    colspan="4"
+                    class="empty-cell"
+                  >
+                    No products sold yet.
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           INVENTORY VALUATION
+           ================================================= -->
+
+      <section class="card inventory-card">
+
+        <div class="card-header">
+
+          <h3>
+            Inventory Valuation
+          </h3>
+
+          <span class="info-icon">
+            <i class="fa-solid fa-circle-info"></i>
+          </span>
+
+        </div>
+
+
+        <div class="card-body inventory-body">
+
+          <!-- Total Asset Value -->
+          <div class="valuation-box">
+
+            <div class="val-header">
+
+              <span>
+                Total Asset Value (Cost)
+              </span>
+
+              <span class="icon-badge">
+                <i class="fa-solid fa-wallet"></i>
+              </span>
+
+            </div>
+
+            <h2>
+              ${{ inventoryValuation.totalCost | number:'1.2-2' }}
+            </h2>
+
+          </div>
+
+
+          <!-- Potential Revenue -->
+          <div class="revenue-metric">
+
+            <div class="metric-label">
+
+              <span>
+                Potential Revenue (Retail)
+              </span>
+
+              <strong>
+                ${{ inventoryValuation.potentialRevenue | number:'1.2-2' }}
+              </strong>
+
+            </div>
+
+
+            <div class="progress-line-bg">
+
+              <div
+                class="progress-line-fill"
+                [style.width.%]="
+                  inventoryValuation.potentialRevenue > 0
+                    ? (inventoryValuation.totalCost /
+                       inventoryValuation.potentialRevenue) * 100
+                    : 0
+                "
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Profit Margin -->
+          <div class="margin-metric">
+
+            <div class="metric-label">
+
+              <span class="label-title">
+                Avg. Profit Margin
+              </span>
+
+              <strong class="margin-value">
+                {{ inventoryValuation.profitMargin }}%
+              </strong>
+
+            </div>
+
+
+            <div class="margin-bar-container">
+
+              <div class="bar-segment low"></div>
+
+              <div class="bar-segment medium"></div>
+
+              <div class="bar-segment high"></div>
+
+            </div>
+
+
+            <div class="margin-labels">
+
+              <span>
+                Low (&lt;15%)
+              </span>
+
+              <span>
+                High (&gt;30%)
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

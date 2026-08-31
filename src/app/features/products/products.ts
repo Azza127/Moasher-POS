@@ -4,7 +4,7 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
+import { HostListener } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
 
@@ -114,10 +114,63 @@ export class Products implements OnInit {
     this.searchSubject.next(searchTerm);
   }
 
-  filterByCategory(categoryId: string): void {
-    this.selectedCategoryId = categoryId || null;
-    this.applyFilters();
+    // ظظظظظظظظظظظظظظظظظظظ
+changeSearchMode(mode: 'name' | 'sku'): void {
+  this.searchMode = mode;
+  this.applyFilters();
+}
+// ظظظظظظظظظظظظظظظظظظظ
+
+isCategoryDropdownOpen = false;
+
+toggleCategoryDropdown(): void {
+  this.isCategoryDropdownOpen =
+    !this.isCategoryDropdownOpen;
+}
+
+selectCategory(categoryId: string | null): void {
+
+  this.selectedCategoryId = categoryId;
+
+  this.isCategoryDropdownOpen = false;
+
+  this.filterByCategory(categoryId);
+}
+
+@HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent): void {
+
+  const target = event.target as HTMLElement;
+
+  if (!target.closest('.category-filter')) {
+    this.isCategoryDropdownOpen = false;
   }
+
+}
+
+getSelectedCategoryLabel(): string {
+
+  if (this.selectedCategoryId === null) {
+    return 'All Categories';
+  }
+
+  const selectedCategory =
+    this.categories.find(
+      category => category.id === this.selectedCategoryId
+    );
+
+  return selectedCategory?.name ?? 'All Categories';
+
+}
+
+filterByCategory(categoryId: string | null): void {
+
+  this.selectedCategoryId = categoryId;
+
+  this.applyFilters();
+
+}
+// ظظظظظظظظظظظ
 
   private applyFilters(): void {
     const term = this.searchTerm.trim().toLowerCase();

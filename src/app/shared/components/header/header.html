@@ -1,38 +1,58 @@
 <header class="header">
 
-  <div class="user-info">
+  <div class="header-context">
 
-    <div class="avatar">
+    <span class="context-title">
+      Store Workspace
+    </span>
 
-      {{ userName.charAt(0).toUpperCase() }}
+    <span class="context-divider"></span>
 
-    </div>
-
-
-    <div class="user-details">
-
-      <strong>
-        {{ userName }}
-      </strong>
-
-      <span>
-        {{ userRole }}
-      </span>
-
-    </div>
+    <span class="online-status">
+      <span class="status-dot"></span>
+      Online
+    </span>
 
   </div>
 
 
-  <button
-    type="button"
-    class="logout-btn"
-    (click)="logout()">
+  <div class="user-area">
 
-    <i class="bi bi-box-arrow-right"></i>
+    <div class="user-info">
 
-    Logout
+      <div class="avatar">
+        {{ userName.charAt(0).toUpperCase() }}
+      </div>
 
-  </button>
+      <div class="user-details">
+
+        <strong>
+          {{ userName }}
+        </strong>
+
+        <span>
+          {{ userRole }}
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="header-divider"></div>
+
+
+    <button
+      type="button"
+      class="logout-btn"
+      (click)="logout()">
+
+      <i class="bi bi-box-arrow-right"></i>
+
+      <span>Logout</span>
+
+    </button>
+
+  </div>
 
 </header>
