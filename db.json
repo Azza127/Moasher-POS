@@ -198,7 +198,7 @@
       "sku": "BOB-001",
       "categoryId": "6",
       "price": 550,
-      "stock": 40,
+      "stock": 39,
       "minStock": 2,
       "maxStock": 10,
       "description": "White / Cotton",
@@ -246,7 +246,7 @@
       "sku": "TOT-002",
       "categoryId": "cT8bmadytzM",
       "price": 550,
-      "stock": 20,
+      "stock": 19,
       "minStock": 5,
       "maxStock": 20,
       "description": "Black / perfume",
@@ -258,7 +258,7 @@
       "sku": "OUO-300",
       "categoryId": "ddA-8yD6-ss",
       "price": 160,
-      "stock": 2,
+      "stock": 1,
       "minStock": 4,
       "maxStock": 20,
       "description": "Outomatic / 8KG",
@@ -319,7 +319,7 @@
       "sku": "UOU-008",
       "categoryId": "k8ka5rF59Ms",
       "price": 4350,
-      "stock": 12,
+      "stock": 11,
       "maxStock": 50,
       "minStock": 4,
       "image": "https://i.pinimg.com/736x/ca/dc/8c/cadc8c1d17a2cd894fe4b40d65a64543.jpg"
@@ -331,7 +331,7 @@
       "sku": "EOE-002",
       "categoryId": "w-UYvx6E5OA",
       "price": 25,
-      "stock": 60,
+      "stock": 0,
       "maxStock": 100,
       "minStock": 10,
       "image": "https://i.pinimg.com/736x/d7/23/1f/d7231f4cd99d2747b5a9994f2b09e5e1.jpg"
@@ -635,33 +635,6 @@
           "taxAmount": 0,
           "subtotal": 700,
           "total": 700
-        }
-      ]
-    },
-    {
-      "id": "OVFZePr8rTk",
-      "supplierName": "شركة العبور للمواد الغذائية",
-      "invoiceNumber": "320145",
-      "invoiceDate": "2026-08-31",
-      "warehouseId": "هايبر وان",
-      "notes": "",
-      "subtotal": 900,
-      "taxTotal": 0,
-      "total": 900,
-      "items": [
-        {
-          "id": "1788188481749qdqwes",
-          "productId": "-1wpRIoloUU",
-          "productName": "V-Cola",
-          "sku": "EOE-002",
-          "quantity": 60,
-          "expiryDate": "",
-          "purchasePrice": 15,
-          "sellingPrice": 20,
-          "taxRate": 0,
-          "taxAmount": 0,
-          "subtotal": 900,
-          "total": 900
         }
       ]
     }
@@ -1387,6 +1360,53 @@
       "status": "Completed",
       "createdAt": "2026-08-31T18:47:04.310Z",
       "id": "bs3stmcADdI"
+    },
+    {
+      "ticketNumber": "#2523-E",
+      "items": [
+        {
+          "productId": "ILEoSyI_Fn8",
+          "productName": "Olympia",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "UTjQXLaZTHE",
+          "productName": "Blouse",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "Xh9JRv8y1Sg",
+          "productName": "Oxi",
+          "price": 160,
+          "quantity": 1,
+          "total": 160
+        },
+        {
+          "productId": "-1wpRIoloUU",
+          "productName": "V-Cola",
+          "price": 25,
+          "quantity": 1,
+          "total": 25
+        },
+        {
+          "productId": "W605lG_8obY",
+          "productName": "Turkish dinner set",
+          "price": 4350,
+          "quantity": 1,
+          "total": 4350
+        }
+      ],
+      "subtotal": 5635,
+      "tax": 788.9,
+      "total": 6423.9,
+      "paymentMethod": "Card",
+      "status": "Completed",
+      "createdAt": "2026-08-31T21:59:03.908Z",
+      "id": "apGQ_jMkBEY"
     }
   ],
   "storeSettings": [
@@ -1394,7 +1414,7 @@
       "id": "1",
       "storeName": "Hyper one",
       "phone": "01287893082",
-      "address": "امتداد محور 26 يوليو، مدخل مدينة الشيخ زايد، محافظة الجيزة",
+      "address": "امتداد محور 26 يوليو، مدخل مدينة الشيخ زايد، محافظة الجيزة.",
       "currency": "EGP",
       "taxRate": 15
     }
