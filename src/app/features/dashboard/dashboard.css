@@ -4,7 +4,7 @@
 
    :host {
     display: block;
-    color: #252A27;
+    color: #172033;
   }
   
   .dashboard {
@@ -32,7 +32,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
   
-    color: #71856F;
+    color: #159A91;
   
     margin-bottom: 0.4rem;
   }
@@ -43,7 +43,7 @@
     font-size: 2rem;
     font-weight: 700;
   
-    color: #252A27;
+    color: #172033;
   
     letter-spacing: -0.025em;
   }
@@ -51,7 +51,7 @@
   .dashboard-header p {
     margin: 0.4rem 0 0;
   
-    color: #8A8178;
+    color: #667085;
   
     font-size: 0.9rem;
   }
@@ -68,8 +68,8 @@
   
     padding: 0.7rem 1rem;
   
-    background: #71856F;
-    color: #FCFCF8;
+    background: #159A91;
+    color: #FFFFFF;
   
     border-radius: 8px;
   
@@ -84,8 +84,8 @@
   }
   
   .new-sale-btn:hover {
-    background: #526653;
-    color: #FCFCF8;
+    background: #117C75;
+    color: #FFFFFF;
     transform: translateY(-1px);
   }
   
@@ -98,9 +98,9 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   
-    background: #FCFCF8;
+    background: #FFFFFF;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E4E7EC;
     border-radius: 12px;
   
     margin-bottom: 1.5rem;
@@ -115,7 +115,7 @@
   
     padding: 1.25rem 1.4rem;
   
-    border-right: 1px solid #E4DED4;
+    border-right: 1px solid #E4E7EC;
   
     display: flex;
     flex-direction: column;
@@ -141,11 +141,11 @@
   }
   
   .kpi-item:first-child::before {
-    background: #71856F;
+    background: #159A91;
   }
   
   .kpi-item.attention::before {
-    background: #C85C55;
+    background: #D64545;
   }
   
   .kpi-label {
@@ -154,7 +154,7 @@
   
     letter-spacing: 0.09em;
   
-    color: #8A8178;
+    color: #667085;
   
     margin-bottom: 0.4rem;
   }
@@ -165,13 +165,13 @@
   
     font-weight: 700;
   
-    color: #252A27;
+    color: #172033;
   
     letter-spacing: -0.025em;
   }
   
   .kpi-value.danger {
-    color: #C85C55;
+    color: #D64545;
   }
   
   .kpi-note {
@@ -183,23 +183,23 @@
   
     font-size: 0.75rem;
   
-    color: #8A8178;
+    color: #667085;
   }
   
   .kpi-note.positive {
-    color: #5E866B;
+    color: #269B68;
   }
   
   .kpi-note.danger {
-    color: #C85C55;
+    color: #D64545;
   }
   
   
-/* =========================================================
-   Main Dashboard Area
-   ========================================================= */
-
-   .dashboard-grid {
+  /* =========================================================
+     Main Dashboard Area
+     ========================================================= */
+  
+  .dashboard-grid {
     display: grid;
   
     grid-template-columns:
@@ -221,50 +221,50 @@
      Fixed-height Dashboard Panels
      ========================================================= */
   
-     .activity-panel {
-      background: #FCFCF8;
-    
-      border: 1px solid #E4DED4;
-      border-radius: 12px;
-    
-      display: flex;
-      flex-direction: column;
-    }
-
-    .activity-panel,
-    .inventory-panel {
-      height: 500px;
-      min-height: 500px;
-      max-height: 500px;
-    
-      overflow: hidden;
-    }
+  .activity-panel {
+    background: #FFFFFF;
+  
+    border: 1px solid #E4E7EC;
+    border-radius: 12px;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .activity-panel,
+  .inventory-panel {
+    height: 500px;
+    min-height: 500px;
+    max-height: 500px;
+  
+    overflow: hidden;
+  }
   
   
-/* =========================================================
-   Shared Panel
-   ========================================================= */
-
-   .activity-panel,
-   .inventory-panel,
-   .orders-section {
-     background: #FCFCF8;
-   
-     border: 1px solid #E4DED4;
-     border-radius: 12px;
-   }
-   
-   
-   /* Sales + Inventory panels use
-      a controlled vertical layout */
-   
-   .activity-panel,
-   .inventory-panel {
-     display: flex;
-     flex-direction: column;
-   
-     overflow: hidden;
-   }
+  /* =========================================================
+     Shared Panel
+     ========================================================= */
+  
+  .activity-panel,
+  .inventory-panel,
+  .orders-section {
+    background: #FFFFFF;
+  
+    border: 1px solid #E4E7EC;
+    border-radius: 12px;
+  }
+  
+  
+  /* Sales + Inventory panels use
+     a controlled vertical layout */
+  
+  .activity-panel,
+  .inventory-panel {
+    display: flex;
+    flex-direction: column;
+  
+    overflow: hidden;
+  }
   
   
   /* =========================================================
@@ -278,7 +278,7 @@
   
     padding: 1.25rem 1.4rem;
   
-    border-bottom: 1px solid #E4DED4;
+    border-bottom: 1px solid #E4E7EC;
   }
   
   .section-heading h3,
@@ -288,14 +288,14 @@
     font-size: 1rem;
     font-weight: 700;
   
-    color: #252A27;
+    color: #172033;
   }
   
   .section-heading p,
   .orders-header p {
     margin: 0.3rem 0 0;
   
-    color: #8A8178;
+    color: #667085;
   
     font-size: 0.78rem;
   }
@@ -314,7 +314,7 @@
   
     font-size: 0.7rem;
   
-    color: #8A8178;
+    color: #667085;
   
     margin-bottom: 0.15rem;
   }
@@ -322,15 +322,15 @@
   .activity-total strong {
     font-size: 1rem;
   
-    color: #252A27;
+    color: #172033;
   }
   
   
-/* =========================================================
-   SALES TREND + ORDER COUNT
-   ========================================================= */
-
-   .sales-trend-chart {
+  /* =========================================================
+     SALES TREND + ORDER COUNT
+     ========================================================= */
+  
+  .sales-trend-chart {
     padding: 1rem 1.4rem 0.65rem;
   }
   
@@ -359,7 +359,7 @@
   
     gap: 0.35rem;
   
-    color: #8A8178;
+    color: #667085;
   
     font-size: 0.68rem;
   }
@@ -374,11 +374,11 @@
   }
   
   .sales-legend {
-    background: #71856F;
+    background: #159A91;
   }
   
   .orders-legend {
-    background: #C5913B;
+    background: #3F63A8;
   }
   
   
@@ -406,7 +406,7 @@
   
     text-align: right;
   
-    color: #A0988F;
+    color: #98A2B3;
   
     font-size: 0.6rem;
   
@@ -445,7 +445,7 @@
   
     width: 100%;
   
-    border-top: 1px solid #EEEAE2;
+    border-top: 1px solid #E8ECF2;
   }
   
   
@@ -472,7 +472,7 @@
      ========================================================= */
   
   .sales-area {
-    fill: #71856F;
+    fill: #159A91;
   
     opacity: 0.08;
   
@@ -487,7 +487,7 @@
   .sales-path {
     fill: none;
   
-    stroke: #71856F;
+    stroke: #159A91;
   
     stroke-width: 2.5;
   
@@ -505,7 +505,7 @@
   .orders-path {
     fill: none;
   
-    stroke: #C5913B;
+    stroke: #3F63A8;
   
     stroke-width: 1.8;
   
@@ -525,9 +525,9 @@
      ========================================================= */
   
   .sales-point {
-    fill: #FCFCF8;
+    fill: #FFFFFF;
   
-    stroke: #71856F;
+    stroke: #159A91;
   
     stroke-width: 2;
   
@@ -543,9 +543,9 @@
   
   
   .orders-point {
-    fill: #FCFCF8;
+    fill: #FFFFFF;
   
-    stroke: #C5913B;
+    stroke: #3F63A8;
   
     stroke-width: 1.8;
   
@@ -572,7 +572,7 @@
     justify-content: space-between;
     align-items: flex-end;
   
-    color: #9A9289;
+    color: #98A2B3;
   
     font-size: 0.62rem;
   }
@@ -580,22 +580,24 @@
   .chart-x-axis span {
     white-space: nowrap;
   }
+  
+  
   /* =========================================================
      Quick Actions
      ========================================================= */
   
-     .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    
-      padding: 1rem 1.4rem 1.25rem;
-    
-      gap: 0.7rem;
-    
-      margin-top: auto;
-    }
-
-
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  
+    padding: 1rem 1.4rem 1.25rem;
+  
+    gap: 0.7rem;
+  
+    margin-top: auto;
+  }
+  
+  
   .quick-action {
     min-width: 0;
   
@@ -606,12 +608,12 @@
   
     padding: 0.75rem;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E4E7EC;
     border-radius: 8px;
   
     text-decoration: none;
   
-    color: #252A27;
+    color: #172033;
   
     transition:
       border-color 0.2s ease,
@@ -620,11 +622,11 @@
   }
   
   .quick-action:hover {
-    color: #252A27;
+    color: #172033;
   
-    border-color: #71856F;
+    border-color: #159A91;
   
-    background: #F3F4EF;
+    background: #EAF7F5;
   
     transform: translateY(-1px);
   }
@@ -641,9 +643,9 @@
   
     border-radius: 7px;
   
-    background: #F3F4EF;
+    background: #EAF7F5;
   
-    color: #71856F;
+    color: #159A91;
   }
   
   .quick-action span {
@@ -662,7 +664,7 @@
   
     margin-top: 0.1rem;
   
-    color: #8A8178;
+    color: #667085;
   
     font-size: 0.66rem;
   
@@ -674,12 +676,12 @@
   
     font-size: 0.7rem;
   
-    color: #8A8178;
+    color: #98A2B3;
   }
   
   .primary-action {
-    border-color: #C8D4C7;
-    background: #F5F8F4;
+    border-color: #B9DDD8;
+    background: #F0FAF8;
   }
   
   
@@ -690,20 +692,20 @@
   .inventory-heading {
     align-items: center;
   }
-
+  
   .inventory-panel .section-heading {
     flex-shrink: 0;
   }
   
   .warning-kicker {
-    color: #C5913B;
+    color: #D99A24;
   }
   
   .attention-number {
     font-size: 1.7rem;
     font-weight: 700;
   
-    color: #C85C55;
+    color: #D64545;
   }
   
   .inventory-list {
@@ -720,28 +722,30 @@
   
     /* Smooth native scrolling */
     scrollbar-width: thin;
-    scrollbar-color: #C8D4C7 transparent;
+    scrollbar-color: #B9DDD8 transparent;
   }
-
+  
+  
   /* Inventory scrollbar - WebKit browsers */
-
-.inventory-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.inventory-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.inventory-list::-webkit-scrollbar-thumb {
-  background: #C8D4C7;
-  border-radius: 10px;
-}
-
-.inventory-list::-webkit-scrollbar-thumb:hover {
-  background: #71856F;
-}
-
+  
+  .inventory-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .inventory-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .inventory-list::-webkit-scrollbar-thumb {
+    background: #B9DDD8;
+    border-radius: 10px;
+  }
+  
+  .inventory-list::-webkit-scrollbar-thumb:hover {
+    background: #159A91;
+  }
+  
+  
   .inventory-item {
     display: flex;
     align-items: center;
@@ -751,7 +755,7 @@
   
     padding: 0.7rem 0.45rem;
   
-    border-bottom: 1px solid #EDE9E1;
+    border-bottom: 1px solid #EEF1F5;
   }
   
   .inventory-item:last-child {
@@ -777,12 +781,12 @@
     align-items: center;
     justify-content: center;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E4E7EC;
     border-radius: 7px;
   
-    color: #71856F;
+    color: #159A91;
   
-    background: #FCFCF8;
+    background: #FFFFFF;
   }
   
   .inventory-item-main > div:last-child {
@@ -799,7 +803,7 @@
     font-size: 0.8rem;
     font-weight: 600;
   
-    color: #252A27;
+    color: #172033;
   }
   
   .inventory-item-main span {
@@ -807,7 +811,7 @@
   
     margin-top: 0.15rem;
   
-    color: #8A8178;
+    color: #667085;
   
     font-size: 0.67rem;
   }
@@ -829,15 +833,15 @@
   
     font-size: 0.65rem;
   
-    color: #8A8178;
+    color: #667085;
   }
   
   .stock-danger {
-    color: #C85C55;
+    color: #D64545;
   }
   
   .stock-warning {
-    color: #C5913B;
+    color: #D99A24;
   }
   
   .inventory-link {
@@ -848,9 +852,9 @@
     margin: 0 1rem 1rem;
     padding-top: 0.75rem;
   
-    border-top: 1px solid #E4DED4;
+    border-top: 1px solid #E4E7EC;
   
-    color: #71856F;
+    color: #159A91;
   
     font-size: 0.75rem;
     font-weight: 600;
@@ -860,7 +864,7 @@
   }
   
   .inventory-link:hover {
-    color: #526653;
+    color: #117C75;
   }
   
   .empty-inventory {
@@ -872,7 +876,7 @@
   
     padding: 2rem 1rem;
   
-    color: #5E866B;
+    color: #269B68;
   
     font-size: 0.8rem;
   }
@@ -893,7 +897,7 @@
   
     padding: 1.25rem 1.4rem;
   
-    border-bottom: 1px solid #E4DED4;
+    border-bottom: 1px solid #E4E7EC;
   }
   
   .view-all {
@@ -903,7 +907,7 @@
   
     padding-top: 0.15rem;
   
-    color: #71856F;
+    color: #159A91;
   
     font-size: 0.78rem;
     font-weight: 600;
@@ -912,7 +916,7 @@
   }
   
   .view-all:hover {
-    color: #526653;
+    color: #117C75;
   }
   
   
@@ -939,11 +943,11 @@
   
     text-align: left;
   
-    background: #F8F8F3;
+    background: #F7F9FC;
   
-    border-bottom: 1px solid #E4DED4;
+    border-bottom: 1px solid #E4E7EC;
   
-    color: #8A8178;
+    color: #667085;
   
     font-size: 0.65rem;
     font-weight: 700;
@@ -954,7 +958,7 @@
   .orders-table td {
     padding: 0.9rem 1.4rem;
   
-    border-bottom: 1px solid #EDE9E1;
+    border-bottom: 1px solid #EEF1F5;
   
     font-size: 0.8rem;
   }
@@ -968,21 +972,21 @@
   }
   
   .orders-table tbody tr:hover {
-    background: #F7F7F2;
+    background: #F7F9FC;
   }
   
   .order-id {
     font-weight: 600;
   
-    color: #252A27;
+    color: #172033;
   }
   
   .order-date {
-    color: #8A8178;
+    color: #667085;
   }
   
   .order-amount {
-    color: #252A27;
+    color: #172033;
   
     font-weight: 600;
   }
@@ -1010,27 +1014,27 @@
   }
   
   .order-status.completed {
-    color: #5E866B;
+    color: #269B68;
   }
   
   .order-status.completed .status-dot {
-    background: #5E866B;
+    background: #269B68;
   }
   
   .order-status.pending {
-    color: #C5913B;
+    color: #D99A24;
   }
   
   .order-status.pending .status-dot {
-    background: #C5913B;
+    background: #D99A24;
   }
   
   .order-status.cancelled {
-    color: #C85C55;
+    color: #D64545;
   }
   
   .order-status.cancelled .status-dot {
-    background: #C85C55;
+    background: #D64545;
   }
   
   
@@ -1043,7 +1047,7 @@
   
     text-align: center;
   
-    color: #8A8178;
+    color: #667085;
   }
   
   
@@ -1060,7 +1064,7 @@
   }
   
   .spinner-border.text-primary {
-    color: #71856F !important;
+    color: #159A91 !important;
   }
   
   
@@ -1068,18 +1072,18 @@
      Responsive
      ========================================================= */
   
-     @media (max-width: 1100px) {
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-      }
-    
-      .activity-panel,
-      .inventory-panel {
-        height: 500px;
-        min-height: 500px;
-        max-height: 500px;
-      }
+  @media (max-width: 1100px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
     }
+  
+    .activity-panel,
+    .inventory-panel {
+      height: 500px;
+      min-height: 500px;
+      max-height: 500px;
+    }
+  }
   
   
   @media (max-width: 850px) {
@@ -1093,7 +1097,7 @@
     }
   
     .kpi-item:nth-child(-n + 2) {
-      border-bottom: 1px solid #E4DED4;
+      border-bottom: 1px solid #E4E7EC;
     }
   
     .quick-actions {
@@ -1103,7 +1107,7 @@
   
   
   @media (max-width: 600px) {
-
+  
     .dashboard-header {
       align-items: flex-start;
       flex-direction: column;
@@ -1127,7 +1131,7 @@
       min-height: 105px;
   
       border-right: none;
-      border-bottom: 1px solid #E4DED4;
+      border-bottom: 1px solid #E4E7EC;
     }
   
     .kpi-item:last-child {
@@ -1135,23 +1139,23 @@
     }
   
     .kpi-item:nth-child(2) {
-      border-bottom: 1px solid #E4DED4;
+      border-bottom: 1px solid #E4E7EC;
     }
   
     .sales-trend-chart {
       padding-left: 0.8rem;
       padding-right: 0.8rem;
     }
-    
+  
     .chart-y-axis {
       width: 45px;
       font-size: 0.55rem;
     }
-    
+  
     .chart-x-axis {
       font-size: 0.55rem;
     }
-
+  
     .section-heading,
     .orders-header {
       padding: 1rem;

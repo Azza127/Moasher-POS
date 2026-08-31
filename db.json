@@ -77,6 +77,10 @@
     {
       "id": "ddA-8yD6-ss",
       "name": "Cleaning Supplies"
+    },
+    {
+      "name": "Housewares",
+      "id": "k8ka5rF59Ms"
     }
   ],
   "products": [
@@ -86,7 +90,7 @@
       "sku": "MOU-001",
       "categoryId": "1",
       "price": 500,
-      "stock": 0,
+      "stock": 48,
       "minStock": 10,
       "maxStock": 50,
       "description": "Black / Wireless",
@@ -98,7 +102,7 @@
       "sku": "USB-001",
       "categoryId": "1",
       "price": 360,
-      "stock": 2,
+      "stock": 67,
       "minStock": 10,
       "maxStock": 40,
       "description": "Black / 256G",
@@ -110,7 +114,7 @@
       "sku": "NOT-001",
       "categoryId": "3",
       "price": 75,
-      "stock": 0,
+      "stock": 9,
       "minStock": 10,
       "maxStock": 40,
       "description": "A5 / Ruled Pages",
@@ -134,7 +138,7 @@
       "sku": "KEY-001",
       "categoryId": "1",
       "price": 650,
-      "stock": 4,
+      "stock": 32,
       "minStock": 5,
       "maxStock": 30,
       "description": "Black / Wireless",
@@ -146,7 +150,7 @@
       "sku": "NON-001",
       "categoryId": "3",
       "price": 220,
-      "stock": 2,
+      "stock": 15,
       "minStock": 3,
       "maxStock": 10,
       "description": "Paperback / Arabic",
@@ -158,7 +162,7 @@
       "sku": "TOT-001",
       "categoryId": "3",
       "price": 10,
-      "stock": 0,
+      "stock": 99,
       "minStock": 6,
       "maxStock": 35,
       "description": "HB / Graphite",
@@ -170,7 +174,7 @@
       "sku": "REA-001",
       "categoryId": "3",
       "price": 12,
-      "stock": 0,
+      "stock": 28,
       "minStock": 5,
       "maxStock": 20,
       "description": "White / Soft Rubber",
@@ -182,7 +186,7 @@
       "sku": "ROR-001",
       "categoryId": "3",
       "price": 20,
-      "stock": 2,
+      "stock": 31,
       "minStock": 7,
       "maxStock": 35,
       "description": "30cm / Clear",
@@ -194,7 +198,7 @@
       "sku": "BOB-001",
       "categoryId": "6",
       "price": 550,
-      "stock": 0,
+      "stock": 40,
       "minStock": 2,
       "maxStock": 10,
       "description": "White / Cotton",
@@ -218,7 +222,7 @@
       "sku": "DOD-220",
       "categoryId": "w-UYvx6E5OA",
       "price": 15,
-      "stock": 2,
+      "stock": 62,
       "minStock": 15,
       "maxStock": 60,
       "description": "Can 280ml",
@@ -242,7 +246,7 @@
       "sku": "TOT-002",
       "categoryId": "cT8bmadytzM",
       "price": 550,
-      "stock": 0,
+      "stock": 20,
       "minStock": 5,
       "maxStock": 20,
       "description": "Black / perfume",
@@ -278,7 +282,7 @@
       "sku": "FDD-220",
       "categoryId": "5",
       "price": 75,
-      "stock": 1,
+      "stock": 40,
       "minStock": 15,
       "maxStock": 50,
       "description": "2 Kg",
@@ -291,10 +295,375 @@
       "sku": "Red-212",
       "categoryId": "w-UYvx6E5OA",
       "price": 200,
-      "stock": 4,
+      "stock": 23,
       "maxStock": 50,
       "minStock": 5,
       "image": "https://i.pinimg.com/736x/a2/25/78/a2257896c64ea8a85b46d28930266d16.jpg"
+    },
+    {
+      "id": "KQKfHlIDRQs",
+      "name": "pants",
+      "description": "Black / White / Gray / Beige / Brown",
+      "sku": "pip-009",
+      "categoryId": "6",
+      "price": 650,
+      "stock": 45,
+      "maxStock": 100,
+      "minStock": 0,
+      "image": "https://i.pinimg.com/736x/0a/4c/09/0a4c09fad4a49a0519b43f69de6befda.jpg"
+    },
+    {
+      "id": "W605lG_8obY",
+      "name": "Turkish dinner set",
+      "description": "multiple color",
+      "sku": "UOU-008",
+      "categoryId": "k8ka5rF59Ms",
+      "price": 4350,
+      "stock": 12,
+      "maxStock": 50,
+      "minStock": 4,
+      "image": "https://i.pinimg.com/736x/ca/dc/8c/cadc8c1d17a2cd894fe4b40d65a64543.jpg"
+    },
+    {
+      "id": "-1wpRIoloUU",
+      "name": "V-Cola",
+      "description": "Soda Drink",
+      "sku": "EOE-002",
+      "categoryId": "w-UYvx6E5OA",
+      "price": 25,
+      "stock": 60,
+      "maxStock": 100,
+      "minStock": 10,
+      "image": "https://i.pinimg.com/736x/d7/23/1f/d7231f4cd99d2747b5a9994f2b09e5e1.jpg"
+    }
+  ],
+  "purchaseInvoices": [
+    {
+      "id": "YuxOGIXq88g",
+      "supplierName": "شركة الهدى لتوزيع المواد الغذائية",
+      "invoiceNumber": "123654",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "مخزن هايبر وان بالجيزة",
+      "notes": "",
+      "subtotal": 4090,
+      "taxTotal": 111.2,
+      "total": 4201.2,
+      "items": [
+        {
+          "id": "1788180959305y7ic0s",
+          "productId": "9d0eSH2RgoQ",
+          "productName": "Novel",
+          "sku": "NON-001",
+          "quantity": 15,
+          "expiryDate": "",
+          "purchasePrice": 150,
+          "sellingPrice": 220,
+          "taxRate": 4,
+          "taxAmount": 90,
+          "subtotal": 2250,
+          "total": 2340
+        },
+        {
+          "id": "1788181005168sdj7sx",
+          "productId": "pzQDVud1YWA",
+          "productName": "Pepsi",
+          "sku": "DOD-220",
+          "quantity": 60,
+          "expiryDate": "2029-01-01",
+          "purchasePrice": 10,
+          "sellingPrice": 15,
+          "taxRate": 0.2,
+          "taxAmount": 1.2,
+          "subtotal": 600,
+          "total": 601.2
+        },
+        {
+          "id": "1788181051129bz33jq",
+          "productId": "UExSrVT0Ex8",
+          "productName": "RedBull",
+          "sku": "Red-212",
+          "quantity": 20,
+          "expiryDate": "2029-09-01",
+          "purchasePrice": 20,
+          "sellingPrice": 35,
+          "taxRate": 5,
+          "taxAmount": 20,
+          "subtotal": 400,
+          "total": 420
+        },
+        {
+          "id": "1788181087736jw7pu3",
+          "productId": "HOy_74MXcMk",
+          "productName": "Carolina Rice",
+          "sku": "FDD-220",
+          "quantity": 40,
+          "expiryDate": "2028-11-10",
+          "purchasePrice": 21,
+          "sellingPrice": 75,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 840,
+          "total": 840
+        }
+      ]
+    },
+    {
+      "id": "ZTT0jCiskG8",
+      "supplierName": "شركة كايرو إسنس",
+      "invoiceNumber": "254630",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 5000,
+      "taxTotal": 150,
+      "total": 5150,
+      "items": [
+        {
+          "id": "17881813960179psor7",
+          "productId": "ILEoSyI_Fn8",
+          "productName": "Olympia",
+          "sku": "TOT-002",
+          "quantity": 20,
+          "expiryDate": "",
+          "purchasePrice": 250,
+          "sellingPrice": 550,
+          "taxRate": 3,
+          "taxAmount": 150,
+          "subtotal": 5000,
+          "total": 5150
+        }
+      ]
+    },
+    {
+      "id": "KFCYawF5DE8",
+      "supplierName": "شركة زارا للملابس",
+      "invoiceNumber": "126478",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 18000,
+      "taxTotal": 360,
+      "total": 18360,
+      "items": [
+        {
+          "id": "1788183539196oblwh4",
+          "productId": "UTjQXLaZTHE",
+          "productName": "Blouse",
+          "sku": "BOB-001",
+          "quantity": 40,
+          "expiryDate": "",
+          "purchasePrice": 450,
+          "sellingPrice": 850,
+          "taxRate": 2,
+          "taxAmount": 360,
+          "subtotal": 18000,
+          "total": 18360
+        }
+      ]
+    },
+    {
+      "id": "3VSUKlS_6tQ",
+      "supplierName": "Egypt Fashion Center",
+      "invoiceNumber": "212635",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 20250,
+      "taxTotal": 60.75,
+      "total": 20310.75,
+      "items": [
+        {
+          "id": "1788185077439drmry1",
+          "productId": "KQKfHlIDRQs",
+          "productName": "pants",
+          "sku": "pip-009",
+          "quantity": 45,
+          "expiryDate": "",
+          "purchasePrice": 450,
+          "sellingPrice": 750,
+          "taxRate": 0.3,
+          "taxAmount": 60.75,
+          "subtotal": 20250,
+          "total": 20310.75
+        }
+      ]
+    },
+    {
+      "id": "FmM1OhlGbQM",
+      "supplierName": "Hin ox Company",
+      "invoiceNumber": "236850",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 27000,
+      "taxTotal": 0,
+      "total": 27000,
+      "items": [
+        {
+          "id": "1788185732494dklgbe",
+          "productId": "W605lG_8obY",
+          "productName": "Turkish dinner set",
+          "sku": "UOU-008",
+          "quantity": 12,
+          "expiryDate": "",
+          "purchasePrice": 2250,
+          "sellingPrice": 4350,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 27000,
+          "total": 27000
+        }
+      ]
+    },
+    {
+      "id": "i5ivqz7a0ss",
+      "supplierName": "CompuSafe",
+      "invoiceNumber": "63257",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "hyper 1",
+      "notes": "",
+      "subtotal": 37700,
+      "taxTotal": 1885,
+      "total": 39585,
+      "items": [
+        {
+          "id": "17881858848860e6vfs",
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "sku": "USB-001",
+          "quantity": 70,
+          "expiryDate": "",
+          "purchasePrice": 260,
+          "sellingPrice": 360,
+          "taxRate": 5,
+          "taxAmount": 910,
+          "subtotal": 18200,
+          "total": 19110
+        },
+        {
+          "id": "1788186769567i0idx8",
+          "productId": "5",
+          "productName": "Wireless Keyboard",
+          "sku": "KEY-001",
+          "quantity": 30,
+          "expiryDate": "",
+          "purchasePrice": 650,
+          "sellingPrice": 850,
+          "taxRate": 5,
+          "taxAmount": 975,
+          "subtotal": 19500,
+          "total": 20475
+        }
+      ]
+    },
+    {
+      "id": "Ayo5Uza8DwY",
+      "supplierName": "CompuSafe",
+      "invoiceNumber": "236780",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "Hyper 1",
+      "notes": "",
+      "subtotal": 6000,
+      "taxTotal": 120,
+      "total": 6120,
+      "items": [
+        {
+          "id": "1788186835558u5bbkx",
+          "productId": "1",
+          "productName": "Wireless Mouse",
+          "sku": "MOU-001",
+          "quantity": 50,
+          "expiryDate": "",
+          "purchasePrice": 120,
+          "sellingPrice": 230,
+          "taxRate": 2,
+          "taxAmount": 120,
+          "subtotal": 6000,
+          "total": 6120
+        }
+      ]
+    },
+    {
+      "id": "of6MEeYalis",
+      "supplierName": "شركة الأوائل للتوريدات المكتبية",
+      "invoiceNumber": "4573820",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 1750,
+      "taxTotal": 0,
+      "total": 1750,
+      "items": [
+        {
+          "id": "1788186973358i0ppzm",
+          "productId": "JL_OrD8YdJo",
+          "productName": "Eraser",
+          "sku": "REA-001",
+          "quantity": 30,
+          "expiryDate": "",
+          "purchasePrice": 15,
+          "sellingPrice": 20,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 450,
+          "total": 450
+        },
+        {
+          "id": "1788186997206bin0fi",
+          "productId": "L68yt065cXs",
+          "productName": "Ruler",
+          "sku": "ROR-001",
+          "quantity": 30,
+          "expiryDate": "",
+          "purchasePrice": 20,
+          "sellingPrice": 30,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 600,
+          "total": 600
+        },
+        {
+          "id": "1788187021767gaj5i7",
+          "productId": "TEQYUx5ka1I",
+          "productName": "Pencil",
+          "sku": "TOT-001",
+          "quantity": 100,
+          "expiryDate": "",
+          "purchasePrice": 7,
+          "sellingPrice": 10,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 700,
+          "total": 700
+        }
+      ]
+    },
+    {
+      "id": "OVFZePr8rTk",
+      "supplierName": "شركة العبور للمواد الغذائية",
+      "invoiceNumber": "320145",
+      "invoiceDate": "2026-08-31",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 900,
+      "taxTotal": 0,
+      "total": 900,
+      "items": [
+        {
+          "id": "1788188481749qdqwes",
+          "productId": "-1wpRIoloUU",
+          "productName": "V-Cola",
+          "sku": "EOE-002",
+          "quantity": 60,
+          "expiryDate": "",
+          "purchasePrice": 15,
+          "sellingPrice": 20,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 900,
+          "total": 900
+        }
+      ]
     }
   ],
   "orders": [
@@ -877,14 +1246,155 @@
       "status": "Completed",
       "createdAt": "2026-08-30T21:45:05.061Z",
       "id": "FjPzMAIh7t8"
+    },
+    {
+      "ticketNumber": "#4819-R",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        },
+        {
+          "productId": "5",
+          "productName": "Wireless Keyboard",
+          "price": 650,
+          "quantity": 1,
+          "total": 650
+        },
+        {
+          "productId": "L68yt065cXs",
+          "productName": "Ruler",
+          "price": 20,
+          "quantity": 1,
+          "total": 20
+        },
+        {
+          "productId": "TEQYUx5ka1I",
+          "productName": "Pencil",
+          "price": 10,
+          "quantity": 1,
+          "total": 10
+        },
+        {
+          "productId": "JL_OrD8YdJo",
+          "productName": "Eraser",
+          "price": 12,
+          "quantity": 1,
+          "total": 12
+        },
+        {
+          "productId": "UExSrVT0Ex8",
+          "productName": "RedBull",
+          "price": 200,
+          "quantity": 1,
+          "total": 200
+        }
+      ],
+      "subtotal": 1252,
+      "tax": 175.28,
+      "total": 1427.28,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-31T14:41:04.111Z",
+      "id": "CPe8oRBuhQI"
+    },
+    {
+      "ticketNumber": "#4293-S",
+      "items": [
+        {
+          "productId": "9d0eSH2RgoQ",
+          "productName": "Novel",
+          "price": 220,
+          "quantity": 1,
+          "total": 220
+        },
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        },
+        {
+          "productId": "1",
+          "productName": "Wireless Mouse",
+          "price": 500,
+          "quantity": 1,
+          "total": 500
+        },
+        {
+          "productId": "3",
+          "productName": "Notebook",
+          "price": 75,
+          "quantity": 1,
+          "total": 75
+        },
+        {
+          "productId": "JL_OrD8YdJo",
+          "productName": "Eraser",
+          "price": 12,
+          "quantity": 1,
+          "total": 12
+        }
+      ],
+      "subtotal": 1167,
+      "tax": 163.38,
+      "total": 1330.38,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-31T16:55:52.758Z",
+      "id": "ojWI9stQdh8"
+    },
+    {
+      "ticketNumber": "#7521-U",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        },
+        {
+          "productId": "1",
+          "productName": "Wireless Mouse",
+          "price": 500,
+          "quantity": 1,
+          "total": 500
+        },
+        {
+          "productId": "9d0eSH2RgoQ",
+          "productName": "Novel",
+          "price": 220,
+          "quantity": 1,
+          "total": 220
+        },
+        {
+          "productId": "5",
+          "productName": "Wireless Keyboard",
+          "price": 650,
+          "quantity": 1,
+          "total": 650
+        }
+      ],
+      "subtotal": 1730,
+      "tax": 242.2,
+      "total": 1972.2,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-08-31T18:47:04.310Z",
+      "id": "bs3stmcADdI"
     }
   ],
   "storeSettings": [
     {
       "id": "1",
-      "storeName": "store norrrr",
+      "storeName": "Hyper one",
       "phone": "01287893082",
-      "address": "El Gomhoria St, Zagazig90",
+      "address": "امتداد محور 26 يوليو، مدخل مدينة الشيخ زايد، محافظة الجيزة",
       "currency": "EGP",
       "taxRate": 15
     }

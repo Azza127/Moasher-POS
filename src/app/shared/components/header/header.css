@@ -2,9 +2,9 @@
   height: 76px;
   width: 100%;
 
-  background: #FCFCF8;
+  background: #FFFFFF;
 
-  border-bottom: 1px solid #DDE1DA;
+  border-bottom: 1px solid #E5E7EB;
 
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@
 }
 
 .context-title {
-  color: #252A27;
+  color: #1F2937;
 
   font-size: 13px;
   font-weight: 700;
@@ -39,7 +39,7 @@
   width: 1px;
   height: 18px;
 
-  background: #DDE1DA;
+  background: #E5E7EB;
 }
 
 .online-status {
@@ -48,7 +48,7 @@
 
   gap: 6px;
 
-  color: #747A75;
+  color: #6B7280;
 
   font-size: 12px;
   font-weight: 500;
@@ -60,7 +60,7 @@
 
   border-radius: 50%;
 
-  background: #5E866B;
+  background: #16A085;
 }
 
 
@@ -91,8 +91,8 @@
 
   border-radius: 10px;
 
-  background: #71856F;
-  color: #ffffff;
+  background: #2AA89B;
+  color: #FFFFFF;
 
   display: flex;
   align-items: center;
@@ -113,14 +113,14 @@
 }
 
 .user-details strong {
-  color: #252A27;
+  color: #1F2937;
 
   font-size: 14px;
   font-weight: 700;
 }
 
 .user-details span {
-  color: #747A75;
+  color: #6B7280;
 
   font-size: 11px;
 
@@ -136,7 +136,7 @@
   width: 1px;
   height: 30px;
 
-  background: #DDE1DA;
+  background: #E5E7EB;
 }
 
 
@@ -149,13 +149,13 @@
 
   padding: 0 12px;
 
-  border: 1px solid #DDE1DA;
+  border: 1px solid #D9E1E0;
 
   border-radius: 8px;
 
-  background: transparent;
+  background: #FFFFFF;
 
-  color: #747A75;
+  color: #6B7280;
 
   display: flex;
   align-items: center;
@@ -178,11 +178,11 @@
 }
 
 .logout-btn:hover {
-  background: #F3F4EF;
+  background: #EAF7F5;
 
-  border-color: #C5CEC5;
+  border-color: #A9DCD6;
 
-  color: #526653;
+  color: #16877D;
 }
 
 

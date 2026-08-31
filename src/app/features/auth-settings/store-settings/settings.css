@@ -1,12 +1,14 @@
-
 .settings-page {
   padding: 30px;
   min-height: 100vh;
-  background: #f8fafc;
-  color: #1e293b;
+  color: #14263D;
   box-sizing: border-box;
 }
 
+
+/* =========================================================
+   Page Header
+   ========================================================= */
 
 .page-header {
   margin-bottom: 24px;
@@ -19,32 +21,31 @@
 
   font-weight: 700;
 
-  color: #1e293b;
+  color: #14263D;
 }
 
 .page-header p {
   margin: 6px 0 0;
 
-  color: #64748b;
+  color: #6F8094;
 
   font-size: 14px;
 }
 
 
+/* =========================================================
+   Settings Card
+   ========================================================= */
+
 .settings-card {
   width: 100%;
-
-  max-width: 900px;
-
-  background: #ffffff;
-
-  border: 1px solid #e2e8f0;
-
+  max-width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #E1E5E8;
   border-radius: 14px;
-
   box-shadow:
     0 3px 12px
-    rgba(15, 23, 42, 0.05);
+    rgba(20, 38, 61, 0.05);
 
   overflow: hidden;
 }
@@ -54,16 +55,20 @@
 }
 
 .settings-section + .settings-section {
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #E1E5E8;
 }
 
+
+/* =========================================================
+   Section Header
+   ========================================================= */
 
 .section-header {
   margin-bottom: 22px;
 
   padding-bottom: 14px;
 
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #E1E5E8;
 }
 
 .section-header h3 {
@@ -73,7 +78,7 @@
 
   font-weight: 700;
 
-  color: #1e293b;
+  color: #14263D;
 }
 
 .section-header p {
@@ -81,10 +86,13 @@
 
   font-size: 12px;
 
-  color: #64748b;
+  color: #6F8094;
 }
 
 
+/* =========================================================
+   Form Grid
+   ========================================================= */
 
 .form-grid {
   display: grid;
@@ -96,6 +104,9 @@
 }
 
 
+/* =========================================================
+   Form Group
+   ========================================================= */
 
 .form-group {
   display: flex;
@@ -114,11 +125,15 @@
 
   font-weight: 600;
 
-  color: #334155;
+  color: #14263D;
 
   transition: color 0.2s ease;
 }
 
+
+/* =========================================================
+   Inputs
+   ========================================================= */
 
 .form-group input,
 .form-group select,
@@ -127,13 +142,13 @@
 
   box-sizing: border-box;
 
-  border: 1px solid #cbd5e1;
+  border: 1px solid #E1E5E8;
 
   border-radius: 8px;
 
-  background: #ffffff;
+  background: #FFFFFF;
 
-  color: #1e293b;
+  color: #14263D;
 
   font-family: inherit;
 
@@ -153,7 +168,6 @@
 }
 
 
-
 .form-group textarea {
   padding: 11px 12px;
 
@@ -163,32 +177,39 @@
 }
 
 
-
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #94a3b8;
+  color: #6F8094;
 }
 
+
+/* =========================================================
+   Input Focus
+   ========================================================= */
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #2563eb;
+  border-color: #159F9A;
 
   box-shadow:
     0 0 0 3px
-    rgba(37, 99, 235, 0.1);
+    rgba(21, 159, 154, 0.10);
 }
 
 
+/* =========================================================
+   Errors
+   ========================================================= */
+
 .error-label {
-  color: #dc2626 !important;
+  color: #C85C55 !important;
 }
 
 .error-message {
   display: block;
 
-  color: #dc2626;
+  color: #C85C55;
 
   font-size: 11px;
 
@@ -198,22 +219,25 @@
 }
 
 .error-input {
-  border-color: #dc2626 !important;
+  border-color: #C85C55 !important;
 
   box-shadow:
     0 0 0 2px
-    rgba(220, 38, 38, 0.08) !important;
+    rgba(200, 92, 85, 0.08) !important;
 }
 
 .error-input:focus {
-  border-color: #dc2626 !important;
+  border-color: #C85C55 !important;
 
   box-shadow:
     0 0 0 3px
-    rgba(220, 38, 38, 0.1) !important;
+    rgba(200, 92, 85, 0.10) !important;
 }
 
 
+/* =========================================================
+   Settings Actions
+   ========================================================= */
 
 .settings-actions {
   display: flex;
@@ -226,9 +250,13 @@
 
   padding: 20px 26px;
 
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #E1E5E8;
 }
 
+
+/* =========================================================
+   Discard Button
+   ========================================================= */
 
 .discard-btn {
   height: 40px;
@@ -239,7 +267,7 @@
 
   background: transparent;
 
-  color: #334155;
+  color: #6F8094;
 
   font-size: 13px;
 
@@ -253,9 +281,15 @@
 }
 
 .discard-btn:hover {
-  background: #f1f5f9;
+  background: #E8F5F4;
+
+  color: #11847F;
 }
 
+
+/* =========================================================
+   Save Button
+   ========================================================= */
 
 .save-btn {
   height: 40px;
@@ -274,9 +308,9 @@
 
   border-radius: 8px;
 
-  background: #2563eb;
+  background: #159F9A;
 
-  color: #ffffff;
+  color: #FFFFFF;
 
   font-size: 13px;
 
@@ -288,7 +322,7 @@
 }
 
 .save-btn:hover:not(:disabled) {
-  background: #1d4ed8;
+  background: #11847F;
 
   transform: translateY(-1px);
 }
@@ -298,7 +332,9 @@
 }
 
 .save-btn:disabled {
-  background: #94a3b8;
+  background: #E1E5E8;
+
+  color: #6F8094;
 
   opacity: 0.7;
 
@@ -328,6 +364,10 @@
 }
 
 
+/* =========================================================
+   Save Toast
+   ========================================================= */
+
 .save-toast {
   position: fixed;
 
@@ -351,38 +391,42 @@
 
   box-sizing: border-box;
 
-  background: #ffffff;
+  background: #FFFFFF;
 
   border-radius: 10px;
 
   box-shadow:
     0 10px 30px
-    rgba(15, 23, 42, 0.18);
+    rgba(20, 38, 61, 0.18);
 
   animation:
     toastIn 0.3s ease;
 }
 
 
-
+/* =========================================================
+   Success Toast
+   ========================================================= */
 
 .success-toast {
-  border-left: 4px solid #16a34a;
+  border-left: 4px solid #159F9A;
 }
 
 .success-toast .toast-icon {
-  color: #16a34a;
+  color: #159F9A;
 }
 
 
-
+/* =========================================================
+   Error Toast
+   ========================================================= */
 
 .error-toast {
-  border-left: 4px solid #dc2626;
+  border-left: 4px solid #C85C55;
 }
 
 .error-toast .toast-icon {
-  color: #dc2626;
+  color: #C85C55;
 }
 
 
@@ -397,7 +441,6 @@
 
   flex-shrink: 0;
 }
-
 
 
 .toast-content {
@@ -415,16 +458,19 @@
 
   font-weight: 700;
 
-  color: #1e293b;
+  color: #14263D;
 }
 
 .toast-content span {
   font-size: 12px;
 
-  color: #64748b;
+  color: #6F8094;
 }
 
 
+/* =========================================================
+   Toast Close
+   ========================================================= */
 
 .toast-close {
   width: 25px;
@@ -443,7 +489,7 @@
 
   background: transparent;
 
-  color: #94a3b8;
+  color: #6F8094;
 
   font-size: 22px;
 
@@ -455,9 +501,9 @@
 }
 
 .toast-close:hover {
-  background: #f1f5f9;
+  background: #E8F5F4;
 
-  color: #334155;
+  color: #11847F;
 }
 
 
@@ -477,6 +523,10 @@
 
 }
 
+
+/* =========================================================
+   Responsive
+   ========================================================= */
 
 @media (max-width: 768px) {
 

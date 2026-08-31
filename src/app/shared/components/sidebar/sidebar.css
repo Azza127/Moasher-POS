@@ -6,8 +6,8 @@
   left: 0;
   top: 0;
 
-  background: #26302B;
-  color: #ffffff;
+  background: #FFFFFF;
+  color: #0F172A;
 
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 
   z-index: 1000;
 
-  border-right: 1px solid #3A443F;
+  border-right: 1px solid #E5E7EB;
 }
 
 
@@ -27,7 +27,7 @@
 .brand {
   padding: 8px 10px 25px;
 
-  border-bottom: 1px solid #3A443F;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .brand-header {
@@ -44,11 +44,11 @@
   align-items: center;
   justify-content: center;
 
-  background: #71856F;
+  background: #159F98;
 
   border-radius: 10px;
 
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 12px rgba(15, 23, 42, 0.12);
 }
 
 .brand-logo {
@@ -69,7 +69,7 @@
 .brand-title {
   margin: 0;
 
-  color: #FCFCF8;
+  color: #0F172A;
 
   font-size: 21px;
   font-weight: 700;
@@ -78,7 +78,7 @@
 }
 
 .brand-subtitle {
-  color: #A8B0AB;
+  color: #94A3B8;
 
   font-size: 8px;
   font-weight: 600;
@@ -115,7 +115,7 @@
 
   border-radius: 8px;
 
-  color: #B8BFBA;
+  color: #64748B;
 
   text-decoration: none;
 
@@ -148,8 +148,8 @@
 
 .navigation a:hover,
 .bottom-navigation a:hover {
-  background: #303A35;
-  color: #ffffff;
+  background: #F1F5F9;
+  color: #0F172A;
 
   transform: translateX(2px);
 }
@@ -161,10 +161,10 @@
 
 .navigation a.active,
 .bottom-navigation a.active {
-  background: #71856F;
-  color: #ffffff;
+  background: #E8F0FF;
+  color: #0F172A;
 
-  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 5px 13px rgba(15, 23, 42, 0.06);
 }
 
 .navigation a.active::before,
@@ -179,7 +179,7 @@
   width: 3px;
   height: 26px;
 
-  background: #C49A6C;
+  background: #159F98;
 
   border-radius: 0 4px 4px 0;
 }
@@ -194,7 +194,7 @@
 
   padding: 18px 0;
 
-  border-bottom: 1px solid #3A443F;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .new-sale a {
@@ -206,8 +206,8 @@
 
   min-height: 46px;
 
-  background: #FCFCF8;
-  color: #252A27;
+  background: #159F98;
+  color: #FFFFFF;
 
   text-decoration: none;
 
@@ -224,18 +224,18 @@
 
 .new-sale a i {
   font-size: 16px;
-  color: #71856F;
+  color: #FFFFFF;
 }
 
 .new-sale a:hover {
-  background: #526653;
-  color: #ffffff;
+  background: #0F817B;
+  color: #FFFFFF;
 
   transform: translateY(-1px);
 }
 
 .new-sale a:hover i {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 

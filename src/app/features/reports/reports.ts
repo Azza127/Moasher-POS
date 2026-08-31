@@ -111,7 +111,9 @@ export class Reports implements OnInit {
      ======================================================= */
 
   selectedPeriod: string = 'all';
+
   isPeriodDropdownOpen: boolean = false;
+
 
   /* =======================================================
      STATE
@@ -139,61 +141,80 @@ export class Reports implements OnInit {
 
   topProducts: TopProductReport[] = [];
 
+
   /* =======================================================
-   PERIOD DROPDOWN
-   ======================================================= */
+     PERIOD DROPDOWN
+     ======================================================= */
 
   togglePeriodDropdown(): void {
+
     this.isPeriodDropdownOpen =
       !this.isPeriodDropdownOpen;
+
   }
-  
-  
+
+
   selectPeriod(period: string): void {
-  
+
     this.selectedPeriod = period;
-  
+
     this.isPeriodDropdownOpen = false;
-  
+
     this.onPeriodChange();
+
   }
-  
-  
+
+
   getSelectedPeriodLabel(): string {
-  
+
     switch (this.selectedPeriod) {
-  
+
       case 'month':
         return '📅 This Month';
-  
+
       case 'year':
         return '📅 This Year';
-  
+
       default:
         return '📅 All Time';
     }
+
   }
+
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-  
-    const target = event.target as HTMLElement;
-  
-    if (!target.closest('.custom-period-dropdown')) {
+
+    const target =
+      event.target as HTMLElement;
+
+    if (
+      !target.closest(
+        '.custom-period-dropdown'
+      )
+    ) {
+
       this.isPeriodDropdownOpen = false;
+
     }
-  
+
   }
+
 
   /* =======================================================
      INVENTORY
      ======================================================= */
 
   inventoryValuation: InventoryValuation = {
+
     totalCost: 0,
+
     potentialRevenue: 0,
+
     totalItemsInStock: 0,
+
     profitMargin: 0
+
   };
 
 
@@ -208,22 +229,21 @@ export class Reports implements OnInit {
 
   /* =======================================================
      CATEGORY COLORS
-     
-     Olive + Gray palette
-     
-     NO BLUE
-     NO PURPLE
+
+     KEEPING YOUR CURRENT CATEGORY COLORS
      ======================================================= */
 
   categoryColors: string[] = [
-    '#71856F',
-    '#526653',
-    '#8A8178',
-    '#9BAA98',
-    '#6F746F',
-    '#A9AEA5',
-    '#C49A6C',
-    '#7D897B'
+
+    '#12A39F', // Electronics
+    '#4F7CAC', // Accessories
+    '#8E7DBE', // Stationery
+    '#E3A857', // Foods
+    '#D96C75', // Clothes
+    '#6FA58A', // Drinks
+    '#D48A5A', // Perfumes
+    '#7C8C9A'  // Cleaning Supplies
+
   ];
 
 
@@ -232,7 +252,9 @@ export class Reports implements OnInit {
      ======================================================= */
 
   ngOnInit(): void {
+
     this.loadReportData();
+
   }
 
 
@@ -245,6 +267,7 @@ export class Reports implements OnInit {
     return this.categoryColors[
       index % this.categoryColors.length
     ];
+
   }
 
 
@@ -263,6 +286,7 @@ export class Reports implements OnInit {
       this.renderDoughnutChart();
 
     }, 50);
+
   }
 
 
@@ -280,20 +304,25 @@ export class Reports implements OnInit {
     forkJoin({
 
       products:
+
         this.productService
           .getProducts()
           .pipe(
             catchError(() => of([]))
           ),
 
+
       categories:
+
         this.categoryService
           .getCategories()
           .pipe(
             catchError(() => of([]))
           ),
 
+
       orders:
+
         this.orderService
           .getOrders()
           .pipe(
@@ -319,8 +348,10 @@ export class Reports implements OnInit {
           this.products =
             res.products || [];
 
+
           this.categories =
             res.categories || [];
+
 
           this.orders =
             res.orders || [];
@@ -341,6 +372,7 @@ export class Reports implements OnInit {
 
         },
 
+
         error: () => {
 
           this.errorMessage =
@@ -349,6 +381,7 @@ export class Reports implements OnInit {
         }
 
       });
+
   }
 
 
@@ -394,6 +427,7 @@ export class Reports implements OnInit {
 
 
     this.calculateInventoryValuation();
+
   }
 
 
@@ -413,7 +447,9 @@ export class Reports implements OnInit {
       order => {
 
         const orderDate =
-          new Date(order.createdAt);
+          new Date(
+            order.createdAt
+          );
 
 
         if (
@@ -421,12 +457,15 @@ export class Reports implements OnInit {
         ) {
 
           return (
+
             orderDate.getMonth() ===
               now.getMonth() &&
 
             orderDate.getFullYear() ===
               now.getFullYear()
+
           );
+
         }
 
 
@@ -435,15 +474,20 @@ export class Reports implements OnInit {
         ) {
 
           return (
+
             orderDate.getFullYear() ===
             now.getFullYear()
+
           );
+
         }
 
 
         return true;
+
       }
     );
+
   }
 
 
@@ -467,8 +511,11 @@ export class Reports implements OnInit {
       product => {
 
         productCategoryMap.set(
+
           String(product.id),
+
           String(product.categoryId)
+
         );
 
       }
@@ -488,7 +535,9 @@ export class Reports implements OnInit {
 
 
             if (!categoryId) {
+
               return;
+
             }
 
 
@@ -499,10 +548,12 @@ export class Reports implements OnInit {
 
 
             categorySalesMap.set(
+
               categoryId,
 
               currentTotal +
               (item.total || 0)
+
             );
 
           }
@@ -513,6 +564,7 @@ export class Reports implements OnInit {
 
 
     this.categoryReports =
+
       this.categories
 
         .map(category => {
@@ -558,6 +610,7 @@ export class Reports implements OnInit {
           category =>
             category.totalSales > 0
         );
+
   }
 
 
@@ -601,11 +654,14 @@ export class Reports implements OnInit {
                 units: 0,
 
                 revenue: 0
+
               };
 
 
             productStatsMap.set(
+
               productId,
+
               {
 
                 name:
@@ -621,6 +677,7 @@ export class Reports implements OnInit {
                   (item.total || 0)
 
               }
+
             );
 
           }
@@ -631,6 +688,7 @@ export class Reports implements OnInit {
 
 
     this.topProducts =
+
       Array.from(
         productStatsMap.entries()
       )
@@ -657,7 +715,8 @@ export class Reports implements OnInit {
 
             return {
 
-              productId: id,
+              productId:
+                id,
 
               productName:
                 stat.name,
@@ -686,6 +745,7 @@ export class Reports implements OnInit {
         )
 
         .slice(0, 5);
+
   }
 
 
@@ -707,6 +767,7 @@ export class Reports implements OnInit {
 
         const stock =
           product.stock || 0;
+
 
         const price =
           product.price || 0;
@@ -736,11 +797,16 @@ export class Reports implements OnInit {
       potentialRevenue > 0
 
         ? (
+
             (
+
               potentialRevenue -
               totalCost
+
             ) /
+
             potentialRevenue
+
           ) * 100
 
         : 0;
@@ -760,6 +826,7 @@ export class Reports implements OnInit {
         )
 
     };
+
   }
 
 
@@ -781,6 +848,7 @@ export class Reports implements OnInit {
       category => {
 
         csvContent +=
+
           `"${category.categoryName}",` +
           `${category.totalSales},` +
           `${category.percentage}%\n`;
@@ -797,6 +865,7 @@ export class Reports implements OnInit {
       product => {
 
         csvContent +=
+
           `"${product.productName}",` +
           `${product.unitsSold},` +
           `${product.revenue}\n`;
@@ -830,6 +899,7 @@ export class Reports implements OnInit {
     link.click();
 
     document.body.removeChild(link);
+
   }
 
 
@@ -857,7 +927,9 @@ export class Reports implements OnInit {
 
 
     if (!canvas) {
+
       return;
+
     }
 
 
@@ -866,7 +938,9 @@ export class Reports implements OnInit {
 
 
     if (!ctx) {
+
       return;
+
     }
 
 
@@ -928,10 +1002,12 @@ export class Reports implements OnInit {
 
 
         salesByDateMap.set(
+
           dateLabel,
 
           currentSales +
           (order.total || 0)
+
         );
 
       }
@@ -966,7 +1042,9 @@ export class Reports implements OnInit {
         dataPoints[0]
       ];
 
-    } else if (
+    }
+
+    else if (
       labels.length === 0
     ) {
 
@@ -977,38 +1055,20 @@ export class Reports implements OnInit {
       dataPoints = [
         0
       ];
+
     }
 
 
     /* -----------------------------------------------------
-       Chart Gradient
+       Chart Area Color
+
+       NO RGBA
+       NO CSS3 COLORS
+       NO OLD GREEN
        ----------------------------------------------------- */
 
-    const gradient =
-      ctx.createLinearGradient(
-        0,
-        0,
-        0,
-        235
-      );
-
-
-    gradient.addColorStop(
-      0,
-      'rgba(113, 133, 111, 0.28)'
-    );
-
-
-    gradient.addColorStop(
-      0.65,
-      'rgba(155, 170, 152, 0.12)'
-    );
-
-
-    gradient.addColorStop(
-      1,
-      'rgba(243, 244, 239, 0)'
-    );
+    const chartAreaColor =
+      '#E3F3F1';
 
 
     /* -----------------------------------------------------
@@ -1016,6 +1076,7 @@ export class Reports implements OnInit {
        ----------------------------------------------------- */
 
     this.lineChart =
+
       new Chart(
         canvas,
         {
@@ -1032,43 +1093,55 @@ export class Reports implements OnInit {
 
               {
 
-                label: 'Revenue',
+                label:
+                  'Revenue',
 
-                data: dataPoints,
+                data:
+                  dataPoints,
 
+
+                /* Main website teal */
 
                 borderColor:
-                  '#71856F',
+                  '#12A39F',
 
 
-                borderWidth: 2,
+                borderWidth:
+                  2,
 
+
+                /* Flat light teal area */
 
                 backgroundColor:
-                  gradient,
+                  chartAreaColor,
 
 
-                fill: true,
+                fill:
+                  true,
 
 
-                tension: 0.38,
+                tension:
+                  0.38,
 
 
-                pointRadius: 4,
+                pointRadius:
+                  4,
 
 
-                pointHoverRadius: 5,
+                pointHoverRadius:
+                  5,
 
 
                 pointBackgroundColor:
-                  '#526653',
+                  '#12A39F',
 
 
                 pointBorderColor:
-                  '#FCFCF8',
+                  '#FFFFFF',
 
 
-                pointBorderWidth: 2
+                pointBorderWidth:
+                  2
 
               }
 
@@ -1079,16 +1152,20 @@ export class Reports implements OnInit {
 
           options: {
 
-            responsive: true,
+            responsive:
+              true,
 
-            maintainAspectRatio: false,
+            maintainAspectRatio:
+              false,
 
 
             interaction: {
 
-              intersect: false,
+              intersect:
+                false,
 
-              mode: 'index'
+              mode:
+                'index'
 
             },
 
@@ -1097,14 +1174,16 @@ export class Reports implements OnInit {
 
               legend: {
 
-                display: false
+                display:
+                  false
 
               },
 
 
               tooltip: {
 
-                enabled: true,
+                enabled:
+                  true,
 
                 backgroundColor:
                   '#26302B',
@@ -1115,11 +1194,14 @@ export class Reports implements OnInit {
                 bodyColor:
                   '#FCFCF8',
 
-                borderWidth: 0,
+                borderWidth:
+                  0,
 
-                padding: 10,
+                padding:
+                  10,
 
-                displayColors: false,
+                displayColors:
+                  false,
 
 
                 callbacks: {
@@ -1133,8 +1215,10 @@ export class Reports implements OnInit {
 
 
                       return (
+
                         ` Sales: $` +
                         value.toFixed(2)
+
                       );
 
                     }
@@ -1152,14 +1236,16 @@ export class Reports implements OnInit {
 
                 grid: {
 
-                  display: false
+                  display:
+                    false
 
                 },
 
 
                 border: {
 
-                  display: false
+                  display:
+                    false
 
                 },
 
@@ -1171,11 +1257,13 @@ export class Reports implements OnInit {
 
                   font: {
 
-                    size: 11
+                    size:
+                      11
 
                   },
 
-                  padding: 8
+                  padding:
+                    8
 
                 }
 
@@ -1184,7 +1272,8 @@ export class Reports implements OnInit {
 
               y: {
 
-                beginAtZero: true,
+                beginAtZero:
+                  true,
 
 
                 grid: {
@@ -1192,14 +1281,16 @@ export class Reports implements OnInit {
                   color:
                     '#E4DED4',
 
-                  lineWidth: 1
+                  lineWidth:
+                    1
 
                 },
 
 
                 border: {
 
-                  display: false
+                  display:
+                    false
 
                 },
 
@@ -1211,11 +1302,13 @@ export class Reports implements OnInit {
 
                   font: {
 
-                    size: 11
+                    size:
+                      11
 
                   },
 
-                  padding: 8,
+                  padding:
+                    8,
 
 
                   callback:
@@ -1234,7 +1327,9 @@ export class Reports implements OnInit {
           }
 
         }
+
       );
+
   }
 
 
@@ -1251,7 +1346,9 @@ export class Reports implements OnInit {
 
 
     if (!canvas) {
+
       return;
+
     }
 
 
@@ -1296,7 +1393,8 @@ export class Reports implements OnInit {
 
     const centerTextPlugin = {
 
-      id: 'centerText',
+      id:
+        'centerText',
 
 
       beforeDraw:
@@ -1342,11 +1440,13 @@ export class Reports implements OnInit {
 
 
           ctx.fillText(
+
             formattedSales,
 
             width / 2,
 
             height / 2 - 8
+
           );
 
 
@@ -1361,11 +1461,13 @@ export class Reports implements OnInit {
 
 
           ctx.fillText(
+
             'Total Sales',
 
             width / 2,
 
             height / 2 + 15
+
           );
 
 
@@ -1381,11 +1483,13 @@ export class Reports implements OnInit {
        ----------------------------------------------------- */
 
     this.doughnutChart =
+
       new Chart(
         canvas,
         {
 
-          type: 'doughnut',
+          type:
+            'doughnut',
 
 
           data: {
@@ -1400,7 +1504,10 @@ export class Reports implements OnInit {
                 data,
 
 
+                /* KEEP CATEGORY COLORS EXACTLY AS THEY ARE */
+
                 backgroundColor:
+
                   hasCategoryData
 
                     ? this.categoryReports.map(
@@ -1413,14 +1520,16 @@ export class Reports implements OnInit {
                     : ['#D5D8D0'],
 
 
-                borderWidth: 3,
+                borderWidth:
+                  3,
 
 
                 borderColor:
                   '#FCFCF8',
 
 
-                hoverOffset: 4
+                hoverOffset:
+                  4
 
               }
 
@@ -1431,29 +1540,35 @@ export class Reports implements OnInit {
 
           options: {
 
-            responsive: true,
+            responsive:
+              true,
 
-            maintainAspectRatio: false,
+            maintainAspectRatio:
+              false,
 
 
-            cutout: '70%',
+            cutout:
+              '70%',
 
 
-            rotation: -90,
+            rotation:
+              -90,
 
 
             plugins: {
 
               legend: {
 
-                display: false
+                display:
+                  false
 
               },
 
 
               tooltip: {
 
-                enabled: true,
+                enabled:
+                  true,
 
                 backgroundColor:
                   '#26302B',
@@ -1464,21 +1579,26 @@ export class Reports implements OnInit {
                 bodyColor:
                   '#FCFCF8',
 
-                padding: 10
+                padding:
+                  10
 
               }
 
             }
 
-          }
+          },
 
-        ,
 
           plugins: [
+
             centerTextPlugin
+
           ]
 
         }
+
       );
+
   }
+
 }

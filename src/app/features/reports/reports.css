@@ -17,7 +17,7 @@
     min-height: 100vh;
   
     /* background: #F3F4EF; */
-    color: #252A27;
+    color: #15191C;
   
     font-family:
       Inter,
@@ -52,7 +52,7 @@
   
     box-sizing: border-box;
   
-    /* background: #F3F4EF; */
+    /* background: #F8FAFA; */
   }
   
   
@@ -70,7 +70,7 @@
   .page-title {
     margin: 0;
   
-    color: #252A27;
+    color: #15191C;
   
     font-size: 30px;
   
@@ -84,7 +84,7 @@
   .subtitle {
     margin: 7px 0 0;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 13px;
   
@@ -142,11 +142,11 @@
   
     border-radius: 9px;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E3E7E7;
   
-    background: #FCFCF8;
+    background: #FFFFFF;
   
-    color: #252A27;
+    color: #15191C;
   
     font-family: inherit;
   
@@ -159,7 +159,7 @@
     cursor: pointer;
   
     box-shadow:
-      0 1px 2px rgba(37, 42, 39, 0.04);
+      0 1px 2px #E9EDED;
   
     transition:
       background 0.18s ease,
@@ -168,12 +168,14 @@
       transform 0.18s ease;
   }
   
+  .btn-export i {
+    color: #12A39F;
+  }
+  /* =========================================================
+     FILTER SELECT
+     ========================================================= */
   
-/* =========================================================
-   FILTER SELECT
-   ========================================================= */
-
-   select.btn-filter {
+  select.btn-filter {
     width: 155px;
   
     padding:
@@ -182,16 +184,16 @@
     appearance: none;
     -webkit-appearance: none;
   
-    background-color: #FCFCF8;
+    background-color: #FFFFFF;
   
-    color: #252A27;
+    color: #15191C;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E3E7E7;
   
     border-radius: 9px;
   
     background-image:
-      url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23526653' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23087F78' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   
     background-repeat: no-repeat;
   
@@ -202,242 +204,261 @@
   
     outline: none;
   
-    accent-color: #71856F;
+    accent-color: #159C92;
   }
   
+  select.btn-filter:hover {
+    border-color: #12A39F;
+  }
   
-  /* Dropdown options */
+  select.btn-filter:focus {
+    outline: none;
+    border-color: #12A39F;
+    box-shadow: 0 0 0 3px #DDF3F1;
+  }
+  /* =========================================================
+     DROPDOWN OPTIONS
+     ========================================================= */
   
   select.btn-filter option {
-    background: #FCFCF8;
-    color: #252A27;
+    background: #FFFFFF;
+    color: #15191C;
   }
   
-  
-  /* Selected option */
-
   select.btn-filter option:hover {
-    background-color: #71856F !important;
-    color: #FCFCF8 !important;
+    background-color: #159C92 !important;
+    color: #FFFFFF !important;
   }
   
   select.btn-filter option:focus {
-    background-color: #71856F !important;
-    color: #FCFCF8 !important;
+    background-color: #159C92 !important;
+    color: #FFFFFF !important;
   }
   
   select.btn-filter option:active {
-    background-color: #71856F !important;
-    color: #FCFCF8 !important;
+    background-color: #159C92 !important;
+    color: #FFFFFF !important;
   }
   
   
-  /* Hover / focus */
+  /* =========================================================
+     SELECT HOVER / FOCUS
+     ========================================================= */
   
   select.btn-filter:hover {
-    border-color: #71856F;
+    border-color: #159C92;
   }
   
   select.btn-filter:focus {
     outline: none;
   
-    border-color: #71856F;
+    border-color: #159C92;
   
     box-shadow:
-      0 0 0 3px rgba(113, 133, 111, 0.15);
+      0 0 0 3px #D9F1EF;
   }
   
+  
   /* =========================================================
-   CUSTOM PERIOD DROPDOWN
-   ========================================================= */
-
-.custom-period-dropdown {
-  position: relative;
-  width: 155px;
-}
-
-
-/* =========================================================
-   DROPDOWN BUTTON
-   ========================================================= */
-
-.custom-period-button {
-  width: 155px;
-
-  padding:
-    0 34px 0 14px;
-
-  position: relative;
-
-  background: #FCFCF8;
-
-  color: #252A27;
-
-  border: 1px solid #E4DED4;
-
-  border-radius: 9px;
-
-  cursor: pointer;
-
-  text-align: left;
-
-  justify-content: flex-start;
-}
-
-
-/* =========================================================
-   ARROW
-   ========================================================= */
-
-.dropdown-arrow {
-  position: absolute;
-
-  right: 13px;
-
-  top: 50%;
-
-  width: 8px;
-  height: 8px;
-
-  border-right: 2px solid #526653;
-  border-bottom: 2px solid #526653;
-
-  transform:
-    translateY(-65%)
-    rotate(45deg);
-
-  transition:
-    transform 0.2s ease;
-}
-
-
-/* =========================================================
-   BUTTON HOVER / FOCUS
-   ========================================================= */
-
-.custom-period-button:hover {
-  background: #F7F7F1;
-
-  border-color: #71856F;
-}
-
-
-.custom-period-button:focus {
-  outline: none;
-
-  border-color: #71856F;
-
-  box-shadow:
-    0 0 0 3px rgba(113, 133, 111, 0.14);
-}
-
-
-/* =========================================================
-   OPTIONS CONTAINER
-   ========================================================= */
-
-.period-options {
-  position: absolute;
-
-  top: calc(100% + 6px);
-
-  left: 0;
-
-  width: 100%;
-
-  padding: 5px;
-
-  box-sizing: border-box;
-
-  background: #FCFCF8;
-
-  border:
-    1px solid #E4DED4;
-
-  border-radius: 9px;
-
-  box-shadow:
-    0 8px 20px rgba(37, 42, 39, 0.10);
-
-  z-index: 1000;
-}
-
-
-/* =========================================================
-   OPTION
-   ========================================================= */
-
-.period-option {
-  width: 100%;
-
-  min-height: 36px;
-
-  display: flex;
-
-  align-items: center;
-
-  padding:
-    0 10px;
-
-  box-sizing: border-box;
-
-  border: 0;
-
-  border-radius: 6px;
-
-  background: transparent;
-
-  color: #252A27;
-
-  font-family: inherit;
-
-  font-size: 13px;
-
-  font-weight: 500;
-
-  text-align: left;
-
-  white-space: nowrap;
-
-  cursor: pointer;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-
-/* =========================================================
-   OPTION HOVER
-   ========================================================= */
-
-.period-option:hover {
-  background: #71856F;
-
-  color: #FCFCF8;
-}
-
-
-/* =========================================================
-   SELECTED OPTION
-   ========================================================= */
-
-.period-option.selected {
-  /* background: #71856F; */
-  color: #252A27;
-}
-
-
-/* =========================================================
-   SELECTED + HOVER
-   ========================================================= */
-
-.period-option.selected:hover {
-  background: #526653;
-
-  color: #FCFCF8;
-}
-
+     CUSTOM PERIOD DROPDOWN
+     ========================================================= */
+  
+  .custom-period-dropdown {
+    position: relative;
+  
+    width: 155px;
+  }
+  
+  
+  /* =========================================================
+     DROPDOWN BUTTON
+     ========================================================= */
+  
+  .custom-period-button {
+    width: 155px;
+  
+    padding:
+      0 34px 0 14px;
+  
+    position: relative;
+  
+    background: #FFFFFF;
+  
+    color: #15191C;
+  
+    border: 1px solid #E3E7E7;
+  
+    border-radius: 9px;
+  
+    cursor: pointer;
+  
+    text-align: left;
+  
+    justify-content: flex-start;
+  }
+  
+  .custom-period-button:hover {
+    background: #F7F7F1;
+    border-color: #12A39F;
+  }
+  
+  .custom-period-button:focus {
+    outline: none;
+    border-color: #12A39F;
+    box-shadow: 0 0 0 3px #DDF3F1;
+  }
+  /* =========================================================
+     ARROW
+     ========================================================= */
+  
+  .dropdown-arrow {
+    position: absolute;
+  
+    right: 13px;
+  
+    top: 50%;
+  
+    width: 8px;
+    height: 8px;
+  
+    border-right: 2px solid #087F78;
+    border-bottom: 2px solid #087F78;
+  
+    transform:
+      translateY(-65%)
+      rotate(45deg);
+  
+    transition:
+      transform 0.2s ease;
+  }
+  
+  
+  /* =========================================================
+     BUTTON HOVER / FOCUS
+     ========================================================= */
+  
+  .custom-period-button:hover {
+    background: #F7F8F8;
+  
+    border-color: #159C92;
+  }
+  
+  .custom-period-button:focus {
+    outline: none;
+  
+    border-color: #159C92;
+  
+    box-shadow:
+      0 0 0 3px #D9F1EF;
+  }
+  
+  
+  /* =========================================================
+     OPTIONS CONTAINER
+     ========================================================= */
+  
+  .period-options {
+    position: absolute;
+  
+    top: calc(100% + 6px);
+  
+    left: 0;
+  
+    width: 100%;
+  
+    padding: 5px;
+  
+    box-sizing: border-box;
+  
+    background: #FFFFFF;
+  
+    border:
+      1px solid #E3E7E7;
+  
+    border-radius: 9px;
+  
+    box-shadow:
+      0 8px 20px #DDE3E3;
+  
+    z-index: 1000;
+  }
+  
+  
+  /* =========================================================
+     OPTION
+     ========================================================= */
+  
+  .period-option {
+    width: 100%;
+  
+    min-height: 36px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    padding:
+      0 10px;
+  
+    box-sizing: border-box;
+  
+    border: 0;
+  
+    border-radius: 6px;
+  
+    background: transparent;
+  
+    color: #15191C;
+  
+    font-family: inherit;
+  
+    font-size: 13px;
+  
+    font-weight: 500;
+  
+    text-align: left;
+  
+    white-space: nowrap;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
+  }
+  
+  
+  /* =========================================================
+     OPTION HOVER
+     ========================================================= */
+  
+  .period-option:hover {
+    background: #159C92;
+  
+    color: #FFFFFF;
+  }
+  
+  
+  /* =========================================================
+     SELECTED OPTION
+     ========================================================= */
+  
+  .period-option.selected {
+    color: #15191C;
+  }
+  
+  
+  /* =========================================================
+     SELECTED + HOVER
+     ========================================================= */
+  
+  .period-option.selected:hover {
+    background: #087F78;
+  
+    color: #FFFFFF;
+  }
+  
+  
   /* =========================================================
      EXPORT
      ========================================================= */
@@ -452,27 +473,27 @@
   .btn-export i {
     font-size: 13px;
   
-    color: #71856F;
+    color: #159C92;
   }
   
   .btn-filter:hover,
   .btn-export:hover {
-    background: #F7F7F1;
+    background: #F7F8F8;
   
-    border-color: #C9C6BB;
+    border-color: #BFCACA;
   
     box-shadow:
-      0 3px 8px rgba(37, 42, 39, 0.07);
+      0 3px 8px #E1E6E6;
   }
   
   .btn-filter:focus,
   .btn-export:focus {
     outline: none;
   
-    border-color: #71856F;
+    border-color: #159C92;
   
     box-shadow:
-      0 0 0 3px rgba(113, 133, 111, 0.14);
+      0 0 0 3px #D9F1EF;
   }
   
   .btn-export:active {
@@ -498,7 +519,6 @@
   
     box-sizing: border-box;
   }
-  
   
   .grid-row {
     width: 100%;
@@ -528,15 +548,15 @@
   
     overflow: hidden;
   
-    background: #FCFCF8;
+    background: #FFFFFF;
   
     border:
-      1px solid #E4DED4;
+      1px solid #E3E7E7;
   
     border-radius: 15px;
   
     box-shadow:
-      0 2px 5px rgba(37, 42, 39, 0.035);
+      0 2px 5px #E9EDED;
   }
   
   
@@ -559,15 +579,15 @@
       0 27px;
   
     border-bottom:
-      1px solid #E4DED4;
+      1px solid #E3E7E7;
   
-    background: #FCFCF8;
+    background: #FFFFFF;
   }
   
   .card-header h3 {
     margin: 0;
   
-    color: #252A27;
+    color: #15191C;
   
     font-size: 17px;
   
@@ -599,7 +619,7 @@
   
     background: transparent;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 16px;
   
@@ -607,7 +627,7 @@
   }
   
   .dot-icon:hover {
-    color: #526653;
+    color: #087F78;
   }
   
   
@@ -625,7 +645,7 @@
   
     justify-content: center;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 16px;
   }
@@ -651,7 +671,7 @@
   .total-sales-badge h2 {
     margin: 0;
   
-    color: #252A27;
+    color: #15191C;
   
     font-size: 30px;
   
@@ -666,7 +686,7 @@
     margin:
       5px 0 0;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 13px;
   
@@ -710,7 +730,6 @@
     margin-top: 17px;
   }
   
-  
   .stat-box {
     min-height: 92px;
   
@@ -727,15 +746,15 @@
   
     border-radius: 11px;
   
-    background: #F3F4EF;
+    background: #EEF8F7;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E3E7E7;
   }
   
   .stat-box .label {
     margin-bottom: 6px;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 12px;
   
@@ -745,7 +764,7 @@
   }
   
   .stat-box .value {
-    color: #526653;
+    color: #12A39F;
   
     font-size: 22px;
   
@@ -874,7 +893,7 @@
   
     white-space: nowrap;
   
-    color: #6F746F;
+    color: #737A7D;
   
     font-weight: 500;
   }
@@ -882,7 +901,7 @@
   .cat-percent {
     flex-shrink: 0;
   
-    color: #526653;
+    color: #087F78;
   
     font-weight: 600;
   }
@@ -930,13 +949,13 @@
     white-space: nowrap;
   
     border-bottom:
-      1px solid #E4DED4;
+      1px solid #E3E7E7;
   }
   
   .data-table th {
     height: 54px;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 11px;
   
@@ -946,7 +965,7 @@
   }
   
   .data-table td {
-    color: #6F746F;
+    color: #737A7D;
   
     font-size: 13px;
   }
@@ -956,7 +975,7 @@
   }
   
   .data-table td strong {
-    color: #252A27;
+    color: #15191C;
   
     font-weight: 650;
   }
@@ -985,18 +1004,17 @@
     display: inline-flex;
   
     align-items: center;
-  
     justify-content: center;
   
     margin-right: 9px;
   
     border-radius: 8px;
   
-    background: #F3F4EF;
+    background: #EEF8F7;
   
-    color: #526653;
+    color: #12A39F;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #D5EBE8;
   
     font-size: 12px;
   }
@@ -1006,21 +1024,21 @@
      VIEW ALL
      ========================================================= */
   
-  .view-all-link {
-    color: #71856F;
-  
-    font-size: 13px;
-  
-    font-weight: 500;
-  
-    text-decoration: none;
-  }
-  
-  .view-all-link:hover {
-    color: #526653;
-  
-    text-decoration: underline;
-  }
+     .view-all-link {
+      color: #12A39F;
+    
+      font-size: 13px;
+    
+      font-weight: 500;
+    
+      text-decoration: none;
+    }
+    
+    .view-all-link:hover {
+      color: #087F7C;
+    
+      text-decoration: underline;
+    }
   
   
   /* =========================================================
@@ -1055,9 +1073,9 @@
   }
   
   .trend-badge.positive {
-    color: #5E866B;
+    color: #087F78;
   
-    background: #E5EEE7;
+    background: #DFF2F0;
   }
   
   .trend-badge.negative {
@@ -1076,7 +1094,7 @@
   
     text-align: center !important;
   
-    color: #8A8178 !important;
+    color: #737A7D !important;
   }
   
   
@@ -1104,9 +1122,9 @@
   
     border-radius: 11px;
   
-    background: #F3F4EF;
+    background: #F7F8F8;
   
-    border: 1px solid #E4DED4;
+    border: 1px solid #E3E7E7;
   
     margin-bottom: 30px;
   }
@@ -1122,7 +1140,7 @@
   
     margin-bottom: 8px;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 12.5px;
   
@@ -1132,7 +1150,7 @@
   .valuation-box h2 {
     margin: 0;
   
-    color: #252A27;
+    color: #15191C;
   
     font-size: 27px;
   
@@ -1149,7 +1167,7 @@
      ========================================================= */
   
   .icon-badge {
-    color: #71856F;
+    color: #159C92;
   
     font-size: 14px;
   }
@@ -1174,7 +1192,7 @@
   
     margin-bottom: 10px;
   
-    color: #6F746F;
+    color: #737A7D;
   
     font-size: 13px;
   
@@ -1182,7 +1200,7 @@
   }
   
   .metric-label strong {
-    color: #252A27;
+    color: #15191C;
   
     font-size: 14px;
   
@@ -1205,7 +1223,7 @@
   
     border-radius: 999px;
   
-    background: #E4DED4;
+    background: #E3E7E7;
   }
   
   .progress-line-fill {
@@ -1215,7 +1233,7 @@
   
     border-radius: 999px;
   
-    background: #5E866B;
+    background: #12A39F;
   
     transition: width 0.3s ease;
   }
@@ -1236,7 +1254,7 @@
   }
   
   .label-title {
-    color: #6F746F;
+    color: #737A7D;
   
     font-size: 13px;
   
@@ -1244,7 +1262,7 @@
   }
   
   .margin-value {
-    color: #71856F;
+    color: #12A39F;
   
     font-size: 21px;
   
@@ -1269,7 +1287,7 @@
   
     border-radius: 999px;
   
-    background: #E4DED4;
+    background: #E3E7E7;
   }
   
   .bar-segment {
@@ -1296,7 +1314,7 @@
   .bar-segment.high {
     flex: 70;
   
-    background: #5E866B;
+    background: #159C92;
   
     border-radius:
       0 999px 999px 0;
@@ -1314,7 +1332,7 @@
   
     justify-content: space-between;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 11px;
   
@@ -1335,7 +1353,7 @@
   
     justify-content: center;
   
-    color: #8A8178;
+    color: #737A7D;
   
     font-size: 14px;
   }
@@ -1543,6 +1561,6 @@
   
       break-inside: avoid;
   
-      border-color: #E4DED4;
+      border-color: #E3E7E7;
     }
   }
