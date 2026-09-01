@@ -1,0 +1,110 @@
+.order-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 1.1rem 0;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 420px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #737A7D;
+  font-size: 0.9rem;
+}
+
+.search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px 0 38px;
+
+  border: 1px solid #E3E7E7;
+  border-radius: 8px;
+
+  font-size: 0.87rem;
+  color: #15191C;
+
+  background: #F7F8F8;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #159C92;
+  box-shadow: 0 0 0 3px rgba(21, 156, 146, 0.14);
+}
+
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.date-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #737A7D;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.date-input {
+  height: 40px;
+  padding: 0 14px 0 38px;
+
+  border: 1px solid #E3E7E7;
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+  color: #15191C;
+
+  background: #F7F8F8;
+  box-sizing: border-box;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #159C92;
+  box-shadow: 0 0 0 3px rgba(21, 156, 146, 0.14);
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 40px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #159C92;
+  color: #FFFFFF;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.export-btn:hover {
+  background: #087F78;
+}
