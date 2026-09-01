@@ -1,604 +1,835 @@
-<div class="page-header">
-    <div>
-        <h1>Inventory Management</h1>
-        <p>Manage your products, track stock levels, and update pricing.</p>
-    </div>
+<div class="products-page">
 
-@if (!showAddForm && !isEmployee) {
-    <div class="header-actions">
-        <button
+  <!-- =========================
+       Page Header
+  ========================== -->
+
+  <div class="page-header">
+
+      <div class="page-title-area">
+
+        <span class="eyebrow">INVENTORY</span>
+
+        <h1>Products</h1>
+
+        <p>
+          Manage your products, stock levels, and pricing.
+        </p>
+
+      </div>
+
+      <div class="header-actions">
+
+        @if (!isEmployee) {
+
+          <button
             type="button"
             class="manage-category-btn"
             [routerLink]="['/categories']"
-        >
+          >
+            <i class="bi bi-folder-plus"></i>
             Manage Categories
-        </button>
+          </button>
 
-        <button
+          <button
+            type="button"
+            class="purchase-invoice-btn"
+            [routerLink]="['/purchase-invoices']"
+          >
+            <i class="bi bi-receipt"></i>
+            Purchase Invoice
+          </button>
+
+          <button
             type="button"
             class="add-product-btn"
-            (click)="showAddProductForm()"
-        >
-            + Add Product
-        </button>
-    </div>
-}
-</div>
+            (click)="showAddProductForm()">
 
-@if (showAddForm) {
+            <i class="bi bi-plus-lg"></i>
 
-    <div
-        class="modal-overlay"
-        (click)="cancelAddProduct()"
-    >
+            Add Product
 
-        <div
-            class="product-modal"
-            (click)="$event.stopPropagation()"
-        >
-
-            <div class="modal-header">
-
-                <div class="modal-title-section">
-
-                    <div class="modal-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6 8h12v12H6z"></path>
-                            <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h2>
-                            {{
-                                editingProductId !== null
-                                    ? 'Edit Product'
-                                    : 'Add New Product'
-                            }}
-                        </h2>
-
-                        <p>
-                            Fill in the details below to manage your inventory product.
-                        </p>
-                    </div>
-
-                </div>
-
-                <button
-                    type="button"
-                    class="modal-close"
-                    (click)="editingProductId !== null ? cancelEdit() : cancelAddProduct()"
-                    aria-label="Close"
-                >
-                    ×
-                </button>
-
-            </div>
-
-            <form (ngSubmit)="addProduct()">
-
-                <div class="form-group">
-                    <label>Product Name</label>
-
-                    <input
-                        type="text"
-                        [(ngModel)]="newProduct.name"
-                        name="name"
-                        placeholder="Enter product name"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label>Description</label>
-
-                    <input
-                        type="text"
-                        [(ngModel)]="newProduct.description"
-                        name="description"
-                        placeholder="Color, size, brand..."
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label>SKU</label>
-
-                    <input
-                        type="text"
-                        [(ngModel)]="newProduct.sku"
-                        name="sku"
-                        placeholder="Enter SKU"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-
-                    <div class="category-label-row">
-                        <label>Category</label>
-
-                        <button
-                            type="button"
-                            class="add-category-inline-btn"
-                            (click)="openAddCategoryModal()"
-                        >
-                            + Add Category
-                        </button>
-                    </div>
-
-                    <select
-                        [(ngModel)]="newProduct.categoryId"
-                        name="categoryId"
-                        required
-                    >
-                        <option [ngValue]="''">
-                            Select Category
-                        </option>
-
-                        @for (category of categories; track category.id) {
-                            <option [ngValue]="category.id">
-                                {{ category.name }}
-                            </option>
-                        }
-                    </select>
-
-                </div>
-
-                <div class="form-row">
-
-                    <div class="form-group">
-                        <label>Price (EGP)</label>
-
-                        <input
-                            type="number"
-                            [(ngModel)]="newProduct.price"
-                            name="price"
-                            placeholder="0.00"
-                            required
-                            min="0"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Stock</label>
-
-                        <input
-                            type="number"
-                            [(ngModel)]="newProduct.stock"
-                            name="stock"
-                            placeholder="0"
-                            required
-                            min="0"
-                        >
-                    </div>
-
-                </div>
-
-                <div class="form-row">
-
-                    <div class="form-group">
-                        <label>Maximum Stock</label>
-
-                        <input
-                            type="number"
-                            [(ngModel)]="newProduct.maxStock"
-                            name="maxStock"
-                            placeholder="0"
-                            required
-                            min="1"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Minimum Stock</label>
-
-                        <input
-                            type="number"
-                            [(ngModel)]="newProduct.minStock"
-                            name="minStock"
-                            placeholder="0"
-                            required
-                            min="0"
-                        >
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label>Image URL</label>
-
-                    <input
-                        type="text"
-                        [(ngModel)]="newProduct.image"
-                        name="image"
-                        placeholder="https://example.com/image.jpg"
-                    >
-                </div>
-
-                <div class="modal-actions">
-
-                    <button
-                        type="button"
-                        class="modal-cancel-btn"
-                        (click)="editingProductId !== null ? cancelEdit() : cancelAddProduct()"
-                    >
-                        Cancel
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="modal-submit-btn"
-                    >
-                        <span>+</span>
-
-                        {{
-                            editingProductId !== null
-                                ? 'Update Product'
-                                : 'Add Product'
-                        }}
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-        @if (showAddCategoryModal) {
-
-            <div
-                class="category-popup-overlay"
-                (click)="closeAddCategoryModal()"
-            >
-
-                <div
-                    class="category-popup"
-                    (click)="$event.stopPropagation()"
-                >
-
-                    <div class="category-popup-header">
-
-                        <div>
-                            <h2>Add Category</h2>
-
-                            <p>
-                                Create a new category for this product.
-                            </p>
-                        </div>
-
-                        <button
-                            type="button"
-                            class="modal-close"
-                            (click)="closeAddCategoryModal()"
-                            aria-label="Close"
-                        >
-                            ×
-                        </button>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="newCategoryName">
-                            Category Name
-                        </label>
-
-                        <input
-                            id="newCategoryName"
-                            type="text"
-                            [(ngModel)]="newCategoryName"
-                            name="newCategoryName"
-                            placeholder="Enter category name"
-                            (keyup.enter)="saveNewCategory()"
-                            autofocus
-                        >
-
-                    </div>
-
-                    <div class="category-popup-actions">
-
-                        <button
-                            type="button"
-                            class="modal-cancel-btn"
-                            (click)="closeAddCategoryModal()"
-                        >
-                            Cancel
-                        </button>
-
-                        <button
-                            type="button"
-                            class="modal-submit-btn"
-                            (click)="saveNewCategory()"
-                        >
-                            Add Category
-                        </button>
-
-                    </div>
-
-                    <a
-                        routerLink="/categories"
-                        class="manage-categories-link"
-                        (click)="closeAddCategoryModal()"
-                    >
-                        Manage Categories
-                    </a>
-
-                </div>
-
-            </div>
+          </button>
 
         }
 
+      </div>
+
+  </div>
+
+
+  <!-- =========================
+       Filters
+  ========================== -->
+
+  <section class="filters-card">
+
+    <div class="search-box">
+
+      <i class="bi bi-search"></i>
+
+      <input
+        type="text"
+        placeholder="Search products..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="searchProducts($event)"
+      />
+
     </div>
-}
 
-<div class="search-section">
-
-    <div class="search-input-wrapper">
-
-        <input
-            type="text"
-            [placeholder]="
-                searchMode === 'name'
-                    ? 'Search by product name...'
-                    : 'Search by SKU...'
-            "
-            [ngModel]="searchTerm"
-            (ngModelChange)="searchProducts($event)"
-        >
-
-    </div>
 
     <div class="search-mode">
 
-        <select
-            id="searchMode"
-            [(ngModel)]="searchMode"
-            (change)="searchProducts(searchTerm)"
-        >
-            <option value="name">Product Name</option>
-            <option value="sku">SKU</option>
-        </select>
+      <button
+        type="button"
+        [class.active]="searchMode === 'name'"
+        (click)="changeSearchMode('name')">
+        Name
+      </button>
+
+      <button
+        type="button"
+        [class.active]="searchMode === 'sku'"
+        (click)="changeSearchMode('sku')">
+        SKU
+      </button>
 
     </div>
+
 
     <div class="category-filter">
 
-        <select
-            id="categoryFilter"
-            (change)="filterByCategory($any($event.target).value)"
-        >
-            <option value="">All Categories</option>
+      <button
+        type="button"
+        class="category-dropdown-trigger"
+        (click)="toggleCategoryDropdown()"
+      >
 
-            @for (category of categories; track category.id) {
-                <option [value]="category.id">
-                    {{ category.name }}
-                </option>
-            }
-        </select>
+        <span>
+          {{ getSelectedCategoryLabel() }}
+        </span>
 
-    </div>
+        <i class="bi bi-chevron-down"></i>
 
-</div>
+      </button>
 
-<table>
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>SKU</th>
-            <th>Category</th>
-            <th>Stock Level</th>
-            <th>Price</th>
-            @if (!isEmployee) {
-                <th>Actions</th>
-            }
-        </tr>
-    </thead>
 
-    <tbody>
+      @if (isCategoryDropdownOpen) {
 
-        @for (product of filteredProducts; track product.id) {
+        <div class="category-options">
 
-            <tr>
+          <button
+            type="button"
+            class="category-option"
+            [class.selected]="selectedCategoryId === null"
+            (click)="selectCategory(null)"
+          >
+            All Categories
+          </button>
 
-                <td class="product-cell">
+          @for (category of categories; track category.id) {
 
-                    @if (product.image) {
+            <button
+              type="button"
+              class="category-option"
+              [class.selected]="selectedCategoryId === category.id"
+              (click)="selectCategory(category.id)"
+            >
+              {{ category.name }}
+            </button>
 
-                        <img
-                            class="product-image"
-                            [src]="product.image"
-                            [alt]="product.name"
-                        >
-
-                    } @else {
-
-                        <div class="product-image product-placeholder">
-                            <span>IMG</span>
-                        </div>
-
-                    }
-
-                    <div class="product-info">
-
-                        <div class="product-name">
-                            {{ product.name }}
-                        </div>
-
-                        <div class="product-description">
-                            {{ product.description }}
-                        </div>
-
-                    </div>
-
-                </td>
-
-                <td>
-                    {{ product.sku }}
-                </td>
-
-                <td>
-                    <span class="category-badge">
-                        {{ getCategoryName(product.categoryId) }}
-                    </span>
-                </td>
-
-                <td class="stock-cell">
-
-                    <div
-                        class="stock-status"
-                        [class.optimal]="getStockStatus(product) === 'optimal'"
-                        [class.low]="getStockStatus(product) === 'low'"
-                        [class.out]="getStockStatus(product) === 'out'"
-                    >
-
-                        @if (getStockStatus(product) === 'optimal') {
-                            Optimal
-                        }
-
-                        @if (getStockStatus(product) === 'low') {
-                            Low Stock
-                        }
-
-                        @if (getStockStatus(product) === 'out') {
-                            Out of Stock
-                        }
-
-                    </div>
-
-                    <div class="stock-info">
-                        <span>
-                            {{ product.stock }} / {{ product.maxStock }}
-                        </span>
-                    </div>
-
-                    <div class="stock-bar">
-
-                        <div
-                            class="stock-progress"
-                            [class.optimal]="getStockStatus(product) === 'optimal'"
-                            [class.low]="getStockStatus(product) === 'low'"
-                            [class.out]="getStockStatus(product) === 'out'"
-                            [style.width.%]="getStockPercentage(product)"
-                        ></div>
-
-                    </div>
-
-                </td>
-
-                <td class="price-cell">
-                    {{ product.price | number:'1.2-2' }} EGP
-                </td>
-
-                <td class="actions-cell">
-
-                    @if (!isEmployee) {
-                        <button
-                            type="button"
-                            class="icon-btn edit-btn"
-                            (click)="startEdit(product)"
-                            title="Edit product"
-                            aria-label="Edit product"
-                        >
-                            <svg
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M4 17.25V20h2.75L17.81 9.94l-2.75-2.75L4 17.25z"
-                                />
-
-                                <path
-                                    d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 2.75 2.75 2.83-.83z"
-                                />
-                            </svg>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="icon-btn delete-btn"
-                            (click)="deleteProduct(product)"
-                            title="Delete product"
-                            aria-label="Delete product"
-                        >
-                            <svg
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path d="M6 7h12" />
-                                <path d="M9 7V5h6v2" />
-                                <path d="M8 7l1 13h6l1-13" />
-                                <path d="M10 11v5" />
-                                <path d="M14 11v5" />
-                            </svg>
-                        </button>
-                    }
-
-                </td>
-
-            </tr>
-
-        }
-
-    </tbody>
-</table>
-
-@if (showDeleteModal && productToDelete) {
-
-    <div
-        class="modal-overlay"
-        (click)="cancelDelete()"
-    >
-
-        <div
-            class="delete-modal"
-            (click)="$event.stopPropagation()"
-        >
-
-            <div class="delete-icon">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-                    <path d="M6 7h12"></path>
-                    <path d="M9 7V5h6v2"></path>
-                    <path d="M8 7l1 13h6l1-13"></path>
-                    <path d="M10 11v5"></path>
-                    <path d="M14 11v5"></path>
-                </svg>
-
-            </div>
-
-            <h2>Delete Product?</h2>
-
-            <p>
-                Are you sure you want to delete
-                <strong>{{ productToDelete.name }}</strong>?
-            </p>
-
-            <div class="delete-actions">
-
-                <button
-                    type="button"
-                    class="modal-cancel-btn"
-                    (click)="cancelDelete()"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    type="button"
-                    class="modal-delete-btn"
-                    (click)="confirmDelete()"
-                >
-                    Delete
-                </button>
-
-            </div>
+          }
 
         </div>
 
+      }
+
     </div>
+
+  </section>
+
+
+  <!-- =========================
+       Products Summary
+  ========================== -->
+
+  <div class="products-summary">
+
+    <div>
+      <strong>{{ filteredProducts.length }}</strong>
+
+      <span>
+        {{ filteredProducts.length === 1 ? 'product' : 'products' }}
+      </span>
+    </div>
+
+    <span class="summary-line"></span>
+
+    <span class="summary-text">
+      Showing your current inventory
+    </span>
+
+  </div>
+
+
+  <!-- =========================
+       Products Table
+  ========================== -->
+
+  <section class="products-card">
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>PRODUCT</th>
+
+            <th>SKU</th>
+
+            <th>CATEGORY</th>
+
+            <th>PRICE</th>
+
+            <th>STOCK</th>
+
+            <th>STATUS</th>
+
+            @if (!isEmployee) {
+              <th class="actions-header">
+                ACTIONS
+              </th>
+            }
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for (product of filteredProducts; track product.id) {
+
+            <tr>
+
+              <!-- Product -->
+
+              <td>
+
+                <div class="product-info">
+
+                  <div class="product-image">
+
+                    @if (product.image) {
+
+                      <img
+                        [src]="product.image"
+                        [alt]="product.name"
+                      />
+
+                    } @else {
+
+                      <i class="bi bi-box-seam"></i>
+
+                    }
+
+                  </div>
+
+                  <div class="product-details">
+
+                    <strong>
+                      {{ product.name }}
+                    </strong>
+
+                    <span>
+                      {{ product.description || 'No description available' }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+              <!-- SKU -->
+
+              <td>
+
+                <span class="product-sku">
+                  {{ product.sku }}
+                </span>
+
+              </td>
+
+
+              <!-- Category -->
+
+              <td>
+
+                <span class="category-name">
+                  {{ getCategoryName(product.categoryId) }}
+                </span>
+
+              </td>
+
+
+              <!-- Price -->
+
+              <td>
+
+                <span class="product-price">
+                  ${{ product.price | number:'1.2-2' }}
+                </span>
+
+              </td>
+
+
+              <!-- Stock -->
+
+              <td>
+
+                <div class="stock-cell">
+
+                  <div class="stock-top">
+
+                    <strong>
+                      {{ product.stock }}
+                    </strong>
+
+                    <span>
+                      / {{ product.maxStock }}
+                    </span>
+
+                  </div>
+
+
+                  <div class="stock-bar">
+
+                    <div
+                      class="stock-progress"
+                      [class.low]="getStockStatus(product) === 'low'"
+                      [class.out]="getStockStatus(product) === 'out'"
+                      [style.width.%]="getStockPercentage(product)">
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+
+              <!-- Status -->
+
+              <td>
+
+                @if (getStockStatus(product) === 'optimal') {
+
+                  <span class="status-badge optimal">
+                    <span class="status-dot"></span>
+                    Optimal
+                  </span>
+
+                } @else if (getStockStatus(product) === 'low') {
+
+                  <span class="status-badge low">
+                    <span class="status-dot"></span>
+                    Low Stock
+                  </span>
+
+                } @else {
+
+                  <span class="status-badge out">
+                    <span class="status-dot"></span>
+                    Out of Stock
+                  </span>
+
+                }
+
+              </td>
+
+
+              <!-- Actions -->
+
+              @if (!isEmployee) {
+              <td>
+
+                  <div class="actions">
+
+                    <button
+                      type="button"
+                      class="action-btn edit"
+                      title="Edit product"
+                      (click)="startEdit(product)">
+
+                      <i class="bi bi-pencil"></i>
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="action-btn delete"
+                      title="Delete product"
+                      (click)="deleteProduct(product)">
+
+                      <i class="bi bi-trash3"></i>
+
+                    </button>
+
+                  </div>
+                </td>
+                }
+
+
+            </tr>
+
+          }
+
+
+          <!-- Empty State -->
+
+          @if (filteredProducts.length === 0) {
+
+            <tr>
+
+              <td colspan="7">
+
+                <div class="empty-state">
+
+                  <div class="empty-icon">
+                    <i class="bi bi-box-seam"></i>
+                  </div>
+
+                  <h3>No products found</h3>
+
+                  <p>
+                    Try changing your search or category filter.
+                  </p>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- ==================================================
+   ADD / EDIT PRODUCT MODAL
+================================================== -->
+
+@if (showAddForm) {
+
+<div class="modal-backdrop">
+
+  <div class="product-modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span class="modal-eyebrow">
+          {{ editingProductId ? 'EDIT PRODUCT' : 'NEW PRODUCT' }}
+        </span>
+
+        <h2>
+          {{ editingProductId ? 'Edit Product' : 'Add Product' }}
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="close-btn"
+        (click)="editingProductId ? cancelEdit() : cancelAddProduct()">
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+      <div class="form-grid">
+
+        <!-- Product Name -->
+
+        <div class="form-group full">
+
+          <label>Product Name</label>
+
+          <input
+            type="text"
+            [(ngModel)]="newProduct.name"
+            placeholder="e.g. Premium Coffee"
+          />
+
+        </div>
+
+
+        <!-- SKU -->
+
+        <div class="form-group">
+
+          <label>SKU</label>
+
+          <input
+            type="text"
+            [(ngModel)]="newProduct.sku"
+            placeholder="e.g. CF-001"
+          />
+
+        </div>
+
+
+        <!-- ==================================================
+             Category
+        ================================================== -->
+
+        <div class="form-group product-category-form-group">
+
+          <label>Category</label>
+
+          <div class="select-with-action">
+
+            <div class="product-category-dropdown">
+
+              <button
+                type="button"
+                class="product-category-trigger"
+                [class.open]="isProductCategoryDropdownOpen"
+                (click)="toggleProductCategoryDropdown($event)"
+              >
+
+                <span
+                  class="product-category-selected-text"
+                  [class.placeholder]="!newProduct.categoryId"
+                >
+                  {{ getSelectedProductCategoryLabel() }}
+                </span>
+
+                <i
+                  class="bi bi-chevron-down"
+                  [class.rotated]="isProductCategoryDropdownOpen">
+                </i>
+
+              </button>
+
+
+              @if (isProductCategoryDropdownOpen) {
+
+                <div
+                  class="product-category-options"
+                  role="listbox"
+                >
+
+                  <!-- Placeholder -->
+
+                  <button
+                    type="button"
+                    class="product-category-option placeholder-option"
+                    [class.selected]="!newProduct.categoryId"
+                    (click)="selectProductCategory('', $event)"
+                  >
+
+                    <span>
+                      Select category
+                    </span>
+
+                  </button>
+
+
+                  @for (category of categories; track category.id) {
+
+                    <button
+                      type="button"
+                      class="product-category-option"
+                      [class.selected]="newProduct.categoryId === category.id"
+                      (click)="selectProductCategory(category.id, $event)"
+                    >
+
+                      <span>
+                        {{ category.name }}
+                      </span>
+
+                      @if (newProduct.categoryId === category.id) {
+
+                        <i class="bi bi-check2"></i>
+
+                      }
+
+                    </button>
+
+                  }
+
+                </div>
+
+              }
+
+            </div>
+
+
+            @if (!isEmployee) {
+              <button
+                type="button"
+                class="add-category-btn"
+                title="Add category"
+                (click)="openAddCategoryModal()">
+
+                <i class="bi bi-plus"></i>
+
+              </button>
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- Minimum Stock -->
+
+        <div class="form-group">
+
+          <label>Minimum Stock</label>
+
+          <input
+            type="number"
+            [(ngModel)]="newProduct.minStock"
+            min="0"
+            placeholder="0"
+          />
+
+        </div>
+
+
+        <!-- Maximum Stock -->
+
+        <div class="form-group">
+
+          <label>Maximum Stock</label>
+
+          <input
+            type="number"
+            [(ngModel)]="newProduct.maxStock"
+            min="1"
+            placeholder="0"
+          />
+
+        </div>
+
+
+        <!-- Price -->
+
+        <div class="form-group full">
+
+          <label>Price</label>
+
+          <input
+            type="number"
+            [(ngModel)]="newProduct.price"
+            min="0"
+            placeholder="0.00"
+          />
+
+        </div>
+
+
+        <!-- Image -->
+
+        <div class="form-group full">
+
+          <label>Image URL</label>
+
+          <input
+            type="text"
+            [(ngModel)]="newProduct.image"
+            placeholder="https://..."
+          />
+
+        </div>
+
+
+        <!-- Description -->
+
+        <div class="form-group full">
+
+          <label>Description</label>
+
+          <textarea
+            [(ngModel)]="newProduct.description"
+            rows="3"
+            placeholder="Add a short description...">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+
+      <button
+        type="button"
+        class="cancel-btn"
+        (click)="editingProductId ? cancelEdit() : cancelAddProduct()">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="button"
+        class="save-btn"
+        (click)="addProduct()">
+
+        <i
+          class="bi"
+          [class.bi-check-lg]="editingProductId"
+          [class.bi-plus-lg]="!editingProductId">
+        </i>
+
+        {{ editingProductId ? 'Save Changes' : 'Add Product' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+}
+
+
+<!-- ==================================================
+   ADD CATEGORY MODAL
+================================================== -->
+
+@if (showAddCategoryModal) {
+
+<div class="modal-backdrop category-backdrop">
+
+  <div class="category-modal">
+
+    <div class="category-modal-icon">
+      <i class="bi bi-folder-plus"></i>
+    </div>
+
+    <h2>Add Category</h2>
+
+    <p>
+      Create a new category for your products.
+    </p>
+
+    <div class="form-group">
+
+      <label>Category Name</label>
+
+      <input
+        type="text"
+        [(ngModel)]="newCategoryName"
+        placeholder="e.g. Beverages"
+      />
+
+    </div>
+
+
+    <div class="category-actions">
+
+      <button
+        type="button"
+        class="cancel-btn"
+        (click)="closeAddCategoryModal()">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="button"
+        class="save-btn"
+        (click)="saveNewCategory()">
+
+        Add Category
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+}
+
+
+<!-- ==================================================
+   DELETE MODAL
+================================================== -->
+
+@if (showDeleteModal && productToDelete) {
+
+<div class="modal-backdrop">
+
+  <div class="delete-modal">
+
+    <div class="delete-icon">
+      <i class="bi bi-trash3"></i>
+    </div>
+
+    <h2>Delete Product?</h2>
+
+    <p>
+      Are you sure you want to delete
+      <strong>{{ productToDelete.name }}</strong>?
+      This action cannot be undone.
+    </p>
+
+
+    <div class="delete-actions">
+
+      <button
+        type="button"
+        class="cancel-btn"
+        (click)="cancelDelete()">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="button"
+        class="confirm-delete-btn"
+        (click)="confirmDelete()">
+
+        Delete Product
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
 }

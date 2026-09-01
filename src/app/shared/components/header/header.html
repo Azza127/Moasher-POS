@@ -1,40 +1,48 @@
 <header class="header">
-  <h4 class="store-name">
-    <strong *ngIf="settings">
-      {{ settings.storeName }}
-    </strong>
-  </h4>
-
-  <div class="user-info">
-
-    <div class="avatar">
-
-      {{ userName.charAt(0).toUpperCase() }}
-
-    </div>
-
-
-    <div class="user-details">
-
-      <strong>
-        {{ userName }}
+  <div class="header-context">
+    <span class="context-title">
+      <strong *ngIf="settings">
+        {{ settings.storeName }}
       </strong>
+    </span>
 
-      <span>
-        {{ userRole }}
-      </span>
+    <span class="context-divider"></span>
 
-    </div>
+    <span class="online-status">
+      <span class="status-dot"></span>
+      Online
+    </span>
 
   </div>
+  <div class="user-area">
+    <div class="user-info">
+      <div class="avatar">
+        {{ userName.charAt(0).toUpperCase() }}
+      </div>
 
+      <div class="user-details">
 
-  <button type="button" class="logout-btn" (click)="logout()">
+        <strong>
+          {{ userName }}
+        </strong>
 
-    <i class="bi bi-box-arrow-right"></i>
+        <span>
+          {{ userRole }}
+        </span>
 
-    Logout
+      </div>
+    </div>
 
-  </button>
+    <div class="header-divider"></div>
 
+    <button
+      type="button"
+      class="logout-btn"
+      (click)="logout()">
+
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Logout</span>
+
+    </button>
+  </div>
 </header>

@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 
 import { PopupService } from '../../core/services/popup.service';
 
+import { HostListener } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
 
@@ -132,10 +133,112 @@ export class Products implements OnInit {
     this.searchSubject.next(searchTerm);
   }
 
-  filterByCategory(categoryId: string): void {
-    this.selectedCategoryId = categoryId || null;
-    this.applyFilters();
+    // ظظظظظظظظظظظظظظظظظظظ
+changeSearchMode(mode: 'name' | 'sku'): void {
+  this.searchMode = mode;
+  this.applyFilters();
+}
+// ظظظظظظظظظظظظظظظظظظظ
+
+isCategoryDropdownOpen = false;
+isProductCategoryDropdownOpen = false;
+
+toggleProductCategoryDropdown(event: MouseEvent): void {
+
+  event.stopPropagation();
+
+  this.isProductCategoryDropdownOpen =
+    !this.isProductCategoryDropdownOpen;
+
+}
+
+selectProductCategory(
+  categoryId: string,
+  event?: MouseEvent
+): void {
+
+  event?.stopPropagation();
+
+  this.newProduct.categoryId = categoryId;
+
+  this.isProductCategoryDropdownOpen = false;
+
+  this.cdr.markForCheck();
+
+}
+
+getSelectedProductCategoryLabel(): string {
+
+  if (!this.newProduct.categoryId) {
+    return 'Select category';
   }
+
+  const selectedCategory = this.categories.find(
+    category =>
+      category.id === this.newProduct.categoryId
+  );
+
+  return selectedCategory?.name ?? 'Select category';
+
+}
+
+toggleCategoryDropdown(): void {
+  this.isCategoryDropdownOpen =
+    !this.isCategoryDropdownOpen;
+}
+
+selectCategory(categoryId: string | null): void {
+
+  this.selectedCategoryId = categoryId;
+
+  this.isCategoryDropdownOpen = false;
+
+  this.filterByCategory(categoryId);
+}
+
+@HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent): void {
+
+  const target = event.target as HTMLElement;
+
+
+  // Page category filter
+
+  if (!target.closest('.category-filter')) {
+    this.isCategoryDropdownOpen = false;
+  }
+
+
+  // Product modal category dropdown
+
+  if (!target.closest('.product-category-dropdown')) {
+    this.isProductCategoryDropdownOpen = false;
+  }
+
+}
+
+getSelectedCategoryLabel(): string {
+
+  if (this.selectedCategoryId === null) {
+    return 'All Categories';
+  }
+
+  const selectedCategory =
+    this.categories.find(
+      category => category.id === this.selectedCategoryId
+    );
+
+  return selectedCategory?.name ?? 'All Categories';
+
+}
+
+filterByCategory(categoryId: string | null): void {
+
+  this.selectedCategoryId = categoryId || null;
+  this.applyFilters();
+
+}
+// ظظظظظظظظظظظ
 
   private applyFilters(): void {
     const term = this.searchTerm.trim().toLowerCase();

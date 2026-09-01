@@ -1,14 +1,27 @@
 <aside class="sidebar">
 
-  <!-- Logo & Brand -->
+  <!-- Brand -->
   <div class="brand">
+
     <div class="brand-header">
-      <img src="chart-line-solid-full.svg" alt="Moasher Logo" class="brand-logo" />
-      <h2 class="brand-title">Moasher</h2>
+
+      <div class="brand-mark">
+        <img
+          src="chart-line-solid-full.svg"
+          alt="Moasher Logo"
+          class="brand-logo"
+        />
+      </div>
+
+      <div class="brand-text">
+        <h2 class="brand-title">Moasher</h2>
+        <span class="brand-subtitle">INVENTORY & POS</span>
+      </div>
+
     </div>
-    <!-- <span class="brand-subtitle">INVENTORY & POS</span> -->
-    <span class="brand-subtitle">___________________________________</span>
+
   </div>
+
 
   <!-- Main Navigation -->
   <nav class="navigation">
@@ -21,6 +34,11 @@
     <a routerLink="/inventory" routerLinkActive="active">
       <i class="bi bi-box-seam"></i>
       <span>Inventory</span>
+    </a>
+
+    <a routerLink="/purchase-invoices" routerLinkActive="active">
+      <i class="bi bi-receipt"></i>
+      <span>Purchase Invoices</span>
     </a>
 
     <a routerLink="/pos" routerLinkActive="active">
@@ -42,13 +60,17 @@
 
   </nav>
 
+
   <!-- New Sale -->
   <div class="new-sale">
+
     <a routerLink="/pos">
       <i class="bi bi-plus-lg"></i>
       <span>New Sale</span>
     </a>
+
   </div>
+
 
   <!-- Bottom Navigation -->
   <div class="bottom-navigation">
