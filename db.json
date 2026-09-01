@@ -33,14 +33,6 @@
       "status": "Active"
     },
     {
-      "username": "hello",
-      "password": "12345678",
-      "name": "hello from testing",
-      "role": "Employee",
-      "status": "Active",
-      "id": "QAX8Z84P0E8"
-    },
-    {
       "username": "batoal",
       "password": "654321",
       "name": "batoal",
@@ -126,7 +118,7 @@
       "sku": "USB-001",
       "categoryId": "1",
       "price": 360,
-      "stock": 66,
+      "stock": 65,
       "minStock": 10,
       "maxStock": 40,
       "description": "Black / 256G",
@@ -258,7 +250,7 @@
       "sku": "FOF-220",
       "categoryId": "5",
       "price": 15,
-      "stock": 0,
+      "stock": 50,
       "minStock": 15,
       "maxStock": 60,
       "description": "400g",
@@ -322,7 +314,7 @@
       "stock": 11,
       "maxStock": 50,
       "minStock": 5,
-      "image": ""
+      "image": "https://i.pinimg.com/736x/a2/25/78/a2257896c64ea8a85b46d28930266d16.jpg"
     },
     {
       "id": "8mgaOCZTySg",
@@ -334,7 +326,7 @@
       "stock": 23,
       "maxStock": 50,
       "minStock": 5,
-      "image": "https://i.pinimg.com/736x/a2/25/78/a2257896c64ea8a85b46d28930266d16.jpg"
+      "image": "https://i.pinimg.com/736x/60/b9/02/60b90263f2e24fe2f0077f18e6a766e1.jpg"
     },
     {
       "id": "KQKfHlIDRQs",
@@ -359,18 +351,6 @@
       "maxStock": 50,
       "minStock": 4,
       "image": "https://i.pinimg.com/736x/ca/dc/8c/cadc8c1d17a2cd894fe4b40d65a64543.jpg"
-    },
-    {
-      "id": "-1wpRIoloUU",
-      "name": "V-Cola",
-      "description": "Soda Drink",
-      "sku": "EOE-002",
-      "categoryId": "w-UYvx6E5OA",
-      "price": 25,
-      "stock": 0,
-      "maxStock": 100,
-      "minStock": 10,
-      "image": "https://i.pinimg.com/736x/d7/23/1f/d7231f4cd99d2747b5a9994f2b09e5e1.jpg"
     }
   ],
   "purchaseInvoices": [
@@ -671,6 +651,47 @@
           "taxAmount": 0,
           "subtotal": 700,
           "total": 700
+        }
+      ]
+    },
+    {
+      "id": "xvQFmr7rXoA",
+      "supplierName": "شركة العبور للمواد الغذائية",
+      "invoiceNumber": "964785",
+      "invoiceDate": "2026-09-01",
+      "warehouseId": "هايبر وان",
+      "notes": "",
+      "subtotal": 1330,
+      "taxTotal": 0,
+      "total": 1330,
+      "items": [
+        {
+          "id": "1788267717522x8xain",
+          "productId": "-1wpRIoloUU",
+          "productName": "V-Cola",
+          "sku": "EOE-002",
+          "quantity": 40,
+          "expiryDate": "2028-12-05",
+          "purchasePrice": 17,
+          "sellingPrice": 25,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 680,
+          "total": 680
+        },
+        {
+          "id": "1788267755608jhodj3",
+          "productId": "g-Zfpr16690",
+          "productName": "Pasta",
+          "sku": "FOF-220",
+          "quantity": 50,
+          "expiryDate": "2029-01-09",
+          "purchasePrice": 13,
+          "sellingPrice": 20,
+          "taxRate": 0,
+          "taxAmount": 0,
+          "subtotal": 650,
+          "total": 650
         }
       ]
     }
@@ -1591,6 +1612,25 @@
       "status": "Completed",
       "createdAt": "2026-09-01T03:01:15.038Z",
       "id": "UcMMVimsM9Q"
+    },
+    {
+      "ticketNumber": "#8118-G",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        }
+      ],
+      "subtotal": 360,
+      "tax": 50.4,
+      "total": 410.4,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-09-01T20:57:06.760Z",
+      "id": "ijm9zR-9Btg"
     }
   ],
   "storeSettings": [
@@ -1600,7 +1640,7 @@
       "phone": "01287893082",
       "address": "امتداد محور 26 يوليو، مدخل مدينة الشيخ زايد، محافظة الجيزة.",
       "currency": "EGP",
-      "taxRate": 15
+      "taxRate": 14
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

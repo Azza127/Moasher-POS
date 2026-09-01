@@ -61,20 +61,13 @@
 
   }
 
-  <!-- <div class="page-header">
-
-    <h2>Settings</h2>
-
-    <p>
-      Manage your store information and preferences.
-    </p>
-
-  </div> -->
-
 
   <div class="settings-card">
 
 
+    <!-- =====================================================
+         GENERAL INFORMATION
+    ====================================================== -->
 
     <section class="settings-section">
 
@@ -94,7 +87,8 @@
       <div class="form-grid">
 
 
-      
+        <!-- STORE NAME -->
+
         <div class="form-group">
 
           <label
@@ -156,7 +150,7 @@
         </div>
 
 
-      
+        <!-- CONTACT PHONE -->
 
         <div class="form-group">
 
@@ -223,6 +217,7 @@
         </div>
 
 
+        <!-- STORE ADDRESS -->
 
         <div class="form-group full-width">
 
@@ -273,6 +268,9 @@
     </section>
 
 
+    <!-- =====================================================
+         REGIONAL & FINANCIAL
+    ====================================================== -->
 
     <section class="settings-section">
 
@@ -292,6 +290,10 @@
       <div class="form-grid">
 
 
+        <!-- =================================================
+             CURRENCY
+        ================================================== -->
+
         <div class="form-group">
 
           <label
@@ -304,42 +306,79 @@
           </label>
 
 
-          <select
-            id="currency"
-            name="currency"
-
-            [(ngModel)]="settings.currency"
-
-            (change)="
-              validateField('currency')
-            "
-
-            [class.error-input]="
-              isFieldInvalid('currency')
-            "
+          <div
+            class="custom-dropdown currency-dropdown"
+            (click)="$event.stopPropagation()"
           >
 
-            <option value="">
-              Select currency
-            </option>
+            <button
+              type="button"
+              id="currency"
+              class="custom-dropdown-button"
 
-            <option value="EGP">
-              EGP (ج.م)
-            </option>
+              [class.error-input]="
+                isFieldInvalid('currency')
+              "
 
-            <option value="USD">
-              USD ($)
-            </option>
+              [class.open]="
+                currencyDropdownOpen
+              "
 
-            <option value="EUR">
-              EUR (€)
-            </option>
+              (click)="
+                toggleCurrencyDropdown()
+              "
+            >
 
-            <option value="GBP">
-              GBP (£)
-            </option>
+              <span>
+                {{ getSelectedCurrencyLabel() }}
+              </span>
 
-          </select>
+              <span
+                class="dropdown-arrow"
+                [class.open]="currencyDropdownOpen"
+              ></span>
+
+            </button>
+
+
+            @if (currencyDropdownOpen) {
+
+              <div
+                class="custom-dropdown-menu"
+                role="listbox"
+              >
+
+                @for (
+                  currency of currencies;
+                  track currency.code
+                ) {
+
+                    <button
+                    type="button"
+                    class="custom-dropdown-option"
+
+                    [class.selected]="
+                      settings.currency === currency.code
+                    "
+
+                    (click)="
+                      selectCurrency(currency.code)
+                    "
+                    >
+
+                    <span>
+                      {{ currency.code }} ({{ currency.symbol }})
+                    </span>
+
+                    </button>
+
+                }
+
+              </div>
+
+            }
+
+          </div>
 
 
           @if (isFieldInvalid('currency')) {
@@ -355,6 +394,9 @@
         </div>
 
 
+        <!-- =================================================
+             TAX RATE
+        ================================================== -->
 
         <div class="form-group">
 
@@ -420,10 +462,15 @@
     </section>
 
 
+    <!-- =====================================================
+         ACTIONS
+    ====================================================== -->
+
     <div class="settings-actions">
 
 
-  
+      <!-- DISCARD -->
+
       <button
         type="button"
         class="discard-btn"
@@ -435,6 +482,8 @@
 
       </button>
 
+
+      <!-- SAVE -->
 
       <button
         type="button"

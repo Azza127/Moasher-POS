@@ -77,9 +77,8 @@
 
 .popup-card.info .popup-icon-container,
 .popup-card.confirm .popup-icon-container {
-  background: linear-gradient(135deg, #4F7F9F, #3B647F);
-
-  box-shadow: 0 8px 20px rgba(79, 127, 159, 0.3);
+  background: linear-gradient(135deg, #63C8C1, #3FAFA8);
+  box-shadow: 0 8px 20px rgba(63, 175, 168, 0.3);
 }
 
 /* ==========================================
@@ -177,8 +176,8 @@
 
 .info .btn-ok, .info .btn-confirm,
 .confirm .btn-ok, .confirm .btn-confirm {
-  background: linear-gradient(135deg, #4F7F9F, #3B647F);
-  box-shadow: 0 8px 20px rgba(79, 127, 159, 0.3);
+  background: linear-gradient(135deg, #63C8C1, #3FAFA8);
+  box-shadow: 0 8px 20px rgba(63, 175, 168, 0.3);
 }
 
 /* ==========================================

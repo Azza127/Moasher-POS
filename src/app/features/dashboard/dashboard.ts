@@ -12,7 +12,7 @@ import { forkJoin } from 'rxjs';
 
 import { ProductService } from '../../core/services/product.service';
 import { OrderService } from '../../core/services/order.service';
-
+import { StoreSettingsService } from '../../core/services/store-settings.service';
 import { Product } from '../../core/models/product.model';
 import { Order } from '../../core/models/order.model';
 
@@ -37,7 +37,8 @@ export class Dashboard implements OnInit {
   private orderService =
     inject(OrderService);
 
-
+  private storeSettingsService =
+    inject(StoreSettingsService);
   /* =========================================================
      DATA
      ========================================================= */
@@ -51,7 +52,7 @@ export class Dashboard implements OnInit {
   loading =
     signal<boolean>(true);
 
-
+  currencySymbol = signal('EGP');
   /* =========================================================
      KPI
      ========================================================= */
@@ -443,53 +444,66 @@ export class Dashboard implements OnInit {
       `;
   
     });
+
+    // //////////////////////////
+    private loadStoreSettings(): void {
+
+      this.storeSettingsService
+        .getOrLoadSettings()
+        .subscribe({
+          next: (settings) => {
+    
+            if (!settings) {
+              return;
+            }
+    
+            this.currencySymbol.set(
+              this.storeSettingsService
+                .getCurrencySymbol(settings.currency)
+            );
+    
+          },
+    
+          error: (error) => {
+            console.error(
+              'Error loading store settings:',
+              error
+            );
+          }
+        });
+    
+    }
   /* =========================================================
      INIT
      ========================================================= */
 
-  ngOnInit(): void {
+     ngOnInit(): void {
 
-    forkJoin({
-
-      products:
-        this.productService
-          .getProducts(),
-
-      orders:
-        this.orderService
-          .getOrders()
-
-    }).subscribe({
-
-      next: ({
-        products,
-        orders
-      }) => {
-
-        this.products.set(
-          products
-        );
-
-        this.orders.set(
+      this.loadStoreSettings();
+    
+      forkJoin({
+        products: this.productService.getProducts(),
+        orders: this.orderService.getOrders()
+      }).subscribe({
+    
+        next: ({
+          products,
           orders
-        );
-
-        this.loading.set(
-          false
-        );
-
-      },
-
-      error: () => {
-
-        this.loading.set(
-          false
-        );
-
-      }
-
-    });
-
+        }) => {
+    
+          this.products.set(products);
+          this.orders.set(orders);
+          this.loading.set(false);
+    
+        },
+    
+        error: () => {
+    
+          this.loading.set(false);
+    
+        }
+    
+      });
+    
+    }
   }
-
-}

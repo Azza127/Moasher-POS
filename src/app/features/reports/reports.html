@@ -161,7 +161,7 @@
           <div class="total-sales-badge">
 
             <h2>
-              ${{ totalSales | number:'1.2-2' }}
+              {{ totalSales | number:'1.2-2' }} {{ currencySymbol }}
             </h2>
 
             <p>
@@ -204,11 +204,12 @@
               </span>
 
               <span class="value">
-                ${{
+                {{
                   totalOrdersCount > 0
                     ? (totalSales / totalOrdersCount | number:'1.2-2')
                     : '0.00'
                 }}
+                {{ currencySymbol }}
               </span>
 
             </div>
@@ -307,13 +308,17 @@
             Top Performing Products
           </h3>
 
-          <a
+          <!-- <a
             href="#"
             class="view-all-link"
             (click)="$event.preventDefault()"
           >
             View All
-          </a>
+          </a> -->
+
+          <span class="info-icon">
+            <i class="fa-solid fa-circle-info"></i>
+          </span>
 
         </div>
 
@@ -375,7 +380,8 @@
 
                   <td>
                     <strong>
-                      ${{ prod.revenue | number:'1.2-2' }}
+                      {{ prod.revenue | number:'1.2-2' }}
+                      {{ currencySymbol }}
                     </strong>
                   </td>
 
@@ -466,7 +472,8 @@
             </div>
 
             <h2>
-              ${{ inventoryValuation.totalCost | number:'1.2-2' }}
+              {{ inventoryValuation.totalCost | number:'1.2-2' }}
+              {{ currencySymbol }}
             </h2>
 
           </div>
@@ -482,7 +489,8 @@
               </span>
 
               <strong>
-                ${{ inventoryValuation.potentialRevenue | number:'1.2-2' }}
+                {{ inventoryValuation.potentialRevenue | number:'1.2-2' }}
+                {{ currencySymbol }}
               </strong>
 
             </div>

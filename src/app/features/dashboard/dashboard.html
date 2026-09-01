@@ -30,7 +30,7 @@
       <span class="kpi-label">TOTAL SALES</span>
 
       <strong class="kpi-value">
-        {{ totalSales() | currency }}
+        {{ totalSales() | number:'1.2-2' }} {{ currencySymbol() }}
       </strong>
 
       <span class="kpi-note positive">
@@ -110,7 +110,7 @@
 
         <div class="activity-total">
           <span>Total</span>
-          <strong>{{ totalSales() | currency }}</strong>
+          <strong>{{ totalSales() | number:'1.2-2' }} {{ currencySymbol() }}</strong>
         </div>
 
       </div>
@@ -147,12 +147,10 @@
     
         <!-- Y Axis -->
         <div class="chart-y-axis">
-    
-          <span>{{ chartSalesLabels()[3] | currency:'USD':'symbol':'1.0-0' }}</span>
-          <span>{{ chartSalesLabels()[2] | currency:'USD':'symbol':'1.0-0' }}</span>
-          <span>{{ chartSalesLabels()[1] | currency:'USD':'symbol':'1.0-0' }}</span>
-          <span>{{ chartSalesLabels()[0] | currency:'USD':'symbol':'1.0-0' }}</span>
-    
+          <span>{{ chartSalesLabels()[3] | number:'1.0-0' }} {{ currencySymbol() }}</span>
+          <span>{{ chartSalesLabels()[2] | number:'1.0-0' }} {{ currencySymbol() }}</span>
+          <span>{{ chartSalesLabels()[1] | number:'1.0-0' }} {{ currencySymbol() }}</span>
+          <span>{{ chartSalesLabels()[0] | number:'1.0-0' }} {{ currencySymbol() }}</span>
         </div>
     
     
@@ -205,10 +203,10 @@
                 r="4"
               >
     
-                <title>
-                  {{ point.label }} ·
-                  {{ point.sales | currency }}
-                </title>
+                  <title>
+                    {{ point.label }} ·
+                    {{ point.sales | number:'1.2-2' }} {{ currencySymbol() }}
+                  </title>
     
               </circle>
     
@@ -390,9 +388,6 @@
     <div class="orders-header">
 
       <div>
-        <!-- <span class="section-kicker">
-          TRANSACTIONS
-        </span> -->
 
         <h3>Recent orders</h3>
 
@@ -443,7 +438,7 @@
 
             <td>
               <strong class="order-amount">
-                {{ order.total | currency }}
+                {{ order.total | number:'1.2-2' }} {{ currencySymbol() }}
               </strong>
             </td>
 

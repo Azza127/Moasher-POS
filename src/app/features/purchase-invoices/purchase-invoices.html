@@ -216,39 +216,27 @@
                 <!-- Subtotal -->
   
                 <td>
-  
                   <span class="money">
-  
-                    ${{ invoice.subtotal | number:'1.2-2' }}
-  
+                    {{ currencySymbol }} {{ invoice.subtotal | number:'1.2-2' }}
                   </span>
-  
                 </td>
   
   
                 <!-- Tax -->
   
                 <td>
-  
                   <span class="money tax">
-  
-                    ${{ invoice.taxTotal | number:'1.2-2' }}
-  
+                    {{ currencySymbol }} {{ invoice.taxTotal | number:'1.2-2' }}
                   </span>
-  
                 </td>
   
   
                 <!-- Total -->
   
-                <td>
-  
+                <td> 
                   <strong class="invoice-total">
-  
-                    ${{ invoice.total | number:'1.2-2' }}
-  
+                    {{ currencySymbol }} {{ invoice.total | number:'1.2-2' }}
                   </strong>
-  
                 </td>
   
   
@@ -825,11 +813,8 @@
                         <!-- Purchase Price -->
   
                         <td>
-  
                           <div class="price-input">
-  
-                            <span>$</span>
-  
+                            <span>{{ currencySymbol }}</span>
                             <input
                               class="table-input"
                               type="number"
@@ -838,20 +823,17 @@
                               [(ngModel)]="item.purchasePrice"
                               (ngModelChange)="updateItem(item)"
                             />
-  
                           </div>
-  
+
                         </td>
   
   
                         <!-- Selling Price -->
   
                         <td>
-  
                           <div class="price-input">
-  
-                            <span>$</span>
-  
+                            <span>{{ currencySymbol }}</span>
+                          
                             <input
                               class="table-input"
                               type="number"
@@ -860,9 +842,7 @@
                               [(ngModel)]="item.sellingPrice"
                               (ngModelChange)="updateItem(item)"
                             />
-  
                           </div>
-  
                         </td>
   
   
@@ -893,13 +873,9 @@
                         <!-- Total -->
   
                         <td>
-  
                           <strong class="item-total">
-  
-                            ${{ item.total | number:'1.2-2' }}
-  
+                            {{ currencySymbol }}{{ item.total | number:'1.2-2' }}
                           </strong>
-  
                         </td>
   
   
@@ -979,7 +955,7 @@
                 </span>
   
                 <strong>
-                  ${{ getInvoiceProfit() | number:'1.2-2' }}
+                  {{ currencySymbol }}{{ getInvoiceProfit() | number:'1.2-2' }}
                 </strong>
   
               </div>
@@ -999,7 +975,7 @@
                 </span>
   
                 <strong>
-                  ${{ newInvoice.subtotal | number:'1.2-2' }}
+                  {{ currencySymbol }}{{ newInvoice.taxTotal | number:'1.2-2' }}
                 </strong>
   
               </div>
@@ -1012,7 +988,7 @@
                 </span>
   
                 <strong>
-                  ${{ newInvoice.taxTotal | number:'1.2-2' }}
+                  {{ currencySymbol }}{{ newInvoice.taxTotal | number:'1.2-2' }}
                 </strong>
   
               </div>
@@ -1028,7 +1004,7 @@
                 </span>
   
                 <strong>
-                  ${{ newInvoice.total | number:'1.2-2' }}
+                  {{ currencySymbol }}{{ newInvoice.total | number:'1.2-2' }}
                 </strong>
   
               </div>

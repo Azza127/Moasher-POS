@@ -1067,7 +1067,7 @@ tbody tr:last-child td {
 
   font-size: 14px;
 
-  font-weight: 700;
+  font-weight: 500;
 
   white-space: nowrap;
 }
@@ -1678,8 +1678,8 @@ tbody tr:last-child td {
 
   border-radius: 12px;
 
-  box-shadow:
-    0 20px 50px rgba(21, 25, 28, 0.20);
+  /* box-shadow:
+    0 20px 50px rgba(21, 25, 28, 0.20); */
 }
 
 .delete-icon {
@@ -1697,9 +1697,18 @@ tbody tr:last-child td {
 
   border-radius: 10px;
 
-  background: #F9E9E7;
+  /* background: #F9E9E7;
 
-  color: #C85C55;
+  color: #C85C55; */
+
+  background: transparent;
+  
+  color: #ef4444;
+  cursor: pointer;
+  
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 
   font-size: 21px;
 }

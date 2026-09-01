@@ -47,7 +47,7 @@
     0 3px 12px
     rgba(20, 38, 61, 0.05);
 
-  overflow: hidden;
+    overflow: visible;
 }
 
 .settings-section {
@@ -195,6 +195,233 @@
     rgba(21, 159, 154, 0.10);
 }
 
+/* =========================================================
+   Custom Currency Dropdown
+   ========================================================= */
+
+   .custom-dropdown {
+    position: relative;
+    width: 100%;
+  }
+  
+  
+  .custom-dropdown-button {
+    width: 100%;
+    height: 42px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    padding: 0 12px;
+  
+    border: 1px solid #E1E5E8;
+    border-radius: 8px;
+  
+    background: #FFFFFF;
+  
+    color: #14263D;
+  
+    font-family: inherit;
+    font-size: 13px;
+  
+    cursor: pointer;
+  
+    outline: none;
+  
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+  
+  
+  .custom-dropdown-button:hover {
+    border-color: #159C92;
+  }
+  
+  
+  .custom-dropdown-button:focus {
+    border-color: #159C92;
+  
+    box-shadow:
+      0 0 0 3px
+      rgba(21, 156, 146, 0.10);
+  }
+  
+  
+  .custom-dropdown-button.error-input {
+    border-color: #C85C55 !important;
+  
+    box-shadow:
+      0 0 0 2px
+      rgba(200, 92, 85, 0.08) !important;
+  }
+  
+  
+  .custom-dropdown-button.error-input:focus {
+    border-color: #C85C55 !important;
+  
+    box-shadow:
+      0 0 0 3px
+      rgba(200, 92, 85, 0.10) !important;
+  }
+  
+  
+  /* =========================================================
+     Dropdown Arrow
+     ========================================================= */
+  
+  .dropdown-arrow {
+    width: 8px;
+    height: 8px;
+  
+    flex: 0 0 8px;
+  
+    margin-right: 3px;
+  
+    border-right: 2px solid #737A7D;
+    border-bottom: 2px solid #737A7D;
+  
+    transform: rotate(45deg) translateY(-2px);
+  
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+  
+  
+  .dropdown-arrow.open {
+    transform: rotate(225deg) translateY(-2px);
+  
+    border-color: #159C92;
+  }
+  
+  
+  .custom-dropdown-button:hover .dropdown-arrow {
+    border-color: #159C92;
+  }
+  
+  
+  /* =========================================================
+     Dropdown Menu
+     ========================================================= */
+  
+     .custom-dropdown-menu {
+      position: absolute;
+    
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+    
+      z-index: 100;
+    
+      padding: 5px;
+    
+      background: #FFFFFF;
+    
+      border: 1px solid #E3E7E7;
+      border-radius: 9px;
+    
+      box-shadow:
+        0 10px 25px
+        rgba(20, 38, 61, 0.12);
+    
+      max-height: 180px;
+      overflow-y: auto;
+    
+      animation:
+        currencyDropdownIn
+        0.15s ease;
+    }
+  
+    .custom-dropdown-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .custom-dropdown-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .custom-dropdown-menu::-webkit-scrollbar-thumb {
+      background: #B8DAD8;
+      border-radius: 10px;
+    }
+    
+    .custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+      background: #159F9A;
+    }
+
+  .custom-dropdown-option {
+    width: 100%;
+  
+    min-height: 38px;
+  
+    display: flex;
+    align-items: center;
+  
+    padding: 0 11px;
+  
+    border: none;
+    border-radius: 7px;
+  
+    background: transparent;
+  
+    color: #15191C;
+  
+    font-family: inherit;
+    font-size: 13px;
+  
+    text-align: left;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
+  }
+  
+  
+  .custom-dropdown-option:hover {
+    background: #E7F5F4;
+  
+    color: #087F78;
+  }
+  
+  
+  .custom-dropdown-option.selected {
+    background: #E7F5F4;
+  
+    color: #087F78;
+  
+    font-weight: 600;
+  }
+  
+  
+  .custom-dropdown-option.selected::after {
+    content: '✓';
+  
+    margin-left: auto;
+  
+    color: #159C92;
+  
+    font-size: 13px;
+  }
+  
+  
+  @keyframes currencyDropdownIn {
+  
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+  }
 
 /* =========================================================
    Errors

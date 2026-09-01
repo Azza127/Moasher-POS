@@ -13,7 +13,9 @@
 
         <h1>Sales Terminal</h1>
 
-        <p>Select products and complete customer transactions seamlessly.</p>
+        <p>
+          Select products and complete customer transactions seamlessly.
+        </p>
       </div>
 
     </div>
@@ -36,14 +38,22 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <circle cx="11" cy="11" r="8"></circle>
+
+          <circle
+            cx="11"
+            cy="11"
+            r="8"
+          ></circle>
+
           <line
             x1="21"
             y1="21"
             x2="16.65"
             y2="16.65"
           ></line>
+
         </svg>
+
 
         <input
           type="text"
@@ -70,6 +80,7 @@
         >
           All Products
         </button>
+
 
         <button
           type="button"
@@ -100,9 +111,13 @@
         <div class="product-img-wrapper">
 
           <img
-            [src]="product.image || 'https://via.placeholder.com/300x220?text=Product'"
+            [src]="
+              product.image ||
+              'https://via.placeholder.com/300x220?text=Product'
+            "
             [alt]="product.name"
           />
+
 
           <div
             *ngIf="product.stock <= 0"
@@ -121,6 +136,7 @@
             {{ product.name }}
           </h4>
 
+
           <span
             class="stock-text"
             [class.low-stock]="
@@ -128,24 +144,35 @@
               product.stock <= product.minStock
             "
           >
-            {{ product.stock > 0 ? 'Stock: ' + product.stock : 'Out of stock' }}
+            {{
+              product.stock > 0
+                ? 'Stock: ' + product.stock
+                : 'Out of stock'
+            }}
           </span>
 
 
           <div class="price-row">
 
             <span class="product-price">
-              ${{ product.price | number: '1.2-2' }}
+
+              {{ product.price | number: '1.2-2' }}
+              {{ currencySymbol }}
+
             </span>
 
+
             <button
-            type="button"
-            class="add-btn"
-            [disabled]="product.stock <= 0"
-            (click)="$event.stopPropagation(); addToCart(product)"
-          >
-            +
-          </button>
+              type="button"
+              class="add-btn"
+              [disabled]="product.stock <= 0"
+              (click)="
+                $event.stopPropagation();
+                addToCart(product)
+              "
+            >
+              +
+            </button>
 
           </div>
 
@@ -161,6 +188,7 @@
       >
 
         <div class="empty-products-icon">
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="22"
@@ -172,12 +200,29 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="20" y1="20" x2="16" y2="16"></line>
+
+            <circle
+              cx="11"
+              cy="11"
+              r="7"
+            ></circle>
+
+            <line
+              x1="20"
+              y1="20"
+              x2="16"
+              y2="16"
+            ></line>
+
           </svg>
+
         </div>
 
-        <h3>No products found</h3>
+
+        <h3>
+          No products found
+        </h3>
+
 
         <p>
           Try another product name, SKU, or category.
@@ -203,13 +248,20 @@
 
         <div class="cart-title-row">
 
-          <h2>Current Order</h2>
+          <h2>
+            Current Order
+          </h2>
 
-          <span class="cart-count" *ngIf="cart.length > 0">
+
+          <span
+            class="cart-count"
+            *ngIf="cart.length > 0"
+          >
             {{ cart.length }}
           </span>
 
         </div>
+
 
         <span class="ticket-id">
           Ticket {{ currentTicketNumber }}
@@ -237,13 +289,22 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <polyline points="3 6 5 6 21 6"></polyline>
+
+          <polyline
+            points="3 6 5 6 21 6"
+          ></polyline>
 
           <path
-            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"
+            d="
+              M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6
+            "
           ></path>
 
-          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          <path
+            d="
+              M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2
+            "
+          ></path>
 
         </svg>
 
@@ -275,14 +336,36 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <circle cx="9" cy="20" r="1"></circle>
-            <circle cx="19" cy="20" r="1"></circle>
-            <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6"></path>
+
+            <circle
+              cx="9"
+              cy="20"
+              r="1"
+            ></circle>
+
+            <circle
+              cx="19"
+              cy="20"
+              r="1"
+            ></circle>
+
+            <path
+              d="
+                M3 4h2l2.4 11.2a2 2 0 0 0
+                2 1.6h7.9a2 2 0 0 0
+                1.9-1.4L21 8H6
+              "
+            ></path>
+
           </svg>
 
         </div>
 
-        <h3>Your cart is empty</h3>
+
+        <h3>
+          Your cart is empty
+        </h3>
+
 
         <p>
           Select products from the catalog to start an order.
@@ -320,8 +403,13 @@
                 {{ item.productName }}
               </span>
 
+
               <span class="item-unit-price">
-                ${{ item.price | number: '1.2-2' }} / each
+
+                {{ item.price | number: '1.2-2' }}
+                {{ currencySymbol }}
+                / each
+
               </span>
 
             </div>
@@ -345,8 +433,21 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
+
+                <line
+                  x1="18"
+                  y1="6"
+                  x2="6"
+                  y2="18"
+                ></line>
+
+                <line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"
+                ></line>
+
               </svg>
 
             </button>
@@ -367,9 +468,11 @@
                 −
               </button>
 
+
               <span class="qty-value">
                 {{ item.quantity }}
               </span>
+
 
               <button
                 type="button"
@@ -384,7 +487,10 @@
 
             <!-- Total -->
             <span class="item-total-price">
-              ${{ item.total | number: '1.2-2' }}
+
+              {{ item.total | number: '1.2-2' }}
+              {{ currencySymbol }}
+
             </span>
 
           </div>
@@ -403,26 +509,40 @@
       *ngIf="cart.length > 0"
     >
 
+      <!-- Subtotal -->
       <div class="summary-line">
 
-        <span>Subtotal</span>
+        <span>
+          Subtotal
+        </span>
+
 
         <span>
-          ${{ subtotal | number: '1.2-2' }}
+
+          {{ subtotal | number: '1.2-2' }}
+          {{ currencySymbol }}
+
         </span>
 
       </div>
 
 
+      <!-- Tax -->
       <div class="summary-line">
 
         <span>
+
           Tax
-          <small>(14%)</small>
+          {{ taxRate * 100 | number:'1.0-2' }}%
+
         </span>
 
+
         <span>
-          ${{ tax | number: '1.2-2' }}
+
+          {{ tax | number: '1.2-2' }}
+          {{ currencySymbol }}
+
         </span>
 
       </div>
@@ -431,12 +551,19 @@
       <div class="summary-divider"></div>
 
 
+      <!-- Total -->
       <div class="summary-line total-line">
 
-        <span>Total</span>
+        <span>
+          Total
+        </span>
+
 
         <span class="total-amount">
-          ${{ total | number: '1.2-2' }}
+
+          {{ total | number: '1.2-2' }}
+          {{ currencySymbol }}
+
         </span>
 
       </div>
@@ -457,12 +584,19 @@
             type="button"
             class="pay-select-btn"
             [class.active]="paymentMethod === 'Cash'"
-            (click)="paymentMethod = 'Cash'; savePaymentMethod()"
+            (click)="
+              paymentMethod = 'Cash';
+              savePaymentMethod()
+            "
           >
 
-            <span class="payment-icon">💵</span>
+            <span class="payment-icon">
+              💵
+            </span>
 
-            <span>Cash</span>
+            <span>
+              Cash
+            </span>
 
           </button>
 
@@ -471,12 +605,19 @@
             type="button"
             class="pay-select-btn"
             [class.active]="paymentMethod === 'Card'"
-            (click)="paymentMethod = 'Card'; savePaymentMethod()"
+            (click)="
+              paymentMethod = 'Card';
+              savePaymentMethod()
+            "
           >
 
-            <span class="payment-icon">💳</span>
+            <span class="payment-icon">
+              💳
+            </span>
 
-            <span>Card</span>
+            <span>
+              Card
+            </span>
 
           </button>
 
@@ -492,10 +633,16 @@
         (click)="checkout()"
       >
 
-        <span>Pay Now</span>
+        <span>
+          Pay Now
+        </span>
+
 
         <span>
-          ${{ total | number: '1.2-2' }}
+
+          {{ total | number: '1.2-2' }}
+          {{ currencySymbol }}
+
         </span>
 
       </button>
@@ -527,9 +674,11 @@
       TRANSACTION COMPLETE
     </span>
 
+
     <h2>
       Payment Successful!
     </h2>
+
 
     <p class="modal-sub">
       The transaction has been completed successfully.
@@ -539,20 +688,45 @@
     <div class="modal-details">
 
       <div>
-        <span>Ticket</span>
-        <strong>{{ lastTicketNumber }}</strong>
-      </div>
 
-      <div>
-        <span>Amount Paid</span>
+        <span>
+          Ticket
+        </span>
+
         <strong>
-          ${{ lastOrderTotal | number: '1.2-2' }}
+          {{ lastTicketNumber }}
         </strong>
+
       </div>
 
+
       <div>
-        <span>Method</span>
-        <strong>{{ lastPaymentMethod }}</strong>
+
+        <span>
+          Amount Paid
+        </span>
+
+
+        <strong>
+
+          {{ lastOrderTotal | number: '1.2-2' }}
+          {{ currencySymbol }}
+
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Method
+        </span>
+
+        <strong>
+          {{ lastPaymentMethod }}
+        </strong>
+
       </div>
 
     </div>
@@ -567,6 +741,7 @@
       >
         🖨️ Print Receipt
       </button>
+
 
       <button
         type="button"
@@ -591,35 +766,54 @@
 
   <div class="receipt-header">
 
-    <h2>POS STORE</h2>
+    <h2>
+      POS STORE
+    </h2>
 
-    <p>ITI</p>
 
-    <p>Tel: 123-456-789</p>
+    <p>
+      ITI
+    </p>
+
+
+    <p>
+      Tel: 123-456-789
+    </p>
+
 
     <div class="receipt-divider">
       ================================
     </div>
 
+
     <p class="receipt-meta">
       Ticket {{ lastTicketNumber }}
     </p>
 
-    <p class="receipt-meta">
-      Date:
-      {{ currentDate | date: 'yyyy-MM-dd HH:mm' }}
-    </p>
 
     <p class="receipt-meta">
-      Payment: {{ lastPaymentMethod }}
+
+      Date:
+      {{ currentDate | date: 'yyyy-MM-dd HH:mm' }}
+
+    </p>
+
+
+    <p class="receipt-meta">
+
+      Payment:
+      {{ lastPaymentMethod }}
+
     </p>
 
   </div>
+
 
 
   <div class="receipt-divider">
     ================================
   </div>
+
 
 
   <table class="receipt-table">
@@ -628,11 +822,15 @@
 
       <tr>
 
-        <th>Item</th>
+        <th>
+          Item
+        </th>
+
 
         <th class="text-center">
           Qty
         </th>
+
 
         <th class="text-right">
           Price
@@ -645,18 +843,25 @@
 
     <tbody>
 
-      <tr *ngFor="let item of receiptCart">
+      <tr
+        *ngFor="let item of receiptCart"
+      >
 
         <td>
           {{ item.productName }}
         </td>
 
+
         <td class="text-center">
           {{ item.quantity }}
         </td>
 
+
         <td class="text-right">
-          ${{ item.total | number: '1.2-2' }}
+
+          {{ item.total | number: '1.2-2' }}
+          {{ currencySymbol }}
+
         </td>
 
       </tr>
@@ -666,19 +871,27 @@
   </table>
 
 
+
   <div class="receipt-divider">
     ================================
   </div>
+
 
 
   <div class="receipt-totals">
 
     <div class="receipt-row total-row">
 
-      <span>TOTAL:</span>
+      <span>
+        TOTAL:
+      </span>
+
 
       <span>
-        ${{ lastOrderTotal | number: '1.2-2' }}
+
+        {{ lastOrderTotal | number: '1.2-2' }}
+        {{ currencySymbol }}
+
       </span>
 
     </div>
@@ -686,9 +899,11 @@
   </div>
 
 
+
   <div class="receipt-divider">
     ================================
   </div>
+
 
 
   <div class="receipt-footer">

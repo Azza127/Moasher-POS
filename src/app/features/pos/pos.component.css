@@ -503,8 +503,8 @@
 
   color: #087F78;
 
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 700;
 
   white-space: nowrap;
   overflow: hidden;
@@ -1069,8 +1069,8 @@
 .item-total-price {
   color: #087F78;
 
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 13px;
+  font-weight: 700;
 
   white-space: nowrap;
 }
@@ -1138,10 +1138,10 @@
 .total-amount {
   color: #087F78 !important;
 
-  font-size: 23px !important;
-  font-weight: 800 !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
 
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
 }
 
 

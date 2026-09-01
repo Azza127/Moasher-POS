@@ -19,7 +19,7 @@ import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
 import { CategoryService } from '../../core/services/category.service';
 import { Category } from '../../core/models/category.model';
-
+import { StoreSettingsService } from '../../core/services/store-settings.service';
 import { PurchaseInvoiceService } from '../../core/services/purchase-invoice.service';
 
 import {
@@ -61,15 +61,24 @@ export class PurchaseInvoices implements OnInit {
   private readonly cdr =
     inject(ChangeDetectorRef);
 
+  private readonly storeSettingsService =
+    inject(StoreSettingsService);
 
-  // =========================================================
-  // DATA
-  // =========================================================
+// =========================================================
+// DATA
+// =========================================================
 
-  invoices: PurchaseInvoice[] = [];
+invoices: PurchaseInvoice[] = [];
 
-  products: Product[] = [];
+products: Product[] = [];
 
+// =========================================================
+// STORE SETTINGS / CURRENCY
+// =========================================================
+
+currency = 'EGP';
+
+currencySymbol = 'EGP';
 
   // =========================================================
   // SEARCH
@@ -131,9 +140,46 @@ export class PurchaseInvoices implements OnInit {
   
     this.loadCategories();
   
+    this.loadStoreSettings();
+  
   }
 
+// /////////////////////////////////
+private loadStoreSettings(): void {
 
+  this.storeSettingsService
+    .getOrLoadSettings()
+    .subscribe({
+
+      next: (settings) => {
+
+        if (!settings) {
+          return;
+        }
+
+        this.currency = settings.currency;
+
+        this.currencySymbol =
+          this.storeSettingsService.getCurrencySymbol(
+            settings.currency
+          );
+
+        this.cdr.markForCheck();
+
+      },
+
+      error: (error: unknown) => {
+
+        console.error(
+          'Failed to load store settings:',
+          error
+        );
+
+      }
+
+    });
+
+}
   // =========================================================
   // LOAD INVOICES
   // =========================================================

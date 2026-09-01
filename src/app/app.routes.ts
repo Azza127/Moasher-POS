@@ -9,7 +9,7 @@ import { PosComponent } from './features/pos/pos.component';
 import { Reports } from './features/reports/reports';
 import { SettingsComponent } from './features/auth-settings/store-settings/settings';
 import { TeamMembers } from './features/auth-settings/team-members/team-members';
-
+import { Orders } from './features/orders/orders';
 import { authGuard } from './core/guards/auth-guard';
 import { roleGuard } from './core/guards/role.guard';
 
@@ -22,6 +22,7 @@ export const routes: Routes = [
   { path: 'categories', component: Categories, canActivate: [authGuard, roleGuard], data: { roles: ['Employee', 'Manager', 'Owner'] } },
   { path: 'inventory', component: Products, canActivate: [authGuard, roleGuard], data: { roles: ['Employee', 'Manager', 'Owner'] } },
   { path: 'pos', component: PosComponent, canActivate: [authGuard, roleGuard], data: { roles: ['Employee', 'Manager', 'Owner'] } },
+  { path: 'orders', component: Orders, canActivate: [authGuard, roleGuard], data: { roles: ['Employee','Manager', 'Owner'] } },
   { path: 'sales', component: PosComponent, canActivate: [authGuard, roleGuard], data: { roles: ['Employee', 'Manager', 'Owner'] } },
   { path: 'purchase-invoices', component: PurchaseInvoices, canActivate: [authGuard, roleGuard], data: { roles: ['Manager', 'Owner'] }},
   { path: 'reports', component: Reports, canActivate: [authGuard, roleGuard], data: { roles: ['Manager', 'Owner'] } },

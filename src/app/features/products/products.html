@@ -280,8 +280,8 @@
 
               <td>
 
-                <span class="product-price">
-                  ${{ product.price | number:'1.2-2' }}
+                <span class="product-price"> 
+                  {{ currencySymbol }} {{ product.price | number:'1.2-2' }} 
                 </span>
 
               </td>
@@ -782,54 +782,3 @@
 
 }
 
-
-<!-- ==================================================
-   DELETE MODAL
-================================================== -->
-
-@if (showDeleteModal && productToDelete) {
-
-<div class="modal-backdrop">
-
-  <div class="delete-modal">
-
-    <div class="delete-icon">
-      <i class="bi bi-trash3"></i>
-    </div>
-
-    <h2>Delete Product?</h2>
-
-    <p>
-      Are you sure you want to delete
-      <strong>{{ productToDelete.name }}</strong>?
-      This action cannot be undone.
-    </p>
-
-
-    <div class="delete-actions">
-
-      <button
-        type="button"
-        class="cancel-btn"
-        (click)="cancelDelete()">
-
-        Cancel
-
-      </button>
-
-      <button
-        type="button"
-        class="confirm-delete-btn"
-        (click)="confirmDelete()">
-
-        Delete Product
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-}

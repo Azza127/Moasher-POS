@@ -36,10 +36,12 @@
       <span>Inventory</span>
     </a>
 
-    <a routerLink="/purchase-invoices" routerLinkActive="active">
-      <i class="bi bi-receipt"></i>
-      <span>Purchase Invoices</span>
-    </a>
+    @if (userRole === 'Manager' || userRole === 'Owner') {
+      <a routerLink="/purchase-invoices" routerLinkActive="active">
+        <i class="bi bi-receipt"></i>
+        <span>Purchase Invoices</span>
+      </a>
+    }
 
     <a routerLink="/pos" routerLinkActive="active">
       <i class="bi bi-shop"></i>
@@ -47,16 +49,25 @@
     </a>
 
     <!-- <a routerLink="/reports" routerLinkActive="active" *ngIf="userRole === 'Owner' || userRole === 'Manager'"> -->
-    <a routerLink="/reports" routerLinkActive="active">
-      <i class="bi bi-bar-chart"></i>
-      <span>Reports</span>
+      @if (userRole === 'Manager' || userRole === 'Owner') {
+        <a routerLink="/reports" routerLinkActive="active">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+      }
+
+    <a routerLink="/orders" routerLinkActive="active">
+      <i class="bi bi-receipt"></i>
+      <span>Orders</span>
     </a>
 
     <!-- <a routerLink="/team-members" routerLinkActive="active" *ngIf="userRole === 'Owner' || userRole === 'Manager'"> -->
-    <a routerLink="/team-members" routerLinkActive="active">
-      <i class="bi bi-person-gear"></i>
-      <span>Users</span>
-    </a>
+      @if (userRole === 'Manager' || userRole === 'Owner') {
+        <a routerLink="/team-members" routerLinkActive="active">
+          <i class="bi bi-person-gear"></i>
+          <span>Users</span>
+        </a>
+      }
 
   </nav>
 
@@ -75,16 +86,18 @@
   <!-- Bottom Navigation -->
   <div class="bottom-navigation">
 
-    <a>
+    <!-- <a>
       <i class="bi bi-question-circle"></i>
       <span>Help Center</span>
-    </a>
+    </a> -->
 
     <!-- <a routerLink="/store-settings" routerLinkActive="active" *ngIf="userRole === 'Owner' || userRole === 'Manager'"> -->
-    <a routerLink="/store-settings" routerLinkActive="active">
-      <i class="bi bi-gear"></i>
-      <span>Settings</span>
-    </a>
+      @if (userRole === 'Owner') {
+        <a routerLink="/store-settings" routerLinkActive="active">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+      }
 
   </div>
 

@@ -30,7 +30,7 @@ Chart.register(...registerables);
 import { ProductService } from '../../core/services/product.service';
 import { CategoryService } from '../../core/services/category.service';
 import { OrderService } from '../../core/services/order.service';
-
+import { StoreSettingsService } from '../../core/services/store-settings.service';
 import { Product } from '../../core/models/product.model';
 import { Category } from '../../core/models/category.model';
 import { Order } from '../../core/models/order.model';
@@ -94,7 +94,8 @@ export class Reports implements OnInit {
   private cdr =
     inject(ChangeDetectorRef);
 
-
+  private storeSettingsService =
+    inject(StoreSettingsService);
   /* =======================================================
      DATA
      ======================================================= */
@@ -123,7 +124,7 @@ export class Reports implements OnInit {
 
   errorMessage: string = '';
 
-
+  currencySymbol: string = 'EGP';
   /* =======================================================
      SUMMARY
      ======================================================= */
@@ -250,12 +251,13 @@ export class Reports implements OnInit {
   /* =======================================================
      INIT
      ======================================================= */
+     ngOnInit(): void {
 
-  ngOnInit(): void {
-
-    this.loadReportData();
-
-  }
+      this.loadStoreSettings();
+    
+      this.loadReportData();
+    
+    }
 
 
   /* =======================================================
@@ -290,6 +292,51 @@ export class Reports implements OnInit {
   }
 
 
+  private loadStoreSettings(): void {
+
+    this.storeSettingsService
+      .getOrLoadSettings()
+      .subscribe({
+  
+        next: (settings) => {
+  
+          if (!settings) {
+            return;
+          }
+  
+          this.currencySymbol =
+            this.storeSettingsService
+              .getCurrencySymbol(
+                settings.currency
+              );
+  
+          // Re-render charts after currency is loaded
+          if (!this.isLoading) {
+  
+            setTimeout(() => {
+  
+              this.renderLineChart();
+  
+              this.renderDoughnutChart();
+  
+            }, 50);
+  
+          }
+  
+        },
+  
+        error: (error) => {
+  
+          console.error(
+            'Error loading store settings:',
+            error
+          );
+  
+        }
+  
+      });
+  
+  }
   /* =======================================================
      LOAD DATA
      ======================================================= */
@@ -848,17 +895,14 @@ export class Reports implements OnInit {
       category => {
 
         csvContent +=
-
-          `"${category.categoryName}",` +
-          `${category.totalSales},` +
-          `${category.percentage}%\n`;
+        `Category Name,Total Sales (${this.currencySymbol}),Percentage (%)\n`;
 
       }
     );
 
 
     csvContent +=
-      '\nProduct Name,Units Sold,Revenue ($)\n';
+    `\nProduct Name,Units Sold,Revenue (${this.currencySymbol})\n`;
 
 
     this.topProducts.forEach(
@@ -1214,12 +1258,9 @@ export class Reports implements OnInit {
                         0;
 
 
-                      return (
-
-                        ` Sales: $` +
-                        value.toFixed(2)
-
-                      );
+                        return (
+                          `Sales: ${value.toFixed(2)} ${this.currencySymbol}`
+                        );
 
                     }
 
@@ -1311,11 +1352,11 @@ export class Reports implements OnInit {
                     8,
 
 
-                  callback:
+                    callback:
                     (value) => {
-
-                      return '$' + value;
-
+                  
+                      return `${value} ${this.currencySymbol}`;
+                  
                     }
 
                 }
@@ -1411,14 +1452,14 @@ export class Reports implements OnInit {
 
 
           const formattedSales =
-            this.totalSales >= 1000
-
-              ? `$${(
-                  this.totalSales /
-                  1000
-                ).toFixed(0)}k`
-
-              : `$${this.totalSales.toFixed(0)}`;
+          this.totalSales >= 1000
+        
+            ? `${(
+                this.totalSales /
+                1000
+              ).toFixed(0)}k ${this.currencySymbol}`
+        
+            : `${this.totalSales.toFixed(0)} ${this.currencySymbol}`;
 
 
           /* Main value */

@@ -6,6 +6,8 @@ import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { PopupService } from '../../core/services/popup.service';
+import { StoreSettingsService } from '../../core/services/store-settings.service';
+import { StoreSettings } from '../../core/models/store-settings.model';
 
 import { HostListener } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
@@ -34,6 +36,8 @@ export class Products implements OnInit {
   private readonly categoryService = inject(CategoryService);
   private readonly popupService = inject(PopupService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly storeSettingsService =
+  inject(StoreSettingsService);
 
   products: Product[] = [];
   filteredProducts: Product[] = [];
@@ -49,6 +53,9 @@ export class Products implements OnInit {
 
   showAddCategoryModal = false;
   newCategoryName = '';
+
+  currency: string = 'EGP';
+  currencySymbol: string = 'EGP';
 
   newProduct: Product = {
     id: '',
@@ -75,6 +82,7 @@ export class Products implements OnInit {
     }
     this.loadProducts();
     this.loadCategories();
+    this.loadStoreSettings();
 
     this.searchSubject
       .pipe(debounceTime(400))
@@ -85,6 +93,42 @@ export class Products implements OnInit {
       });
   }
 
+  loadStoreSettings(): void {
+
+    this.storeSettingsService
+      .getOrLoadSettings()
+      .subscribe({
+  
+        next: (settings: StoreSettings | null) => {
+  
+          if (!settings) {
+            return;
+          }
+  
+          this.currency = settings.currency;
+  
+          this.currencySymbol =
+            this.storeSettingsService.getCurrencySymbol(
+              settings.currency
+            );
+  
+          this.cdr.markForCheck();
+  
+        },
+  
+        error: (error: unknown) => {
+  
+          console.error(
+            'Error loading store settings:',
+            error
+          );
+  
+        }
+  
+      });
+  
+  }
+  
   loadProducts(): void {
     this.productService.getProducts().subscribe({
       next: (products: Product[]) => {
@@ -303,32 +347,33 @@ filterByCategory(categoryId: string | null): void {
 
   deleteProduct(product: Product): void {
     if (this.isEmployee) return;
-    this.productToDelete = product;
-    this.showDeleteModal = true;
-  }
-
-  cancelDelete(): void {
-    this.productToDelete = null;
-    this.showDeleteModal = false;
-  }
-
-  confirmDelete(): void {
-    if (!this.productToDelete) return;
-
-    const productId = this.productToDelete.id;
-
-    this.productService.deleteProduct(productId).subscribe({
-      next: () => {
-        this.products = this.products.filter((p) => p.id !== productId);
-        this.applyFilters();
-        this.productToDelete = null;
-        this.showDeleteModal = false;
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Failed to delete product:', error);
-      }
-    });
+  
+    this.popupService
+      .showConfirm(
+        `Are you sure you want to delete "${product.name}"? This action cannot be undone.`,
+        'Delete Product'
+      )
+      .subscribe((confirmed) => {
+  
+        if (!confirmed) {
+          return;
+        }
+  
+        this.productService.deleteProduct(product.id).subscribe({
+          next: () => {
+            this.products = this.products.filter(
+              (p) => p.id !== product.id
+            );
+  
+            this.applyFilters();
+            this.cdr.markForCheck();
+          },
+          error: (error: unknown) => {
+            console.error('Failed to delete product:', error);
+          }
+        });
+  
+      });
   }
 
   addProduct(): void {

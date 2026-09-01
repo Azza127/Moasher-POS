@@ -8,6 +8,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { StoreSettingsService } from '../../core/services/store-settings.service';
+import { StoreSettings } from '../../core/models/store-settings.model';
+
 import { ProductService } from '../../core/services/product.service';
 import { OrderService } from '../../core/services/order.service';
 import { CategoryService } from '../../core/services/category.service';
@@ -37,19 +40,22 @@ import { forkJoin } from 'rxjs';
 export class PosComponent implements OnInit {
 
   private readonly productService =
-    inject(ProductService);
+  inject(ProductService);
 
-  private readonly orderService =
-    inject(OrderService);
+private readonly orderService =
+  inject(OrderService);
 
-  private readonly categoryService =
-    inject(CategoryService);
+private readonly categoryService =
+  inject(CategoryService);
 
-  private readonly cdr =
-    inject(ChangeDetectorRef);
+private readonly storeSettingsService =
+  inject(StoreSettingsService);
 
-  private readonly popupService =
-    inject(PopupService);
+private readonly cdr =
+  inject(ChangeDetectorRef);
+
+private readonly popupService =
+  inject(PopupService);
 
 /* =================================
    CART PERSISTENCE
@@ -220,6 +226,10 @@ clearSavedCart(): void {
   paymentMethod: 'Cash' | 'Card' = 'Cash';
 
   taxRate: number = 0.14;
+  
+  currency: string = 'EGP';
+  
+  currencySymbol: string = 'EGP';
 
 
   /* =================================
@@ -256,11 +266,72 @@ clearSavedCart(): void {
   
     this.loadCart();
   
+    this.loadStoreSettings();
+  
     this.loadData();
   
   }
+  // //////////////////////////////////
 
+  loadStoreSettings(): void {
 
+    this.storeSettingsService
+      .getOrLoadSettings()
+      .subscribe({
+  
+        next: (settings: StoreSettings | null) => {
+  
+          if (!settings) {
+            return;
+          }
+  
+          // =========================
+          // TAX
+          // =========================
+  
+          this.taxRate =
+            Number(settings.taxRate) / 100;
+  
+  
+          // =========================
+          // CURRENCY
+          // =========================
+  
+          this.currency =
+            settings.currency;
+  
+          this.currencySymbol =
+            this.storeSettingsService.getCurrencySymbol(
+              settings.currency
+            );
+  
+  
+          console.log(
+            'POS Settings:',
+            {
+              taxRate: this.taxRate,
+              currency: this.currency,
+              currencySymbol: this.currencySymbol
+            }
+          );
+  
+  
+          this.cdr.detectChanges();
+  
+        },
+  
+        error: (error: unknown) => {
+  
+          console.error(
+            'Failed to load store settings:',
+            error
+          );
+  
+        }
+  
+      });
+  
+  }
   /* =================================
      GENERATE TICKET
   ================================= */

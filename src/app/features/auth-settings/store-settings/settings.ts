@@ -1,12 +1,12 @@
 import {
   Component,
   OnInit,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  HostListener
 } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-
-import { StoreSettingsService } from '../../../core/services/store-settings.service';
+import { StoreSettingsService, CurrencyOption } from '../../../core/services/store-settings.service';
 import { StoreSettings } from '../../../core/models/store-settings.model';
 
 @Component({
@@ -46,9 +46,9 @@ export class SettingsComponent implements OnInit {
 
 
   isSaving = false;
+  currencyDropdownOpen = false;
 
-
-
+  currencies: CurrencyOption[] = [];
 
   constructor(
     private storeSettingsService: StoreSettingsService,
@@ -58,6 +58,8 @@ export class SettingsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.currencies =
+    this.storeSettingsService.getCurrencies();
     this.getSettings();
   }
 
@@ -78,11 +80,14 @@ export class SettingsComponent implements OnInit {
           this.settings = {
             ...data[0]
           };
-
+        
           this.originalSettings = {
             ...data[0]
           };
-
+        
+          this.storeSettingsService.setCurrentSettings(
+            this.settings
+          );
         }
 
         this.fieldErrors = {};
@@ -172,6 +177,37 @@ export class SettingsComponent implements OnInit {
 
   }
 
+  // ظظظظظظظ
+  toggleCurrencyDropdown(): void {
+    this.currencyDropdownOpen = !this.currencyDropdownOpen;
+  }
+  
+  selectCurrency(currency: string): void {
+    this.settings.currency = currency;
+  
+    this.validateField('currency');
+  
+    this.currencyDropdownOpen = false;
+  
+    this.cdr.detectChanges();
+  }
+  
+  getSelectedCurrencyLabel(): string {
+    return this.storeSettingsService
+      .getCurrencyLabel(
+        this.settings.currency
+      );
+  
+  }
+  
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    if (this.currencyDropdownOpen) {
+      this.currencyDropdownOpen = false;
+      this.cdr.detectChanges();
+    }
+  }
+  // ظظظظظظظظ
   validateField(field: string): void {
 
     const value =
