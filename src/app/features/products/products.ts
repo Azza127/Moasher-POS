@@ -94,39 +94,20 @@ export class Products implements OnInit {
   }
 
   loadStoreSettings(): void {
-
     this.storeSettingsService
       .getOrLoadSettings()
-      .subscribe({
-  
-        next: (settings: StoreSettings | null) => {
-  
+      .subscribe({next: (settings: StoreSettings | null) => {
           if (!settings) {
             return;
           }
   
           this.currency = settings.currency;
-  
-          this.currencySymbol =
-            this.storeSettingsService.getCurrencySymbol(
-              settings.currency
-            );
-  
+          this.currencySymbol = this.storeSettingsService.getCurrencySymbol( settings.currency );
           this.cdr.markForCheck();
-  
-        },
-  
-        error: (error: unknown) => {
-  
-          console.error(
-            'Error loading store settings:',
-            error
-          );
-  
+        },error: (error: unknown) => {
+          console.error( 'Error loading store settings:', error );
         }
-  
       });
-  
   }
   
   loadProducts(): void {
@@ -177,42 +158,30 @@ export class Products implements OnInit {
     this.searchSubject.next(searchTerm);
   }
 
-    // ظظظظظظظظظظظظظظظظظظظ
 changeSearchMode(mode: 'name' | 'sku'): void {
   this.searchMode = mode;
   this.applyFilters();
 }
-// ظظظظظظظظظظظظظظظظظظظ
 
 isCategoryDropdownOpen = false;
 isProductCategoryDropdownOpen = false;
 
 toggleProductCategoryDropdown(event: MouseEvent): void {
-
   event.stopPropagation();
-
-  this.isProductCategoryDropdownOpen =
-    !this.isProductCategoryDropdownOpen;
-
+  this.isProductCategoryDropdownOpen = !this.isProductCategoryDropdownOpen;
 }
 
 selectProductCategory(
   categoryId: string,
   event?: MouseEvent
 ): void {
-
   event?.stopPropagation();
-
   this.newProduct.categoryId = categoryId;
-
   this.isProductCategoryDropdownOpen = false;
-
   this.cdr.markForCheck();
-
 }
 
 getSelectedProductCategoryLabel(): string {
-
   if (!this.newProduct.categoryId) {
     return 'Select category';
   }
@@ -221,9 +190,7 @@ getSelectedProductCategoryLabel(): string {
     category =>
       category.id === this.newProduct.categoryId
   );
-
   return selectedCategory?.name ?? 'Select category';
-
 }
 
 toggleCategoryDropdown(): void {
@@ -232,37 +199,27 @@ toggleCategoryDropdown(): void {
 }
 
 selectCategory(categoryId: string | null): void {
-
   this.selectedCategoryId = categoryId;
-
   this.isCategoryDropdownOpen = false;
-
   this.filterByCategory(categoryId);
 }
 
 @HostListener('document:click', ['$event'])
 onDocumentClick(event: MouseEvent): void {
-
   const target = event.target as HTMLElement;
 
-
   // Page category filter
-
   if (!target.closest('.category-filter')) {
     this.isCategoryDropdownOpen = false;
   }
 
-
   // Product modal category dropdown
-
   if (!target.closest('.product-category-dropdown')) {
     this.isProductCategoryDropdownOpen = false;
   }
-
 }
 
 getSelectedCategoryLabel(): string {
-
   if (this.selectedCategoryId === null) {
     return 'All Categories';
   }
@@ -271,53 +228,31 @@ getSelectedCategoryLabel(): string {
     this.categories.find(
       category => category.id === this.selectedCategoryId
     );
-
   return selectedCategory?.name ?? 'All Categories';
-
 }
 
 filterByCategory(categoryId: string | null): void {
-
   this.selectedCategoryId = categoryId || null;
   this.applyFilters();
-
 }
-// ظظظظظظظظظظظ
+
 
   private applyFilters(): void {
     const term = this.searchTerm.trim().toLowerCase();
 
     let filtered = this.products.filter((product) => {
-      const searchValue =
-        this.searchMode === 'name'
-          ? product.name.toLowerCase()
-          : product.sku.toLowerCase();
-
+      const searchValue = this.searchMode === 'name' ? product.name.toLowerCase() : product.sku.toLowerCase();
       const matchesSearch = term === '' || searchValue.includes(term);
-
-      const matchesCategory =
-        this.selectedCategoryId === null ||
-        product.categoryId === this.selectedCategoryId;
-
+      const matchesCategory = this.selectedCategoryId === null || product.categoryId === this.selectedCategoryId;
       return matchesSearch && matchesCategory;
     });
 
-    if (term !== '') {
-      filtered.sort((a, b) => {
-        const aValue =
-          this.searchMode === 'name'
-            ? a.name.toLowerCase()
-            : a.sku.toLowerCase();
-
-        const bValue =
-          this.searchMode === 'name'
-            ? b.name.toLowerCase()
-            : b.sku.toLowerCase();
-
+    if (term !== '') { filtered.sort((a, b) => {
+        const aValue = this.searchMode === 'name' ? a.name.toLowerCase() : a.sku.toLowerCase();
+        const bValue = this.searchMode === 'name' ? b.name.toLowerCase() : b.sku.toLowerCase();
         return aValue.indexOf(term) - bValue.indexOf(term);
       });
     }
-
     this.filteredProducts = filtered;
   }
 
@@ -347,32 +282,25 @@ filterByCategory(categoryId: string | null): void {
 
   deleteProduct(product: Product): void {
     if (this.isEmployee) return;
-  
     this.popupService
       .showConfirm(
         `Are you sure you want to delete "${product.name}"? This action cannot be undone.`,
         'Delete Product'
       )
       .subscribe((confirmed) => {
-  
         if (!confirmed) {
           return;
         }
   
         this.productService.deleteProduct(product.id).subscribe({
           next: () => {
-            this.products = this.products.filter(
-              (p) => p.id !== product.id
-            );
-  
+            this.products = this.products.filter((p) => p.id !== product.id);
             this.applyFilters();
             this.cdr.markForCheck();
-          },
-          error: (error: unknown) => {
+          }, error: (error: unknown) => {
             console.error('Failed to delete product:', error);
           }
         });
-  
       });
   }
 

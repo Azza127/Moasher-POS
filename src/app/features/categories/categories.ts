@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { CategoryService } from '../../core/services/category.service';
 import { Category } from '../../core/models/category.model';
 import { PopupService } from '../../core/services/popup.service';
@@ -11,25 +10,20 @@ import { PopupService } from '../../core/services/popup.service';
   templateUrl: './categories.html',
   styleUrl: './categories.css',
 })
+
 export class Categories implements OnInit {
   private readonly categoryService = inject(CategoryService);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly popupService = inject(PopupService);
-
   userRole = 'Employee';
-
   get isEmployee(): boolean {
     return this.userRole.trim().toLowerCase() === 'employee';
   }
 
   categories: Category[] = [];
-
   newCategoryName = '';
-
   editingCategoryId: string | null = null;
-
   showCategoryModal = false;
-
   showDeleteModal = false;
   categoryToDelete: Category | null = null;
 
@@ -80,7 +74,6 @@ export class Categories implements OnInit {
 
   saveCategory(): void {
     const name = this.newCategoryName.trim();
-
     if (name === '') {
       return;
     }
@@ -88,14 +81,10 @@ export class Categories implements OnInit {
     if (this.editingCategoryId !== null) {
       this.categoryService
         .updateCategory(this.editingCategoryId, { name })
-        .subscribe({
-          next: (updatedCategory) => {
+        .subscribe({ next: (updatedCategory) => {
             this.categories = this.categories.map((category) =>
-              category.id === updatedCategory.id
-                ? updatedCategory
-                : category
+              category.id === updatedCategory.id ? updatedCategory : category
             );
-
             this.closeCategoryModal();
             this.cdr.markForCheck();
           },
@@ -103,25 +92,17 @@ export class Categories implements OnInit {
             console.error('Failed to update category:', error);
           }
         });
-
       return;
     }
 
     this.categoryService
       .addCategory({ name })
-      .subscribe({
-        next: (createdCategory) => {
-          this.categories = [
-            ...this.categories,
-            createdCategory
-          ];
-
+      .subscribe({ next: (createdCategory) => {
+          this.categories = [ ...this.categories, createdCategory ];
           this.closeCategoryModal();
           this.cdr.markForCheck();
         },
-        error: (error) => {
-          console.error('Failed to add category:', error);
-        }
+        error: (error) => {console.error('Failed to add category:', error);}
       });
   }
 
@@ -142,21 +123,13 @@ export class Categories implements OnInit {
     }
 
     const categoryId = this.categoryToDelete.id;
-
-    this.categoryService.deleteCategory(categoryId).subscribe({
-      next: () => {
-        this.categories = this.categories.filter(
-          (category) => category.id !== categoryId
-        );
-
+    this.categoryService.deleteCategory(categoryId).subscribe({next: () => {
+        this.categories = this.categories.filter((category) => category.id !== categoryId);
         this.categoryToDelete = null;
         this.showDeleteModal = false;
-
         this.cdr.markForCheck();
       },
-      error: (error) => {
-        console.error('Failed to delete category:', error);
-      }
+      error: (error) => { console.error('Failed to delete category:', error);}
     });
   }
 }

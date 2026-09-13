@@ -12,34 +12,13 @@
   }
   
   <div class="status-section">
-    <app-order-status-tabs
-      [orders]="orders"
-      [activeStatus]="activeStatus"
-      (statusChange)="onStatusChange($event)"
-    ></app-order-status-tabs>
+    <app-order-status-tabs [orders]="orders" [activeStatus]="activeStatus" (statusChange)="onStatusChange($event)"></app-order-status-tabs>
   </div>
-  
+
   <div class="panel orders-panel orders-card">
-  
-    <app-order-filters
-      [searchTerm]="searchTerm"
-      [dateFilter]="dateFilter"
-      (searchTermChange)="onSearchChange($event)"
-      (dateFilterChange)="onDateChange($event)"
-      (exportClick)="exportCsv()"
-    ></app-order-filters>
-  
-    <app-order-table
-      [orders]="filteredOrders"
-      [loading]="loading"
-      (orderSelect)="selectOrder($event)"
-    ></app-order-table>
-  
+    <app-order-filters [searchTerm]="searchTerm" [dateFilter]="dateFilter" (searchTermChange)="onSearchChange($event)" 
+      (dateFilterChange)="onDateChange($event)"(exportClick)="exportCsv()"></app-order-filters>
+    <app-order-table [orders]="filteredOrders" [loading]="loading" (orderSelect)="selectOrder($event)"></app-order-table>
   </div>
   
-  <app-order-details-drawer
-    [order]="selectedOrder"
-    [products]="products"
-    (closed)="closeDrawer()"
-    (orderUpdated)="onOrderUpdated($event)"
-  ></app-order-details-drawer>
+  <app-order-details-drawer [order]="selectedOrder" [products]="products" (closed)="closeDrawer()" (orderUpdated)="onOrderUpdated($event)" ></app-order-details-drawer>

@@ -56,19 +56,14 @@ app-header {
 .page-content:has(.pos-container) {
   padding: 0;
 }
-/* =========================
-   Router
-========================= */
 
+/*Router */
 router-outlet {
   display: contents;
 }
 
 
-/* =========================
-   Tablet
-========================= */
-
+/* Tablet */
 @media (max-width: 1000px) {
   app-sidebar {
     width: 220px;
@@ -85,10 +80,7 @@ router-outlet {
 }
 
 
-/* =========================
-   Compact Tablet
-========================= */
-
+/* Compact Tablet */
 @media (max-width: 800px) {
   app-sidebar {
     width: 76px;
@@ -105,10 +97,7 @@ router-outlet {
 }
 
 
-/* =========================
-   Mobile
-========================= */
-
+/* Mobile */
 @media (max-width: 600px) {
   .app-container {
     display: block;

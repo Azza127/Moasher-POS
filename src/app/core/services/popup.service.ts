@@ -10,40 +10,23 @@ export interface PopupConfig {
   resolve?: (value: boolean) => void;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
+
 export class PopupService {
   currentPopup = signal<PopupConfig | null>(null);
-
   showAlert(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'info', title?: string): void {
-    this.currentPopup.set({
-      type,
-      message,
-      title: title || this.getDefaultTitle(type)
-    });
+    this.currentPopup.set({ type, message, title: title || this.getDefaultTitle(type) });
   }
 
   showConfirm(message: string, title: string = 'Are you sure?'): Observable<boolean> {
     const subject = new Subject<boolean>();
-    this.currentPopup.set({
-      type: 'confirm',
-      message,
-      title,
-      confirmText: 'Yes',
-      cancelText: 'Cancel',
-      resolve: (value: boolean) => {
-        subject.next(value);
-        subject.complete();
-        this.close();
-      }
-    });
+    this.currentPopup.set({type: 'confirm', message, title, confirmText: 'Yes', cancelText: 'Cancel', resolve: (value: boolean) => {
+        subject.next(value); 
+        subject.complete(); 
+        this.close(); }});
     return subject.asObservable();
   }
-
-  close(): void {
-    this.currentPopup.set(null);
-  }
+  close(): void {this.currentPopup.set(null);}
 
   private getDefaultTitle(type: 'info' | 'success' | 'warning' | 'error'): string {
     switch (type) {

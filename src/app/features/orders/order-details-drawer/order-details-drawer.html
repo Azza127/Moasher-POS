@@ -1,16 +1,12 @@
 @if (order) {
     <div class="drawer-overlay" (click)="close()">
       <div class="drawer-panel" (click)="$event.stopPropagation()">
-  
         <div class="drawer-header">
           <div class="drawer-header-title">
             <h2>Order {{ ticketNumber }}</h2>
-            <span class="status-badge"
-                  [class.status-success]="order.status === 'Completed'"
-                  [class.status-warning]="order.status === 'Pending'"
-                  [class.status-danger]="order.status === 'Cancelled'">
-              <span class="dot"></span>{{ order.status }}
-            </span>
+            <span class="status-badge" [class.status-success]="order.status === 'Completed'"
+              [class.status-warning]="order.status === 'Pending'" [class.status-danger]="order.status === 'Cancelled'">
+              <span class="dot"></span>{{ order.status }} </span>
           </div>
   
           <button type="button" class="drawer-close" (click)="close()" aria-label="Close">
@@ -19,10 +15,8 @@
         </div>
   
         <div class="drawer-body">
-  
           <section class="drawer-section">
             <h3 class="section-label">Order Items</h3>
-  
             @for (line of resolvedLines; track line.item.productId) {
               <div class="order-line">
                 <div class="line-thumb">
@@ -35,8 +29,8 @@
   
                 <div class="line-info">
                   <div class="line-name">{{ line.product?.name || line.item.productName }}</div>
-                  @if (line.product?.description) {
-                    <div class="line-meta">{{ line.product?.description }}</div>
+                  @if (line.product?.description; as description) {
+                    <div class="line-meta">{{ description }}</div>
                   }
                   @if (!line.product) {
                     <div class="line-meta line-meta-warn">Product no longer in catalog</div>
@@ -44,9 +38,7 @@
                 </div>
   
                 <div class="line-price">
-                    <div class="unit-price">
-                        {{ line.item.price | number: '1.2-2' }} {{ currencySymbol }}
-                      </div>
+                  <div class="unit-price">{{ line.item.price | number: '1.2-2' }} {{ currencySymbol }} </div>
                   <div class="qty">Qty: {{ line.item.quantity }}</div>
                 </div>
               </div>
@@ -67,24 +59,17 @@
             <h3 class="section-label">Summary</h3>
             <div class="summary-row">
               <span>Subtotal</span>
-              <span>
-                {{ subtotal | number: '1.2-2' }} {{ currencySymbol }}
-              </span>
+              <span> {{ subtotal | number: '1.2-2' }} {{ currencySymbol }} </span>
             </div>
             <div class="summary-row">
               <span>Tax</span>
-              <span>
-                {{ tax | number: '1.2-2' }} {{ currencySymbol }}
-              </span>
+              <span> {{ tax | number: '1.2-2' }} {{ currencySymbol }} </span>
             </div>
             <div class="summary-row total">
               <span>Total</span>
-              <span>
-                {{ order.total | number: '1.2-2' }} {{ currencySymbol }}
-              </span>
+              <span> {{ order.total | number: '1.2-2' }} {{ currencySymbol }} </span>
             </div>
           </section>
-  
         </div>
   
         <div class="drawer-footer">
@@ -92,16 +77,10 @@
             <i class="bi bi-printer"></i> Print Receipt
           </button>
   
-          <button
-            type="button"
-            class="btn-danger"
-            [disabled]="!canCancel || updatingStatus"
-            (click)="cancelOrder()"
-          >
+          <button type="button" class="btn-danger" [disabled]="!canCancel || updatingStatus" (click)="cancelOrder()" >
             {{ updatingStatus ? 'Cancelling...' : 'Cancel Order' }}
           </button>
         </div>
-  
       </div>
     </div>
   }

@@ -23,20 +23,13 @@
     font-size: 13px;
   }
   
-  /* =========================
-     Status Tabs
-  ========================= */
-  
+  /* Status Tabs */
   .status-section {
     width: 100%;
     margin-bottom: 16px;
   }
   
-  
-  /* =========================
-     Orders Card
-  ========================= */
-  
+  /* Orders Card */
   .orders-card {
     border: 1px solid #E3E7E7;
     border-radius: 14px;
@@ -44,19 +37,13 @@
     background: #FFFFFF;
   }
   
-  
-  /* =========================
-     Error
-  ========================= */
-  
+  /* Error */
   .load-error {
     margin-bottom: 16px;
     padding: 0.85rem 1.1rem;
-  
     border: 1px solid #fecaca;
     border-radius: 10px;
     background: #fef2f2;
     color: #b91c1c;
-  
     font-size: 0.88rem;
   }

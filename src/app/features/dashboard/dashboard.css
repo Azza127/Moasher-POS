@@ -1,7 +1,4 @@
-/* =========================================================
-   DASHBOARD
-   ========================================================= */
-
+/* DASHBOARD */
    :host {
     display: block;
     color: #172033;
@@ -11,11 +8,7 @@
     width: 100%;
   }
   
-  
-  /* =========================================================
-     Header
-     ========================================================= */
-  
+  /* Header */
   .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -27,57 +20,39 @@
   .eyebrow,
   .section-kicker {
     display: block;
-  
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.12em;
-  
     color: #159A91;
-  
     margin-bottom: 0.4rem;
   }
   
   .dashboard-header h2 {
     margin: 0;
-  
     font-size: 2rem;
     font-weight: 700;
-  
     color: #172033;
-  
     letter-spacing: -0.025em;
   }
   
   .dashboard-header p {
     margin: 0.4rem 0 0;
-  
     color: #667085;
-  
     font-size: 0.9rem;
   }
   
-  
-  /* =========================================================
-     New Sale Button
-     ========================================================= */
-  
+  /* New Sale Button */
   .new-sale-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-  
     padding: 0.7rem 1rem;
-  
     background: #159A91;
     color: #FFFFFF;
-  
     border-radius: 8px;
-  
     text-decoration: none;
-  
     font-size: 0.85rem;
     font-weight: 600;
-  
     transition:
       background 0.2s ease,
       transform 0.2s ease;
@@ -89,34 +64,22 @@
     transform: translateY(-1px);
   }
   
-  
-  /* =========================================================
-     KPI STRIP
-     ========================================================= */
-  
+  /*  KPI STRIP */
   .kpi-strip {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-  
     background: #FFFFFF;
-  
     border: 1px solid #E4E7EC;
     border-radius: 12px;
-  
     margin-bottom: 1.5rem;
-  
     overflow: hidden;
   }
   
   .kpi-item {
     position: relative;
-  
     min-height: 132px;
-  
     padding: 1.25rem 1.4rem;
-  
     border-right: 1px solid #E4E7EC;
-  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,15 +91,11 @@
   
   .kpi-item::before {
     content: "";
-  
     position: absolute;
-  
     left: 0;
     top: 0;
-  
     width: 3px;
     height: 100%;
-  
     background: transparent;
   }
   
@@ -151,22 +110,16 @@
   .kpi-label {
     font-size: 0.68rem;
     font-weight: 700;
-  
     letter-spacing: 0.09em;
-  
     color: #667085;
-  
     margin-bottom: 0.4rem;
   }
   
   .kpi-value {
     font-size: 1.65rem;
     line-height: 1.1;
-  
     font-weight: 700;
-  
     color: #172033;
-  
     letter-spacing: -0.025em;
   }
   
@@ -178,11 +131,8 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
-  
     margin-top: 0.45rem;
-  
     font-size: 0.75rem;
-  
     color: #667085;
   }
   
@@ -195,38 +145,20 @@
   }
   
   
-  /* =========================================================
-     Main Dashboard Area
-     ========================================================= */
-  
+  /* Main Dashboard Area */
   .dashboard-grid {
     display: grid;
-  
-    grid-template-columns:
-      minmax(0, 1.65fr)
-      minmax(300px, 0.9fr);
-  
+    grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.9fr);
     gap: 1.5rem;
-  
     margin-bottom: 1.5rem;
-  
-    /* Important:
-       Prevent the grid from stretching panels
-       based on the tallest content. */
     align-items: stretch;
   }
   
-  
-  /* =========================================================
-     Fixed-height Dashboard Panels
-     ========================================================= */
-  
+  /* Fixed-height Dashboard Panels */
   .activity-panel {
     background: #FFFFFF;
-  
     border: 1px solid #E4E7EC;
     border-radius: 12px;
-  
     display: flex;
     flex-direction: column;
   }
@@ -236,20 +168,14 @@
     height: 500px;
     min-height: 500px;
     max-height: 500px;
-  
     overflow: hidden;
   }
   
-  
-  /* =========================================================
-     Shared Panel
-     ========================================================= */
-  
+  /* Shared Panel */
   .activity-panel,
   .inventory-panel,
   .orders-section {
     background: #FFFFFF;
-  
     border: 1px solid #E4E7EC;
     border-radius: 12px;
   }
@@ -257,119 +183,84 @@
   
   /* Sales + Inventory panels use
      a controlled vertical layout */
-  
   .activity-panel,
   .inventory-panel {
     display: flex;
     flex-direction: column;
-  
     overflow: hidden;
   }
   
-  
-  /* =========================================================
-     Section Heading
-     ========================================================= */
-  
+  /* Section Heading */
   .section-heading {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-  
     padding: 1.25rem 1.4rem;
-  
     border-bottom: 1px solid #E4E7EC;
   }
   
   .section-heading h3,
   .orders-header h3 {
     margin: 0;
-  
     font-size: 1rem;
     font-weight: 700;
-  
     color: #172033;
   }
   
   .section-heading p,
   .orders-header p {
     margin: 0.3rem 0 0;
-  
     color: #667085;
-  
     font-size: 0.78rem;
   }
   
-  
-  /* =========================================================
-     Activity Total
-     ========================================================= */
-  
+  /* Activity Total */
   .activity-total {
     text-align: right;
   }
   
   .activity-total span {
     display: block;
-  
     font-size: 0.7rem;
-  
     color: #667085;
-  
     margin-bottom: 0.15rem;
   }
   
   .activity-total strong {
     font-size: 1rem;
-  
     color: #172033;
   }
   
-  
-  /* =========================================================
-     SALES TREND + ORDER COUNT
-     ========================================================= */
-  
+  /*  SALES TREND + ORDER COUNT */
   .sales-trend-chart {
     padding: 1rem 1.4rem 0.65rem;
   }
   
-  
-  /* =========================================================
-     Legend
-     ========================================================= */
-  
+  /* Legend */
   .chart-meta {
     display: flex;
     justify-content: flex-end;
-  
     margin-bottom: 0.45rem;
   }
   
   .chart-legend {
     display: flex;
     align-items: center;
-  
     gap: 1rem;
   }
   
   .legend-item {
     display: inline-flex;
     align-items: center;
-  
     gap: 0.35rem;
-  
     color: #667085;
-  
     font-size: 0.68rem;
   }
   
   .legend-line {
     width: 18px;
     height: 2px;
-  
     display: inline-block;
-  
     border-radius: 10px;
   }
   
@@ -382,198 +273,120 @@
   }
   
   
-  /* =========================================================
-     Chart Area
-     ========================================================= */
-  
+  /* Chart Area */
   .chart-area {
     display: flex;
-  
     height: 230px;
-  
     gap: 0.7rem;
   }
   
-  
   .chart-y-axis {
     width: 55px;
-  
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  
     padding: 4px 0 25px;
-  
     text-align: right;
-  
     color: #98A2B3;
-  
     font-size: 0.6rem;
-  
     flex-shrink: 0;
-  }
-  
+  } 
   
   .chart-main {
     position: relative;
-  
     flex: 1;
     min-width: 0;
-  
     height: 100%;
   }
   
-  
-  /* =========================================================
-     Grid
-     ========================================================= */
-  
+  /* Grid */
   .chart-grid-lines {
     position: absolute;
-  
     inset: 0 0 25px 0;
-  
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  
     pointer-events: none;
   }
   
   .chart-grid-lines span {
     display: block;
-  
     width: 100%;
-  
     border-top: 1px solid #E8ECF2;
   }
   
-  
-  /* =========================================================
-     SVG
-     ========================================================= */
-  
+  /* SVG */
   .sales-svg {
     position: absolute;
-  
     left: 0;
     right: 0;
     top: 0;
-  
     width: 100%;
     height: 205px;
-  
     overflow: visible;
   }
   
-  
-  /* =========================================================
-     Sales Area
-     ========================================================= */
-  
+  /* Sales Area */
   .sales-area {
     fill: #159A91;
-  
     opacity: 0.08;
-  
     pointer-events: none;
   }
   
-  
-  /* =========================================================
-     Sales Line
-     ========================================================= */
-  
+  /* Sales Line */
   .sales-path {
     fill: none;
-  
     stroke: #159A91;
-  
     stroke-width: 2.5;
-  
     stroke-linecap: round;
     stroke-linejoin: round;
-  
     vector-effect: non-scaling-stroke;
   }
   
-  
-  /* =========================================================
-     Orders Line
-     ========================================================= */
-  
+  /* Orders Line */
   .orders-path {
     fill: none;
-  
     stroke: #3F63A8;
-  
     stroke-width: 1.8;
-  
     stroke-linecap: round;
     stroke-linejoin: round;
-  
     stroke-dasharray: 4 5;
-  
     opacity: 0.8;
-  
     vector-effect: non-scaling-stroke;
   }
   
-  
-  /* =========================================================
-     Points
-     ========================================================= */
-  
+  /* Points */
   .sales-point {
     fill: #FFFFFF;
-  
     stroke: #159A91;
-  
     stroke-width: 2;
-  
     vector-effect: non-scaling-stroke;
-  
-    transition:
-      r 0.15s ease;
+    transition: r 0.15s ease;
   }
   
   .sales-point:hover {
     r: 6;
   }
   
-  
   .orders-point {
     fill: #FFFFFF;
-  
     stroke: #3F63A8;
-  
     stroke-width: 1.8;
-  
     opacity: 0.9;
-  
     vector-effect: non-scaling-stroke;
   }
   
-  
-  /* =========================================================
-     X Axis
-     ========================================================= */
-  
+  /* X Axis */
   .chart-x-axis {
     position: absolute;
-  
     left: 0;
     right: 0;
     bottom: 0;
-  
     height: 24px;
-  
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-  
     color: #98A2B3;
-  
     font-size: 0.62rem;
   }
   
@@ -581,40 +394,25 @@
     white-space: nowrap;
   }
   
-  
-  /* =========================================================
-     Quick Actions
-     ========================================================= */
-  
+  /* Quick Actions */
   .quick-actions {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-  
     padding: 1rem 1.4rem 1.25rem;
-  
     gap: 0.7rem;
-  
     margin-top: auto;
   }
   
-  
   .quick-action {
     min-width: 0;
-  
     display: flex;
     align-items: center;
-  
     gap: 0.65rem;
-  
     padding: 0.75rem;
-  
     border: 1px solid #E4E7EC;
     border-radius: 8px;
-  
     text-decoration: none;
-  
     color: #172033;
-  
     transition:
       border-color 0.2s ease,
       background 0.2s ease,
@@ -623,28 +421,20 @@
   
   .quick-action:hover {
     color: #172033;
-  
     border-color: #159A91;
-  
     background: #EAF7F5;
-  
     transform: translateY(-1px);
   }
   
   .quick-action > i:first-child {
     flex-shrink: 0;
-  
     width: 30px;
     height: 30px;
-  
     display: flex;
     align-items: center;
     justify-content: center;
-  
     border-radius: 7px;
-  
     background: #EAF7F5;
-  
     color: #159A91;
   }
   
@@ -654,28 +444,21 @@
   
   .quick-action strong {
     display: block;
-  
     font-size: 0.76rem;
     font-weight: 600;
   }
   
   .quick-action small {
     display: block;
-  
     margin-top: 0.1rem;
-  
     color: #667085;
-  
     font-size: 0.66rem;
-  
     white-space: nowrap;
   }
   
   .action-arrow {
     margin-left: auto;
-  
     font-size: 0.7rem;
-  
     color: #98A2B3;
   }
   
@@ -685,10 +468,7 @@
   }
   
   
-  /* =========================================================
-     Inventory Panel
-     ========================================================= */
-  
+  /* Inventory Panel */
   .inventory-heading {
     align-items: center;
   }
@@ -704,30 +484,21 @@
   .attention-number {
     font-size: 1.7rem;
     font-weight: 700;
-  
     color: #D64545;
   }
   
   .inventory-list {
     padding: 0.65rem 1rem;
-  
-    /* Take the remaining panel height */
     flex: 1;
     min-height: 0;
-  
-    /* Scroll ONLY the products */
     overflow-y: auto;
-  
     overflow-x: hidden;
-  
-    /* Smooth native scrolling */
     scrollbar-width: thin;
     scrollbar-color: #B9DDD8 transparent;
   }
   
   
   /* Inventory scrollbar - WebKit browsers */
-  
   .inventory-list::-webkit-scrollbar {
     width: 6px;
   }
@@ -750,11 +521,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
     gap: 0.75rem;
-  
     padding: 0.7rem 0.45rem;
-  
     border-bottom: 1px solid #EEF1F5;
   }
   
@@ -765,27 +533,20 @@
   .inventory-item-main {
     display: flex;
     align-items: center;
-  
     gap: 0.65rem;
-  
     min-width: 0;
   }
   
   .inventory-icon {
     width: 34px;
     height: 34px;
-  
     flex-shrink: 0;
-  
     display: flex;
     align-items: center;
     justify-content: center;
-  
     border: 1px solid #E4E7EC;
     border-radius: 7px;
-  
     color: #159A91;
-  
     background: #FFFFFF;
   }
   
@@ -795,44 +556,34 @@
   
   .inventory-item-main strong {
     display: block;
-  
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  
     font-size: 0.8rem;
     font-weight: 600;
-  
     color: #172033;
   }
   
   .inventory-item-main span {
     display: block;
-  
     margin-top: 0.15rem;
-  
     color: #667085;
-  
     font-size: 0.67rem;
   }
   
   .inventory-stock {
     flex-shrink: 0;
-  
     text-align: right;
   }
   
   .inventory-stock strong {
     display: block;
-  
     font-size: 0.9rem;
   }
   
   .inventory-stock span {
     display: block;
-  
     font-size: 0.65rem;
-  
     color: #667085;
   }
   
@@ -848,17 +599,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
     margin: 0 1rem 1rem;
     padding-top: 0.75rem;
-  
     border-top: 1px solid #E4E7EC;
-  
     color: #159A91;
-  
     font-size: 0.75rem;
     font-weight: 600;
-  
     text-decoration: none;
     flex-shrink: 0;
   }
@@ -871,21 +617,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
     gap: 0.5rem;
-  
     padding: 2rem 1rem;
-  
     color: #269B68;
-  
     font-size: 0.8rem;
   }
   
-  
-  /* =========================================================
-     Orders
-     ========================================================= */
-  
+  /*  Orders */
   .orders-section {
     overflow: hidden;
   }
@@ -894,9 +632,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-  
     padding: 1.25rem 1.4rem;
-  
     border-bottom: 1px solid #E4E7EC;
   }
   
@@ -904,14 +640,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-  
     padding-top: 0.15rem;
-  
     color: #159A91;
-  
     font-size: 0.78rem;
     font-weight: 600;
-  
     text-decoration: none;
   }
   
@@ -920,46 +652,32 @@
   }
   
   
-  /* =========================================================
-     Orders Table
-     ========================================================= */
-  
+  /* Orders Table */
   .orders-table-wrapper {
     width: 100%;
-  
     overflow-x: auto;
   }
   
   .orders-table {
     width: 100%;
-  
     border-collapse: collapse;
-  
     min-width: 650px;
   }
   
   .orders-table th {
     padding: 0.8rem 1.4rem;
-  
     text-align: left;
-  
     background: #F7F9FC;
-  
     border-bottom: 1px solid #E4E7EC;
-  
     color: #667085;
-  
     font-size: 0.65rem;
     font-weight: 700;
-  
     letter-spacing: 0.08em;
   }
   
   .orders-table td {
     padding: 0.9rem 1.4rem;
-  
     border-bottom: 1px solid #EEF1F5;
-  
     font-size: 0.8rem;
   }
   
@@ -977,7 +695,6 @@
   
   .order-id {
     font-weight: 600;
-  
     color: #172033;
   }
   
@@ -987,21 +704,14 @@
   
   .order-amount {
     color: #172033;
-  
     font-weight: 600;
   }
   
-  
-  /* =========================================================
-     Status
-     ========================================================= */
-  
+  /* Status */
   .order-status {
     display: inline-flex;
     align-items: center;
-  
     gap: 0.4rem;
-  
     font-size: 0.75rem;
     font-weight: 600;
   }
@@ -1009,7 +719,6 @@
   .status-dot {
     width: 6px;
     height: 6px;
-  
     border-radius: 50%;
   }
   
@@ -1038,26 +747,17 @@
   }
   
   
-  /* =========================================================
-     Empty Orders
-     ========================================================= */
-  
+  /* Empty Orders */
   .empty-orders {
     padding: 2.5rem;
-  
     text-align: center;
-  
     color: #667085;
   }
   
   
-  /* =========================================================
-     Loading
-     ========================================================= */
-  
+  /* Loading */
   .dashboard-loading {
     min-height: 300px;
-  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1067,11 +767,7 @@
     color: #159A91 !important;
   }
   
-  
-  /* =========================================================
-     Responsive
-     ========================================================= */
-  
+  /* Responsive */
   @media (max-width: 1100px) {
     .dashboard-grid {
       grid-template-columns: 1fr;
@@ -1085,9 +781,7 @@
     }
   }
   
-  
   @media (max-width: 850px) {
-  
     .kpi-strip {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1107,7 +801,6 @@
   
   
   @media (max-width: 600px) {
-  
     .dashboard-header {
       align-items: flex-start;
       flex-direction: column;
@@ -1129,7 +822,6 @@
   
     .kpi-item {
       min-height: 105px;
-  
       border-right: none;
       border-bottom: 1px solid #E4E7EC;
     }
@@ -1177,7 +869,6 @@
   
   
     /* Fixed dashboard panel height on mobile */
-  
     .activity-panel,
     .inventory-panel {
       height: 460px;

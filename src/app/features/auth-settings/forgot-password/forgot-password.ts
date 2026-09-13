@@ -11,17 +11,14 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './forgot-password.html',
   styleUrl: './forgot-password.css'
 })
-export class ForgotPassword {
 
+export class ForgotPassword {
   username = '';
   newPassword = '';
   confirmPassword = '';
-
   step = 1;
-
   errorMessage = '';
   successMessage = '';
-
   userId: number | null = null;
 
   constructor(
@@ -30,7 +27,6 @@ export class ForgotPassword {
   ) {}
 
   findUser() {
-
     this.errorMessage = '';
     this.successMessage = '';
 
@@ -39,28 +35,20 @@ export class ForgotPassword {
       return;
     }
 
-    this.http.get<any[]>(
-      `http://localhost:3000/users?username=${this.username.trim()}`
-    ).subscribe({
-      next: (users) => {
-
+    this.http.get<any[]>(`http://localhost:3000/users?username=${this.username.trim()}`)
+    .subscribe({ next: (users) => {
         if (users.length === 0) {
           this.errorMessage = 'Username not found.';
           return;
         }
-
         this.userId = users[0].id;
         this.step = 2;
       },
-
-      error: () => {
-        this.errorMessage = 'Something went wrong. Please try again.';
-      }
+      error: () => {this.errorMessage = 'Something went wrong. Please try again.';}
     });
   }
 
   resetPassword() {
-
     this.errorMessage = '';
     this.successMessage = '';
 
@@ -83,24 +71,10 @@ export class ForgotPassword {
       return;
     }
 
-    this.http.patch(
-      `http://localhost:3000/users/${this.userId}`,
-      {
-        password: this.newPassword
-      }
-    ).subscribe({
-      next: () => {
-
-        this.successMessage = 'Password reset successfully!';
-
-        setTimeout(() => {
-          this.router.navigate(['/login']);
-        }, 1500);
-      },
-
-      error: () => {
-        this.errorMessage = 'Failed to reset password.';
-      }
+    this.http.patch( `http://localhost:3000/users/${this.userId}`, { password: this.newPassword })
+    .subscribe({ next: () => { this.successMessage = 'Password reset successfully!';
+        setTimeout(() => { this.router.navigate(['/login']); }, 1500); },
+      error: () => {this.errorMessage = 'Failed to reset password.';}
     });
   }
 

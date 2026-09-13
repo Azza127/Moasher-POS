@@ -25,22 +25,6 @@
       "id": "MXuHU1OJu0k"
     },
     {
-      "id": "w938Vtv7MdE",
-      "username": "batol",
-      "password": "123456",
-      "name": "batol",
-      "role": "Manager",
-      "status": "Active"
-    },
-    {
-      "username": "batoal",
-      "password": "654321",
-      "name": "batoal",
-      "role": "Owner",
-      "status": "Active",
-      "id": "vjVPmVk8l3E"
-    },
-    {
       "username": "azzaEzzat",
       "password": "123456789",
       "name": "Azza Ezzat",
@@ -97,6 +81,10 @@
     {
       "name": "Housewares",
       "id": "k8ka5rF59Ms"
+    },
+    {
+      "name": "قسم الاطفال",
+      "id": "6YqKclHpGjM"
     }
   ],
   "products": [
@@ -130,7 +118,7 @@
       "sku": "NOT-001",
       "categoryId": "3",
       "price": 75,
-      "stock": 8,
+      "stock": 7,
       "minStock": 10,
       "maxStock": 40,
       "description": "A5 / Ruled Pages",
@@ -178,7 +166,7 @@
       "sku": "TOT-001",
       "categoryId": "3",
       "price": 10,
-      "stock": 98,
+      "stock": 97,
       "minStock": 6,
       "maxStock": 35,
       "description": "HB / Graphite",
@@ -190,7 +178,7 @@
       "sku": "REA-001",
       "categoryId": "3",
       "price": 12,
-      "stock": 27,
+      "stock": 26,
       "minStock": 5,
       "maxStock": 20,
       "description": "White / Soft Rubber",
@@ -214,7 +202,7 @@
       "sku": "BOB-001",
       "categoryId": "6",
       "price": 550,
-      "stock": 39,
+      "stock": 37,
       "minStock": 2,
       "maxStock": 10,
       "description": "White / Cotton",
@@ -250,7 +238,7 @@
       "sku": "FOF-220",
       "categoryId": "5",
       "price": 15,
-      "stock": 50,
+      "stock": 69,
       "minStock": 15,
       "maxStock": 60,
       "description": "400g",
@@ -262,7 +250,7 @@
       "sku": "TOT-002",
       "categoryId": "cT8bmadytzM",
       "price": 550,
-      "stock": 19,
+      "stock": 17,
       "minStock": 5,
       "maxStock": 20,
       "description": "Black / perfume",
@@ -274,7 +262,7 @@
       "sku": "OUO-300",
       "categoryId": "ddA-8yD6-ss",
       "price": 160,
-      "stock": 1,
+      "stock": 0,
       "minStock": 4,
       "maxStock": 20,
       "description": "Outomatic / 8KG",
@@ -298,7 +286,7 @@
       "sku": "FDD-220",
       "categoryId": "5",
       "price": 75,
-      "stock": 40,
+      "stock": 39,
       "minStock": 15,
       "maxStock": 50,
       "description": "2 Kg",
@@ -311,7 +299,7 @@
       "sku": "Red-212",
       "categoryId": "w-UYvx6E5OA",
       "price": 200,
-      "stock": 11,
+      "stock": 30,
       "maxStock": 50,
       "minStock": 5,
       "image": "https://i.pinimg.com/736x/a2/25/78/a2257896c64ea8a85b46d28930266d16.jpg"
@@ -319,14 +307,14 @@
     {
       "id": "8mgaOCZTySg",
       "name": "V Cola",
-      "description": "diet",
+      "description": "Lemon Soda",
       "sku": "sku005",
       "categoryId": "w-UYvx6E5OA",
       "price": 20,
-      "stock": 23,
+      "stock": 21,
       "maxStock": 50,
       "minStock": 5,
-      "image": "https://i.pinimg.com/736x/60/b9/02/60b90263f2e24fe2f0077f18e6a766e1.jpg"
+      "image": "https://i.pinimg.com/736x/31/25/08/31250865271f68ea920c5191a2c6d91d.jpg"
     },
     {
       "id": "KQKfHlIDRQs",
@@ -335,7 +323,7 @@
       "sku": "pip-009",
       "categoryId": "6",
       "price": 650,
-      "stock": 45,
+      "stock": 44,
       "maxStock": 100,
       "minStock": 0,
       "image": "https://i.pinimg.com/736x/0a/4c/09/0a4c09fad4a49a0519b43f69de6befda.jpg"
@@ -347,7 +335,7 @@
       "sku": "UOU-008",
       "categoryId": "k8ka5rF59Ms",
       "price": 4350,
-      "stock": 11,
+      "stock": 10,
       "maxStock": 50,
       "minStock": 4,
       "image": "https://i.pinimg.com/736x/ca/dc/8c/cadc8c1d17a2cd894fe4b40d65a64543.jpg"
@@ -692,6 +680,47 @@
           "taxAmount": 0,
           "subtotal": 650,
           "total": 650
+        }
+      ]
+    },
+    {
+      "id": "-txV7i3yZ1w",
+      "supplierName": "شركة العبور للمواد الغذائية",
+      "invoiceNumber": "213650",
+      "invoiceDate": "2026-09-02",
+      "warehouseId": "مخزن محلات متجيش تاني",
+      "notes": "",
+      "subtotal": 600,
+      "taxTotal": 2.1,
+      "total": 602.1,
+      "items": [
+        {
+          "id": "17883657163990twkkx",
+          "productId": "g-Zfpr16690",
+          "productName": "Pasta",
+          "sku": "FOF-220",
+          "quantity": 20,
+          "expiryDate": "0028-02-28",
+          "purchasePrice": 15,
+          "sellingPrice": 20,
+          "taxRate": 0.5,
+          "taxAmount": 1.5,
+          "subtotal": 300,
+          "total": 301.5
+        },
+        {
+          "id": "1788365788677d1zoy4",
+          "productId": "UExSrVT0Ex8",
+          "productName": "RedBull",
+          "sku": "Red-212",
+          "quantity": 20,
+          "expiryDate": "2029-04-30",
+          "purchasePrice": 15,
+          "sellingPrice": 25,
+          "taxRate": 0.2,
+          "taxAmount": 0.6,
+          "subtotal": 300,
+          "total": 300.6
         }
       ]
     }
@@ -1631,6 +1660,173 @@
       "status": "Completed",
       "createdAt": "2026-09-01T20:57:06.760Z",
       "id": "ijm9zR-9Btg"
+    },
+    {
+      "ticketNumber": "#2511-H",
+      "items": [
+        {
+          "productId": "JL_OrD8YdJo",
+          "productName": "Eraser",
+          "price": 12,
+          "quantity": 1,
+          "total": 12
+        },
+        {
+          "productId": "8mgaOCZTySg",
+          "productName": "V Cola",
+          "price": 20,
+          "quantity": 1,
+          "total": 20
+        },
+        {
+          "productId": "W605lG_8obY",
+          "productName": "Turkish dinner set",
+          "price": 4350,
+          "quantity": 1,
+          "total": 4350
+        },
+        {
+          "productId": "KQKfHlIDRQs",
+          "productName": "pants",
+          "price": 650,
+          "quantity": 1,
+          "total": 650
+        },
+        {
+          "productId": "ILEoSyI_Fn8",
+          "productName": "Olympia",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "UTjQXLaZTHE",
+          "productName": "Blouse",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "3",
+          "productName": "Notebook",
+          "price": 75,
+          "quantity": 1,
+          "total": 75
+        },
+        {
+          "productId": "TEQYUx5ka1I",
+          "productName": "Pencil",
+          "price": 10,
+          "quantity": 1,
+          "total": 10
+        }
+      ],
+      "subtotal": 6217,
+      "tax": 932.55,
+      "total": 7149.55,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-09-09T20:56:50.344Z",
+      "id": "T5rvUknuXwo"
+    },
+    {
+      "ticketNumber": "#5335-J",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Wireless Mouse",
+          "price": 500,
+          "quantity": 1,
+          "total": 500
+        },
+        {
+          "productId": "5",
+          "productName": "Wireless Keyboard",
+          "price": 650,
+          "quantity": 1,
+          "total": 650
+        }
+      ],
+      "subtotal": 1150,
+      "tax": 172.5,
+      "total": 1322.5,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-09-11T01:27:46.440Z",
+      "id": "ciQwBBr8hmI"
+    },
+    {
+      "ticketNumber": "#2219-K",
+      "items": [
+        {
+          "productId": "Xh9JRv8y1Sg",
+          "productName": "Oxi",
+          "price": 160,
+          "quantity": 1,
+          "total": 160
+        },
+        {
+          "productId": "UTjQXLaZTHE",
+          "productName": "Blouse",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "ILEoSyI_Fn8",
+          "productName": "Olympia",
+          "price": 550,
+          "quantity": 1,
+          "total": 550
+        },
+        {
+          "productId": "8mgaOCZTySg",
+          "productName": "V Cola",
+          "price": 20,
+          "quantity": 1,
+          "total": 20
+        }
+      ],
+      "subtotal": 1280,
+      "tax": 192,
+      "total": 1472,
+      "paymentMethod": "Card",
+      "status": "Completed",
+      "createdAt": "2026-09-11T01:29:27.232Z",
+      "id": "ug-JQ7-idSc"
+    },
+    {
+      "ticketNumber": "#4449-X",
+      "items": [
+        {
+          "productId": "HOy_74MXcMk",
+          "productName": "Carolina Rice",
+          "price": 75,
+          "quantity": 1,
+          "total": 75
+        },
+        {
+          "productId": "g-Zfpr16690",
+          "productName": "Pasta",
+          "price": 15,
+          "quantity": 1,
+          "total": 15
+        },
+        {
+          "productId": "UExSrVT0Ex8",
+          "productName": "RedBull",
+          "price": 200,
+          "quantity": 1,
+          "total": 200
+        }
+      ],
+      "subtotal": 290,
+      "tax": 43.5,
+      "total": 333.5,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-09-12T23:57:42.901Z",
+      "id": "puvgMh01uAU"
     }
   ],
   "storeSettings": [
@@ -1640,7 +1836,7 @@
       "phone": "01287893082",
       "address": "امتداد محور 26 يوليو، مدخل مدينة الشيخ زايد، محافظة الجيزة.",
       "currency": "EGP",
-      "taxRate": 14
+      "taxRate": 15
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

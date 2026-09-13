@@ -2,7 +2,6 @@ import { Product } from '../models/product.model';
 import { Order } from '../models/order.model';
 
 export class StatsUtil {
-
   static totalSales(orders: Order[]): number {
     return orders.reduce((total, order) => {
       return total + Number(order.total || 0);
