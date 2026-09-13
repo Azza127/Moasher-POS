@@ -1,5 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject,} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  inject
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+
 import { Order } from '../../../core/models/order.model';
 import { StoreSettingsService } from '../../../core/services/store-settings.service';
 
@@ -11,13 +22,14 @@ import { StoreSettingsService } from '../../../core/services/store-settings.serv
   styleUrl: './order-table.css',
 })
 export class OrderTable implements OnInit, OnChanges {
+
   @Input() orders: Order[] = [];
   @Input() loading = false;
+
   @Output() orderSelect = new EventEmitter<Order>();
 
-  private storeSettingsService =inject(StoreSettingsService);
-  readonly pageSize = 10;
-  currentPage = 1;
+  private readonly storeSettingsService = inject(StoreSettingsService);
+
   currencySymbol = 'EGP';
 
   // INIT
@@ -27,55 +39,41 @@ export class OrderTable implements OnInit, OnChanges {
 
   // LOAD STORE SETTINGS
   private loadStoreSettings(): void {
-    this.storeSettingsService .getOrLoadSettings()
-      .subscribe({ next: (settings) => {
+    this.storeSettingsService
+      .getOrLoadSettings()
+      .subscribe({
+        next: (settings) => {
           if (!settings) {
             return;
           }
-          this.currencySymbol = this.storeSettingsService .getCurrencySymbol( settings.currency );
+
+          this.currencySymbol =
+            this.storeSettingsService.getCurrencySymbol(
+              settings.currency
+            );
         },
+
         error: (error) => {
-          console.error( 'Error loading store settings:', error );
+          console.error(
+            'Error loading store settings:',
+            error
+          );
         }
       });
   }
 
   // INPUT CHANGES
-  ngOnChanges(
-    changes: SimpleChanges
-  ): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['orders']) {
-      this.currentPage = 1;
+      // Orders are already filtered and sorted
+      // by the parent Orders component.
     }
   }
 
-  // PAGINATION
-  get totalPages(): number {
-    return Math.max( 1, Math.ceil( this.orders.length / this.pageSize ));
-  }
-
+  // ALL ORDERS
   get pagedOrders(): Order[] {
-    const start =(this.currentPage - 1) * this.pageSize;
-    return this.orders.slice( start, start + this.pageSize );
+    return this.orders;
   }
-
-  get rangeStart(): number {
-    return this.orders.length === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;
-  }
-
-  get rangeEnd(): number {
-    return Math.min( this.currentPage * this.pageSize, this.orders.length );
-  }
-
-  goToPage(page: number): void {
-    if (
-      page < 1 || page > this.totalPages
-    ) {
-      return;
-    }
-    this.currentPage = page;
-  }
-
 
   // ORDER SELECTION
   select(order: Order): void {
@@ -84,24 +82,32 @@ export class OrderTable implements OnInit, OnChanges {
 
   // ITEM COUNT
   itemCount(order: Order): number {
-    return (
-      order.items || [] ).reduce( (sum, i) => sum + (i.quantity || 0), 0 );
+    return (order.items || [])
+      .reduce(
+        (sum, item) => sum + (item.quantity || 0),
+        0
+      );
   }
 
   // TICKET NUMBER
   ticketNumber(order: Order): string {
-    return ((order as any).ticketNumber || `#${order.id}`
+    return (
+      (order as any).ticketNumber ||
+      `#${order.id}`
     );
   }
 
   // PAYMENT METHOD
   paymentMethod(order: Order): string {
-    return ( (order as any).paymentMethod ||'—' );
+    return (
+      (order as any).paymentMethod || '—'
+    );
   }
 
   // TRACK BY
   trackByOrderId(
-    _index: number, order: Order
+    _index: number,
+    order: Order
   ): string | number {
     return order.id ?? _index;
   }

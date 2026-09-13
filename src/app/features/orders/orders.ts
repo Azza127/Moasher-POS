@@ -44,24 +44,15 @@
   
     // LOAD STORE SETTINGS
     private loadStoreSettings(): void {
-      this.storeSettingsService
-        .getOrLoadSettings()
-        .subscribe({ next: (settings) => {
+      this.storeSettingsService.getOrLoadSettings().subscribe({ next: (settings) => {
             if (!settings) {
               return;
             }
   
-            this.currencySymbol =
-              this.storeSettingsService
-                .getCurrencySymbol(
-                  settings.currency
-                );
+            this.currencySymbol = this.storeSettingsService.getCurrencySymbol(settings.currency);
             this.cdr.markForCheck();
           }, error: (error) => {
-            console.error(
-              'Error loading store settings:',
-              error
-            );
+            console.error('Error loading store settings:', error);
           }
         });
     }
@@ -74,7 +65,11 @@
       forkJoin({
         orders: this.orderService.getOrders(),
         products: this.productService.getProducts(),
-      }).subscribe({ next: ({ orders, products }) => {
+      })
+      
+      .subscribe({ next: ({ orders, products }) => {
+        //   console.log('ORDERS FROM API:', orders);
+        //   console.log('ORDERS COUNT:', orders.length);
           this.orders = orders;
           this.products = products;
           this.applyFilters();
