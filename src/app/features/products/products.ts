@@ -4,15 +4,12 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
 import { PopupService } from '../../core/services/popup.service';
 import { StoreSettingsService } from '../../core/services/store-settings.service';
 import { StoreSettings } from '../../core/models/store-settings.model';
-
 import { HostListener } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
-
 import { CategoryService } from '../../core/services/category.service';
 import { Category } from '../../core/models/category.model';
 

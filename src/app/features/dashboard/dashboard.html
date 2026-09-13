@@ -168,7 +168,14 @@
         <div class="inventory-item" *ngFor="let product of lowStockProducts()">
           <div class="inventory-item-main">
             <div class="inventory-icon">
-              <i class="bi bi-box2"></i>
+              @if (product.image) {
+                <img
+                  [src]="product.image"
+                  [alt]="product.name"
+                />
+              } @else {
+                <i class="bi bi-box2"></i>
+              }
             </div>
 
             <div>
