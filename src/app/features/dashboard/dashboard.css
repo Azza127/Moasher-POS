@@ -180,7 +180,6 @@
     border-radius: 12px;
   }
   
-  
   /* Sales + Inventory panels use
      a controlled vertical layout */
   .activity-panel,
@@ -271,7 +270,6 @@
   .orders-legend {
     background: #3F63A8;
   }
-  
   
   /* Chart Area */
   .chart-area {
@@ -497,7 +495,6 @@
     scrollbar-color: #B9DDD8 transparent;
   }
   
-  
   /* Inventory scrollbar - WebKit browsers */
   .inventory-list::-webkit-scrollbar {
     width: 6px;
@@ -515,7 +512,6 @@
   .inventory-list::-webkit-scrollbar-thumb:hover {
     background: #159A91;
   }
-  
   
   .inventory-item {
     display: flex;
@@ -663,7 +659,6 @@
     color: #117C75;
   }
   
-  
   /* Orders Table */
   .orders-table-wrapper {
     width: 100%;
@@ -719,6 +714,44 @@
     font-weight: 600;
   }
   
+/* Payment Badge */
+   .order-payment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+  .order-payment i {
+    font-size: 14px;
+  }
+  
+  /* Cash */
+  .order-payment.cash {
+    color: #159F9A;
+    background: #E8F5F4;
+  }
+  
+  .order-payment.cash i {
+    color: #159F9A;
+  }
+  
+  /* Card */
+  .order-payment.payment-card {
+    color: #4F6FAF;
+    background: #EDF3FC;
+  }
+  
+  .order-payment.payment-card i {
+    color: #4F6FAF;
+  }
+
   /* Status */
   .order-status {
     display: inline-flex;
@@ -758,14 +791,12 @@
     background: #D64545;
   }
   
-  
   /* Empty Orders */
   .empty-orders {
     padding: 2.5rem;
     text-align: center;
     color: #667085;
   }
-  
   
   /* Loading */
   .dashboard-loading {
@@ -878,7 +909,6 @@
       margin-left: 0.8rem;
       margin-right: 0.8rem;
     }
-  
   
     /* Fixed dashboard panel height on mobile */
     .activity-panel,

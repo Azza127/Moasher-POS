@@ -1,16 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  inject
-} from '@angular/core';
-
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Order } from '../../../core/models/order.model';
 import { StoreSettingsService } from '../../../core/services/store-settings.service';
 
@@ -22,14 +11,11 @@ import { StoreSettingsService } from '../../../core/services/store-settings.serv
   styleUrl: './order-table.css',
 })
 export class OrderTable implements OnInit, OnChanges {
-
   @Input() orders: Order[] = [];
   @Input() loading = false;
-
   @Output() orderSelect = new EventEmitter<Order>();
 
   private readonly storeSettingsService = inject(StoreSettingsService);
-
   currencySymbol = 'EGP';
 
   // INIT
@@ -41,23 +27,14 @@ export class OrderTable implements OnInit, OnChanges {
   private loadStoreSettings(): void {
     this.storeSettingsService
       .getOrLoadSettings()
-      .subscribe({
-        next: (settings) => {
+      .subscribe({ next: (settings) => {
           if (!settings) {
             return;
           }
-
-          this.currencySymbol =
-            this.storeSettingsService.getCurrencySymbol(
-              settings.currency
-            );
+          this.currencySymbol = this.storeSettingsService.getCurrencySymbol( settings.currency );
         },
-
         error: (error) => {
-          console.error(
-            'Error loading store settings:',
-            error
-          );
+          console.error( 'Error loading store settings:', error );
         }
       });
   }
@@ -83,17 +60,13 @@ export class OrderTable implements OnInit, OnChanges {
   // ITEM COUNT
   itemCount(order: Order): number {
     return (order.items || [])
-      .reduce(
-        (sum, item) => sum + (item.quantity || 0),
-        0
-      );
+      .reduce((sum, item) => sum + (item.quantity || 0), 0);
   }
 
   // TICKET NUMBER
   ticketNumber(order: Order): string {
     return (
-      (order as any).ticketNumber ||
-      `#${order.id}`
+      (order as any).ticketNumber || `#${order.id}`
     );
   }
 
@@ -105,10 +78,7 @@ export class OrderTable implements OnInit, OnChanges {
   }
 
   // TRACK BY
-  trackByOrderId(
-    _index: number,
-    order: Order
-  ): string | number {
+  trackByOrderId( _index: number, order: Order): string | number {
     return order.id ?? _index;
   }
 }

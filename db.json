@@ -94,7 +94,7 @@
       "sku": "MOU-001",
       "categoryId": "1",
       "price": 500,
-      "stock": 46,
+      "stock": 45,
       "minStock": 10,
       "maxStock": 50,
       "description": "Black / Wireless",
@@ -106,7 +106,7 @@
       "sku": "USB-001",
       "categoryId": "1",
       "price": 360,
-      "stock": 65,
+      "stock": 64,
       "minStock": 10,
       "maxStock": 40,
       "description": "Black / 256G",
@@ -1827,6 +1827,32 @@
       "status": "Completed",
       "createdAt": "2026-09-12T23:57:42.901Z",
       "id": "puvgMh01uAU"
+    },
+    {
+      "ticketNumber": "#7119-D",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Wireless Mouse",
+          "price": 500,
+          "quantity": 1,
+          "total": 500
+        },
+        {
+          "productId": "2",
+          "productName": "USB-C Cable",
+          "price": 360,
+          "quantity": 1,
+          "total": 360
+        }
+      ],
+      "subtotal": 860,
+      "tax": 129,
+      "total": 989,
+      "paymentMethod": "Cash",
+      "status": "Completed",
+      "createdAt": "2026-09-13T11:25:08.412Z",
+      "id": "hMyvPMLUz5A"
     }
   ],
   "storeSettings": [
